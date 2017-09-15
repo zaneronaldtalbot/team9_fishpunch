@@ -10,8 +10,6 @@ public class KartMovementScript : MonoBehaviour {
     public float steeringForce;
 
     //Wheel Colliders.
-    
-    [HideInInspector]
     public WheelCollider wheelFR, wheelFL, wheelBR, wheelBL;
 
     // Use this for initialization
