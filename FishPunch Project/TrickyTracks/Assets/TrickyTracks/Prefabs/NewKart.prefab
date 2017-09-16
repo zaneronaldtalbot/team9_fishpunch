@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 65086609911292212}
   - component: {fileID: 23788618767459466}
   - component: {fileID: 54990326877032394}
-  - component: {fileID: 114341367107399176}
   m_Layer: 0
   m_Name: NewKart
   m_TagString: Untagged
@@ -425,23 +424,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1386757535089930}
   m_Enabled: 1
---- !u!114 &114341367107399176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1071825893103336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 154bdb6295f07d549b18f0262fc2c321, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  engineForce: 90
-  steeringForce: 30
-  wheelFR: {fileID: 146178074904076054}
-  wheelFL: {fileID: 146105177608661990}
-  wheelBR: {fileID: 146359803968359038}
-  wheelBL: {fileID: 146850184648495042}
 --- !u!124 &124471589697849908
 Behaviour:
   m_ObjectHideFlags: 1
