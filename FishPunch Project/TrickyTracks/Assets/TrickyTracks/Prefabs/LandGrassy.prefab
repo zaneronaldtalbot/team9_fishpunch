@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114786040906639648}
   - component: {fileID: 64235083171825552}
   m_Layer: 0
-  m_Name: Land
+  m_Name: LandGrassy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
