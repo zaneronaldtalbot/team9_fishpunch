@@ -23,10 +23,11 @@ public class KartActor2 : MonoBehaviour {
     //Array to store the empty game objects the raycasts fire from.
     public GameObject[] wheelPoints;
 
-    //non public variables that are calculated based on the public variables
-    //aren't public to keep them safe from being altered directly.
-    float thrust = 0f;
-    float turnValue = 0f;
+    //public variables that traps and obstacles will use.
+    [HideInInspector]
+    public float thrust = 0f;
+    [HideInInspector]
+    public float turnValue = 0f;
 
     //Layer mask used to stop raycast interacting and hitting kart.
     int layerMask;
