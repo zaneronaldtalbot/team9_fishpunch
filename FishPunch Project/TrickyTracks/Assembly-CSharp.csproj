@@ -62,7 +62,15 @@
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
      <Compile Include="Assets\TrickyTracks\Scripts\KartActor.cs" />
+     <Compile Include="Assets\TrickyTracks\Scripts\KartActor2.cs" />
      <Compile Include="Assets\TrickyTracks\Scripts\OilSlickActor.cs" />
+     <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput.cs" />
+     <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput_Helpers\XciAxisDeadzoneData.cs" />
+     <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput_Helpers\XciInputManagerClone.cs" />
+     <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput_Helpers\XciInputManagerReader.cs" />
+     <Compile Include="Assets\XInput\XboxCtrlrInputExample\MoveLaser.cs" />
+     <Compile Include="Assets\XInput\XboxCtrlrInputExample\MovePlayer.cs" />
+     <Compile Include="Assets\XInput\XInputDotNet\Examples\XInputTestCS.cs" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_LightPosition\SFN_LightPosition.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Fresnel\SFN_Fresnel_EXP.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Trunc\SFN_Trunc.shader" />
@@ -159,6 +167,7 @@
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Divide\SFN_Divide.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_InverseLerp\SFN_InverseLerp.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ArcTan\SFN_ArcTan.shader" />
+     <None Include="Assets\XInput\XInputDotNet\MITLicense.txt" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Tex2d\SFN_Tex2d_UV.shader" />
      <None Include="Assets\ShaderForge\Example Assets\Shaders\Refraction.shader" />
      <None Include="Assets\ProCore\ProBuilder\Shader\pb_VertexPicker.shader" />
@@ -318,6 +327,9 @@
  </Reference>
  <Reference Include="Poly2Tri">
  <HintPath>C:/Users/Zane/Documents/SVN/TrickyTracks/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+ </Reference>
+ <Reference Include="XInputDotNetPure">
+ <HintPath>C:/Users/Zane/Documents/SVN/TrickyTracks/trunk/FishPunch Project/TrickyTracks/Assets/XInput/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
