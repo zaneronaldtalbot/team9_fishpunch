@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 65428249398712190}
   - component: {fileID: 23619859945527962}
   - component: {fileID: 54988532779114418}
-  - component: {fileID: 114005202238346228}
+  - component: {fileID: 114136499481248280}
   m_Layer: 8
   m_Name: RayCastKart
   m_TagString: Player
@@ -161,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568711312766424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.475, y: 0.37400007, z: -0.453}
+  m_LocalPosition: {x: 0.495, y: 0.37400007, z: -0.453}
   m_LocalScale: {x: 1.0000006, y: 1, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 4907650770621006}
@@ -187,7 +187,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624749428365324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.475, y: 0.37400007, z: 0.424}
+  m_LocalPosition: {x: 0.484, y: 0.374, z: 0.424}
   m_LocalScale: {x: 1.0000006, y: 1, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 4907650770621006}
@@ -199,8 +199,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1999082771031278}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 8.090943, y: 1.46, z: -13.117972}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -59.402466, y: 0.4982729, z: 14.7}
   m_LocalScale: {x: 1.5, y: 0.5, z: 2.5}
   m_Children:
   - {fileID: 4340146402448946}
@@ -349,7 +349,7 @@ Rigidbody:
   m_Mass: 70
   m_Drag: 3
   m_AngularDrag: 4
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -392,7 +392,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1115546330516650}
   m_Enabled: 1
---- !u!114 &114005202238346228
+--- !u!114 &114136499481248280
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -404,18 +404,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundedDrag: 3
-  maxVelocity: 30
+  maxVelocity: 50
   hoverForce: 1000
   gravityForce: 1000
-  hoverHeight: 1.5
-  forwardAcceleration: 8000
-  reverseAcceleration: 4000
-  turnStrength: 700
+  hoverHeight: 1
+  forwardAcceleration: 4000
+  reverseAcceleration: 2000
+  turnStrength: 250
   wheelPoints:
   - {fileID: 1583539037625778}
   - {fileID: 1624749428365324}
   - {fileID: 1568711312766424}
   - {fileID: 1636626803600008}
+  thrust: 0
+  turnValue: 0
 --- !u!124 &124795210611390054
 Behaviour:
   m_ObjectHideFlags: 1
