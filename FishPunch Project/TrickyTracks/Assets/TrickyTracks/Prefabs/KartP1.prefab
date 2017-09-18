@@ -117,12 +117,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4907650770621006}
   - component: {fileID: 33549174615823008}
-  - component: {fileID: 65428249398712190}
   - component: {fileID: 23619859945527962}
   - component: {fileID: 54988532779114418}
   - component: {fileID: 114136499481248280}
+  - component: {fileID: 65736408483479302}
   m_Layer: 8
-  m_Name: RayCastKart
+  m_Name: KartP1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,8 +237,8 @@ Camera:
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
+    x: -0.5
+    y: 0.5
     width: 1
     height: 1
   near clip plane: 0.3
@@ -366,7 +366,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65428249398712190
+--- !u!65 &65736408483479302
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
