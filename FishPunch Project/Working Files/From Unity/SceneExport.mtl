@@ -1,0 +1,44 @@
+newmtl Muddy
+Kd 0.8897059 0.6973273 0.3532656
+illum 2
+
+newmtl Grassy
+Kd 0.3361622 0.8088235 0.2973616
+illum 2
+
+newmtl BarricadeYellow
+Kd 1 0.8896552 0
+illum 2
+
+newmtl Buzzsaw
+Kd 0.4117647 0.4299308 0.4299308
+illum 2
+
+newmtl Oil
+Kd 0 0 0
+illum 2
+
+newmtl Default_Prototype
+map_Kd null
+illum 2
+
+newmtl RPG
+Kd 0.3113068 0.8455882 0.2922253
+illum 2
+
+newmtl KartRed
+Kd 1 0 0
+illum 2
+
+newmtl Mine
+Kd 0.4563896 0.4117647 1
+illum 2
+
+newmtl Boost
+Kd 0.7279412 0.2248054 0.2248054
+illum 2
+
+newmtl Ramp
+Kd 0.6985294 0.5341696 0.2876298
+illum 2
+
