@@ -167,7 +167,7 @@ public class KartActor2 : MonoBehaviour {
             kartBody.AddForce(transform.forward * thrust);
         }
 
-        if (thrust > 0 || thrust < 0)
+        if (thrust > 0)
         {
             //Turn right
             if (turnValue > 0)
@@ -179,6 +179,20 @@ public class KartActor2 : MonoBehaviour {
             {
                 kartBody.AddRelativeTorque(Vector3.up * turnValue * turnStrength);
             }
+        }
+        if(thrust < 0)
+        {
+            //Turn right
+            if (turnValue > 0)
+            {
+                kartBody.AddRelativeTorque(Vector3.up * -turnValue * turnStrength);
+            }
+            //turn left.
+            else if (turnValue < 0)
+            {
+                kartBody.AddRelativeTorque(Vector3.up * -turnValue * turnStrength);
+            }
+
         }
 
         //Limits the cars velocity based on max velocity.
