@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33297248400521110}
   - component: {fileID: 23076671211023078}
   - component: {fileID: 54043319586740824}
-  - component: {fileID: 114326315747374664}
   - component: {fileID: 65458117197674644}
+  - component: {fileID: 114855983876373672}
   m_Layer: 8
   m_Name: KartP3
   m_TagString: Player
@@ -392,7 +392,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830786882604640}
   m_Enabled: 1
---- !u!114 &114326315747374664
+--- !u!114 &114855983876373672
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -400,17 +400,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132890360452098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a97c9bafe21b724daad661b1bfc37f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 05dd06008b3f58e40aabdee6d6756eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundedDrag: 3
   maxVelocity: 50
   hoverForce: 1000
   gravityForce: 1000
-  hoverHeight: 1
+  hoverHeight: 1.5
   forwardAcceleration: 4000
-  reverseAcceleration: 2000
-  turnStrength: 250
+  reverseAcceleration: 1000
+  turnStrength: 300
+  breakSharpness: 10
   wheelPoints:
   - {fileID: 1888681629461660}
   - {fileID: 1410331118030576}

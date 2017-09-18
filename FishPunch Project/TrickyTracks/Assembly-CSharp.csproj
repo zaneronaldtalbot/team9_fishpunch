@@ -61,9 +61,12 @@
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
+     <Compile Include="Assets\TrickyTracks\Scripts\GamePadManager.cs" />
      <Compile Include="Assets\TrickyTracks\Scripts\KartActor.cs" />
      <Compile Include="Assets\TrickyTracks\Scripts\KartActor2.cs" />
      <Compile Include="Assets\TrickyTracks\Scripts\OilSlickActor.cs" />
+     <Compile Include="Assets\TrickyTracks\Scripts\RefreshGamePads.cs" />
+     <Compile Include="Assets\TrickyTracks\Scripts\xbox_gamepad.cs" />
      <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput.cs" />
      <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput_Helpers\XciAxisDeadzoneData.cs" />
      <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput_Helpers\XciInputManagerClone.cs" />
