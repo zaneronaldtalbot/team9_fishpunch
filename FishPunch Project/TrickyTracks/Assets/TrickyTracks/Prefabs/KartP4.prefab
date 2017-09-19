@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 23098211340007634}
   - component: {fileID: 54844726911312138}
   - component: {fileID: 65772011640495888}
-  - component: {fileID: 114068296486343254}
+  - component: {fileID: 114920275881059690}
   m_Layer: 8
   m_Name: KartP4
   m_TagString: Player
@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 20206910071850044}
   - component: {fileID: 92854614894393306}
   - component: {fileID: 124260762135295360}
-  - component: {fileID: 81736623055900796}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -378,13 +377,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &81736623055900796
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1357830847897484}
-  m_Enabled: 1
 --- !u!92 &92854614894393306
 Behaviour:
   m_ObjectHideFlags: 1
@@ -392,7 +384,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357830847897484}
   m_Enabled: 1
---- !u!114 &114068296486343254
+--- !u!114 &114920275881059690
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -400,7 +392,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1104375765663672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05dd06008b3f58e40aabdee6d6756eb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a97c9bafe21b724daad661b1bfc37f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundedDrag: 3
@@ -408,9 +400,9 @@ MonoBehaviour:
   hoverForce: 1000
   gravityForce: 1000
   hoverHeight: 1.5
-  forwardAcceleration: 4000
+  forwardAcceleration: 5000
   reverseAcceleration: 1000
-  turnStrength: 300
+  turnStrength: 500
   breakSharpness: 10
   wheelPoints:
   - {fileID: 1954718833381098}
