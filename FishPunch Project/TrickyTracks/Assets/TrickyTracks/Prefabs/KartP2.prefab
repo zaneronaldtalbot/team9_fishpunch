@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23193328851830838}
   - component: {fileID: 54664028424714706}
   - component: {fileID: 65020794033914708}
-  - component: {fileID: 114760555982690478}
+  - component: {fileID: 114326749159879764}
   m_Layer: 8
   m_Name: KartP2
   m_TagString: Player
@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 20577905862724222}
   - component: {fileID: 92831186648611856}
   - component: {fileID: 124343238613778110}
-  - component: {fileID: 81088520372222610}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -378,13 +377,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &81088520372222610
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1611163358550566}
-  m_Enabled: 1
 --- !u!92 &92831186648611856
 Behaviour:
   m_ObjectHideFlags: 1
@@ -392,7 +384,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1611163358550566}
   m_Enabled: 1
---- !u!114 &114760555982690478
+--- !u!114 &114326749159879764
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -400,7 +392,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1247491415005390}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05dd06008b3f58e40aabdee6d6756eb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a97c9bafe21b724daad661b1bfc37f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundedDrag: 3
@@ -408,9 +400,9 @@ MonoBehaviour:
   hoverForce: 1000
   gravityForce: 1000
   hoverHeight: 1.5
-  forwardAcceleration: 4000
+  forwardAcceleration: 5000
   reverseAcceleration: 1000
-  turnStrength: 300
+  turnStrength: 500
   breakSharpness: 10
   wheelPoints:
   - {fileID: 1995324149525918}
