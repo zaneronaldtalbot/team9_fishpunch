@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 23619859945527962}
   - component: {fileID: 54988532779114418}
   - component: {fileID: 65736408483479302}
-  - component: {fileID: 114001282111706222}
+  - component: {fileID: 114233415986178982}
   m_Layer: 8
   m_Name: KartP1
   m_TagString: Player
@@ -392,7 +392,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1115546330516650}
   m_Enabled: 1
---- !u!114 &114001282111706222
+--- !u!114 &114233415986178982
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1999082771031278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05dd06008b3f58e40aabdee6d6756eb5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a97c9bafe21b724daad661b1bfc37f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundedDrag: 3
@@ -408,9 +408,9 @@ MonoBehaviour:
   hoverForce: 1000
   gravityForce: 1000
   hoverHeight: 1.5
-  forwardAcceleration: 4000
+  forwardAcceleration: 5000
   reverseAcceleration: 1000
-  turnStrength: 300
+  turnStrength: 500
   breakSharpness: 10
   wheelPoints:
   - {fileID: 1583539037625778}
