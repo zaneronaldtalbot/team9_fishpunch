@@ -34,6 +34,7 @@ public class KartActor2 : MonoBehaviour {
     public float breakSharpness = 10.0f;
     public float speedDropOff = 1f;
 
+    //Public trap variables.
     [Header("Trap variables: ")]
     public float respawnTime = 3.0f;
     public float boostValue = 10.0f;
@@ -53,10 +54,11 @@ public class KartActor2 : MonoBehaviour {
     //Layer mask used to stop raycast interacting and hitting kart.
     int layerMask;
 
-    //Private timers.
+    //Private timers for items.
     private float boostTime = 0.0f;
     private float mineTime = 0.0f;
 
+    //Private acceleration.
     float input_triggerAcceleration = 0.0f;
     float input_negativeTriggerAcceleration = 0.0f;
 
@@ -67,6 +69,7 @@ public class KartActor2 : MonoBehaviour {
         kartBody = GetComponent<Rigidbody>();
         kartBody.centerOfMass = Vector3.down;
 
+        //Layer mask to ignore the kart.
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
 	}
@@ -75,7 +78,7 @@ public class KartActor2 : MonoBehaviour {
     void Update() {
 
 
-        //Gamepad assignment
+        //Gamepad assignment based on kart prefab name.
         switch(this.gameObject.name)
         {
             case "PlayerCharacter_001":
@@ -95,9 +98,10 @@ public class KartActor2 : MonoBehaviour {
             
         }
 
-
+        //If the player hit the boost
         if(boostPlayer)
         {
+            //Add delta time to boost time and increase values temporarily.
             boostTime += Time.deltaTime;
            thrust = thrust + boostValue;
            forwardAcceleration = forwardAcceleration + boostValue;
@@ -106,8 +110,10 @@ public class KartActor2 : MonoBehaviour {
            turnStrength = 500.0f;
         }
 
+        //If the player hit the boost and boost time is > then the boost length.
         if(boostPlayer && boostTime > boostLength)
         {
+            //Boost player bool off and reset values back to default.
             boostPlayer = false;
             maxVelocity = 50.0f;
             forwardAcceleration = 8000f;
@@ -115,19 +121,26 @@ public class KartActor2 : MonoBehaviour {
             boostTime = 0.0f;
         }
 
+        //If the player is disabled by the mine.
         if (playerDisabled)
         {
+            //Add delta time to minetime.
             mineTime += Time.deltaTime;
                               //0, 0, 0
+            //Reset the karts velocity to 0.
             kartBody.velocity = new Vector3();
             
+            //Freeze all constraints.
             kartBody.constraints = RigidbodyConstraints.FreezeAll;
+            //Disble karts renderer.
             gameObject.GetComponent<MeshRenderer>().enabled = false;
         
         }
-
+        
+        //When time is > than the respawn Time.
         if (playerDisabled && mineTime > respawnTime)
         {
+            //Reset default values.
             playerDisabled = false;
             mineTime = 0;
             kartBody.constraints = RigidbodyConstraints.None;
@@ -135,19 +148,19 @@ public class KartActor2 : MonoBehaviour {
           
         }
 
+        //If the player is not disabled they can control the kart.
         if (!playerDisabled)
         {
+            //If the gamepad is connected.
             if (gamepad.IsConnected)
             {
 
+
+                //Set acceleration to gamepad trigger values.
                 input_triggerAcceleration = gamepad.GetTrigger_R();
                 input_negativeTriggerAcceleration = gamepad.GetTrigger_L();
 
-                if (gamepad.GetButtonDown("B"))
-                {
-                    Debug.Log("test");
-                }
-
+                //If the left trigger is down and thrust is > 0 reduce thrust based on break sharpness.
                 if (gamepad.GetTriggerTap_L())
                 {
                     if (thrust > 0)
@@ -161,6 +174,7 @@ public class KartActor2 : MonoBehaviour {
                     }
                 }
 
+                //If thrust reaches the max lower the drag.
                 if (thrust == maxVelocity)
                 {
                     groundedDrag = 2.2f;
@@ -200,6 +214,7 @@ public class KartActor2 : MonoBehaviour {
                     turnValue = stickInputTurn;
                 }
             }
+            // If gamepad is not connected use keyboard controls.
             else
             {
                 thrust = 0.0f;
@@ -235,10 +250,13 @@ public class KartActor2 : MonoBehaviour {
     {
         RaycastHit hit;
         bool grounded = false;
+
+        //if i is less than the wheel points length.
         for (int i = 0; i < wheelPoints.Length; ++i)
         {
             var wheelPoint = wheelPoints[i];
-
+            
+            //shoot a raycast and work out the force to apply to each wheel point.
             if (Physics.Raycast(wheelPoint.transform.position, -Vector3.up, out hit, hoverHeight, layerMask))
             {
                 kartBody.AddForceAtPosition(Vector3.up * hoverForce * (1.0f - (hit.distance / hoverHeight)), wheelPoint.transform.position);
@@ -257,12 +275,14 @@ public class KartActor2 : MonoBehaviour {
             }
         }
 
+        //If grounded = true drag = the grounded drag.
         if (grounded)
         {
             kartBody.drag = groundedDrag;
         }
         else
         {
+            //If its airborne edit values.
             gravityForce = 800f;
             kartBody.drag = 0.1f;
             thrust /= 10f;
@@ -275,6 +295,7 @@ public class KartActor2 : MonoBehaviour {
             kartBody.AddForce(transform.forward * thrust);
         }
 
+        //Only turn when your going forward.
         if (thrust > 50.0f)
         {
             //Turn right

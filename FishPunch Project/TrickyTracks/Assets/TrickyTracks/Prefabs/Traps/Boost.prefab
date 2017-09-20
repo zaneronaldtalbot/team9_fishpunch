@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33817641262044702}
   - component: {fileID: 135671332827304596}
   - component: {fileID: 23423804977775858}
-  - component: {fileID: 114214615464033960}
+  - component: {fileID: 114487655862021058}
   m_Layer: 0
   m_Name: Boost
   m_TagString: Boost
@@ -82,7 +82,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1804797785876178}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114214615464033960
+--- !u!114 &114487655862021058
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -90,12 +90,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1804797785876178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624c62897c03e864e9454b2761d02b69, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c7418289ad0abf499cdde6f2af8cda5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitBoost: 0
-  boostTime: 3
-  boostValue: 2
 --- !u!135 &135671332827304596
 SphereCollider:
   m_ObjectHideFlags: 1
