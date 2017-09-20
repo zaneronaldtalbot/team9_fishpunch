@@ -381,11 +381,11 @@ MonoBehaviour:
   groundedDrag: 3
   maxVelocity: 50
   hoverForce: 1000
-  gravityForce: 1000
+  gravityForce: 2000
   hoverHeight: 1
-  forwardAcceleration: 8000
-  reverseAcceleration: 4000
-  turnStrength: 1000
+  forwardAcceleration: 4000
+  reverseAcceleration: 2000
+  turnStrength: 500
   breakSharpness: 10
   wheelPoints:
   - {fileID: 1331150101940446}
