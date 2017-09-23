@@ -12,6 +12,7 @@ ModelImporter:
     4300000: Kart01
     4300002: pCylinder1
     4300004: PlayerCharacter_Vehicle_wheel2_Left_001
+    4300006: Vehicle_001_Hotrod_003_Backwheel
   materials:
     importMaterials: 0
     materialName: 0

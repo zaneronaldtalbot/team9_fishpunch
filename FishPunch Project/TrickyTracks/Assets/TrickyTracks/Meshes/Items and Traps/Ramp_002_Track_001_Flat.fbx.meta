@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ad0d0899f333a0348bbf8259c2e25f50
-timeCreated: 1506030587
+guid: 0ed757ca11eaa2544ae669a52ebc1546
+timeCreated: 1506150936
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,11 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pPlane1
-    4300002: Oilslick_001_Pickup_001
-    4300004: OilSlick_001_Track_001_interact
-    9500000: //RootNode
-    11100000: //RootNode
+    4300000: Ramp_002_Track_001_Flat
   materials:
     importMaterials: 0
     materialName: 0
@@ -83,7 +79,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

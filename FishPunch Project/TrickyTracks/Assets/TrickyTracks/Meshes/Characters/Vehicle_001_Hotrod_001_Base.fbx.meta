@@ -12,6 +12,7 @@ ModelImporter:
     4300000: Kart01
     4300002: polySurface7
     4300004: PlayerCharacter_001_Vehicle
+    4300006: Vehicle_001_Hotrod_001_Base
   materials:
     importMaterials: 0
     materialName: 0

@@ -1,19 +1,60 @@
 fileFormatVersion: 2
-guid: ad0d0899f333a0348bbf8259c2e25f50
-timeCreated: 1506030587
+guid: 092ed8fbd23f3e3408df19dafbfc380c
+timeCreated: 1506136495
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pPlane1
-    4300002: Oilslick_001_Pickup_001
-    4300004: OilSlick_001_Track_001_interact
+    100000: ialand_001_grass_001
+    100002: Island
+    100004: Island_001_corner90degrees_001
+    100006: Island_001_corner90degrees_up_001
+    100008: Island_001_corner_001
+    100010: Island_001_corner_up_001
+    100012: Island_001_Straight_001
+    100014: Island_001_Straightupdown_001
+    100016: IslandBase_001_blockout_001
+    100018: //RootNode
+    100020: IslandMountain_001
+    400000: ialand_001_grass_001
+    400002: Island
+    400004: Island_001_corner90degrees_001
+    400006: Island_001_corner90degrees_up_001
+    400008: Island_001_corner_001
+    400010: Island_001_corner_up_001
+    400012: Island_001_Straight_001
+    400014: Island_001_Straightupdown_001
+    400016: IslandBase_001_blockout_001
+    400018: //RootNode
+    400020: IslandMountain_001
+    2300000: ialand_001_grass_001
+    2300002: Island_001_corner90degrees_001
+    2300004: Island_001_corner90degrees_up_001
+    2300006: Island_001_corner_001
+    2300008: Island_001_corner_up_001
+    2300010: Island_001_Straight_001
+    2300012: Island_001_Straightupdown_001
+    2300014: IslandBase_001_blockout_001
+    2300016: IslandMountain_001
+    3300000: ialand_001_grass_001
+    3300002: Island_001_corner90degrees_001
+    3300004: Island_001_corner90degrees_up_001
+    3300006: Island_001_corner_001
+    3300008: Island_001_corner_up_001
+    3300010: Island_001_Straight_001
+    3300012: Island_001_Straightupdown_001
+    3300014: IslandBase_001_blockout_001
+    3300016: IslandMountain_001
+    4300000: ialand_001_grass_001
+    4300002: IslandMountain_001
+    4300004: IslandBase_001_blockout_001
+    4300006: Island_001_Straight_001
+    4300008: Island_001_corner_001
+    4300010: Island_001_corner90degrees_001
+    4300012: Island_001_Straightupdown_001
+    4300014: Island_001_corner_up_001
+    4300016: Island_001_corner90degrees_up_001
     9500000: //RootNode
-    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
@@ -83,7 +124,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -13,6 +13,7 @@ ModelImporter:
     4300002: pCube1
     4300004: Ramp_001
     4300006: Ramp_Track_001
+    4300008: Ramp_001_Track_001_WithSides
   materials:
     importMaterials: 0
     materialName: 0
