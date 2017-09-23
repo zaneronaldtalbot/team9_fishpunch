@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickyTracks", "TrickyTracks.csproj", "{52D81385-20AD-FEF7-57BB-00F4AA51B26C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickyTracks.Editor", "TrickyTracks.Editor.csproj", "{73307F97-F7F7-84D3-9713-B0BDA350FC86}"
