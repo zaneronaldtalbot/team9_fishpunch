@@ -768,7 +768,7 @@ MonoBehaviour:
   hoverHeight: 0.5
   forwardAcceleration: 4000
   reverseAcceleration: 500
-  turnStrength: 300
+  turnStrength: 250
   breakSharpness: 10
   speedDropOff: 1
   respawnTime: 3
