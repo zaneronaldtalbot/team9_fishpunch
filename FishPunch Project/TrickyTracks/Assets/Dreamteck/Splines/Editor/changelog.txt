@@ -1,0 +1,82 @@
+----- 1.0.82 -----
+FIX: Added multiple scene view support
+FIX: The PolygonColliderGenerator now supports point sizes and clips with the clip range
+FIX: The ExtrudeMesh component no longer throws an IndexOutOfRange exception when a mesh with no UVs is supplied
+FIX: Fixed the selection bug when moving the second tangent of a Bezier point in snap mode
+FIX: Normal editing for points of 2D splines is now disabled in the inspector
+FIX: Minor GC and performance optimizations for all Mesh Generators
+FIX: The SplineUserEvaluate Playmaker action now properly evaluates rotation
+FIX: The Inverse point order operation now also inverses Bezier tangents in order to preserve the shape of the spline
+
+FEATURE: The custom rotation and offset modules now have a blend slider that controls the strength of the offset and rotation effect
+FEATURE: Added SplineComputerGetPoint and SplineComputerSetPoint Playmaker actions
+
+----- 1.0.81 -----
+FIX: Unchecking "auto follow" for the SplineFollower in the inspector no longer hides the speed/duration field
+FIX: The Start position slider of the SplineFollower now works regardless of whether or not auto follow is toggled
+FIX: Fixed an issue with a looped clip range where the wrong samples are used when clipFrom and clipTo have the same value
+FIX: Fixed the auto orient and update interval property fields of the SplineRenderer showing twice in the inspector
+FIX: Fixed an unsibscribing issue with the SplineComputer
+FIX: Fixed the NullReference issue with some SplineUser components when the clip range is changed during runtime
+FIX: The SplineFollower is now properly contained within the clip range and no longer goes back if the clip range shrinks during following (bug since 1.0.8)
+FIX: Fixed the NaN return value of UnclipPercent when the clipTo value is equal to 0
+FIX: Fixed the freezing issue with Spline.Travel, SplineComputer.Travel and SplineUser.Travel when the start argument is 1.0 or the distance is 0f
+
+----- 1.0.8 -----
+
+FEATURE: Added a "DTK Splines" preference window in Edit->Preferences which lets the user set edito colors and defaults
+FEATURE: Added importing and exporting funcitonality for SVG and CSV files
+FEATURE: The Spawn Objects tool now works with multiple splines simultaneously
+FEATURE: Spline primitives can now be created at runtime using the Primitives API
+FEATURE: Switching the SplineComputer to Bezier type now has the option to retain the spline's shape
+FEATURE: Added "Select All", "Deselect All" and "Select Inverse" options to the SplineComputer inspector
+FEATURE: Added a "Tangents Only" option to the Flat points operation which will keep point position but will flatten the tangents
+FEATURE: When creating a new Spline from the GameObject menu, if an object is selected, the user is presented with an option to make the spline a child of the selected object
+FEATURE: The SplinePositioner component now has triggers
+FEATURE: The SplinePositioner component now supports Rigidbodies
+FEATURE: The SplineProjector now supports Rigidbodies
+FEATURE: The SplineProjector's, SplinePositioner's and SplineFollower's (now SplineTracer) offsettedResult property now works with custom offsets
+FEATURE: Minor UI improvements and fixes
+FEATURE: Modified the Move tool to make editing easier
+FEATURE: Added a new space mode to the Move, Rotate and Scale tools which orients the handle along the spline's direction
+FEATURE: Added a layermask option to the surface point creation method to selectively include raycasting layers
+FEATURE: Added point numbers in the scene view
+FEATURE: Added a camera preview foldout to the SplinePositioner, SplineFollower and SplineProjector components
+FEATURE: Added a select button for each connected spline in a Node
+FEATURE: When a Bezier spline is connected to a Node, the node will provide tangnet handles
+FEATURE: Added a 2D editor mode for the SplineComputer which keeps the spline flat along the Z axis and orients the normals along negative Z
+FEATURE: The ExtrudeMesh component now supports unstretched caps
+FEATURE: Added an option to disable the automatic update of the SplineRenderer and update it manually with a script
+
+
+FIX: Improved bezier path closing behavior - broken tangents at the closing point are now properly preserved
+FIX: Unsubscribing a SplineUsers from SplineComputers no longer causes other SplineUsers to get unsubscribed.
+FIX: Spline point tangents are now automatically smoothed when the point type is set to Smooth 
+FIX: Splines set to "Always draw" no longer stop drawing after exiting play mode
+FIX: SplineFollower.SetDistance no longer activates triggers when called
+FIX: SplineFollower.Restart now also restarts the triggers
+FIX: Newly created SplinePositioners and SplineFollowers get properly updated when their offset or rotationOffset is changed at runtime
+FIX: The Scene View is updated when editing the triggers for the SplineFollower, SplineProjector and SplinePositioner in the inspector
+FIX: Trigger events for the SplineFollower are now executed after the motion is applied
+FIX: When a node is deleted and then Undo is performed a NullReferenceException is thrown when the Node is moved
+FIX: When Undo is performed after a Spline is edited, the SplineComputers now properly update all related SplineUsers
+FIX: Fixed the tangled up UVs of the TubeGenerator's round caps
+FIX: Refined the general behavior of the UVs for all Mesh Generator components
+FIX: The TubeGenerator's round caps now scape properly according to the spline's point sizes
+FIX: Solved the twitching issue of the SplineFollower when entering and exiting addresses in Multithreaded mode
+FIX: The tools window no longer throws a NullReferenceException if the Assembly is recompiled during it being open
+FIX: Fixed the mesh twitching issue with the ObjectBender when the component is added on an object with a mesh filter
+FIX: Fixed the NullReferenceException in the ObjectBender when creating a new ObjectBender
+FIX: Improved editor memory usage and spline drawing performance
+FIX: Spline.Project now works properly with precision levels above 0.9
+
+API: Added the Dreamteck.Splines.IO namespace which contains all classes for exporting and importing splines
+API: Added the Dreamteck.Splines.Primitives namespace which contains the available primitives
+API: Added the ConvertToBezier method to the Spline and SplineComputer classes which will convert a Hermite spline to a Bezier one
+API: The Restart method now has an optinal "startPosition" parameter to specify where the follower will start
+API: New method SplineComputer.SetPointPosition added for setting only the position of a point very quickly
+API: New method SplineComputer.SetPointTangents added for setting only the tangents of a point very quickly
+API: New method SplineComputer.SetPointNormals added for setting only the normals of a point very quickly
+API: New method SplineComputer.SetPointSize added for setting only the size of a point very quickly
+API: New method SplineComputer.SetPointColor added for setting only the color of a point very quickly
+API: Calling SplineComputer.SetPoint with an index bigger than the points length now extends the point array of the spline automatically to fit the index
