@@ -290,7 +290,6 @@
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Code\SFN_Code.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\Common\FillColor.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_ObjectScale\SFN_ObjectScale_Reciprocal.shader" />
-     <None Include="Assets\TrickyTracks\Scripts\DeleteMe.txt" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Add\SFN_Add_5.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Tex2dAsset\SFN_Tex2dAsset.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Sin\SFN_Sin.shader" />
