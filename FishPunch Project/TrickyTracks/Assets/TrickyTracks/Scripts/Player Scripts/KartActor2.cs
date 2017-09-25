@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class KartActor2 : MonoBehaviour {
 
-    //Trap booleans.
-    [HideInInspector]
-    public bool playerDisabled = false;
-    [HideInInspector]
-    public bool boostPlayer = false;
 
+
+    private AudioSource kartAudio;
     //Karts rigidbody
     Rigidbody kartBody;
     
     //Xbox controller.
     [HideInInspector]
     public xbox_gamepad gamepad;
+
+    public ParticleSystem[] wheelTrails = new ParticleSystem[2];
     
 
     //Makes controller less sensitive to input.
@@ -39,7 +38,9 @@ public class KartActor2 : MonoBehaviour {
     public float respawnTime = 3.0f;
     public float boostValue = 10.0f;
     public float boostLength = 3.0f;
+    public float tempTurnStrength = 500.0f;
 
+    float audioTimer = 0f;
 
     //Array to store the empty game objects the raycasts fire from.
     [Header("Raycast Wheels: ")]
@@ -62,9 +63,20 @@ public class KartActor2 : MonoBehaviour {
     float input_triggerAcceleration = 0.0f;
     float input_negativeTriggerAcceleration = 0.0f;
 
+
+    //item booleans.
+    [HideInInspector]
+    public bool itemBoost, itemMine, itemRPG = false;
+
+    //Trap booleans.
+    [HideInInspector]
+    public bool playerDisabled, boostPlayer, placeMine, fireRPG = false;
+
+
     // Use this for initialization
     void Start () {
 
+        kartAudio = GetComponent<AudioSource>();
         //Gets karts rigid body and sets the centre of mass.
         kartBody = GetComponent<Rigidbody>();
         kartBody.centerOfMass = Vector3.down;
@@ -77,6 +89,20 @@ public class KartActor2 : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        //Audio
+        kartAudio.volume = 0.5f;
+        if (audioTimer > 4)
+        {
+            Debug.Log("Thrust: " + thrust);
+            Debug.Log("Max Velocity: " + maxVelocity);
+            Debug.Log("F Accel: " + forwardAcceleration);
+            audioTimer = 0;
+            kartAudio.Play();
+        }
+        else
+        {
+            audioTimer += Time.deltaTime;
+        }
 
         //Gamepad assignment based on kart prefab name.
         switch(this.gameObject.name)
@@ -105,9 +131,11 @@ public class KartActor2 : MonoBehaviour {
             boostTime += Time.deltaTime;
            thrust = thrust + boostValue;
            forwardAcceleration = forwardAcceleration + boostValue;
-           maxVelocity = 100.0f;
-           forwardAcceleration = 10000f;
-           turnStrength = 500.0f;
+           maxVelocity = 200.0f;
+           forwardAcceleration = 20000f;
+           turnStrength = tempTurnStrength;
+           
+            Debug.Log("item used");
         }
 
         //If the player hit the boost and boost time is > then the boost length.
@@ -132,8 +160,7 @@ public class KartActor2 : MonoBehaviour {
             
             //Freeze all constraints.
             kartBody.constraints = RigidbodyConstraints.FreezeAll;
-            //Disble karts renderer.
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+
         
         }
         
@@ -142,9 +169,10 @@ public class KartActor2 : MonoBehaviour {
         {
             //Reset default values.
             playerDisabled = false;
+            itemMine = false;
             mineTime = 0;
             kartBody.constraints = RigidbodyConstraints.None;
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
+   
           
         }
 
@@ -154,7 +182,7 @@ public class KartActor2 : MonoBehaviour {
             //If the gamepad is connected.
             if (gamepad.IsConnected)
             {
-
+                
 
                 //Set acceleration to gamepad trigger values.
                 input_triggerAcceleration = gamepad.GetTrigger_R();
@@ -165,11 +193,9 @@ public class KartActor2 : MonoBehaviour {
                 {
                     if (thrust > 0)
                     {
+                        kartAudio.volume = 0.7f;
                         thrust -= breakSharpness;
-                        if (thrust < 0)
-                        {
-                            thrust = 0.0f;
-                        }
+                      
 
                     }
                 }
@@ -194,14 +220,16 @@ public class KartActor2 : MonoBehaviour {
                 //If the input is greater than the dead zone accelerator forward
                 if (input_triggerAcceleration > deadZone)
                 {
+                    kartAudio.volume = 1f;
                     thrust = input_triggerAcceleration * forwardAcceleration;
                 }
 
                 //if the input is less then the negative deadzone than accelerate backwards.
-                if (thrust <= 0)
-                {
+                if (thrust <= 100.0f)
+                { 
                     if (input_negativeTriggerAcceleration > deadZone)
                     {
+                        kartAudio.volume = 1f;
                         thrust = -input_negativeTriggerAcceleration * reverseAcceleration;
                     }
                 }
@@ -241,15 +269,15 @@ public class KartActor2 : MonoBehaviour {
                 }
             }
         }
-        Debug.Log("Thrust: " + thrust);
-        Debug.Log("Max Velocity: " + maxVelocity);
-        Debug.Log("F Accel: " + forwardAcceleration);
+       
     }
 
     void FixedUpdate()
     {
         RaycastHit hit;
         bool grounded = false;
+
+        
 
         //if i is less than the wheel points length.
         for (int i = 0; i < wheelPoints.Length; ++i)
@@ -279,6 +307,7 @@ public class KartActor2 : MonoBehaviour {
         if (grounded)
         {
             kartBody.drag = groundedDrag;
+         
         }
         else
         {
@@ -324,6 +353,8 @@ public class KartActor2 : MonoBehaviour {
 
         }
 
+        
+
         //Limits the cars velocity based on max velocity.
         if(kartBody.velocity.sqrMagnitude > (kartBody.velocity.normalized * maxVelocity).sqrMagnitude)
         {
@@ -331,6 +362,26 @@ public class KartActor2 : MonoBehaviour {
         }
     }
 
-  
+    void OnTriggerEnter(Collider coll)
+    {
+        if (coll.gameObject.tag == "Boost")
+        {
+
+            GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
+            itemBoost = true;
+        }
+
+        if (coll.gameObject.tag == "ItemMine")
+        {
+            GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
+            itemMine = true;
+        }
+
+        if (coll.gameObject.tag == "ItemRPG")
+        {
+            GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
+            itemRPG = true;
+        }
+    }
 
 }
