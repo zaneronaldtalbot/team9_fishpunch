@@ -9939,9 +9939,82 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114813283624850496, guid: d8f6f6270bb8f5146b39553cf398ddd8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d8f6f6270bb8f5146b39553cf398ddd8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &929375471 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1828975372770194, guid: d8f6f6270bb8f5146b39553cf398ddd8,
+    type: 2}
+  m_PrefabInternal: {fileID: 929375470}
+--- !u!1 &929375472 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1495734030094502, guid: d8f6f6270bb8f5146b39553cf398ddd8,
+    type: 2}
+  m_PrefabInternal: {fileID: 929375470}
+--- !u!1 &929375473 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1674231480911952, guid: d8f6f6270bb8f5146b39553cf398ddd8,
+    type: 2}
+  m_PrefabInternal: {fileID: 929375470}
+--- !u!1 &929375474 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1798017179625582, guid: d8f6f6270bb8f5146b39553cf398ddd8,
+    type: 2}
+  m_PrefabInternal: {fileID: 929375470}
+--- !u!1 &929375475 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1488360779647714, guid: d8f6f6270bb8f5146b39553cf398ddd8,
+    type: 2}
+  m_PrefabInternal: {fileID: 929375470}
+--- !u!114 &929375476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 929375475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a478187bd72a24dacb889d166b1ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamepad: {fileID: 0}
+  wheelTrails:
+  - {fileID: 0}
+  - {fileID: 0}
+  groundedDrag: 3
+  maxVelocity: 50
+  hoverForce: 1000
+  gravityForce: 1000
+  hoverHeight: 1.5
+  forwardAcceleration: 8000
+  reverseAcceleration: 4000
+  turnStrength: 1000
+  breakSharpness: 10
+  speedDropOff: 1
+  airbornDrag: 0.1
+  airbornGravityForce: 850
+  airbornThrust: 10
+  airbornTurnValue: 5
+  respawnTime: 3
+  boostValue: 10
+  boostLength: 3
+  tempTurnStrength: 500
+  wheelPoints:
+  - {fileID: 929375474}
+  - {fileID: 929375473}
+  - {fileID: 929375472}
+  - {fileID: 929375471}
+  thrust: 0
+  turnValue: 0
+  itemBoost: 0
+  itemMine: 0
+  itemRPG: 0
+  playerDisabled: 0
+  boostPlayer: 0
+  placeMine: 0
+  fireRPG: 0
 --- !u!1001 &929717263
 Prefab:
   m_ObjectHideFlags: 0

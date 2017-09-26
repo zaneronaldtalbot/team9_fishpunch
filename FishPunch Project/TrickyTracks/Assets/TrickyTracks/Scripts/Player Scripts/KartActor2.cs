@@ -33,6 +33,13 @@ public class KartActor2 : MonoBehaviour {
     public float breakSharpness = 10.0f;
     public float speedDropOff = 1f;
 
+    //Airborne variables
+    [Header("Airborne division variables: ")]
+    public float airbornDrag = 0.1f;
+    public float airbornGravityForce = 800.0f;
+    public float airbornThrust = 10f;
+    public float airbornTurnValue = 100f;
+
     //Public trap variables.
     [Header("Trap variables: ")]
     public float respawnTime = 3.0f;
@@ -189,8 +196,7 @@ public class KartActor2 : MonoBehaviour {
                 input_negativeTriggerAcceleration = gamepad.GetTrigger_L();
 
                 //If the left trigger is down and thrust is > 0 reduce thrust based on break sharpness.
-                if (gamepad.GetTriggerTap_L())
-                {
+               
                     if (thrust > 0)
                     {
                         kartAudio.volume = 0.7f;
@@ -198,14 +204,14 @@ public class KartActor2 : MonoBehaviour {
                       
 
                     }
-                }
+               
 
                 //If thrust reaches the max lower the drag.
-                if (thrust == maxVelocity)
+                if (kartBody.velocity.sqrMagnitude > (kartBody.velocity.normalized * maxVelocity).sqrMagnitude)
                 {
                     groundedDrag = 2.2f;
                 }
-
+                Debug.Log(groundedDrag);
                 if (groundedDrag == 2.2f)
                 {
                     Debug.Log("drag reached");
@@ -312,10 +318,10 @@ public class KartActor2 : MonoBehaviour {
         else
         {
             //If its airborne edit values.
-            gravityForce = 800f;
-            kartBody.drag = 0.1f;
-            thrust /= 10f;
-            turnValue /= 100f;
+            gravityForce = airbornGravityForce;
+            kartBody.drag = airbornDrag;
+            thrust /= airbornThrust;
+            turnValue /= airbornTurnValue;
         }
 
         //Handle accelerating forward and reversing forces.
