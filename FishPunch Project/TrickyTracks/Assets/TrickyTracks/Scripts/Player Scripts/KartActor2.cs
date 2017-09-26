@@ -382,6 +382,22 @@ public class KartActor2 : MonoBehaviour {
             GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
             itemRPG = true;
         }
+
+        //if(coll.gameObject.tag == "RPG")
+        //{
+        //    GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
+        //    playerDisabled = true;
+        //}
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if(coll.gameObject.tag == "RPG")
+        {
+            GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
+            playerDisabled = true;
+        }
+        
     }
 
 }

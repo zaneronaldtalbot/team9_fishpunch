@@ -5,16 +5,22 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour {
 
     //Kart Scripts
-    private KartActor2 kart1;
-    private KartActor2 kart2;
-    private KartActor2 kart3;
-    private KartActor2 kart4;
+    [HideInInspector]
+    public KartActor2 kart1, kart2, kart3, kart4;
+
+    [HideInInspector]
+    public KartActor2 temporaryKart;
+
 
 
     private GameObject go_kart1;
     private GameObject go_kart2;
     private GameObject go_kart3;
     private GameObject go_kart4;
+
+    public GameObject Rocket;
+    [HideInInspector]
+    public bool rocketFired = false;
 
     private string item;
 
@@ -39,7 +45,7 @@ public class ItemManager : MonoBehaviour {
         {
             kart4 = go_kart4.GetComponent<KartActor2>();
         }
-  
+        temporaryKart = kart1;
 
     }
 	
@@ -47,37 +53,33 @@ public class ItemManager : MonoBehaviour {
 	void Update () {
 
 
-        if (kart1.itemBoost)
-        {
-            if (kart1.gamepad.GetButtonDown("X"))
+            if (kart1.itemBoost)
             {
-                Debug.Log("boost");
-                kart1.boostPlayer = true;
+                if (kart1.gamepad.GetButtonDown("X"))
+                {
+                    Debug.Log("boost");
+                    kart1.boostPlayer = true;
+                }
             }
-        }
+        
+
 
         if(kart1.itemMine)
         {
             kart1.playerDisabled = true;
         }
 
-        //else if (kart1.itemRPG)
-        //{
-        //    if (kart1.gamepad.GetButtonDown("X"))
-        //    {
-        //        kart1.fireRPG = true;
-        //    }
-        //}
-        //else if (kart1.placeMine)
-        //{
-            
-        //}
-
-
-
-
-
-
+        if(kart1.itemRPG)
+        {
+            if(kart1.gamepad.GetButtonDown("X"))
+            {
+                
+                temporaryKart = kart1;
+                rocketFired = true;
+                Instantiate(Rocket, go_kart1.transform.position + (go_kart1.transform.forward * 4), (go_kart1.transform.rotation));
+                kart1.itemRPG = false;
+            }
+        }
 		
 	}
 }

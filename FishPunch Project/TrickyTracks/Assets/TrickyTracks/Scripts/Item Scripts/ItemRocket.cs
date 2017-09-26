@@ -5,9 +5,11 @@ using UnityEngine;
 public class ItemRocket : MonoBehaviour {
 
     public float rotationSpeed = 50.0f;
-
-    private KartActor2 kart;
+    
+    [HideInInspector]
+    public KartActor2 kart;
     private GameObject rocketPrefab;
+
 	// Use this for initialization
 	void Start () {
         rocketPrefab = gameObject.transform.parent.gameObject;
@@ -33,6 +35,7 @@ public class ItemRocket : MonoBehaviour {
         if(coll.gameObject.tag == "Player")
         {
             kart = coll.gameObject.GetComponent<KartActor2>();
+            Debug.Log("rpg grabbed");
         }
     }
 }

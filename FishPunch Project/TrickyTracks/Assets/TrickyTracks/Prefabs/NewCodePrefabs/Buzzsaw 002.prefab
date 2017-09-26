@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4395898424015866}
   m_Layer: 0
-  m_Name: Buzzsaw 001
+  m_Name: Buzzsaw 002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1788449724218994}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -81, y: 0, z: -40}
+  m_LocalPosition: {x: -56.447716, y: 0, z: 12.626854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4282689288031240}
@@ -328,7 +328,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654871546937676}
-  m_Mesh: {fileID: 4300004, guid: ab5da30a9aa850f4a9d5a9fb518d631d, type: 3}
+  m_Mesh: {fileID: 4300006, guid: ab5da30a9aa850f4a9d5a9fb518d631d, type: 3}
 --- !u!54 &54031375907709028
 Rigidbody:
   m_ObjectHideFlags: 1
