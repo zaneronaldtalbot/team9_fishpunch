@@ -23,7 +23,7 @@ public class KartActor2 : MonoBehaviour {
     //Variables that control the karts movement.
     [Header("Kart Variables: ")]
     public float groundedDrag = 3f;
-    public float maxVelocity = 50f;
+    public float maxVelocity = 30f;
     public float hoverForce = 1000f;
     public float gravityForce = 1000f;
     public float hoverHeight = 1.5f;
@@ -101,8 +101,10 @@ public class KartActor2 : MonoBehaviour {
         if (audioTimer > 4)
         {
             Debug.Log("Thrust: " + thrust);
-            Debug.Log("Max Velocity: " + maxVelocity);
+            Debug.Log("Max Velocity: " + (kartBody.velocity.normalized * maxVelocity).sqrMagnitude);
             Debug.Log("F Accel: " + forwardAcceleration);
+            Debug.Log("gdrag: " + groundedDrag);
+            Debug.Log(kartBody.velocity.sqrMagnitude);
             audioTimer = 0;
             kartAudio.Play();
         }
@@ -211,11 +213,13 @@ public class KartActor2 : MonoBehaviour {
                 {
                     groundedDrag = 2.2f;
                 }
-                Debug.Log(groundedDrag);
-                if (groundedDrag == 2.2f)
+                else
                 {
-                    Debug.Log("drag reached");
+                    groundedDrag = 3.0f;
                 }
+               
+                Debug.Log(groundedDrag);
+          
 
                 //Thrust set to 0 to slow car down when there is no input.
                 if (thrust > 0.05 && !gamepad.GetTriggerTap_R())
