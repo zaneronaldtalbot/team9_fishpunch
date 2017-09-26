@@ -76,6 +76,12 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
     <Reference Include="ProBuilderCore-Unity5">
       <HintPath>Assets\ProCore\ProBuilder\Classes\ProBuilderCore-Unity5.dll</HintPath>
     </Reference>
@@ -96,6 +102,58 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\compon.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\BlankUser.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\ExtrudeMesh.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\LengthCalculator.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\MeshGenerator.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\Node.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\ObjectBender.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\ObjectController.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\ParticleController.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\PathGenerator.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\PolygonColliderGenerator.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\SplineComputer.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\SplineFollower.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\SplinePositioner.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\SplineProjector.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\SplineRenderer.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\SplineTracer.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\SplineUser.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\SurfaceGenerator.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\TubeGenerator.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Components\WaveformGenerator.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\CustomOffsetModule.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\CustomRotationModule.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\IO\CSV.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\IO\SplineParser.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\IO\SVG.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Morph.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\ObjectSequence.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Primitives\Capsule.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Primitives\Ellipse.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Primitives\Line.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Primitives\Ngon.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Primitives\Rectangle.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Primitives\RoundedRectangle.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Primitives\Spiral.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Primitives\SplinePrimitive.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Primitives\Star.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\Spline.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\SplineAddress.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\SplinePoint.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\SplinePrefs.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\SplineResult.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\SplineTrigger.cs" />
+    <Compile Include="Assets\Dreamteck\Splines\Core\TransformModule.cs" />
+    <Compile Include="Assets\Dreamteck\Utilities\DMath.cs" />
+    <Compile Include="Assets\Dreamteck\Utilities\ImageDB.cs" />
+    <Compile Include="Assets\Dreamteck\Utilities\LinearAlgebraUtility.cs" />
+    <Compile Include="Assets\Dreamteck\Utilities\MeshUtility.cs" />
+    <Compile Include="Assets\Dreamteck\Utilities\ResourceUtility.cs" />
+    <Compile Include="Assets\Dreamteck\Utilities\TS_Bounds.cs" />
+    <Compile Include="Assets\Dreamteck\Utilities\TS_Mesh.cs" />
+    <Compile Include="Assets\Dreamteck\Utilities\TS_Transform.cs" />
     <Compile Include="Assets\OBJExport\OBJExporter.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
@@ -106,15 +164,20 @@
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
-    <Compile Include="Assets\TrickyTracks\Scripts\BoostScript.cs" />
-    <Compile Include="Assets\TrickyTracks\Scripts\GamePadManager.cs" />
-    <Compile Include="Assets\TrickyTracks\Scripts\KartActor.cs" />
-    <Compile Include="Assets\TrickyTracks\Scripts\KartActor2.cs" />
-    <Compile Include="Assets\TrickyTracks\Scripts\MineActor.cs" />
-    <Compile Include="Assets\TrickyTracks\Scripts\OilSlickActor.cs" />
-    <Compile Include="Assets\TrickyTracks\Scripts\RefreshGamePads.cs" />
-    <Compile Include="Assets\TrickyTracks\Scripts\StableCamera.cs" />
-    <Compile Include="Assets\TrickyTracks\Scripts\xbox_gamepad.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\GamePadManager.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\ItemManager.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\RefreshGamePads.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\StableCamera.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\xbox_gamepad.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\Item Scripts\BoostScript.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\Item Scripts\ItemMine.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\Item Scripts\ItemRocket.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\Item Scripts\MineActor.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\Item Scripts\RocketActor.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\Player Scripts\KartActor.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\Player Scripts\KartActor2.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\Trap Scripts\BuzzsawActor.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\Trap Scripts\OilSlickActor.cs" />
     <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput.cs" />
     <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput_Helpers\XciAxisDeadzoneData.cs" />
     <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput_Helpers\XciInputManagerClone.cs" />
@@ -124,6 +187,7 @@
     <Compile Include="Assets\XInput\XInputDotNet\Examples\XInputTestCS.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Dreamteck\Splines\Editor\changelog.txt" />
     <None Include="Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
     <None Include="Assets\ProCore\ProBuilder\About\Font\SIL Open Font License.txt" />
     <None Include="Assets\ProCore\ProBuilder\About\ThirdPartyLicenses.txt" />
