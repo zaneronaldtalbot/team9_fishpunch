@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemMine : MonoBehaviour {
+public class ItemMine : MonoBehaviour
+{
 
     public float rotationSpeed = 50.0f;
 
@@ -10,18 +11,20 @@ public class ItemMine : MonoBehaviour {
     private GameObject minePrefab;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         minePrefab = this.gameObject.transform.parent.gameObject;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+    }
 
-        if(kart != null)
+    // Update is called once per frame
+    void Update()
+    {
+
+
+        if (kart != null)
         {
-            if(kart.itemMine)
+            if (kart.itemMine)
             {
                 GameObject.Destroy(minePrefab);
                 GameObject.Destroy(gameObject);
@@ -33,9 +36,10 @@ public class ItemMine : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
-        if(coll.gameObject.tag == "Player")
+        if (coll.gameObject.tag == "Player")
         {
-            kart = coll.gameObject.GetComponent<KartActor2>();
+            kart = coll.gameObject.GetComponentInParent<KartActor2>();
+            kart.itemMine = true;
         }
     }
 }

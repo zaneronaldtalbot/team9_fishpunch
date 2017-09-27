@@ -13,22 +13,16 @@ public class MineActor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (kart != null)
-        {
-            if(kart.itemMine)
-            {
-                GameObject.Destroy(this.gameObject);
-                
-            }
-        }
+     
 	}
 
     void OnTriggerEnter(Collider coll)
     {
         if(coll.gameObject.tag == "Player")
-        {           
-            kart = coll.gameObject.GetComponent<KartActor2>();
-        
+        {
+            kart = coll.gameObject.GetComponentInParent<KartActor2>();
+            kart.playerDisabled = true;
+            GameObject.Destroy(this.gameObject);
         }
     }
 }
