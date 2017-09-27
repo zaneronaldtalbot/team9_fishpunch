@@ -15,7 +15,9 @@ public class KartActor2 : MonoBehaviour {
     public xbox_gamepad gamepad;
 
     public ParticleSystem[] wheelTrails = new ParticleSystem[2];
-    
+
+    [HideInInspector]
+    public GameObject mesh;
 
     //Makes controller less sensitive to input.
     float deadZone = 0.1f;
@@ -55,6 +57,10 @@ public class KartActor2 : MonoBehaviour {
     //Array to store the empty game objects the raycasts fire from.
     [Header("Raycast Wheels: ")]
     public GameObject[] wheelPoints;
+
+    [Header("Wheel Collider/Mesh objects: ")]
+    public MeshCollider[] wheelColliders;
+    public MeshRenderer[] wheelRenderers;
   
     //public variables that traps and obstacles will use.
     [HideInInspector]
@@ -99,13 +105,24 @@ public class KartActor2 : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        for(int i = 0; i <= 1; i++)
+        {
+            wheelRenderers[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
+            wheelColliders[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        }
+        for (int i = 2; i <= 3; i++)
+        {
+            wheelRenderers[i].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
+            wheelColliders[i].transform.Rotate(0, 0,  -kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        }
+
+
+
         //Audio
         kartAudio.volume = 0.5f;
         if (audioTimer > 1)
         {
-          
-            Debug.Log("ddrag: " + groundedDrag);
-            Debug.Log("tv: " + turnValue);
+         
             audioTimer = 0;
             kartAudio.Play();
         }
@@ -171,6 +188,8 @@ public class KartActor2 : MonoBehaviour {
             //Freeze all constraints.
             kartBody.constraints = RigidbodyConstraints.FreezeAll;
 
+
+            mesh.SetActive(false);
         
         }
         
@@ -182,8 +201,8 @@ public class KartActor2 : MonoBehaviour {
             itemMine = false;
             mineTime = 0;
             kartBody.constraints = RigidbodyConstraints.None;
-   
-          
+            mesh.SetActive(true);
+
         }
 
         //If the player is not disabled they can control the kart.
@@ -256,7 +275,8 @@ public class KartActor2 : MonoBehaviour {
                 }
                 if(gamepad.GetButton("B") && thrust > 1f)
                 {
-                    turnValue = driftTurnValue;
+                    
+                    turnValue /= driftTurnValue;
                     groundedDrag = driftDrag;
                     thrust -= driftBreakSharpness;
                 }
