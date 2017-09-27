@@ -11,7 +11,7 @@ public class ItemManager : MonoBehaviour {
     [HideInInspector]
     public KartActor2 temporaryKart;
 
-
+    private RocketActor rocketActor;
 
     private GameObject go_kart1;
     private GameObject go_kart2;
@@ -19,6 +19,7 @@ public class ItemManager : MonoBehaviour {
     private GameObject go_kart4;
 
     public GameObject Rocket;
+    private GameObject tempRocket;
     [HideInInspector]
     public bool rocketFired = false;
 
@@ -26,6 +27,9 @@ public class ItemManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        rocketActor = Rocket.GetComponentInChildren<RocketActor>();
+
         //Find game objects.
         go_kart1 = GameObject.Find("PlayerCharacter_001");
         go_kart2 = GameObject.Find("PlayerCharacter_002");
@@ -48,11 +52,11 @@ public class ItemManager : MonoBehaviour {
         temporaryKart = kart1;
 
     }
-	
+    float timer1 = 0.0f;
 	// Update is called once per frame
 	void Update () {
-
-
+        timer1 += Time.deltaTime;
+        
             if (kart1.itemBoost)
             {
                 if (kart1.gamepad.GetButtonDown("X"))
@@ -61,8 +65,12 @@ public class ItemManager : MonoBehaviour {
                     kart1.boostPlayer = true;
                 }
             }
-        
-
+        if (timer1 > 1)
+        {
+            timer1 = 0.0f;
+            Debug.Log("Kart rot: " + kart1.transform.rotation);
+            Debug.Log("Kart pos: " + kart1.transform.position);
+        }
 
         if(kart1.itemMine)
         {
@@ -76,10 +84,22 @@ public class ItemManager : MonoBehaviour {
                 
                 temporaryKart = kart1;
                 rocketFired = true;
-                Instantiate(Rocket, go_kart1.transform.position + (go_kart1.transform.forward * 4), (go_kart1.transform.rotation));
+
+                tempRocket = Instantiate(Rocket, go_kart1.transform.position + (go_kart1.transform.forward * 5), (go_kart1.transform.rotation)) as GameObject;
                 kart1.itemRPG = false;
+                
             }
+           
         }
 		
+        if(rocketFired && tempRocket != null)
+        {
+            tempRocket.transform.Translate(Rocket.transform.forward * rocketActor.rocketSpeed * Time.deltaTime);
+        }
+ 
+        
+       
 	}
+
+    
 }
