@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4506123310119598}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: OilSlick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,10 +34,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4757221193837800}
-  - component: {fileID: 114908361390228472}
   m_Layer: 0
   m_Name: Oil Slick 001
-  m_TagString: Untagged
+  m_TagString: OilSlick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,9 +68,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4387564919397458}
   - component: {fileID: 64315265875894638}
+  - component: {fileID: 114846425373471752}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: OilSlick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192901258590306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -70.60105, y: 0.129, z: -7.5265102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4387564919397458}
@@ -201,16 +201,16 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114908361390228472
+--- !u!114 &114846425373471752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192901258590306}
+  m_GameObject: {fileID: 1945095472403036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef29723c0efe22247986fc439b28102d, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c07ada2e30e9ff43b89ef653c5ada26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinOutSpeed: 10
+  spinOutSpeed: 20
   spinOutTime: 3

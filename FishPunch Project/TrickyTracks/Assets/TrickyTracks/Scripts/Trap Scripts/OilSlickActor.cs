@@ -5,7 +5,8 @@ using UnityEngine;
 public class OilSlickActor : MonoBehaviour
 {
     private KartActor2 kart;
-  //  private Transform kartTransform;
+   private Transform kartTransform;
+    private Transform kartColliderTransform;
     public float spinOutSpeed = 10.0f;
     public float spinOutTime = 3.0f;
     private bool hitSlick = false;
@@ -26,7 +27,7 @@ public class OilSlickActor : MonoBehaviour
             {
           
 
-              //  StartCoroutine(SpinOut());
+              StartCoroutine(SpinOut());
 
             }
     }
@@ -35,27 +36,28 @@ public class OilSlickActor : MonoBehaviour
     {
         if (coll.gameObject.tag == "Player")
         {
-            kart = coll.gameObject.GetComponent<KartActor2>();
-            //kartTransform = coll.gameObject.GetComponent<Transform>();
-            //hitSlick = true;
+            
+            kart = coll.gameObject.GetComponentInParent<KartActor2>();
+            kartTransform = coll.gameObject.transform.parent.parent.GetComponent<Transform>();
+            hitSlick = true;
         }
 
     }
-    //IEnumerator SpinOut()
-    //{
-    //    var time = 0f;
-    //    var spinIncrement = new Vector3(0, (kart.turnValue * spinOutSpeed) * Time.deltaTime, 0);
+    IEnumerator SpinOut()
+    {
+        var time = 0f;
+        var spinIncrement = new Vector3(0, (kart.turnValue * spinOutSpeed) * Time.deltaTime, 0);
         
-    //    while(time < spinOutTime)
-    //    {
-    //        time += Time.deltaTime;
-    //        kartTransform.Rotate(spinIncrement);
+        while(time < spinOutTime)
+        {
+            time += Time.deltaTime;
+           kartTransform.Rotate(spinIncrement);
 
-    //        hitSlick = false;
-    //        yield return null;
+            hitSlick = false;
+            yield return null;
             
-    //    }
+        }
 
-    //    yield return null;
-    //}
+        yield return null;
+    }
 }
