@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d85fc76fcf9726643b9fc35c00cbaa11
-timeCreated: 1505964307
+guid: 1e6f306b8cfd4ce4ab1cdfe64c7088be
+timeCreated: 1506488176
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,8 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: FloatingIsland1:FloatingIsland:FloatingIsland
-    9500000: //RootNode
+    4300000: FloatingIsland_001_Island_001_Solo
   materials:
     importMaterials: 0
     materialName: 0
@@ -80,7 +79,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

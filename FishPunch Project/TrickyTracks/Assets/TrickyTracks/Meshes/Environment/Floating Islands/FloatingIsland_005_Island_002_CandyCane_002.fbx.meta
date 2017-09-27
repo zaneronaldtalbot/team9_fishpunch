@@ -1,24 +1,15 @@
 fileFormatVersion: 2
-guid: f684bcc9522407e40a95070cd6d9d252
-timeCreated: 1505964307
+guid: 688610717436cc949957cac3437e5953
+timeCreated: 1506488176
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
-    100002: group16
-    100004: group23
-    100006: LandPiece_01_Half
     400000: //RootNode
-    400002: group16
-    400004: group23
-    400006: LandPiece_01_Half
     2300000: //RootNode
-    2300002: LandPiece_01_Half
     3300000: //RootNode
-    3300002: LandPiece_01_Half
-    4300000: LandGrassy:LandGrassy
-    4300002: LandPiece_01_Half
+    4300000: FloatingIsland_005_Island_002_CandyCane_002
   materials:
     importMaterials: 0
     materialName: 0
