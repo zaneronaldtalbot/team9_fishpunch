@@ -22,7 +22,7 @@ public class MineActor : MonoBehaviour {
         {
             kart = coll.gameObject.GetComponentInParent<KartActor2>();
             kart.playerDisabled = true;
-            GameObject.Destroy(this.gameObject);
+            GameObject.Destroy(this.gameObject.transform.parent.gameObject);
         }
     }
 }

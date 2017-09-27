@@ -19,6 +19,8 @@ public class ItemManager : MonoBehaviour {
     private GameObject go_kart4;
 
     public GameObject Rocket;
+    public GameObject Mine;
+
     private GameObject tempRocket;
     [HideInInspector]
     public bool rocketFired = false;
@@ -65,24 +67,22 @@ public class ItemManager : MonoBehaviour {
                     kart1.boostPlayer = true;
                 }
             }
-        if (timer1 > 1)
-        {
-            timer1 = 0.0f;
-            Debug.Log("Kart rot: " + kart1.transform.rotation);
-            Debug.Log("Kart pos: " + kart1.transform.position);
-        }
+        
 
         if(kart1.itemMine)
         {
-            kart1.playerDisabled = true;
+            if (kart1.gamepad.GetButtonDown("X"))
+            {
+                Instantiate(Mine, go_kart1.transform.position + (-go_kart1.transform.forward * 3), go_kart1.transform.rotation);
+                kart1.itemMine = false;
+            }
         }
 
         if(kart1.itemRPG)
         {
             if(kart1.gamepad.GetButtonDown("X"))
             {
-                
-                temporaryKart = kart1;
+               
                 rocketFired = true;
 
                 tempRocket = Instantiate(Rocket, go_kart1.transform.position + (go_kart1.transform.forward * 5), (go_kart1.transform.rotation)) as GameObject;

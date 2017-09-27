@@ -5,6 +5,12 @@ using UnityEngine;
 public class RocketActor : MonoBehaviour
 {
 
+    //Gameobject
+ 
+    public GameObject rocket;
+
+    
+
     private ItemManager itemManager;
     private GameObject manager;
     public float rocketLife = 5.0f;
@@ -25,7 +31,7 @@ public class RocketActor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rocket.transform.position = kart.gameObject.transform.position;
+
 
         if(itemManager.rocketFired)
         {
@@ -33,20 +39,16 @@ public class RocketActor : MonoBehaviour
             {
 
                 timer = 0.0f;
-               
+     
                 Destroy(this.gameObject.transform.parent.gameObject);
             }
 
 
         }
-       
+   
         
             timer += Time.deltaTime;
 
-
-          
- 
     }
 
- 
 }

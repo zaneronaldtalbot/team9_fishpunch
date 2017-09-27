@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 92270283439133354}
   - component: {fileID: 124284214978778966}
   - component: {fileID: 81110978788224216}
+  - component: {fileID: 114992941938039960}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -441,7 +442,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1802219012826370}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.49500018, y: 0.37400007, z: -0.86399937}
+  m_LocalPosition: {x: 0.632, y: 0.37400007, z: -0.864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4188877071599698}
@@ -488,7 +489,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1204236886171184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.48399982, y: 0.374, z: 1.0849959}
+  m_LocalPosition: {x: -0.705, y: 0.374, z: 1.349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4188877071599698}
@@ -500,14 +501,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1137385433137886}
-  m_LocalRotation: {x: -0, y: -0.7071099, z: -0, w: -0.7071037}
-  m_LocalPosition: {x: -64.617294, y: 0, z: 6.5}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -64.617294, y: 0.23, z: 6.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4175753626273122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -269.999, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4259736218167546
 Transform:
   m_ObjectHideFlags: 1
@@ -515,7 +516,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1414058764652416}
   m_LocalRotation: {x: 0.0871558, y: -0, z: -0, w: 0.9961948}
-  m_LocalPosition: {x: 0, y: 2.5, z: -4}
+  m_LocalPosition: {x: 0, y: 2.12, z: -5.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4170695690616264}
@@ -572,7 +573,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378340396329444}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.495, y: 0.37400007, z: -0.864}
+  m_LocalPosition: {x: -0.705, y: 0.37400007, z: -0.864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4188877071599698}
@@ -598,7 +599,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637021390269210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.484, y: 0.374, z: 1.085}
+  m_LocalPosition: {x: 0.632, y: 0.374, z: 1.349}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4188877071599698}
@@ -1108,19 +1109,26 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   groundedDrag: 3
-  maxVelocity: 50
+  maxVelocity: 30
   hoverForce: 1000
   gravityForce: 1000
-  hoverHeight: 1.15
+  hoverHeight: 0.8
   forwardAcceleration: 8000
   reverseAcceleration: 4000
   turnStrength: 400
   breakSharpness: 20
+  driftBreakSharpness: 10
+  driftDrag: 0.2
+  driftTurnValue: 1.2
   speedDropOff: 20
+  airbornDrag: 0.1
+  airbornGravityForce: 849.99
+  airbornThrust: 10
+  airbornTurnValue: 1
   respawnTime: 3
   boostValue: 10
   boostLength: 3
-  tempTurnStrength: 0
+  tempTurnStrength: 10
   wheelPoints:
   - {fileID: 1204236886171184}
   - {fileID: 1637021390269210}
@@ -1135,6 +1143,22 @@ MonoBehaviour:
   boostPlayer: 0
   placeMine: 0
   fireRPG: 0
+--- !u!114 &114992941938039960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1414058764652416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e627038d075dce24c9923ea6eb3ff190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TheCar: {fileID: 1450935382732268}
+  CarX: 0
+  CarY: 0
+  CarZ: 0
+  speed: 0.5
 --- !u!124 &124284214978778966
 Behaviour:
   m_ObjectHideFlags: 1

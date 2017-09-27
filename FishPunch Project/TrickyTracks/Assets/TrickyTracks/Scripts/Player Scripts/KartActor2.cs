@@ -31,6 +31,9 @@ public class KartActor2 : MonoBehaviour {
     public float reverseAcceleration = 4000f;
     public float turnStrength = 1000f;
     public float breakSharpness = 10.0f;
+    public float driftBreakSharpness = 10.0f;
+    public float driftDrag = 1.4f;
+    public float driftTurnValue = 1.2f;
     public float speedDropOff = 1f;
 
     //Airborne variables
@@ -98,13 +101,11 @@ public class KartActor2 : MonoBehaviour {
 
         //Audio
         kartAudio.volume = 0.5f;
-        if (audioTimer > 4)
+        if (audioTimer > 1)
         {
-            Debug.Log("Thrust: " + thrust);
-            Debug.Log("Max Velocity: " + (kartBody.velocity.normalized * maxVelocity).sqrMagnitude);
-            Debug.Log("F Accel: " + forwardAcceleration);
-            Debug.Log("gdrag: " + groundedDrag);
-            Debug.Log(kartBody.velocity.sqrMagnitude);
+          
+            Debug.Log("ddrag: " + groundedDrag);
+            Debug.Log("tv: " + turnValue);
             audioTimer = 0;
             kartAudio.Play();
         }
@@ -207,13 +208,15 @@ public class KartActor2 : MonoBehaviour {
 
                     }
                
+                
+
 
                 //If thrust reaches the max lower the drag.
-                if (kartBody.velocity.sqrMagnitude > (kartBody.velocity.normalized * maxVelocity).sqrMagnitude)
+                if (kartBody.velocity.sqrMagnitude > (kartBody.velocity.normalized * maxVelocity).sqrMagnitude && gamepad.GetButton("B") == false)
                 {
                     groundedDrag = 2.2f;
                 }
-                else
+                else if(gamepad.GetButton("B") == false)
                 {
                     groundedDrag = 3.0f;
                 }
@@ -251,6 +254,13 @@ public class KartActor2 : MonoBehaviour {
                 {
                     turnValue = stickInputTurn;
                 }
+                if(gamepad.GetButton("B") && thrust > 1f)
+                {
+                    turnValue = driftTurnValue;
+                    groundedDrag = driftDrag;
+                    thrust -= driftBreakSharpness;
+                }
+             
             }
             // If gamepad is not connected use keyboard controls.
             else
@@ -381,23 +391,11 @@ public class KartActor2 : MonoBehaviour {
             itemBoost = true;
         }
 
-        if (coll.gameObject.tag == "ItemMine")
-        {
-            GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
-            itemMine = true;
-        }
-
         if (coll.gameObject.tag == "ItemRPG")
         {
             GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
             itemRPG = true;
         }
-
-        //if(coll.gameObject.tag == "RPG")
-        //{
-        //    GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
-        //    playerDisabled = true;
-        //}
     }
 
     void OnCollisionEnter(Collision coll)

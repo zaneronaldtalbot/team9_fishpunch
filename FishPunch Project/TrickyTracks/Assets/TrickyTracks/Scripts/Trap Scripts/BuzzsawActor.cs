@@ -6,7 +6,7 @@ public class BuzzsawActor : MonoBehaviour {
 
     private GameObject sawBlade;
     private MeshRenderer bladeRender;
-    private KartActor2 kart;
+    private MeshCollider bladeCollider;
     
     public float sawSpeed = 3.0f;
     public float bladeSpinSpeed = 500.0f;
@@ -16,6 +16,7 @@ public class BuzzsawActor : MonoBehaviour {
 	void Start () {
         sawBlade = this.gameObject;
         bladeRender = sawBlade.GetComponentInChildren<MeshRenderer>();
+        bladeCollider = sawBlade.GetComponentInChildren<MeshCollider>();
 	}
 
     // Update is called once per frame
@@ -27,11 +28,13 @@ public class BuzzsawActor : MonoBehaviour {
         {
             sawBlade.transform.Translate(0, 0, -sawSpeed * Time.deltaTime);
             bladeRender.transform.Rotate(-bladeSpinSpeed * Time.deltaTime, 0, 0);
+            bladeCollider.transform.Rotate(-bladeSpinSpeed * Time.deltaTime, 0, 0);
         }
         if (goRight)
         {
             sawBlade.transform.Translate(0, 0, sawSpeed * Time.deltaTime);
             bladeRender.transform.Rotate(bladeSpinSpeed * Time.deltaTime, 0, 0);
+            bladeCollider.transform.Rotate(bladeSpinSpeed * Time.deltaTime, 0, 0);
         }
 	}
 
@@ -49,10 +52,18 @@ public class BuzzsawActor : MonoBehaviour {
             goLeft = true;
         }
 
-        if(coll.gameObject.tag == "Player")
+     
+
+    }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.gameObject.tag == "Player")
         {
-            kart = coll.gameObject.GetComponent<KartActor2>();
+            KartActor2 kart;
+            kart = coll.gameObject.GetComponentInParent<KartActor2>();
             kart.playerDisabled = true;
+
         }
     }
 
