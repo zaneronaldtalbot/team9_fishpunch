@@ -92,7 +92,7 @@ public class KartActor2 : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        kartAudio = GetComponent<AudioSource>();
+      
         //Gets karts rigid body and sets the centre of mass.
         kartBody = GetComponent<Rigidbody>();
         kartBody.centerOfMass = Vector3.down;
