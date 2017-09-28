@@ -6,7 +6,7 @@ public class KartActor2 : MonoBehaviour {
 
 
 
-    private AudioSource kartAudio;
+  //  private AudioSource kartAudio;
     //Karts rigidbody
     Rigidbody kartBody;
     
@@ -58,9 +58,9 @@ public class KartActor2 : MonoBehaviour {
     [Header("Raycast Wheels: ")]
     public GameObject[] wheelPoints;
 
-    [Header("Wheel Collider/Mesh objects: ")]
-    public MeshCollider[] wheelColliders;
-    public MeshRenderer[] wheelRenderers;
+    // [Header("Wheel Collider/Mesh objects: ")]
+    // public MeshCollider[] wheelColliders;
+    // public MeshRenderer[] wheelRenderers;
   
     //public variables that traps and obstacles will use.
     [HideInInspector]
@@ -105,31 +105,31 @@ public class KartActor2 : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        for(int i = 0; i <= 1; i++)
-        {
-            wheelRenderers[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
-            wheelColliders[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        }
-        for (int i = 2; i <= 3; i++)
-        {
-            wheelRenderers[i].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
-            wheelColliders[i].transform.Rotate(0, 0,  -kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        }
+        // for(int i = 0; i <= 1; i++)
+        // {
+            // wheelRenderers[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
+            // wheelColliders[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        // }
+        // for (int i = 2; i <= 3; i++)
+        // {
+            // wheelRenderers[i].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
+            // wheelColliders[i].transform.Rotate(0, 0,  -kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        // }
 
 
 
         //Audio
-        kartAudio.volume = 0.5f;
-        if (audioTimer > 1)
-        {
+        // kartAudio.volume = 0.5f;
+        // if (audioTimer > 1)
+        // {
          
-            audioTimer = 0;
-            kartAudio.Play();
-        }
-        else
-        {
-            audioTimer += Time.deltaTime;
-        }
+            // audioTimer = 0;
+            // kartAudio.Play();
+        // }
+        // else
+        // {
+            // audioTimer += Time.deltaTime;
+        // }
 
         //Gamepad assignment based on kart prefab name.
         switch(this.gameObject.name)
@@ -221,7 +221,7 @@ public class KartActor2 : MonoBehaviour {
                
                     if (thrust > 0)
                     {
-                        kartAudio.volume = 0.7f;
+                 //       kartAudio.volume = 0.7f;
                         thrust -= breakSharpness;
                       
 
@@ -252,7 +252,7 @@ public class KartActor2 : MonoBehaviour {
                 //If the input is greater than the dead zone accelerator forward
                 if (input_triggerAcceleration > deadZone)
                 {
-                    kartAudio.volume = 1f;
+                  //  kartAudio.volume = 1f;
                     thrust = input_triggerAcceleration * forwardAcceleration;
                 }
 
@@ -261,7 +261,7 @@ public class KartActor2 : MonoBehaviour {
                 { 
                     if (input_negativeTriggerAcceleration > deadZone)
                     {
-                        kartAudio.volume = 1f;
+                     //   kartAudio.volume = 1f;
                         thrust = -input_negativeTriggerAcceleration * reverseAcceleration;
                     }
                 }
