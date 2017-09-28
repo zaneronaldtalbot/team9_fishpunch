@@ -6,7 +6,6 @@ public class KartActor2 : MonoBehaviour {
 
 
 
-  //  private AudioSource kartAudio;
     //Karts rigidbody
     Rigidbody kartBody;
     
@@ -58,9 +57,9 @@ public class KartActor2 : MonoBehaviour {
     [Header("Raycast Wheels: ")]
     public GameObject[] wheelPoints;
 
-    // [Header("Wheel Collider/Mesh objects: ")]
-    // public MeshCollider[] wheelColliders;
-    // public MeshRenderer[] wheelRenderers;
+    //[Header("Wheel Collider/Mesh objects: ")]
+    //public MeshCollider[] wheelColliders;
+    //public MeshRenderer[] wheelRenderers;
   
     //public variables that traps and obstacles will use.
     [HideInInspector]
@@ -79,6 +78,7 @@ public class KartActor2 : MonoBehaviour {
     float input_triggerAcceleration = 0.0f;
     float input_negativeTriggerAcceleration = 0.0f;
 
+    bool setOnce = true;
 
     //item booleans.
     [HideInInspector]
@@ -88,11 +88,21 @@ public class KartActor2 : MonoBehaviour {
     [HideInInspector]
     public bool playerDisabled, boostPlayer, placeMine, fireRPG = false;
 
+    //Private copys
+    private float forwardAccelerationCopy;
+    private float backwardAccelerationCopy;
+    private float maxVelocityCopy;
+    private float turnStrengthCopy;
+
 
     // Use this for initialization
     void Start () {
+        forwardAccelerationCopy = forwardAcceleration;
+        backwardAccelerationCopy = reverseAcceleration;
+        maxVelocityCopy = maxVelocity;
+        turnStrengthCopy = turnStrength;
 
-      
+        
         //Gets karts rigid body and sets the centre of mass.
         kartBody = GetComponent<Rigidbody>();
         kartBody.centerOfMass = Vector3.down;
@@ -105,31 +115,20 @@ public class KartActor2 : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        // for(int i = 0; i <= 1; i++)
-        // {
-            // wheelRenderers[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
-            // wheelColliders[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        // }
-        // for (int i = 2; i <= 3; i++)
-        // {
-            // wheelRenderers[i].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
-            // wheelColliders[i].transform.Rotate(0, 0,  -kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        // }
+        //for(int i = 0; i <= 1; i++)
+        //{
+        //    wheelRenderers[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        //    wheelColliders[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        //}
+        //for (int i = 2; i <= 3; i++)
+        //{
+        //    wheelRenderers[i].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        //    wheelColliders[i].transform.Rotate(0, 0,  -kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        //}
 
 
 
         //Audio
-        // kartAudio.volume = 0.5f;
-        // if (audioTimer > 1)
-        // {
-         
-            // audioTimer = 0;
-            // kartAudio.Play();
-        // }
-        // else
-        // {
-            // audioTimer += Time.deltaTime;
-        // }
 
         //Gamepad assignment based on kart prefab name.
         switch(this.gameObject.name)
@@ -170,9 +169,9 @@ public class KartActor2 : MonoBehaviour {
         {
             //Boost player bool off and reset values back to default.
             boostPlayer = false;
-            maxVelocity = 50.0f;
-            forwardAcceleration = 8000f;
-            turnStrength = 1000f;
+            maxVelocity = maxVelocityCopy;
+            forwardAcceleration = forwardAccelerationCopy;
+            turnStrength = turnStrengthCopy;
             boostTime = 0.0f;
         }
 
@@ -188,8 +187,14 @@ public class KartActor2 : MonoBehaviour {
             //Freeze all constraints.
             kartBody.constraints = RigidbodyConstraints.FreezeAll;
 
-
+          
             mesh.SetActive(false);
+
+            if (setOnce)
+            {
+                this.gameObject.transform.position = gameObject.transform.position + (transform.forward * -5);
+                setOnce = false;
+            }
         
         }
         
@@ -202,6 +207,7 @@ public class KartActor2 : MonoBehaviour {
             mineTime = 0;
             kartBody.constraints = RigidbodyConstraints.None;
             mesh.SetActive(true);
+            setOnce = true;
 
         }
 
@@ -221,7 +227,7 @@ public class KartActor2 : MonoBehaviour {
                
                     if (thrust > 0)
                     {
-                 //       kartAudio.volume = 0.7f;
+                        
                         thrust -= breakSharpness;
                       
 
@@ -252,7 +258,7 @@ public class KartActor2 : MonoBehaviour {
                 //If the input is greater than the dead zone accelerator forward
                 if (input_triggerAcceleration > deadZone)
                 {
-                  //  kartAudio.volume = 1f;
+                   
                     thrust = input_triggerAcceleration * forwardAcceleration;
                 }
 
@@ -261,7 +267,7 @@ public class KartActor2 : MonoBehaviour {
                 { 
                     if (input_negativeTriggerAcceleration > deadZone)
                     {
-                     //   kartAudio.volume = 1f;
+                      
                         thrust = -input_negativeTriggerAcceleration * reverseAcceleration;
                     }
                 }
@@ -404,12 +410,7 @@ public class KartActor2 : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
-        if (coll.gameObject.tag == "Boost")
-        {
 
-            GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
-            itemBoost = true;
-        }
 
         if (coll.gameObject.tag == "ItemRPG")
         {

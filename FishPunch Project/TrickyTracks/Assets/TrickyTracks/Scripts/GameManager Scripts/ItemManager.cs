@@ -65,6 +65,7 @@ public class ItemManager : MonoBehaviour {
                 {
                     Debug.Log("boost");
                     kart1.boostPlayer = true;
+                     kart1.itemBoost = false;
                 }
             }
         
@@ -100,6 +101,11 @@ public class ItemManager : MonoBehaviour {
         
        
 	}
+
+    void OnTriggerEnter(Collider coll)
+    {
+
+    }
 
     
 }

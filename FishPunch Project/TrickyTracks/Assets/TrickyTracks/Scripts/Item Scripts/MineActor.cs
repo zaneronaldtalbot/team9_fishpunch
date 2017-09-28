@@ -18,11 +18,17 @@ public class MineActor : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
-        if(coll.gameObject.tag == "Player")
+        if (coll.gameObject.tag == "Player")
         {
             kart = coll.gameObject.GetComponentInParent<KartActor2>();
             kart.playerDisabled = true;
             GameObject.Destroy(this.gameObject.transform.parent.gameObject);
         }
+        if(coll.gameObject.tag == "RPG")
+        { 
+            GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
+            GameObject.Destroy(this.gameObject.transform.parent.gameObject);
+        }
+
     }
 }

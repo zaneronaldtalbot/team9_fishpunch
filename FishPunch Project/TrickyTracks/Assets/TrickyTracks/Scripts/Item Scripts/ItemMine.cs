@@ -24,11 +24,13 @@ public class ItemMine : MonoBehaviour
 
         if (kart != null)
         {
-            if (kart.itemMine)
-            {
-                GameObject.Destroy(minePrefab);
-                GameObject.Destroy(gameObject);
-            }
+            
+                if (kart.itemMine)
+                {
+                    GameObject.Destroy(minePrefab);
+                    GameObject.Destroy(gameObject);
+                }
+            
         }
 
         minePrefab.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
@@ -39,7 +41,10 @@ public class ItemMine : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             kart = coll.gameObject.GetComponentInParent<KartActor2>();
-            kart.itemMine = true;
+            if (!kart.itemRPG && !kart.itemBoost)
+            {
+                kart.itemMine = true;
+            }
         }
     }
 }

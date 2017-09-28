@@ -6,10 +6,10 @@ public class RocketActor : MonoBehaviour
 {
 
     //Gameobject
- 
+
     public GameObject rocket;
 
-    
+
 
     private ItemManager itemManager;
     private GameObject manager;
@@ -23,7 +23,7 @@ public class RocketActor : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-      //  rocket = this.gameObject.transform.parent.gameObject;
+        //  rocket = this.gameObject.transform.parent.gameObject;
         manager = GameObject.Find("Manager");
         itemManager = manager.GetComponent<ItemManager>();
     }
@@ -33,22 +33,26 @@ public class RocketActor : MonoBehaviour
     {
 
 
-        if(itemManager.rocketFired)
+        if (itemManager.rocketFired)
         {
             if (timer > rocketLife)
             {
 
                 timer = 0.0f;
-     
+
                 Destroy(this.gameObject.transform.parent.gameObject);
             }
 
 
         }
-   
-        
-            timer += Time.deltaTime;
+
+
+        timer += Time.deltaTime;
 
     }
 
+    void OnCollisionEnter(Collision coll)
+    {
+      
+    }
 }

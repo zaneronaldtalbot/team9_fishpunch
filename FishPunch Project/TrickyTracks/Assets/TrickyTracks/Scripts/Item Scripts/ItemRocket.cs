@@ -32,10 +32,15 @@ public class ItemRocket : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
-        if(coll.gameObject.tag == "Player")
+        if (coll.gameObject.tag == "Player")
         {
-            kart = coll.gameObject.GetComponent<KartActor2>();
-            Debug.Log("rpg grabbed");
+            kart = coll.gameObject.GetComponentInParent<KartActor2>();
+
+            if (!kart.itemBoost && !kart.itemMine)
+            {
+                kart.itemRPG = true;
+            }
+    
         }
     }
 }
