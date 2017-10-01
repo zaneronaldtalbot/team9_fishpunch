@@ -27,8 +27,8 @@ public class ItemManager : MonoBehaviour {
 
     private string item;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
 
         rocketActor = Rocket.GetComponentInChildren<RocketActor>();
 
@@ -55,57 +55,72 @@ public class ItemManager : MonoBehaviour {
 
     }
     float timer1 = 0.0f;
-	// Update is called once per frame
-	void Update () {
+  
+    // Update is called once per frame
+    void Update() {
         timer1 += Time.deltaTime;
-        
-            if (kart1.itemBoost)
-            {
-                if (kart1.gamepad.GetButtonDown("X"))
-                {
-                    Debug.Log("boost");
-                    kart1.boostPlayer = true;
-                     kart1.itemBoost = false;
-                }
-            }
-        
 
-        if(kart1.itemMine)
+        kartItemChecks(kart1, go_kart1);
+
+        if (go_kart2 != null)
         {
-            if (kart1.gamepad.GetButtonDown("X"))
-            {
-                Instantiate(Mine, go_kart1.transform.position + (-go_kart1.transform.forward * 3), go_kart1.transform.rotation);
-                kart1.itemMine = false;
-            }
+            kartItemChecks(kart2, go_kart2);
+        }
+        if (go_kart3 != null)
+        {
+            kartItemChecks(kart3, go_kart3);
+        }
+        if (go_kart4 != null)
+        {
+            kartItemChecks(kart4, go_kart4);
         }
 
-        if(kart1.itemRPG)
-        {
-            if(kart1.gamepad.GetButtonDown("X"))
-            {
-               
-                rocketFired = true;
 
-                tempRocket = Instantiate(Rocket, go_kart1.transform.position + (go_kart1.transform.forward * 5), (go_kart1.transform.rotation)) as GameObject;
-                kart1.itemRPG = false;
-                
-            }
-           
-        }
-		
-        if(rocketFired && tempRocket != null)
-        {
-            tempRocket.transform.Translate(Rocket.transform.forward * rocketActor.rocketSpeed * Time.deltaTime);
-        }
- 
-        
-       
-	}
-
-    void OnTriggerEnter(Collider coll)
-    {
 
     }
 
-    
+    void kartItemChecks(KartActor2 kart, GameObject go_kart)
+    {
+        if (kart.itemBoost)
+        {
+            if (kart.gamepad.GetButtonDown("X"))
+            {
+                Debug.Log("boost");
+                kart.boostPlayer = true;
+                kart.itemBoost = false;
+            }
+        }
+
+
+        if (kart.itemMine)
+        {
+            if (kart.gamepad.GetButtonDown("X"))
+            {
+                Instantiate(Mine, go_kart.transform.position + (-go_kart.transform.forward * 3), go_kart.transform.rotation);
+                kart.itemMine = false;
+            }
+        }
+
+        if (kart.itemRPG)
+        {
+            if (kart.gamepad.GetButtonDown("X"))
+            {
+
+                rocketFired = true;
+
+                tempRocket = Instantiate(Rocket, go_kart.transform.position + (go_kart.transform.forward * 5), (go_kart.transform.rotation)) as GameObject;
+                kart.itemRPG = false;
+
+            }
+
+        }
+
+        if (rocketFired && tempRocket != null)
+        {
+            tempRocket.transform.Translate(Rocket.transform.forward * rocketActor.rocketSpeed * Time.deltaTime);
+        }
+
+    }
+
+
 }
