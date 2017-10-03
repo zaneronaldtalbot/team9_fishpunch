@@ -400,7 +400,6 @@
     <None Include="Assets\ShaderForge\Readme.txt" />
     <None Include="Assets\TrickyTracks\Particles\DeleteMe.txt" />
     <None Include="Assets\TrickyTracks\Shaders\DeleteMe.txt" />
-    <None Include="Assets\TrickyTracks\Sprites\DeleteMe.txt" />
     <None Include="Assets\TrickyTracks\Textures\DeleteMe.txt" />
     <None Include="Assets\XInput\XInputDotNet\MITLicense.txt" />
   </ItemGroup>
