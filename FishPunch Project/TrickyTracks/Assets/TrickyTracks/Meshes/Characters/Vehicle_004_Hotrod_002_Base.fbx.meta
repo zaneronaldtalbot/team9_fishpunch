@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: c9ac76b9cca760a408f8b1ade0fa3c6f
-timeCreated: 1506983746
-licenseType: Pro
+guid: b922af4e9f6a99a4f9bce5f6565f66c3
+timeCreated: 1507161704
+licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: FinishStart_001_Enviroment_001_Go
+    4300000: Vehicle_002_Hotrod_001_Base
   materials:
     importMaterials: 0
     materialName: 0

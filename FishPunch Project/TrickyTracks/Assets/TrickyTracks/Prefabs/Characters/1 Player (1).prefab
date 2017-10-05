@@ -1135,16 +1135,6 @@ MonoBehaviour:
   - {fileID: 1637021390269210}
   - {fileID: 1802219012826370}
   - {fileID: 1378340396329444}
-  wheelColliders:
-  - {fileID: 64930477218865424}
-  - {fileID: 64487041060733978}
-  - {fileID: 64950171752955820}
-  - {fileID: 64494519130663060}
-  wheelRenderers:
-  - {fileID: 23369162682174756}
-  - {fileID: 23263167440758854}
-  - {fileID: 23320740211837954}
-  - {fileID: 23321280878593238}
   thrust: 0
   turnValue: 0
   itemBoost: 0
@@ -1165,11 +1155,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e627038d075dce24c9923ea6eb3ff190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TheCar: {fileID: 1450935382732268}
-  CarX: 0
-  CarY: 0
-  CarZ: 0
-  speed: 0.5
+  car: {fileID: 0}
+  rotationDamping: 0
+  distance: 0
+  zoomRatio: 0
+  defaultFOV: 0
 --- !u!124 &124284214978778966
 Behaviour:
   m_ObjectHideFlags: 1

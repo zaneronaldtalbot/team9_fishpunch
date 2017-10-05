@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\compon.cs" />
      <Compile Include="Assets\Dreamteck\Splines\Components\BlankUser.cs" />
      <Compile Include="Assets\Dreamteck\Splines\Components\ExtrudeMesh.cs" />
      <Compile Include="Assets\Dreamteck\Splines\Components\LengthCalculator.cs" />
@@ -127,6 +126,7 @@
      <Compile Include="Assets\TrickyTracks\Scripts\Player Scripts\KartActor2.cs" />
      <Compile Include="Assets\TrickyTracks\Scripts\Trap Scripts\BuzzsawActor.cs" />
      <Compile Include="Assets\TrickyTracks\Scripts\Trap Scripts\OilSlickActor.cs" />
+     <Compile Include="Assets\TrickyTracks\Scripts\Trap Scripts\PlacementController.cs" />
      <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput.cs" />
      <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput_Helpers\XciAxisDeadzoneData.cs" />
      <Compile Include="Assets\XInput\Plugins\XboxCtrlrInput_Helpers\XciInputManagerClone.cs" />
@@ -315,7 +315,6 @@
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Rotator\SFN_Rotator_PIV.shader" />
      <None Include="Assets\ShaderForge\Example Assets\Shaders\Tiles.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_UVTile\SFN_UVTile.shader" />
-     <None Include="Assets\TrickyTracks\Sprites\DeleteMe.txt" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Get\SFN_Get.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Relay\SFN_Relay.shader" />
      <None Include="Assets\ShaderForge\Editor\InternalResources\GPU Rendering\SFN_Blend\SFN_Blend_Difference.shader" />
@@ -377,22 +376,22 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderCore-Unity5">
- <HintPath>C:/Users/Zane/Documents/SVN/TrickyTracks/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
+ <HintPath>C:/Users/Marbas/Documents/SVN/FishPunch/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ProBuilderCore-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="ProBuilderMeshOps-Unity5">
- <HintPath>C:/Users/Zane/Documents/SVN/TrickyTracks/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
+ <HintPath>C:/Users/Marbas/Documents/SVN/FishPunch/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ProBuilderMeshOps-Unity5.dll</HintPath>
  </Reference>
  <Reference Include="KdTreeLib">
- <HintPath>C:/Users/Zane/Documents/SVN/TrickyTracks/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
+ <HintPath>C:/Users/Marbas/Documents/SVN/FishPunch/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ClassesLib/KdTreeLib.dll</HintPath>
  </Reference>
  <Reference Include="pb_Stl">
- <HintPath>C:/Users/Zane/Documents/SVN/TrickyTracks/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
+ <HintPath>C:/Users/Marbas/Documents/SVN/FishPunch/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ClassesLib/pb_Stl.dll</HintPath>
  </Reference>
  <Reference Include="Poly2Tri">
- <HintPath>C:/Users/Zane/Documents/SVN/TrickyTracks/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
+ <HintPath>C:/Users/Marbas/Documents/SVN/FishPunch/trunk/FishPunch Project/TrickyTracks/Assets/ProCore/ProBuilder/Classes/ClassesLib/Poly2Tri.dll</HintPath>
  </Reference>
  <Reference Include="XInputDotNetPure">
- <HintPath>C:/Users/Zane/Documents/SVN/TrickyTracks/trunk/FishPunch Project/TrickyTracks/Assets/XInput/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
+ <HintPath>C:/Users/Marbas/Documents/SVN/FishPunch/trunk/FishPunch Project/TrickyTracks/Assets/XInput/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
