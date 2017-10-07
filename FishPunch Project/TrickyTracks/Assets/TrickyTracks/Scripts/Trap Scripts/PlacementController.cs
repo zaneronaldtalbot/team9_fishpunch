@@ -11,6 +11,7 @@ public class PlacementController : MonoBehaviour {
     private GameObject cursor, buzzSaw, oilSlick, boost, mine, rpg;
     public Camera camera;
 
+    public float offSetFloat = 500.0f;
 
     private GameObject placeableObject;
     private List<GameObject> prefabs = new List<GameObject>();
@@ -18,9 +19,10 @@ public class PlacementController : MonoBehaviour {
     private GameObject currentPlaceableObject;
 
     private float yOffset = 0.5f;
-
+    private float checkstuff;
 
     private int prefabIndex = 0;
+    private RaycastHit raycopy;
 
     private float triggerRotationR;
     private float triggerRotationL;
@@ -41,9 +43,11 @@ public class PlacementController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        HandleNewObjectHotKey();
-
-        Debug.DrawRay(camera.transform.position, camera.transform.forward, Color.red);
+      
+            HandleNewObjectHotKey();
+       
+        Debug.DrawRay(camera.transform.position, camera.transform.forward * yOffset, Color.red);
+        Debug.Log("MP:" + Input.mousePosition);
         MoveCursor();
         if (currentPlaceableObject != null)
         {
@@ -70,32 +74,36 @@ public class PlacementController : MonoBehaviour {
 
     private void HandleNewObjectHotKey()
     {
-        if (itemManager.kart1.gamepad.GetButtonDown("RB") || itemManager.kart1.gamepad.GetButtonDown("LB"))
-        {
 
-            Destroy(currentPlaceableObject);
-            currentPlaceableObject = Instantiate(placeableObject);
-           
-           
-              
-            
+
+            if (currentPlaceableObject != null)
+            {
+                Destroy(currentPlaceableObject);
+            }
+            else
+            {
+                currentPlaceableObject = Instantiate(placeableObject);
+                
+            }
+
+
+
             
 
-        }
     }
 
     private void MoveCurrentObjectToStick()
     {
-        Ray ray = camera.ScreenPointToRay(cursor.transform.forward);
-      
-       
+        Ray ray = camera.ScreenPointToRay(new Vector3(617, 313,0));
+     
         
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo))
         {
-            
-           currentPlaceableObject.transform.position = hitInfo.point + hitInfo.normal * yOffset;
+            raycopy = hitInfo;
+            currentPlaceableObject.transform.position = hitInfo.point;
             currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            
         }
     }
 

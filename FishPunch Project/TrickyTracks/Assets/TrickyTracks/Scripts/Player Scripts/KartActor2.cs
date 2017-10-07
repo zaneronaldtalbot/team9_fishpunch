@@ -15,7 +15,7 @@ public class KartActor2 : MonoBehaviour {
 
     public ParticleSystem[] wheelTrails = new ParticleSystem[2];
 
-    [HideInInspector]
+   
     public GameObject mesh;
 
     //Makes controller less sensitive to input.
@@ -34,6 +34,8 @@ public class KartActor2 : MonoBehaviour {
     public float breakSharpness = 10.0f;
     public float driftBreakSharpness = 10.0f;
     public float driftDrag = 1.4f;
+    public float driftJumpValue = 1.0f;
+    public float driftTurnTime = 0.5f;
     public float driftTurnValue = 1.2f;
     public float speedDropOff = 1f;
 
@@ -95,6 +97,9 @@ public class KartActor2 : MonoBehaviour {
     private float turnStrengthCopy;
 
 
+    private float jumpCoolDown = 0.0f;
+    private bool b_jumpCoolDown = false;
+   
     // Use this for initialization
     void Start () {
         forwardAccelerationCopy = forwardAcceleration;
@@ -119,13 +124,9 @@ public class KartActor2 : MonoBehaviour {
         //{
         //    wheelRenderers[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
         //    wheelColliders[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        //    wheelRenderers[i + 2].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
+        //    wheelColliders[i + 2].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
         //}
-        //for (int i = 2; i <= 3; i++)
-        //{
-        //    wheelRenderers[i].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        //    wheelColliders[i].transform.Rotate(0, 0,  -kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        //}
-
 
 
         //Audio
@@ -165,7 +166,7 @@ public class KartActor2 : MonoBehaviour {
         }
 
         //If the player hit the boost and boost time is > then the boost length.
-        if(boostPlayer && boostTime > boostLength)
+        if(boostPlayer && (boostTime > boostLength))
         {
             //Boost player bool off and reset values back to default.
             boostPlayer = false;
@@ -193,6 +194,7 @@ public class KartActor2 : MonoBehaviour {
             if (setOnce)
             {
                 this.gameObject.transform.position = gameObject.transform.position + (transform.forward * -5);
+                gameObject.transform.position = gameObject.transform.position + (transform.up * 2);
                 setOnce = false;
             }
         
@@ -225,15 +227,13 @@ public class KartActor2 : MonoBehaviour {
 
                 //If the left trigger is down and thrust is > 0 reduce thrust based on break sharpness.
                
-                    if (thrust > 0)
+                    if (thrust > 0 && gamepad.GetTriggerTap_L())
                     {
                         
                         thrust -= breakSharpness;
                       
 
                     }
-               
-                
 
 
                 //If thrust reaches the max lower the drag.
@@ -279,12 +279,31 @@ public class KartActor2 : MonoBehaviour {
                 {
                     turnValue = stickInputTurn;
                 }
+                if(gamepad.GetButtonDown("B") && !b_jumpCoolDown)
+                {
+                  transform.Translate(0, driftJumpValue * Time.deltaTime, 0);
+                    //  transform.Rotate(0, 1000 * turnValue * Time.deltaTime, 0);
+                    StartCoroutine(Drift());
+                    b_jumpCoolDown = true;
+
+                }
+                if (b_jumpCoolDown)
+                {
+                    jumpCoolDown += Time.deltaTime;
+                }
+                if(jumpCoolDown > 1)
+                {
+                    b_jumpCoolDown = false;
+                    jumpCoolDown = 0.0f;
+                }
+
                 if(gamepad.GetButton("B") && thrust > 1f)
                 {
-                    
+                    kartBody.AddForce(transform.right * turnValue * 5);
+                    thrust -= driftBreakSharpness;   
                     turnValue /= driftTurnValue;
                     groundedDrag = driftDrag;
-                    thrust -= driftBreakSharpness;
+                    
                 }
              
             }
@@ -355,7 +374,7 @@ public class KartActor2 : MonoBehaviour {
             kartBody.drag = groundedDrag;
          
         }
-        else
+        else if(!grounded && !gamepad.GetButton("B"))
         {
             //If its airborne edit values.
             gravityForce = airbornGravityForce;
@@ -405,6 +424,23 @@ public class KartActor2 : MonoBehaviour {
         if(kartBody.velocity.sqrMagnitude > (kartBody.velocity.normalized * maxVelocity).sqrMagnitude)
         {
             kartBody.velocity = kartBody.velocity.normalized * maxVelocity;
+        }
+    }
+
+    IEnumerator Drift()
+    {
+        var timer = 0f;
+        var driftRotation = new Vector3(0, (turnValue * 30) * Time.deltaTime, 0);
+
+        while (timer < driftTurnTime)
+        {
+            timer += Time.deltaTime;
+
+            transform.Rotate(driftRotation);
+
+
+            yield return null;
+
         }
     }
 
