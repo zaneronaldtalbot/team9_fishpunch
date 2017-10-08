@@ -12,6 +12,7 @@ public class KartActor2 : MonoBehaviour {
     //Xbox controller.
     [HideInInspector]
     public xbox_gamepad gamepad;
+    
 
     public ParticleSystem[] wheelTrails = new ParticleSystem[2];
 
@@ -99,6 +100,9 @@ public class KartActor2 : MonoBehaviour {
 
     private float jumpCoolDown = 0.0f;
     private bool b_jumpCoolDown = false;
+    private Vector3 groundedPosition;
+
+    private GameObject checkPointPosition;
    
     // Use this for initialization
     void Start () {
@@ -108,6 +112,7 @@ public class KartActor2 : MonoBehaviour {
         maxVelocityCopy = maxVelocity;
         turnStrengthCopy = turnStrength;
 
+        checkPointPosition = GameObject.Find("RespawnPoint");
         
         //Gets karts rigid body and sets the centre of mass.
         kartBody = GetComponent<Rigidbody>();
@@ -466,6 +471,14 @@ public class KartActor2 : MonoBehaviour {
             {
                 itemRPG = true;
             }
+        }
+
+        if(coll.gameObject.tag == "Respawn")
+        {
+            this.transform.forward = checkPointPosition.transform.forward;
+            this.transform.position = checkPointPosition.transform.position;
+            playerDisabled = true;
+
         }
     }
 

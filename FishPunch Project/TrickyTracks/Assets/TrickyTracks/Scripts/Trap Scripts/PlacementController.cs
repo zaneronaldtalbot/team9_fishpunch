@@ -35,6 +35,7 @@ public class PlacementController : MonoBehaviour {
         prefabs.Add(rpg);
         prefabs.Add(boost);
         prefabs.Add(mine);
+        prefabs.Add(ramp);
 
         placeableObject = prefabs[0];
        
@@ -75,18 +76,19 @@ public class PlacementController : MonoBehaviour {
     private void HandleNewObjectHotKey()
     {
 
-        if (itemManager.kart1.gamepad.GetButtonDown("Y"))
-        {
-            if (currentPlaceableObject != null)
-            {
-                Destroy(currentPlaceableObject);
-            }
-            else
-            {
-                currentPlaceableObject = Instantiate(placeableObject);
+        //if (currentPlaceableObject != null)
+        //{
+        //    Destroy(currentPlaceableObject);
+        //}
+        //else
+        //{
 
-            }
+        if (currentPlaceableObject == null)
+        {
+            currentPlaceableObject = Instantiate(placeableObject);
         }
+            
+        
 
 
             
@@ -131,6 +133,7 @@ public class PlacementController : MonoBehaviour {
         
         if (itemManager.kart1.gamepad.GetButtonDown("RB"))
         {
+            Destroy(currentPlaceableObject);
             if (prefabIndex < 5)
             {
                
@@ -143,6 +146,7 @@ public class PlacementController : MonoBehaviour {
         }
         if (itemManager.kart1.gamepad.GetButtonDown("LB"))
         {
+            Destroy(currentPlaceableObject);
             if (prefabIndex > 0)
             {
 
