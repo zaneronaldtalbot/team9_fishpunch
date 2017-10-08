@@ -102,6 +102,7 @@ public class KartActor2 : MonoBehaviour {
    
     // Use this for initialization
     void Start () {
+        //Create copies of the default values to be able to reset them.
         forwardAccelerationCopy = forwardAcceleration;
         backwardAccelerationCopy = reverseAcceleration;
         maxVelocityCopy = maxVelocity;
@@ -120,6 +121,7 @@ public class KartActor2 : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+
         //for(int i = 0; i <= 1; i++)
         //{
         //    wheelRenderers[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
@@ -132,7 +134,7 @@ public class KartActor2 : MonoBehaviour {
         //Audio
 
         //Gamepad assignment based on kart prefab name.
-        switch(this.gameObject.name)
+        switch (this.gameObject.name)
         {
             case "PlayerCharacter_001":
                 gamepad = GamePadManager.Instance.GetGamePad(1);
@@ -151,8 +153,9 @@ public class KartActor2 : MonoBehaviour {
             
         }
 
+       
         //If the player hit the boost
-        if(boostPlayer)
+        if (boostPlayer)
         {
             //Add delta time to boost time and increase values temporarily.
             boostTime += Time.deltaTime;
@@ -188,9 +191,10 @@ public class KartActor2 : MonoBehaviour {
             //Freeze all constraints.
             kartBody.constraints = RigidbodyConstraints.FreezeAll;
 
-          
+            //Turns the car mesh off while disabled.
             mesh.SetActive(false);
 
+            //Reset kart position a little bit back.
             if (setOnce)
             {
                 this.gameObject.transform.position = gameObject.transform.position + (transform.forward * -5);
@@ -220,6 +224,11 @@ public class KartActor2 : MonoBehaviour {
             if (gamepad.IsConnected)
             {
                 
+                if(gamepad.GetTriggerTap_R())
+                {
+                   
+                    
+                }
 
                 //Set acceleration to gamepad trigger values.
                 input_triggerAcceleration = gamepad.GetTrigger_R();
@@ -228,11 +237,8 @@ public class KartActor2 : MonoBehaviour {
                 //If the left trigger is down and thrust is > 0 reduce thrust based on break sharpness.
                
                     if (thrust > 0 && gamepad.GetTriggerTap_L())
-                    {
-                        
+                    {                        
                         thrust -= breakSharpness;
-                      
-
                     }
 
 
@@ -244,10 +250,7 @@ public class KartActor2 : MonoBehaviour {
                 else if(gamepad.GetButton("B") == false)
                 {
                     groundedDrag = 3.0f;
-                }
-               
-                Debug.Log(groundedDrag);
-          
+                }        
 
                 //Thrust set to 0 to slow car down when there is no input.
                 if (thrust > 0.05 && !gamepad.GetTriggerTap_R())
@@ -279,6 +282,8 @@ public class KartActor2 : MonoBehaviour {
                 {
                     turnValue = stickInputTurn;
                 }
+
+                //If B is pressed start drift routine.
                 if(gamepad.GetButtonDown("B") && !b_jumpCoolDown)
                 {
                   transform.Translate(0, driftJumpValue * Time.deltaTime, 0);
@@ -287,6 +292,8 @@ public class KartActor2 : MonoBehaviour {
                     b_jumpCoolDown = true;
 
                 }
+
+                // Jump cool down for drift.
                 if (b_jumpCoolDown)
                 {
                     jumpCoolDown += Time.deltaTime;
@@ -297,6 +304,7 @@ public class KartActor2 : MonoBehaviour {
                     jumpCoolDown = 0.0f;
                 }
 
+                //2nd part of drift routine.
                 if(gamepad.GetButton("B") && thrust > 1f)
                 {
                     kartBody.AddForce(transform.right * turnValue * 5);
@@ -432,6 +440,8 @@ public class KartActor2 : MonoBehaviour {
         var timer = 0f;
         var driftRotation = new Vector3(0, (turnValue * 30) * Time.deltaTime, 0);
 
+        //While the timer is less then the drift turn time rotate kart
+        //based on their current turn value.
         while (timer < driftTurnTime)
         {
             timer += Time.deltaTime;

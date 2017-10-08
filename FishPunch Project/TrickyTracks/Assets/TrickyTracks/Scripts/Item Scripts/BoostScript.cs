@@ -22,7 +22,7 @@ public class BoostScript : MonoBehaviour
     {
         if (kart != null)
         {
-
+            //Destroy boost pick up if player picks it up.
             if (kart.itemBoost)
             {
                 GameObject.Destroy(boostPrefab);
@@ -31,11 +31,13 @@ public class BoostScript : MonoBehaviour
 
         }
 
+        //Rotate boost pick up
         boostPrefab.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
 
     void OnTriggerEnter(Collider coll)
     {
+        //If player hits boost set item boost to true.
         if (coll.gameObject.tag == "Player")
         {
             kart = coll.gameObject.GetComponentInParent<KartActor2>();

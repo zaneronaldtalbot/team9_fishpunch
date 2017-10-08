@@ -8,9 +8,6 @@ public class ItemManager : MonoBehaviour {
     [HideInInspector]
     public KartActor2 kart1, kart2, kart3, kart4;
 
-    [HideInInspector]
-    public KartActor2 temporaryKart;
-
     private RocketActor rocketActor;
 
     private GameObject go_kart1;
@@ -25,37 +22,15 @@ public class ItemManager : MonoBehaviour {
     [HideInInspector]
     public bool rocketFired = false;
 
-    private string item;
-
     private GameObject manager;
     private GamePadManager gpmanager;
 
     // Use this for initialization
     void Start() {
+        //Grab an instance of the manager.
         manager = GameObject.Find("Manager");
         gpmanager = manager.GetComponent<GamePadManager>();
         rocketActor = Rocket.GetComponentInChildren<RocketActor>();
-
-        ////Find game objects.
-        //go_kart1 = GameObject.Find("PlayerCharacter_001");
-        //go_kart2 = GameObject.Find("PlayerCharacter_002");
-        //go_kart3 = GameObject.Find("PlayerCharacter_003");
-        //go_kart4 = GameObject.Find("PlayerCharacter_004");
-        ////Find script components.
-        //kart1 = go_kart1.GetComponent<KartActor2>();
-        //if (go_kart2 != null)
-        //{
-        //    kart2 = go_kart2.GetComponent<KartActor2>();
-        //}
-        //if (go_kart3 != null)
-        //{
-        //    kart3 = go_kart3.GetComponent<KartActor2>();
-        //}
-        //if (go_kart4 != null)
-        //{
-        //    kart4 = go_kart4.GetComponent<KartActor2>();
-        //}
-        //temporaryKart = kart1;
 
     }
     float timer1 = 0.0f;
@@ -65,7 +40,8 @@ public class ItemManager : MonoBehaviour {
         timer1 += Time.deltaTime;
 
 
-
+        //Grabs copies of the players kart gameobject and script
+        //based on the connected controller total.
         switch(gpmanager.ConnectedTotal())
         {
             case 1:
@@ -131,13 +107,16 @@ public class ItemManager : MonoBehaviour {
         }
 
 
-      
-       
-       
 
 
-        kartItemChecks(kart1, go_kart1);
 
+
+
+        //Checks the item conditions for all the karts.
+        if (go_kart1 != null)
+        {
+            kartItemChecks(kart1, go_kart1);
+        }
         if (go_kart2 != null)
         {
             kartItemChecks(kart2, go_kart2);
@@ -158,18 +137,21 @@ public class ItemManager : MonoBehaviour {
     void kartItemChecks(KartActor2 kart, GameObject go_kart)
     {
         {
+            //If the kart has the item boost and they press
+            // "X" boost the player and set get rid of the boost item.
             if (kart.itemBoost)
             {
                 if (kart.gamepad.GetButtonDown("X"))
                 {
-                    Debug.Log("boost");
                     kart.boostPlayer = true;
                     kart.itemBoost = false;
                 }
             }
         }
 
-
+        //If kart grabs item mine and press x
+        //Instantiate mine behind the karts position
+        //and set itemmine to false.
         if (kart.itemMine)
         {
             if (kart.gamepad.GetButtonDown("X"))
@@ -179,26 +161,22 @@ public class ItemManager : MonoBehaviour {
             }
         }
 
+        //If kart grabs item rpg and presses X
+        //fire rocket and set item RPG to false.
         if (kart.itemRPG)
         {
             if (kart.gamepad.GetButtonDown("X"))
             {
-
                 rocketFired = true;
-
                 tempRocket = Instantiate(Rocket, go_kart.transform.position + (go_kart.transform.forward * 5), (go_kart.transform.rotation)) as GameObject;
                 kart.itemRPG = false;
-
             }
-
         }
 
+        //Fire temprocket.
         if (rocketFired && tempRocket != null)
         {
             tempRocket.transform.Translate(Rocket.transform.forward * rocketActor.rocketSpeed * Time.deltaTime);
         }
-
     }
-
-
 }

@@ -18,8 +18,10 @@ public class ItemRocket : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        
         if (kart != null)
         {
+            //Destroy rocket item if picked up.
             if(kart.itemRPG)
             {
                 GameObject.Destroy(rocketPrefab);
@@ -27,11 +29,13 @@ public class ItemRocket : MonoBehaviour {
                
             }
         }
+        //Rotate object.
         rocketPrefab.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
     }
 
     void OnTriggerEnter(Collider coll)
     {
+        //If it hits a player grab kart script and set item rpg to true.
         if (coll.gameObject.tag == "Player")
         {
             kart = coll.gameObject.GetComponentInParent<KartActor2>();
