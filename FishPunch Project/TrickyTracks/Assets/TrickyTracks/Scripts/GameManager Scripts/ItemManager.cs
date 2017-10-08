@@ -27,38 +27,114 @@ public class ItemManager : MonoBehaviour {
 
     private string item;
 
+    private GameObject manager;
+    private GamePadManager gpmanager;
+
     // Use this for initialization
     void Start() {
-
+        manager = GameObject.Find("Manager");
+        gpmanager = manager.GetComponent<GamePadManager>();
         rocketActor = Rocket.GetComponentInChildren<RocketActor>();
 
-        //Find game objects.
-        go_kart1 = GameObject.Find("PlayerCharacter_001");
-        go_kart2 = GameObject.Find("PlayerCharacter_002");
-        go_kart3 = GameObject.Find("PlayerCharacter_003");
-        go_kart4 = GameObject.Find("PlayerCharacter_004");
-        //Find script components.
-        kart1 = go_kart1.GetComponent<KartActor2>();
-        if (go_kart2 != null)
-        {
-            kart2 = go_kart2.GetComponent<KartActor2>();
-        }
-        if (go_kart3 != null)
-        {
-            kart3 = go_kart3.GetComponent<KartActor2>();
-        }
-        if (go_kart4 != null)
-        {
-            kart4 = go_kart4.GetComponent<KartActor2>();
-        }
-        temporaryKart = kart1;
+        ////Find game objects.
+        //go_kart1 = GameObject.Find("PlayerCharacter_001");
+        //go_kart2 = GameObject.Find("PlayerCharacter_002");
+        //go_kart3 = GameObject.Find("PlayerCharacter_003");
+        //go_kart4 = GameObject.Find("PlayerCharacter_004");
+        ////Find script components.
+        //kart1 = go_kart1.GetComponent<KartActor2>();
+        //if (go_kart2 != null)
+        //{
+        //    kart2 = go_kart2.GetComponent<KartActor2>();
+        //}
+        //if (go_kart3 != null)
+        //{
+        //    kart3 = go_kart3.GetComponent<KartActor2>();
+        //}
+        //if (go_kart4 != null)
+        //{
+        //    kart4 = go_kart4.GetComponent<KartActor2>();
+        //}
+        //temporaryKart = kart1;
 
     }
     float timer1 = 0.0f;
-  
+
     // Update is called once per frame
     void Update() {
         timer1 += Time.deltaTime;
+
+
+
+        switch(gpmanager.ConnectedTotal())
+        {
+            case 1:
+                if (go_kart1 == null)
+                {
+                    go_kart1 = GameObject.Find("PlayerCharacter_001");
+                    kart1 = go_kart1.GetComponent<KartActor2>();
+                }
+                break;
+            case 2:
+                if (go_kart1 == null)
+                {
+                    go_kart1 = GameObject.Find("PlayerCharacter_001");
+                    kart1 = go_kart1.GetComponent<KartActor2>();
+                }
+                if (go_kart2 == null)
+                {
+                    go_kart2 = GameObject.Find("PlayerCharacter_002");
+                    kart2 = go_kart2.GetComponent<KartActor2>();
+                }
+                break;
+            case 3:
+                if (go_kart1 == null)
+                {
+                    go_kart1 = GameObject.Find("PlayerCharacter_001");
+                    kart1 = go_kart1.GetComponent<KartActor2>();
+                }
+                if (go_kart2 == null)
+                {
+                    go_kart2 = GameObject.Find("PlayerCharacter_002");
+                    kart2 = go_kart2.GetComponent<KartActor2>();
+                }
+                if (go_kart3 == null)
+                {
+                    go_kart3 = GameObject.Find("PlayerCharacter_003");
+                    kart3 = go_kart3.GetComponent<KartActor2>();
+                }
+                break;
+            case 4:
+                if (go_kart1 == null)
+                {
+                    go_kart1 = GameObject.Find("PlayerCharacter_001");
+                    kart1 = go_kart1.GetComponent<KartActor2>();
+                }
+                if (go_kart2 == null)
+                {
+                    go_kart2 = GameObject.Find("PlayerCharacter_002");
+                    kart2 = go_kart2.GetComponent<KartActor2>();
+                }
+                if (go_kart3 == null)
+                {
+                    go_kart3 = GameObject.Find("PlayerCharacter_003");
+                    kart3 = go_kart3.GetComponent<KartActor2>();
+                }
+                if (go_kart4 == null)
+                {
+                    go_kart4 = GameObject.Find("PlayerCharacter_004");
+                    kart4 = go_kart4.GetComponent<KartActor2>();
+                }
+                break;
+            default:
+                break;
+        }
+
+
+      
+       
+       
+
 
         kartItemChecks(kart1, go_kart1);
 
@@ -81,13 +157,15 @@ public class ItemManager : MonoBehaviour {
 
     void kartItemChecks(KartActor2 kart, GameObject go_kart)
     {
-        if (kart.itemBoost)
         {
-            if (kart.gamepad.GetButtonDown("X"))
+            if (kart.itemBoost)
             {
-                Debug.Log("boost");
-                kart.boostPlayer = true;
-                kart.itemBoost = false;
+                if (kart.gamepad.GetButtonDown("X"))
+                {
+                    Debug.Log("boost");
+                    kart.boostPlayer = true;
+                    kart.itemBoost = false;
+                }
             }
         }
 

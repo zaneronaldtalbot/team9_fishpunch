@@ -137,7 +137,7 @@ public class KartActor2 : MonoBehaviour {
             case "PlayerCharacter_001":
                 gamepad = GamePadManager.Instance.GetGamePad(1);
                 break;
-            case "PlayerCharacter_002":
+            case "PlayerCharacter_002":        
                 gamepad = GamePadManager.Instance.GetGamePad(2);
                 break;
             case "PlayerCharacter_003":
@@ -374,7 +374,7 @@ public class KartActor2 : MonoBehaviour {
             kartBody.drag = groundedDrag;
          
         }
-        else if(!grounded && !gamepad.GetButton("B"))
+        else if(!grounded)
         {
             //If its airborne edit values.
             gravityForce = airbornGravityForce;

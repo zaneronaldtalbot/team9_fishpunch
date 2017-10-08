@@ -10,10 +10,13 @@ public class GamePadManager : MonoBehaviour {
     private List<xbox_gamepad> gamepads;
     private static GamePadManager manager;
 
+    [Header("Kart Gamepad Prefabs")]
+    public GameObject player1, player2, player3, player4;
+
 	// initialize.
 	void Awake () {
-		
-        if(manager != null && manager != this)
+         
+        if (manager != null && manager != this)
         {
             Destroy(this.gameObject);
             return;
@@ -34,6 +37,7 @@ public class GamePadManager : MonoBehaviour {
             {
                 gamepads.Add(new xbox_gamepad(i + 1));
             }
+           
         }
 
 	}
@@ -44,7 +48,8 @@ public class GamePadManager : MonoBehaviour {
         {
             gamepads[i].Update();
         }
-	}
+        activatePrefab();
+    }
 
     public void Refresh()
     {
@@ -129,5 +134,28 @@ public class GamePadManager : MonoBehaviour {
 
         return false;
 
+    }
+
+    public void activatePrefab()
+    {
+        if (ConnectedTotal() == 1)
+        {
+            player1.SetActive(true);
+        }
+        else if (ConnectedTotal() == 2)
+        {
+            player2.SetActive(true);
+        }
+        else if (ConnectedTotal() == 3)
+        {
+            player3.SetActive(true);
+        }
+        else if (ConnectedTotal() == 4)
+        {
+            player4.SetActive(true);
+        }
+       
+       
+     
     }
 }
