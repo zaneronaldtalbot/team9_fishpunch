@@ -147,6 +147,7 @@ public class xbox_gamepad : MonoBehaviour {
         inputMap["A"] = A;
         inputMap["B"] = B;
         inputMap["X"] = X;
+        inputMap["Y"] = Y;
 
 
         inputMap["Dpad_Up"] = Dpad_Up;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GamePadManager : MonoBehaviour {
     
     //How many gamepads
-    public int GamePadCount = 1;
+    public int GamePadCount = 4;
 
     private List<xbox_gamepad> gamepads;
     private static GamePadManager manager;
@@ -153,17 +153,29 @@ public class GamePadManager : MonoBehaviour {
         if (ConnectedTotal() == 1)
         {
             player1.SetActive(true);
+            player2.SetActive(false);
+            player3.SetActive(false);
+            player4.SetActive(false);
         }
         else if (ConnectedTotal() == 2)
         {
+            player1.SetActive(false);
             player2.SetActive(true);
+            player3.SetActive(false);
+            player4.SetActive(false);
         }
         else if (ConnectedTotal() == 3)
         {
             player3.SetActive(true);
+            player1.SetActive(false);
+            player2.SetActive(false);
+            player4.SetActive(false);
         }
         else if (ConnectedTotal() == 4)
         {
+            player1.SetActive(false);
+            player2.SetActive(false);
+            player3.SetActive(false);
             player4.SetActive(true);
         }
        

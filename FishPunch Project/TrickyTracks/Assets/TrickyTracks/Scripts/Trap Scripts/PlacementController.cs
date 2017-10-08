@@ -8,7 +8,7 @@ public class PlacementController : MonoBehaviour {
     private ItemManager itemManager;
 
     [SerializeField]
-    private GameObject cursor, buzzSaw, oilSlick, boost, mine, rpg;
+    private GameObject cursor, buzzSaw, oilSlick, boost, mine, rpg, ramp;
     public Camera camera;
 
     public float offSetFloat = 500.0f;
@@ -47,7 +47,7 @@ public class PlacementController : MonoBehaviour {
             HandleNewObjectHotKey();
        
         Debug.DrawRay(camera.transform.position, camera.transform.forward * yOffset, Color.red);
-        Debug.Log("MP:" + Input.mousePosition);
+
         MoveCursor();
         if (currentPlaceableObject != null)
         {
@@ -75,7 +75,8 @@ public class PlacementController : MonoBehaviour {
     private void HandleNewObjectHotKey()
     {
 
-
+        if (itemManager.kart1.gamepad.GetButtonDown("Y"))
+        {
             if (currentPlaceableObject != null)
             {
                 Destroy(currentPlaceableObject);
@@ -83,9 +84,9 @@ public class PlacementController : MonoBehaviour {
             else
             {
                 currentPlaceableObject = Instantiate(placeableObject);
-                
-            }
 
+            }
+        }
 
 
             
@@ -130,7 +131,7 @@ public class PlacementController : MonoBehaviour {
         
         if (itemManager.kart1.gamepad.GetButtonDown("RB"))
         {
-            if (prefabIndex < 4)
+            if (prefabIndex < 5)
             {
                
                 prefabIndex++;
@@ -149,7 +150,7 @@ public class PlacementController : MonoBehaviour {
             }
             else
             {
-                prefabIndex = 4;
+                prefabIndex = 5;
             }
         }
         placeableObject = prefabs[prefabIndex];
