@@ -461,7 +461,11 @@ public class KartActor2 : MonoBehaviour {
         if (coll.gameObject.tag == "ItemRPG")
         {
             GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
-            itemRPG = true;
+
+            if (!itemMine && !itemBoost)
+            {
+                itemRPG = true;
+            }
         }
     }
 
