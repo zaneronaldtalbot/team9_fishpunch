@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 33948846770489418}
   - component: {fileID: 23117424562685566}
   m_Layer: 8
-  m_Name: StableCamera
+  m_Name: P3Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,7 +438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1623320737569772
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 33327419200406056}
   - component: {fileID: 23287170758926364}
   m_Layer: 8
-  m_Name: StableCamera
+  m_Name: P1Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 33377652914152976}
   - component: {fileID: 23541241293794630}
   m_Layer: 8
-  m_Name: StableCamera
+  m_Name: P2Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1120,7 +1120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1599089036646138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 204, y: 0, z: 440}
+  m_LocalPosition: {x: 198.97234, y: 0.10043351, z: 440.6613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4212135790149832}

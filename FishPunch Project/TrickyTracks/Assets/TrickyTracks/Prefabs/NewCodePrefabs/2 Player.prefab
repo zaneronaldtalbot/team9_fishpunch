@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 33784033886987616}
   - component: {fileID: 65946400977340404}
   m_Layer: 8
-  m_Name: StableCamera
+  m_Name: P2Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 33625743099280548}
   - component: {fileID: 23484007034944606}
   m_Layer: 8
-  m_Name: StableCamera
+  m_Name: P1Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,13 +748,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685440094193210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 204, y: 0, z: 440}
+  m_LocalPosition: {x: 198.31961, y: 0.06465976, z: 441.0739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4298714661914782}
   - {fileID: 4732774466570694}
-  - {fileID: 4543116331145612}
   - {fileID: 4503137969128436}
+  - {fileID: 4543116331145612}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -908,7 +908,7 @@ Transform:
   - {fileID: 4020152693527870}
   - {fileID: 4647111233873600}
   m_Father: {fileID: 4139466432829466}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!4 &4536627991561262
 Transform:
@@ -938,7 +938,7 @@ Transform:
   - {fileID: 4657802292927784}
   - {fileID: 4582372366184654}
   m_Father: {fileID: 4139466432829466}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4556103920088090
 Transform:
