@@ -30,7 +30,7 @@ public class GamePadManager : MonoBehaviour {
         {
             //Create new gamepad manager instance
             manager = this;
-            DontDestroyOnLoad(this.gameObject);
+      //      DontDestroyOnLoad(this.gameObject);
 
             //Lock gamepadcount based on range
             GamePadCount = Mathf.Clamp(GamePadCount, 1, 4);
@@ -56,7 +56,11 @@ public class GamePadManager : MonoBehaviour {
             gamepads[i].Update();
         }
         //Activate prefabs based on connected controllers.
-        activatePrefab();
+
+        if (player1 != null)
+        {
+            activatePrefab();
+        }
     }
 
     public void Refresh()

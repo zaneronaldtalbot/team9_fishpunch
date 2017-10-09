@@ -166,6 +166,7 @@
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\GamePadManager.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\ItemManager.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\MenuActor.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\PlayerSelectActor.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\RefreshGamePads.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\StableCamera.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\xbox_gamepad.cs" />
