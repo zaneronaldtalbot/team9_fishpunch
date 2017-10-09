@@ -7,6 +7,14 @@ TagManager:
   - Boost
   - Object
   - Collider
+  - ItemMine
+  - RPG
+  - OilSlick
+  - ItemRPG
+  - P1
+  - P2
+  - P3
+  - P4
   layers:
   - Default
   - TransparentFX
