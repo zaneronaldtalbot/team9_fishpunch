@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4199704848099584}
   - component: {fileID: 65883431335409036}
   m_Layer: 0
-  m_Name: KillBox
+  m_Name: Killbox
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
