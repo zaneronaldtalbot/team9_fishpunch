@@ -4,28 +4,42 @@ using UnityEngine;
 
 public class PlacementController : MonoBehaviour {
 
+
+    //Private manager variables to retrieve kart instances.
     private GameObject manager;
     private ItemManager itemManager;
 
+
+    //Game object prefabs
     [SerializeField]
     private GameObject cursor, buzzSaw, oilSlick, boost, mine, rpg, ramp;
+
+    //Top Down Camera
     public Camera camera;
 
     public float offSetFloat = 500.0f;
 
-    private GameObject placeableObject;
+    //List of all the different prefabs.
     private List<GameObject> prefabs = new List<GameObject>();
 
+    //Placeable object and currentplace object.
+    private GameObject placeableObject;
     private GameObject currentPlaceableObject;
 
     private float yOffset = 0.5f;
-    private float checkstuff;
 
+    int layerMask;
+
+    private Ray rayCopy;
+    private RaycastHit hitCopy;
+
+    //Index for the prefab list to switch between prefabs.
     private int prefabIndex = 0;
-    private RaycastHit raycopy;
 
+    //Floats that change rotation of kart.
     private float triggerRotationR;
     private float triggerRotationL;
+    private float triggerRotation = 1;
     // Use this for initialization
     void Start () {
         manager = GameObject.Find("Manager");
@@ -38,29 +52,34 @@ public class PlacementController : MonoBehaviour {
         prefabs.Add(ramp);
 
         placeableObject = prefabs[0];
+
+        layerMask = 1 << LayerMask.NameToLayer("Item");
+        layerMask = ~layerMask;
        
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        Debug.Log("Trigger: " + triggerRotation);
       
-            HandleNewObjectHotKey();
+            ObjectGeneration();
        
-        Debug.DrawRay(camera.transform.position, camera.transform.forward * yOffset, Color.red);
+        Debug.DrawRay(rayCopy.origin, rayCopy.direction, Color.red);
 
-        MoveCursor();
+       
         if (currentPlaceableObject != null)
         {
-
+            RotateTrigger();
+         //   RotateWithTrigger();
             MoveCurrentObjectToStick();
             ChangePrefab();
-            RotateWithTrigger();
+            
             
             ReleaseIfPressed();
          
         }
-
+        MoveCursor();
         //if(itemManager.kart1.gamepad.GetButtonDown("RB"))
         //{
         //    ChangePrefab();
@@ -73,7 +92,7 @@ public class PlacementController : MonoBehaviour {
 
     }
 
-    private void HandleNewObjectHotKey()
+    private void ObjectGeneration()
     {
 
         //if (currentPlaceableObject != null)
@@ -82,37 +101,45 @@ public class PlacementController : MonoBehaviour {
         //}
         //else
         //{
-
+        //Create currentplaceable if its null.
         if (currentPlaceableObject == null)
         {
             currentPlaceableObject = Instantiate(placeableObject);
         }
-            
-        
-
-
-            
+               
 
     }
 
     private void MoveCurrentObjectToStick()
     {
-        Ray ray = camera.ScreenPointToRay(new Vector3(617, 313,0));
-     
-        
+        Ray ray = camera.ScreenPointToRay(new Vector3(600, 300,0));
+
+        rayCopy = ray;
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo))
+        if (Physics.Raycast(ray, out hitInfo, 1000, layerMask))
         {
-            raycopy = hitInfo;
             currentPlaceableObject.transform.position = hitInfo.point;
-            currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(hitInfo.normal.x, hitInfo.normal.y, hitInfo.normal.z));
+            currentPlaceableObject.transform.Rotate(new Vector3(0, triggerRotation, 0));
+            hitCopy = hitInfo;
             
         }
     }
 
+    private void RotateTrigger()
+    {
+       
+            triggerRotation += itemManager.kart1.gamepad.GetTrigger_R();
+        
+        
+            triggerRotation -= itemManager.kart1.gamepad.GetTrigger_L();
+        
+        //currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(hitCopy.normal.x, hitCopy.normal.y + triggerRotation, hitCopy.normal.z));
+    }
+
     private void RotateWithTrigger()
     {
-
+        //Rotate based on trigger input.
         triggerRotationR = itemManager.kart1.gamepad.GetTrigger_R();
         triggerRotationL = itemManager.kart1.gamepad.GetTrigger_L();
         currentPlaceableObject.transform.Rotate(Vector3.up, triggerRotationR);
@@ -121,6 +148,7 @@ public class PlacementController : MonoBehaviour {
 
     private void ReleaseIfPressed()
     {
+        //Releases object if A button is pressed.
         if(itemManager.kart1.gamepad.GetButtonDown("A"))
         {
             currentPlaceableObject = null;
@@ -130,7 +158,8 @@ public class PlacementController : MonoBehaviour {
     private void ChangePrefab()
     {
       
-        
+        //If RB or LB is pressed destroy the current object
+        //and add or subtract from the prefab index
         if (itemManager.kart1.gamepad.GetButtonDown("RB"))
         {
             Destroy(currentPlaceableObject);
@@ -163,6 +192,7 @@ public class PlacementController : MonoBehaviour {
 
     private void MoveCursor()
     {
+        //Change cameras position based on gamepad input.
         camera.transform.position += new Vector3(itemManager.kart1.gamepad.GetStick_L().X,0 , itemManager.kart1.gamepad.GetStick_L().Y);
         camera.transform.position += new Vector3(0, itemManager.kart1.gamepad.GetStick_R().Y, 0);
     
