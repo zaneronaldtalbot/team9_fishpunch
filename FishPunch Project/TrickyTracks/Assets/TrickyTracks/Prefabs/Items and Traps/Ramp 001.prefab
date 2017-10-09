@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4165343598381368}
   - component: {fileID: 64845437516673830}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4691895387831428}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ramp 001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4261892216411464}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4227987888857814}
   - component: {fileID: 33136900715300738}
   - component: {fileID: 23788643663752618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ramp_001_Track_001_WithSides
   m_TagString: Untagged
   m_Icon: {fileID: 0}

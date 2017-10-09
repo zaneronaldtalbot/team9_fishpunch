@@ -76,6 +76,12 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
     <Reference Include="ProBuilderCore-Unity5">
       <HintPath>Assets\ProCore\ProBuilder\Classes\ProBuilderCore-Unity5.dll</HintPath>
     </Reference>
@@ -159,6 +165,7 @@
     <Compile Include="Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\GamePadManager.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\ItemManager.cs" />
+    <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\MenuActor.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\RefreshGamePads.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\StableCamera.cs" />
     <Compile Include="Assets\TrickyTracks\Scripts\GameManager Scripts\xbox_gamepad.cs" />

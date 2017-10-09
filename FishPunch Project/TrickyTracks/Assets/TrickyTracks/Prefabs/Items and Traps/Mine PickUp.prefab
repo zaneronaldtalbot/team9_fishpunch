@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4275880638195866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4068547372327204}
   - component: {fileID: 64314658811039148}
   - component: {fileID: 114469537189960982}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: ItemMine
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4496128401870988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mine PickUp
   m_TagString: ItemMine
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 33919949625892052}
   - component: {fileID: 23886588952352558}
   - component: {fileID: 95714491330669352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mine_001_Track_001_Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4262895478702342}
   - component: {fileID: 33934421040258088}
   - component: {fileID: 23778128602940970}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RPG_001_Track_001_Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4664881396277932}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RPG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4228798191718976}
   - component: {fileID: 64412172222246666}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4081071143788608}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

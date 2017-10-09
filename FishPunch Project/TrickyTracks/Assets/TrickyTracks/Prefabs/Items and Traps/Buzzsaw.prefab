@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4943285258323766}
   - component: {fileID: 114722984035622840}
   - component: {fileID: 54031375907709028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SawBlade_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4169597471997394}
   - component: {fileID: 65843054965524130}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trigger1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4282689288031240}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4804465727625838}
   - component: {fileID: 65384768655566404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trigger2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4762087247735154}
   - component: {fileID: 33859894885965726}
   - component: {fileID: 23419270609454952}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Buzzsaw_001_Track_001_Track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4395898424015866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Buzzsaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4559654677280170}
   - component: {fileID: 64584544931499778}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 4090033043910840}
   - component: {fileID: 33231944124179334}
   - component: {fileID: 23725118896021446}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Buzzsaw_001_Track_001_Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}

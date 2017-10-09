@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4337988411507524}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Oil Slick
   m_TagString: OilSlick
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33789746544673066}
   - component: {fileID: 23975009858813942}
   - component: {fileID: 95284303380790568}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OilSlick_001_Track_001_Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4412310223752976}
   - component: {fileID: 64843417836480990}
   - component: {fileID: 114318157630777840}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: OilSlick
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4057193152026796}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: OilSlick
   m_Icon: {fileID: 0}
