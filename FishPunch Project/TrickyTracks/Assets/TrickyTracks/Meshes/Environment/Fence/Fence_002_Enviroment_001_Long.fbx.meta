@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d887dac0af826e8479fe1be6767da5e2
-timeCreated: 1507512786
+guid: 91d17112e6e78c64a86d9efa2e2eb419
+timeCreated: 1507597361
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
@@ -11,7 +11,7 @@ ModelImporter:
     3300000: //RootNode
     4300000: Fence_002_Enviroment_001_Long
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
