@@ -54,7 +54,8 @@ public class StableCamera : MonoBehaviour {
         myAngle = Mathf.LerpAngle(myAngle, wantedAngle, rotationDamping * Time.deltaTime);
         //myHeight = Mathf.LerpAngle(myHeight, wantedHeight, heightDamping * Time.deltaTime);
 
-        Quaternion currentRotation = Quaternion.Euler(0, myAngle, 0);
+        Quaternion currentRotation = Quaternion.Euler(0, myAngle + 90, 0);
+      
 
         transform.position = car.transform.position +  (currentRotation * Offset);
         //transform.position = currentRotation * Vector3.right * distance;

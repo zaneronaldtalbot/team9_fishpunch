@@ -52,7 +52,10 @@ public class xbox_gamepad : MonoBehaviour {
     private xButton L3, R3; // Thumbstick buttons.
     private xButton LB, RB; // 'Bumper' (shoulder) buttons.
     private TriggerState LT, RT; // Triggers
-    
+
+    [HideInInspector]
+    public float triggerRotation = 1;
+
     //Constructor
     public xbox_gamepad(int index)
     {

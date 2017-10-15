@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GamePadManager : MonoBehaviour {
     
@@ -10,13 +11,25 @@ public class GamePadManager : MonoBehaviour {
     private List<xbox_gamepad> gamepads;
     private static GamePadManager manager;
 
+    private PlayerSelectActor psActor;
+    
     //Public GameObjects.
     [Header("Kart Gamepad Prefabs")]
-    public GameObject player1;
-    public GameObject player2;
-    public GameObject player3;
-    public GameObject player4;
+    private GameObject player1;
+    private GameObject player2;
+    private GameObject player3;
+    private GameObject player4;
 
+    private GameObject TrapCamP1, TrapCamP2, TrapCamP3, TrapCamP4;
+    private PlacementController placementController;
+    private ItemManager itemManager;
+    private NewPlacementController newPlacementController;
+
+    private Scene currentScene;
+
+    private bool loadPlayerOnce = false;
+    private bool loadTrapCamOnce = false;
+    private bool findGameObjects = false;
 	// initialize.
 	void Awake () {
          
@@ -30,7 +43,12 @@ public class GamePadManager : MonoBehaviour {
         {
             //Create new gamepad manager instance
             manager = this;
-      //      DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
+
+            itemManager = GetComponent<ItemManager>();
+            newPlacementController = GetComponent<NewPlacementController>();
+            placementController = GetComponent<PlacementController>();
+            psActor = GetComponent<PlayerSelectActor>();
 
             //Lock gamepadcount based on range
             GamePadCount = Mathf.Clamp(GamePadCount, 1, 4);
@@ -50,17 +68,57 @@ public class GamePadManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        currentScene = SceneManager.GetActiveScene();
+        if (currentScene.buildIndex == 2)
+        {
+            itemManager.enabled = true;
+            psActor.enabled = false;
+
+          //  newPlacementController.enabled = true;
+            placementController.enabled = true;
+            if (!findGameObjects)
+            {
+                player1 = GameObject.Find("1 Player");
+
+                player2 = GameObject.Find("2 Player");
+
+                player3 = GameObject.Find("3 Player");
+
+                player4 = GameObject.Find("4 Player");
+
+                TrapCamP1 = GameObject.Find("TrapCamSetP1");
+
+                TrapCamP2 = GameObject.Find("TrapCamSetP2");
+
+                TrapCamP3 = GameObject.Find("TrapCamSetP3");
+
+                TrapCamP4 = GameObject.Find("TrapCamSetP4");
+
+                findGameObjects = true;
+            }
+
+            if (!loadPlayerOnce)
+            {
+                activatePrefab();
+                loadPlayerOnce = true;
+            }
+
+            if (!loadTrapCamOnce)
+            {
+                activateTraps();
+                loadTrapCamOnce = true; 
+            }
+
+           
+        }
+
         //Update gamepads.
 		for(int i = 0; i < gamepads.Count; ++i)
         {
             gamepads[i].Update();
         }
         //Activate prefabs based on connected controllers.
-
-        if (player1 != null)
-        {
-            activatePrefab();
-        }
+      
     }
 
     public void Refresh()
@@ -154,36 +212,73 @@ public class GamePadManager : MonoBehaviour {
     public void activatePrefab()
     {
         //Activates the prefab depending on the connected total of controllers.
-        if (ConnectedTotal() == 1)
+        if (ConnectedTotal() == 1 && player1 != null)
         {
             player1.SetActive(true);
+
             player2.SetActive(false);
+        
             player3.SetActive(false);
+        
             player4.SetActive(false);
+            
         }
-        else if (ConnectedTotal() == 2)
+        else if (ConnectedTotal() == 2 && player2 != null)
         {
             player1.SetActive(false);
             player2.SetActive(true);
             player3.SetActive(false);
             player4.SetActive(false);
         }
-        else if (ConnectedTotal() == 3)
+        else if (ConnectedTotal() == 3 && player3 != null)
         {
             player3.SetActive(true);
             player1.SetActive(false);
             player2.SetActive(false);
             player4.SetActive(false);
         }
-        else if (ConnectedTotal() == 4)
+        else if (ConnectedTotal() == 4 && player4 != null)
         {
             player1.SetActive(false);
             player2.SetActive(false);
             player3.SetActive(false);
             player4.SetActive(true);
         }
-       
-       
-     
     }
+
+    void activateTraps()
+    {
+
+        switch(ConnectedTotal())
+        {
+            case 1:
+                TrapCamP1.SetActive(true);
+                TrapCamP2.SetActive(false);
+                TrapCamP3.SetActive(false);
+                TrapCamP4.SetActive(false);
+                break;
+            case 2:
+                TrapCamP1.SetActive(false);
+                TrapCamP2.SetActive(true);
+                TrapCamP3.SetActive(false);
+                TrapCamP4.SetActive(false);
+                break;
+            case 3:
+                TrapCamP1.SetActive(false);
+                TrapCamP2.SetActive(false);
+                TrapCamP3.SetActive(true);
+                TrapCamP4.SetActive(false);
+                break;
+            case 4:
+                TrapCamP1.SetActive(false);
+                TrapCamP2.SetActive(false);
+                TrapCamP3.SetActive(false);
+                TrapCamP4.SetActive(true);
+                break;
+            default:
+                break;
+        }
+
+    }
+
 }

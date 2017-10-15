@@ -30,5 +30,10 @@ public class MineActor : MonoBehaviour {
             GameObject.Destroy(this.gameObject.transform.parent.gameObject);
         }
 
+        if (coll.gameObject.layer == 9)
+        {
+            Debug.Log("it's doing that thing i want");
+        }
+
     }
 }

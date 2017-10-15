@@ -829,8 +829,11 @@ GameObject:
   - component: {fileID: 319986390}
   - component: {fileID: 319986391}
   - component: {fileID: 319986392}
+  - component: {fileID: 319986394}
+  - component: {fileID: 319986393}
+  - component: {fileID: 319986395}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -861,10 +864,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GamePadCount: 4
-  player1: {fileID: 1930213877767242, guid: 04f6f80900143cd4bade931b037d0196, type: 2}
-  player2: {fileID: 1685440094193210, guid: bd6906e56213cdf41b33ba515bcc2055, type: 2}
-  player3: {fileID: 1599089036646138, guid: 06ab162ace8ccc24d904128305af2bd0, type: 2}
-  player4: {fileID: 1050214332422982, guid: a1ad615c5a1a6bd4e8d22b68591f08ba, type: 2}
 --- !u!114 &319986391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,7 +881,7 @@ MonoBehaviour:
   player3Ready: {fileID: 45524811}
   player4Ready: {fileID: 1984610854}
   go_timer: {fileID: 1374835906}
-  timer: 40
+  timer: 30
 --- !u!114 &319986392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -894,6 +893,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5067fbe262b4b644ac3b895229c6631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &319986393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319986388}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e03c3cd8fc07d240bb6baae8162a7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kart1: {fileID: 0}
+  kart2: {fileID: 0}
+  kart3: {fileID: 0}
+  kart4: {fileID: 0}
+  Rocket: {fileID: 1357176560903178, guid: 275862ff1dce50846ac756d8e5d49664, type: 2}
+  Mine: {fileID: 1259604615254950, guid: 6f99728a08694fb4690150683632f213, type: 2}
+  rocketFired: 0
+--- !u!114 &319986394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319986388}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c222d192bae524e96abd65ab80cca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placingCountdown: 20
+  cursor: {fileID: 0}
+  buzzSaw: {fileID: 1788449724218994, guid: 2a694c808f1a4a34295b4c29cb44477d, type: 2}
+  oilSlick: {fileID: 1199855343562384, guid: c0b4a191f0f45cf4bac5541ebe946ef6, type: 2}
+  boost: {fileID: 1009864689174384, guid: f72d98d87524fb545a493d8b6e5ae535, type: 2}
+  mine: {fileID: 1758811178503366, guid: c23d292bb188b744db8c132aba7cf716, type: 2}
+  rpg: {fileID: 1222910457246154, guid: d2bd37217e7b2ba4fb22cd8f31da45b6, type: 2}
+  ramp: {fileID: 1346199037696874, guid: e7f60b01c39508a488163140c730509d, type: 2}
+--- !u!114 &319986395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319986388}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e1c632bd482dcd41a28328ae63da0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buzzsaw: {fileID: 1788449724218994, guid: 2a694c808f1a4a34295b4c29cb44477d, type: 2}
+  ramp: {fileID: 1346199037696874, guid: e7f60b01c39508a488163140c730509d, type: 2}
+  oilslick: {fileID: 1199855343562384, guid: c0b4a191f0f45cf4bac5541ebe946ef6, type: 2}
+  boostsaw: {fileID: 1788449724218994, guid: 2a694c808f1a4a34295b4c29cb44477d, type: 2}
+  boost: {fileID: 1009864689174384, guid: f72d98d87524fb545a493d8b6e5ae535, type: 2}
+  rpg: {fileID: 1222910457246154, guid: d2bd37217e7b2ba4fb22cd8f31da45b6, type: 2}
+  mine: {fileID: 1758811178503366, guid: c23d292bb188b744db8c132aba7cf716, type: 2}
 --- !u!1 &413862682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,9 +1460,9 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 1.35
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -1935,7 +1989,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1313631768}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1313631770
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1993,7 +2047,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1313631768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: 370}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2005,7 +2059,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1313631768}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c5a5406cc106a1a4fa5c344c95fed995, type: 3}
@@ -2681,7 +2735,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1024, y: 450}
+  m_SizeDelta: {x: 1024, y: 460}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2138037179
 MonoBehaviour:

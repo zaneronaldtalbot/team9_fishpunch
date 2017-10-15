@@ -28,7 +28,7 @@ public class ItemManager : MonoBehaviour {
     // Use this for initialization
     void Start() {
         //Grab an instance of the manager.
-        manager = GameObject.Find("Manager");
+        manager = this.gameObject;
         gpmanager = manager.GetComponent<GamePadManager>();
         rocketActor = Rocket.GetComponentInChildren<RocketActor>();
 

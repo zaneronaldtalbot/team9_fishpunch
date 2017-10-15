@@ -53,6 +53,17 @@ public class RocketActor : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
-      
+        if (coll.gameObject.tag == "Item")
+        {
+            Debug.Log("it's doing that thing i want");
+        }
+    }
+
+    void OnTriggerEnter(Collider coll)
+    {
+        if (coll.gameObject.layer == 9)
+        {
+            Debug.Log("it's doing that thing i want");
+        }
     }
 }
