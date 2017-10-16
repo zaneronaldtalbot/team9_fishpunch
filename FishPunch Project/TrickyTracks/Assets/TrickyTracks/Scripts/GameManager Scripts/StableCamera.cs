@@ -22,7 +22,7 @@ public class StableCamera : MonoBehaviour {
     private float rotationVector;
     private Vector3 Offset;
 
-    void Start()
+    void Awake()
     {
         Offset = transform.position - car.transform.position;
 
@@ -42,7 +42,7 @@ public class StableCamera : MonoBehaviour {
     //    float acceleration = car.GetComponent<Rigidbody>().velocity.magnitude;
     //    Camera.main.fieldOfView = defaultFOV + acceleration * zoomRatio * Time.deltaTime;
     //}
-
+    
     void LateUpdate()
     {
         float wantedAngle = car.transform.eulerAngles.y;
@@ -55,7 +55,7 @@ public class StableCamera : MonoBehaviour {
         //myHeight = Mathf.LerpAngle(myHeight, wantedHeight, heightDamping * Time.deltaTime);
 
         Quaternion currentRotation = Quaternion.Euler(0, myAngle + 90, 0);
-      
+    
 
         transform.position = car.transform.position +  (currentRotation * Offset);
         //transform.position = currentRotation * Vector3.right * distance;

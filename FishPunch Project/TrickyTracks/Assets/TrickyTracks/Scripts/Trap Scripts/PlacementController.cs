@@ -335,6 +335,7 @@ public class PlacementController : MonoBehaviour
             {
                 if (itemsP1.Count > 0)
                 {
+                    currentPlaceableObjectP1.GetComponent<PrefabDisabledActor>().prefabSet = true;
                     currentPlaceableObjectP1 = null;
                     itemsP1.RemoveAt(prefabIndex1);
                     placeableObjectP1 = itemsP1[prefabIndex1];

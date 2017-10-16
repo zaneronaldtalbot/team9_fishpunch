@@ -8,6 +8,8 @@ public class NewPlacementController : MonoBehaviour {
     private GamePadManager gpManager;
     private PlayerSelectActor psActor;
 
+    public float prefabRotationSpeed = 2.0f;
+
     private xbox_gamepad gamepad1, gamepad2, gamepad3, gamepad4;
 
     [Header("Traps")]
@@ -30,7 +32,6 @@ public class NewPlacementController : MonoBehaviour {
                        placeableObject3, placeableObject4;
 
     private GameObject kart1, kart2, kart3, kart4;
-    private Transform coll1, coll2, coll3, coll4;
 
     private List<GameObject> trapPrefabs = new List<GameObject>();
     private List<GameObject> itemPrefabs = new List<GameObject>();
@@ -70,8 +71,6 @@ public class NewPlacementController : MonoBehaviour {
                 raycastObject1 = GameObject.Find("RayCast1");
                 kart1 = GameObject.Find("PlayerCharacter_001");
 
-                coll1 = kart1.transform.Find("Colliders");
-                coll1.gameObject.SetActive(false);
                 break;
             case 2:
 
@@ -89,10 +88,6 @@ public class NewPlacementController : MonoBehaviour {
                 kart1 = GameObject.Find("PlayerCharacter_001");
                 kart2 = GameObject.Find("PlayerCharacter_002");
 
-                coll1 = kart1.transform.Find("Colliders");
-                coll1.gameObject.SetActive(false);
-                coll2 = kart2.transform.Find("Colliders");
-                coll2.gameObject.SetActive(false);
                 break;
             case 3:
                 randomiseItems(randTempNum1, randNumP1);
@@ -115,13 +110,6 @@ public class NewPlacementController : MonoBehaviour {
                 kart1 = GameObject.Find("PlayerCharacter_001");
                 kart2 = GameObject.Find("PlayerCharacter_002");
                 kart3 = GameObject.Find("PlayerCharacter_003");
-
-                coll1 = kart1.transform.Find("Colliders");
-                coll1.gameObject.SetActive(false);
-                coll2 = kart2.transform.Find("Colliders");
-                coll2.gameObject.SetActive(false);
-                coll3 = kart3.transform.Find("Colliders");
-                coll3.gameObject.SetActive(false);
 
                 break;
             case 4:
@@ -154,14 +142,6 @@ public class NewPlacementController : MonoBehaviour {
                 kart3 = GameObject.Find("PlayerCharacter_003");
                 kart4 = GameObject.Find("PlayerCharacter_004");
 
-                coll1 = kart1.transform.Find("Colliders");
-                coll1.gameObject.SetActive(false);
-                coll2 = kart2.transform.Find("Colliders");
-                coll2.gameObject.SetActive(false);
-                coll3 = kart3.transform.Find("Colliders");
-                coll3.gameObject.SetActive(false);
-                coll4 = kart4.transform.Find("Colliders");
-                coll4.gameObject.SetActive(false);
                 break;
             default:
                 break;
@@ -182,55 +162,56 @@ public class NewPlacementController : MonoBehaviour {
 
         objectGeneration();
         releasePrefab();
+        rotatePrefab();
 
         switch(psActor.playerCount)
         {
             case 1:
                 if(currentPlaceableObject1 != null)
                 {
-                    fitPrefabToTrack(raycastObject1, currentPlaceableObject1);
+                    fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
                 }
                 break;
             case 2:
                 if (currentPlaceableObject1 != null)
                 {
-                    fitPrefabToTrack(raycastObject1, currentPlaceableObject1);
+                    fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
                 }
                 if (currentPlaceableObject2 != null)
                 {
-                    fitPrefabToTrack(raycastObject2, currentPlaceableObject2);
+                    fitPrefabToTrack(raycastObject2, currentPlaceableObject2, gamepad2);
                 }
                 break;
             case 3:
                 if (currentPlaceableObject1 != null)
                 {
-                    fitPrefabToTrack(raycastObject1, currentPlaceableObject1);
+                    fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
                 }
                 if (currentPlaceableObject2 != null)
                 {
-                    fitPrefabToTrack(raycastObject2, currentPlaceableObject2);
+                    fitPrefabToTrack(raycastObject2, currentPlaceableObject2, gamepad2);
                 }
                 if (currentPlaceableObject3 != null)
                 {
-                    fitPrefabToTrack(raycastObject3, currentPlaceableObject3);
+                    fitPrefabToTrack(raycastObject3, currentPlaceableObject3, gamepad3);
                 }
                 break;
             case 4:
                 if (currentPlaceableObject1 != null)
                 {
-                    fitPrefabToTrack(raycastObject1, currentPlaceableObject1);
+                    fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
                 }
                 if (currentPlaceableObject2 != null)
                 {
-                    fitPrefabToTrack(raycastObject2, currentPlaceableObject2);
+                    fitPrefabToTrack(raycastObject2, currentPlaceableObject2, gamepad2);
                 }
                 if (currentPlaceableObject3 != null)
                 {
-                    fitPrefabToTrack(raycastObject3, currentPlaceableObject3);
+                    fitPrefabToTrack(raycastObject3, currentPlaceableObject3, gamepad3);
                 }
                 if (currentPlaceableObject4 != null)
                 {
-                    fitPrefabToTrack(raycastObject4, currentPlaceableObject4);
+                    fitPrefabToTrack(raycastObject4, currentPlaceableObject4, gamepad4);
                 }
                 break;
             default:
@@ -328,7 +309,7 @@ public class NewPlacementController : MonoBehaviour {
        
     }
 
-    void fitPrefabToTrack(GameObject raycastObject, GameObject currentPlaceableObject)
+    void fitPrefabToTrack(GameObject raycastObject, GameObject currentPlaceableObject, xbox_gamepad gamepad)
     {
 
         RaycastHit hitInfo;
@@ -338,10 +319,118 @@ public class NewPlacementController : MonoBehaviour {
         
             currentPlaceableObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, new Vector3(hitInfo.normal.x, hitInfo.normal.y, hitInfo.normal.z));
             currentPlaceableObject.transform.forward = raycastObject.transform.forward;
-
+            currentPlaceableObject.transform.Rotate(0, gamepad.triggerRotation, 0);
 
         }
     }
+
+    void rotatePrefab()
+    {
+        if (psActor.playerCount == 1)
+        {
+            if (gamepad1.GetButton("RB"))
+            {
+                gamepad1.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad1.GetButton("LB"))
+            {
+                gamepad1.triggerRotation -= prefabRotationSpeed;
+            }
+        }
+
+        if (psActor.playerCount == 2)
+        {
+            if (gamepad1.GetButton("RB"))
+            {
+                gamepad1.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad1.GetButton("LB"))
+            {
+                gamepad1.triggerRotation -= prefabRotationSpeed;
+            }
+            if (gamepad2.GetButton("RB"))
+            {
+                gamepad2.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad2.GetButton("LB"))
+            {
+                gamepad2.triggerRotation -= prefabRotationSpeed;
+            }
+        }
+
+        if (psActor.playerCount == 3)
+        {
+            if (gamepad1.GetButton("RB"))
+            {
+                gamepad1.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad1.GetButton("LB"))
+            {
+                gamepad1.triggerRotation -= prefabRotationSpeed;
+            }
+            if (gamepad2.GetButton("RB"))
+            {
+                gamepad2.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad2.GetButton("LB"))
+            {
+                gamepad2.triggerRotation -= prefabRotationSpeed;
+            }
+            if (gamepad3.GetButton("RB"))
+            {
+                gamepad3.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad3.GetButton("LB"))
+            {
+                gamepad3.triggerRotation -= prefabRotationSpeed;
+            }
+
+        }
+
+        if (psActor.playerCount == 4)
+        {
+            if (gamepad1.GetButton("RB"))
+            {
+                gamepad1.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad1.GetButton("LB"))
+            {
+                gamepad1.triggerRotation -= prefabRotationSpeed;
+            }
+            if (gamepad2.GetButton("RB"))
+            {
+                gamepad2.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad2.GetButton("LB"))
+            {
+                gamepad2.triggerRotation -= prefabRotationSpeed;
+            }
+            if (gamepad3.GetButton("RB"))
+            {
+                gamepad3.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad3.GetButton("LB"))
+            {
+                gamepad3.triggerRotation -= prefabRotationSpeed;
+            }
+            if (gamepad4.GetButton("RB"))
+            {
+                gamepad4.triggerRotation += prefabRotationSpeed;
+            }
+            if (gamepad4.GetButton("LB"))
+            {
+                gamepad4.triggerRotation -= prefabRotationSpeed;
+            }
+
+        }
+
+
+
+
+
+    }
+
+
     void releasePrefab()
     {
         switch(psActor.playerCount)
@@ -351,6 +440,7 @@ public class NewPlacementController : MonoBehaviour {
                 {
                     if (itemsP1.Count > 0)
                     {
+                      
                         currentPlaceableObject1 = null;
                         itemsP1.RemoveAt(0);
                         placeableObject1 = itemsP1[0];

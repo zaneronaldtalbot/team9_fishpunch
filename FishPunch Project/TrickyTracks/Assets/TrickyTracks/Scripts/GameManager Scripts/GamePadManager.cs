@@ -74,8 +74,7 @@ public class GamePadManager : MonoBehaviour {
             itemManager.enabled = true;
             psActor.enabled = false;
 
-          //  newPlacementController.enabled = true;
-            placementController.enabled = true;
+            newPlacementController.enabled = true;  
             if (!findGameObjects)
             {
                 player1 = GameObject.Find("1 Player");
@@ -105,7 +104,7 @@ public class GamePadManager : MonoBehaviour {
 
             if (!loadTrapCamOnce)
             {
-                activateTraps();
+           //     activateTraps();
                 loadTrapCamOnce = true; 
             }
 
@@ -246,39 +245,39 @@ public class GamePadManager : MonoBehaviour {
         }
     }
 
-    void activateTraps()
-    {
+    //void activateTraps()
+    //{
 
-        switch(ConnectedTotal())
-        {
-            case 1:
-                TrapCamP1.SetActive(true);
-                TrapCamP2.SetActive(false);
-                TrapCamP3.SetActive(false);
-                TrapCamP4.SetActive(false);
-                break;
-            case 2:
-                TrapCamP1.SetActive(false);
-                TrapCamP2.SetActive(true);
-                TrapCamP3.SetActive(false);
-                TrapCamP4.SetActive(false);
-                break;
-            case 3:
-                TrapCamP1.SetActive(false);
-                TrapCamP2.SetActive(false);
-                TrapCamP3.SetActive(true);
-                TrapCamP4.SetActive(false);
-                break;
-            case 4:
-                TrapCamP1.SetActive(false);
-                TrapCamP2.SetActive(false);
-                TrapCamP3.SetActive(false);
-                TrapCamP4.SetActive(true);
-                break;
-            default:
-                break;
-        }
+    //    switch(ConnectedTotal())
+    //    {
+    //        case 1:
+    //            TrapCamP1.SetActive(true);
+    //            TrapCamP2.SetActive(false);
+    //            TrapCamP3.SetActive(false);
+    //            TrapCamP4.SetActive(false);
+    //            break;
+    //        case 2:
+    //            TrapCamP1.SetActive(false);
+    //            TrapCamP2.SetActive(true);
+    //            TrapCamP3.SetActive(false);
+    //            TrapCamP4.SetActive(false);
+    //            break;
+    //        case 3:
+    //            TrapCamP1.SetActive(false);
+    //            TrapCamP2.SetActive(false);
+    //            TrapCamP3.SetActive(true);
+    //            TrapCamP4.SetActive(false);
+    //            break;
+    //        case 4:
+    //            TrapCamP1.SetActive(false);
+    //            TrapCamP2.SetActive(false);
+    //            TrapCamP3.SetActive(false);
+    //            TrapCamP4.SetActive(true);
+    //            break;
+    //        default:
+    //            break;
+    //    }
 
-    }
+    //}
 
 }
