@@ -833,6 +833,7 @@ GameObject:
   - component: {fileID: 319986394}
   - component: {fileID: 319986393}
   - component: {fileID: 319986395}
+  - component: {fileID: 319986396}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -942,6 +943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1c632bd482dcd41a28328ae63da0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabRotationSpeed: 2
   buzzsaw: {fileID: 1788449724218994, guid: 2a694c808f1a4a34295b4c29cb44477d, type: 2}
   ramp: {fileID: 1346199037696874, guid: e7f60b01c39508a488163140c730509d, type: 2}
   oilslick: {fileID: 1199855343562384, guid: c0b4a191f0f45cf4bac5541ebe946ef6, type: 2}
@@ -949,6 +951,27 @@ MonoBehaviour:
   boost: {fileID: 1009864689174384, guid: f72d98d87524fb545a493d8b6e5ae535, type: 2}
   rpg: {fileID: 1222910457246154, guid: d2bd37217e7b2ba4fb22cd8f31da45b6, type: 2}
   mine: {fileID: 1758811178503366, guid: c23d292bb188b744db8c132aba7cf716, type: 2}
+--- !u!114 &319986396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 319986388}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc11858c79b4d643b510b7022e9204b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPoints: []
+  check1: 0
+  check2: 0
+  check3: 0
+  check4: 0
+  Lapcounter: {fileID: 0}
+  currentCheckPoint: {fileID: 0}
+  nextCheckpoint: {fileID: 0}
+  FinishLine: {fileID: 0}
+  lapNumber: 1
 --- !u!1 &413862682
 GameObject:
   m_ObjectHideFlags: 0

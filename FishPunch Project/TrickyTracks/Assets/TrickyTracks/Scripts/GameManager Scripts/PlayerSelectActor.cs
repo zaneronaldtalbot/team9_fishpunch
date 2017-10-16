@@ -16,11 +16,14 @@ public class PlayerSelectActor : MonoBehaviour
     public GameObject player1Ready, player2Ready, player3Ready, player4Ready;
 
     public GameObject go_timer;
-
-    bool playerReady1 = false;
-    bool playerReady2 = false;
-    bool playerReady3 = false;
-    bool playerReady4 = false;
+    [HideInInspector]
+   public bool playerReady1 = false;
+    [HideInInspector]
+    public bool playerReady2 = false;
+    [HideInInspector]
+   public bool playerReady3 = false;
+    [HideInInspector]
+    public bool playerReady4 = false;
 
     public float timer = 60.0f;
 
@@ -48,7 +51,7 @@ public class PlayerSelectActor : MonoBehaviour
                 if (playerReady1)
                 {
                     SceneManager.LoadScene("MainLevel001");
-                    this.enabled = false;
+                   
                 }
                 break;
             case 2:
@@ -89,6 +92,7 @@ public class PlayerSelectActor : MonoBehaviour
       
     }
 
+
     void startPressed(int index)
     {
         xbox_gamepad gamepad;
@@ -106,7 +110,7 @@ public class PlayerSelectActor : MonoBehaviour
                 case 1:
                     if (!playerReady1)
                     {
-                        Destroy(GameObject.Find("Player1JoinText"));
+                        GameObject.Find("Player1JoinText").SetActive(false);
                         player1Ready.SetActive(true);
                         playerCount++;
                         playerReady1 = true;
@@ -115,7 +119,7 @@ public class PlayerSelectActor : MonoBehaviour
                 case 2:
                     if (!playerReady2)
                     {
-                        Destroy(GameObject.Find("Player2JoinText"));
+                        GameObject.Find("Player2JoinText").SetActive(false);
                         player2Ready.SetActive(true);
                         playerCount++;
                         playerReady2 = true;
@@ -125,7 +129,7 @@ public class PlayerSelectActor : MonoBehaviour
                 case 3:
                     if (!playerReady3)
                     {
-                        Destroy(GameObject.Find("Player3JoinText"));
+                        GameObject.Find("Player3JoinText").SetActive(false);
                         player3Ready.SetActive(true);
                         playerCount++;
                         playerReady3 = true;
@@ -135,7 +139,7 @@ public class PlayerSelectActor : MonoBehaviour
                 case 4:
                     if (!playerReady4)
                     {
-                        Destroy(GameObject.Find("Player4JoinText"));
+                        GameObject.Find("Player4JoinText").SetActive(false);
                         player4Ready.SetActive(true);
                         playerCount++;
                         playerReady4 = true;

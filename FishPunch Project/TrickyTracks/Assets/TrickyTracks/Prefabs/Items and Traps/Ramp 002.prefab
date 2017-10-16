@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4538023646750116}
   - component: {fileID: 64058757564323090}
   m_Layer: 9
-  m_Name: Collision
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,3 +195,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 5
+  prefabSet: 0

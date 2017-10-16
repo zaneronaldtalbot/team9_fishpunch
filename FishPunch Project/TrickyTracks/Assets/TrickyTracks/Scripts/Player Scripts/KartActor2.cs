@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class KartActor2 : MonoBehaviour {
 
+    //Lap info.
+    private LapsManager lapManager;
 
+    private GameObject lastCheckPoint;
+
+
+    bool check1 = false;
+    bool check2 = false;
+    bool check3 = false;
+    bool check4 = false;
 
     //Karts rigidbody
     Rigidbody kartBody;
@@ -117,6 +126,10 @@ public class KartActor2 : MonoBehaviour {
         maxVelocityCopy = maxVelocity;
         turnStrengthCopy = turnStrength;
 
+        lapManager = GameObject.Find("Manager").GetComponent<LapsManager>();
+
+        
+
         checkPointPosition = GameObject.Find("RespawnPoint");
         
         //Gets karts rigid body and sets the centre of mass.
@@ -127,53 +140,53 @@ public class KartActor2 : MonoBehaviour {
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
 
-        SetUpCamera();
+     //   SetUpCamera();
 
     }
 
-    public void Instatiate(int playerNumber, int numberOfPlayers)
+    public void Instantiate(int playerNumber, int numberOfPlayers)
     {
-
-
-    }
-
-    private void SetUpCamera()
-    {
-        float cameraWidth = 1;
-        float cameraHeight = 0.5f;
-
-        float cameraXpos = 0;
-        float cameraYpos = 0.5f;
-
-        if (numberOfPlayers == 2)
-        {
-            cameraWidth = 1;
-        }
-        else 
-        {
-            cameraWidth = 0.5f;
-        }
-
-        if (playerNumber == 2){
-            cameraYpos = 0;
-            if(numberOfPlayers > 2)
-            {
-                cameraXpos = 0.5f;
-            }
-            else
-            {
-                cameraXpos = 0;
-            }
-        }
-        else if(playerNumber == 3)
-        {
-            cameraXpos = 0.5f;
-        }
-
-        playerCamera.rect = new Rect(cameraXpos, cameraYpos, cameraWidth, cameraHeight);
-
+       
 
     }
+
+    //private void SetUpCamera()
+    //{
+    //    float cameraWidth = 1;
+    //    float cameraHeight = 0.5f;
+
+    //    float cameraXpos = 0;
+    //    float cameraYpos = 0.5f;
+
+    //    if (numberOfPlayers == 2)
+    //    {
+    //        cameraWidth = 1;
+    //    }
+    //    else 
+    //    {
+    //        cameraWidth = 0.5f;
+    //    }
+
+    //    if (playerNumber == 2){
+    //        cameraYpos = 0;
+    //        if(numberOfPlayers > 2)
+    //        {
+    //            cameraXpos = 0.5f;
+    //        }
+    //        else
+    //        {
+    //            cameraXpos = 0;
+    //        }
+    //    }
+    //    else if(playerNumber == 3)
+    //    {
+    //        cameraXpos = 0.5f;
+    //    }
+
+    //    playerCamera.rect = new Rect(cameraXpos, cameraYpos, cameraWidth, cameraHeight);
+
+
+    //}
 
     // Update is called once per frame
     void Update() {
@@ -280,13 +293,7 @@ public class KartActor2 : MonoBehaviour {
             //If the gamepad is connected.
             if (gamepad.IsConnected)
             {
-                
-                if(gamepad.GetTriggerTap_R())
-                {
-                   
-                    
-                }
-
+               
                 //Set acceleration to gamepad trigger values.
                 input_triggerAcceleration = gamepad.GetTrigger_R();
                 input_negativeTriggerAcceleration = gamepad.GetTrigger_L();
@@ -513,6 +520,57 @@ public class KartActor2 : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
+        if (coll.gameObject.tag == "Checkpoint")
+        {
+            if(coll.gameObject.name == "CheckPoint1")
+            {
+                if(!check1 && !check2 && !check3 && !check4)
+                {
+                    check1 = true;
+                    lastCheckPoint = lapManager.checkPoints[0];
+                }
+            }
+
+            if(coll.gameObject.name == "CheckPoint2")
+            {
+                if(check1 && !check2 && !check3 && !check4)
+                {
+                    check2 = true;
+                    lastCheckPoint = lapManager.checkPoints[1];
+                }
+            }
+
+            if(coll.gameObject.name == "CheckPoint3")
+            {
+                if(check1 && check2 && !check3 && !check4)
+                {
+                    check3 = true;
+                    lastCheckPoint = lapManager.checkPoints[2];
+                }
+            }
+
+            if(coll.gameObject.name == "CheckPoint4")
+            {
+                if(check1 && check2 && check3 && !check4)
+                {
+                    check4 = true;
+                    lastCheckPoint = lapManager.checkPoints[3];
+                }
+            }
+        }
+
+        if(coll.gameObject.tag == "StartLine")
+        {
+            if(check1 && check2 && check3 && check4)
+            {
+                lastCheckPoint = lapManager.FinishLine;
+                lapManager.lapNumber += 1;
+                check1 = false;
+                check2 = false;
+                check3 = false;
+                check4 = false;
+            }
+        }
 
 
         if (coll.gameObject.tag == "ItemRPG")
@@ -527,8 +585,8 @@ public class KartActor2 : MonoBehaviour {
 
         if(coll.gameObject.tag == "Respawn")
         {
-            this.transform.forward = checkPointPosition.transform.forward;
-            this.transform.position = checkPointPosition.transform.position;
+            this.transform.forward = lastCheckPoint.transform.forward;
+            this.transform.position = lastCheckPoint.transform.position;
             playerDisabled = true;
 
         }

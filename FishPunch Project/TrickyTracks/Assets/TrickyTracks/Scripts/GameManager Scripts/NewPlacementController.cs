@@ -148,11 +148,6 @@ public class NewPlacementController : MonoBehaviour {
         }
 
 
-
-
-
-   
-
         layerMask = 1 << LayerMask.NameToLayer("Item");
         layerMask = ~layerMask;
     }
@@ -585,7 +580,7 @@ public class NewPlacementController : MonoBehaviour {
     void randomiseItems(int intToRand,List<int> playerList)
     {
         //First 5 are traps, second 5 are items.
-        for(int i = 0; i < 10; ++i)
+        for(int i = 0; i < 6; ++i)
         {
             intToRand = Random.Range(0, 3);
             playerList.Add(intToRand);
@@ -596,13 +591,13 @@ public class NewPlacementController : MonoBehaviour {
     void allocateRandItems(List<int> numberList, List<GameObject> itemList, List<GameObject> trapList, List<GameObject> playerItemList)
     {
         //Trap Allocation.
-        for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < 3; ++i)
         {
             playerItemList.Add(trapList[numberList[i]]);
         }
 
         //Item allocation.
-        for(int i = 5; i < 10; ++i)
+        for(int i = 3; i < 6; ++i)
         {
             playerItemList.Add(itemList[numberList[i]]);
         }

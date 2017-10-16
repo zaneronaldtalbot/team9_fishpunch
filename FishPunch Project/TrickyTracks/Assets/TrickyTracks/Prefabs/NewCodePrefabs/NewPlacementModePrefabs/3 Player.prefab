@@ -1111,8 +1111,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964195844378990}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 198.97234, y: 0.10043351, z: 440.6613}
+  m_LocalRotation: {x: -0, y: 0.96592593, z: -0, w: 0.25881872}
+  m_LocalPosition: {x: -342.36697, y: -57.280186, z: -138.53203}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4847396291879116}
@@ -1123,7 +1123,7 @@ Transform:
   - {fileID: 4999385588391938}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 150, z: 0}
 --- !u!4 &4126792129236332
 Transform:
   m_ObjectHideFlags: 1
@@ -3033,9 +3033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01efa4381abe194aba04688751eaf51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalXRot: 0
   gamepad: {fileID: 0}
-  triggerRotation: 0
   wheelTrails:
   - {fileID: 0}
   - {fileID: 0}
@@ -3077,6 +3075,9 @@ MonoBehaviour:
   boostPlayer: 0
   placeMine: 0
   fireRPG: 0
+  playerNumber: 2
+  numberOfPlayers: 4
+  playerCamera: {fileID: 0}
 --- !u!114 &114107580815041646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3120,9 +3121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01efa4381abe194aba04688751eaf51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalXRot: 0
   gamepad: {fileID: 0}
-  triggerRotation: 0
   wheelTrails:
   - {fileID: 0}
   - {fileID: 0}
@@ -3164,6 +3163,9 @@ MonoBehaviour:
   boostPlayer: 0
   placeMine: 0
   fireRPG: 0
+  playerNumber: 1
+  numberOfPlayers: 4
+  playerCamera: {fileID: 0}
 --- !u!114 &114338321131728928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3191,9 +3193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01efa4381abe194aba04688751eaf51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalXRot: 0
   gamepad: {fileID: 0}
-  triggerRotation: 0
   wheelTrails:
   - {fileID: 0}
   - {fileID: 0}
@@ -3235,6 +3235,9 @@ MonoBehaviour:
   boostPlayer: 0
   placeMine: 0
   fireRPG: 0
+  playerNumber: 3
+  numberOfPlayers: 4
+  playerCamera: {fileID: 0}
 --- !u!124 &124363122084838066
 Behaviour:
   m_ObjectHideFlags: 1

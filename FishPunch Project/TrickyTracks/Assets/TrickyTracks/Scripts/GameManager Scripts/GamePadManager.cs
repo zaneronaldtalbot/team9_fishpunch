@@ -10,6 +10,7 @@ public class GamePadManager : MonoBehaviour {
 
     private List<xbox_gamepad> gamepads;
     private static GamePadManager manager;
+    private LapsManager lpManager;
 
     private PlayerSelectActor psActor;
     
@@ -46,6 +47,7 @@ public class GamePadManager : MonoBehaviour {
             DontDestroyOnLoad(this.gameObject);
 
             itemManager = GetComponent<ItemManager>();
+            lpManager = GetComponent<LapsManager>();
             newPlacementController = GetComponent<NewPlacementController>();
             placementController = GetComponent<PlacementController>();
             psActor = GetComponent<PlayerSelectActor>();
@@ -71,7 +73,9 @@ public class GamePadManager : MonoBehaviour {
         currentScene = SceneManager.GetActiveScene();
         if (currentScene.buildIndex == 2)
         {
+            lpManager.enabled = true;
             itemManager.enabled = true;
+      
             psActor.enabled = false;
 
             newPlacementController.enabled = true;  
