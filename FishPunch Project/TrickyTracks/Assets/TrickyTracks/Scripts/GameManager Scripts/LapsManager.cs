@@ -11,7 +11,7 @@ public class LapsManager : MonoBehaviour
     private NewPlacementController npc;
     private PlayerSelectActor psActor;
 
-
+    public GameObject newManager;
 
     [HideInInspector]
     public bool raceOver = false;
@@ -21,7 +21,6 @@ public class LapsManager : MonoBehaviour
 
     private float restartTime = 10.0f;
     private int intTime;
-
 
     public List<GameObject> checkPoints;
 
@@ -88,6 +87,8 @@ public class LapsManager : MonoBehaviour
             if(restartTime < 0)
             {
                 SceneManager.LoadScene(1);
+                Instantiate(newManager);
+                GameObject.Destroy(this.gameObject);
             }
         }
     }
