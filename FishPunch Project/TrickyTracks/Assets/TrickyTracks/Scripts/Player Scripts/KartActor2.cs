@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KartActor2 : MonoBehaviour {
 
-    public float verticalXRot = 0.0f;
+
 
     //Karts rigidbody
     Rigidbody kartBody;
@@ -12,10 +12,6 @@ public class KartActor2 : MonoBehaviour {
     //Xbox controller.
     [HideInInspector]
     public xbox_gamepad gamepad;
-
-    //Trigger rotation for trap placement controller.
-    [HideInInspector]
-    public float triggerRotation;
     
 
     public ParticleSystem[] wheelTrails = new ParticleSystem[2];
@@ -80,8 +76,6 @@ public class KartActor2 : MonoBehaviour {
     //Private timers for items.
     private float boostTime = 0.0f;
     private float mineTime = 0.0f;
-    private GameObject manager;
-    private GamePadManager gpManager;
 
     //Private acceleration.
     float input_triggerAcceleration = 0.0f;
@@ -109,6 +103,11 @@ public class KartActor2 : MonoBehaviour {
     private Vector3 groundedPosition;
 
     private GameObject checkPointPosition;
+
+    public int playerNumber = 1;
+    public int numberOfPlayers = 4;
+
+    public Camera playerCamera;
    
     // Use this for initialization
     void Start () {
@@ -117,9 +116,6 @@ public class KartActor2 : MonoBehaviour {
         backwardAccelerationCopy = reverseAcceleration;
         maxVelocityCopy = maxVelocity;
         turnStrengthCopy = turnStrength;
-
-        manager = GameObject.Find("Manager");
-        gpManager = manager.GetComponent<GamePadManager>();
 
         checkPointPosition = GameObject.Find("RespawnPoint");
         
@@ -130,7 +126,54 @@ public class KartActor2 : MonoBehaviour {
         //Layer mask to ignore the kart.
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
-	}
+
+        SetUpCamera();
+
+    }
+
+    public void Instatiate(int playerNumber, int numberOfPlayers)
+    {
+
+
+    }
+
+    private void SetUpCamera()
+    {
+        float cameraWidth = 1;
+        float cameraHeight = 0.5f;
+
+        float cameraXpos = 0;
+        float cameraYpos = 0.5f;
+
+        if (numberOfPlayers == 2)
+        {
+            cameraWidth = 1;
+        }
+        else 
+        {
+            cameraWidth = 0.5f;
+        }
+
+        if (playerNumber == 2){
+            cameraYpos = 0;
+            if(numberOfPlayers > 2)
+            {
+                cameraXpos = 0.5f;
+            }
+            else
+            {
+                cameraXpos = 0;
+            }
+        }
+        else if(playerNumber == 3)
+        {
+            cameraXpos = 0.5f;
+        }
+
+        playerCamera.rect = new Rect(cameraXpos, cameraYpos, cameraWidth, cameraHeight);
+
+
+    }
 
     // Update is called once per frame
     void Update() {
@@ -148,18 +191,18 @@ public class KartActor2 : MonoBehaviour {
         //Audio
 
         //Gamepad assignment based on kart prefab name.
-        switch (this.gameObject.name)
+        switch (playerNumber)
         {
-            case "PlayerCharacter_001":
-                gamepad = gpManager.GetGamePad(1);
+            case 1:
+                gamepad = GamePadManager.Instance.GetGamePad(1);
                 break;
-            case "PlayerCharacter_002":        
+            case 2:        
                 gamepad = GamePadManager.Instance.GetGamePad(2);
                 break;
-            case "PlayerCharacter_003":
+            case 3:
                 gamepad = GamePadManager.Instance.GetGamePad(3);
                 break;
-            case "PlayerCharacter_004":
+            case 4:
                 gamepad = GamePadManager.Instance.GetGamePad(4);
                 break;
             default:
@@ -167,7 +210,6 @@ public class KartActor2 : MonoBehaviour {
             
         }
 
-    
        
         //If the player hit the boost
         if (boostPlayer)
@@ -365,36 +407,32 @@ public class KartActor2 : MonoBehaviour {
         RaycastHit hit;
         bool grounded = false;
 
-        if (this.gameObject.transform.rotation.x > -30.0f && this.gameObject.transform.rotation.x < 30.0f)
+        
+
+        //if i is less than the wheel points length.
+        for (int i = 0; i < wheelPoints.Length; ++i)
         {
-
-
-            //if i is less than the wheel points length.
-            for (int i = 0; i < wheelPoints.Length; ++i)
+            var wheelPoint = wheelPoints[i];
+            
+            //shoot a raycast and work out the force to apply to each wheel point.
+            if (Physics.Raycast(wheelPoint.transform.position, -Vector3.up, out hit, hoverHeight, layerMask))
             {
-                var wheelPoint = wheelPoints[i];
-
-                //shoot a raycast and work out the force to apply to each wheel point.
-                if (Physics.Raycast(wheelPoint.transform.position, -Vector3.up, out hit, hoverHeight, layerMask))
+                kartBody.AddForceAtPosition(Vector3.up * hoverForce * (1.0f - (hit.distance / hoverHeight)), wheelPoint.transform.position);
+                grounded = true;
+            }
+            else
+            {
+                if (transform.position.y > wheelPoint.transform.position.y)
                 {
-                    kartBody.AddForceAtPosition(Vector3.up * hoverForce * (1.0f - (hit.distance / hoverHeight)), wheelPoint.transform.position);
-                    grounded = true;
-
-                 
+                    kartBody.AddForceAtPosition(wheelPoint.transform.up * gravityForce, wheelPoint.transform.position);
                 }
                 else
                 {
-                    if (transform.position.y > wheelPoint.transform.position.y)
-                    {
-                        kartBody.AddForceAtPosition(wheelPoint.transform.up * gravityForce, wheelPoint.transform.position);
-                    }
-                    else
-                    {
-                        kartBody.AddForceAtPosition(wheelPoint.transform.up * -gravityForce, wheelPoint.transform.position);
-                    }
+                    kartBody.AddForceAtPosition(wheelPoint.transform.up * -gravityForce, wheelPoint.transform.position);
                 }
             }
         }
+
         //If grounded = true drag = the grounded drag.
         if (grounded)
         {
