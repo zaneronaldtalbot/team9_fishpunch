@@ -38,7 +38,7 @@ public class CameraScript : MonoBehaviour {
 
         //posOffset = carCam.transform.position - Car.transform.position;
 
-        SetUpCamera(); // sets up the 1 - 4 player cameras
+        //SetUpCamera(); // sets up the 1 - 4 player cameras
     }
 
     void LateUpdate()
@@ -85,42 +85,42 @@ public class CameraScript : MonoBehaviour {
     }
     */
 
-    private void SetUpCamera()
-    {
-        float cameraWidth = 1; // the size of the screen that the camera is taking up ( Width )
-        float cameraHeight = 0.5f; // the size of the screen that the camera is taking up ( Height )
-
-        float cameraXpos = 0; // where the camera is looking on the screen
-        float cameraYpos = 0.5f;
-
-        if (KartActor2.NumOfPlay == 2) // if it is 2 player have the camera 
-        {
-            cameraWidth = 1;
-        }
-        else
-        {
-            cameraWidth = 0.5f;
-        }
-
-        if (KartActor2.PlayNum == 2)
-        { // sets the position of the player camera
-            cameraYpos = 0;
-            if (KartActor2.NumOfPlay > 2)
-            {
-                cameraXpos = 0;
-            }
-            else
-            {
-                cameraXpos = 0.5f;
-            }
-        }
-        else if (KartActor2.PlayNum == 3) // if 3 players set camera to this pos
-        {
-            cameraXpos = 0.5f;
-        }
-
-        playerCamera.rect = new Rect(cameraXpos, cameraYpos, cameraWidth, cameraHeight);
-    }
+//    private void SetUpCamera()
+//    {
+//        float cameraWidth = 1; // the size of the screen that the camera is taking up ( Width )
+//        float cameraHeight = 0.5f; // the size of the screen that the camera is taking up ( Height )
+//
+//        float cameraXpos = 0; // where the camera is looking on the screen
+//        float cameraYpos = 0.5f;
+//
+//        if (KartActor2.NumOfPlay == 2) // if it is 2 player have the camera 
+//        {
+//            cameraWidth = 1;
+//        }
+//        else
+//        {
+//            cameraWidth = 0.5f;
+//        }
+//
+//        if (KartActor2.PlayNum == 2)
+//        { // sets the position of the player camera
+//            cameraYpos = 0;
+//            if (KartActor2.NumOfPlay > 2)
+//            {
+//                cameraXpos = 0;
+//            }
+//            else
+//            {
+//                cameraXpos = 0.5f;
+//            }
+//        }
+//        else if (KartActor2.PlayNum == 3) // if 3 players set camera to this pos
+//        {
+//            cameraXpos = 0.5f;
+//        }
+//
+//        playerCamera.rect = new Rect(cameraXpos, cameraYpos, cameraWidth, cameraHeight);
+//    }
     /*
     
     

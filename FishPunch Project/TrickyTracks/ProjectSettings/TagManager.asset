@@ -3,20 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Boost
-  - Object
-  - Collider
-  - ItemMine
-  - RPG
-  - OilSlick
-  - ItemRPG
-  - P1
-  - P2
-  - P3
-  - P4
-  - Checkpoint
-  - StartLine
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -26,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - Vehicle
-  - Item
+  - 
+  - 
   - 
   - 
   - 

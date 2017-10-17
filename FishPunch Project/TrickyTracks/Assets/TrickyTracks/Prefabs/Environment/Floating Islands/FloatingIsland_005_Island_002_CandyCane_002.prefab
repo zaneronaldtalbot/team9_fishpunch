@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33271234280866202}
   - component: {fileID: 23535906028503010}
   - component: {fileID: 64042616773005692}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FloatingIsland_005_Island_002_CandyCane_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4785625633615236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FloatingIsland_005_Island_002_CandyCane_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,14 +63,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874977512009020}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 153.29958, y: 319.83658, z: -261.9626}
+  m_LocalRotation: {x: 0.8586155, y: 0.11303867, z: -0.06526318, w: 0.49572417}
+  m_LocalPosition: {x: -61.79535, y: -17.099998, z: -475.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4285451001889548}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 120, y: 0, z: -15}
 --- !u!23 &23535906028503010
 MeshRenderer:
   m_ObjectHideFlags: 1

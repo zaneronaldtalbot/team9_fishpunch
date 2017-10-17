@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33607553669901084}
   - component: {fileID: 23663685430858176}
   - component: {fileID: 64207975858713646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FloatingIsland_010_Island_003_SidebySide_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4174244574758170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FloatingIsland_010_Island_003_SidebySide_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,14 +63,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1668709609264208}
-  m_LocalRotation: {x: -0, y: -0.7421579, z: -0, w: 0.6702251}
-  m_LocalPosition: {x: 184.92004, y: 506.2849, z: -506.62997}
+  m_LocalRotation: {x: -0.6902306, y: -0.52963257, z: 0.391141, w: 0.30013314}
+  m_LocalPosition: {x: -15.100006, y: -35.199997, z: -449.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4064255897588434}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -95.831, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -120.921005, z: 105.00001}
 --- !u!23 &23663685430858176
 MeshRenderer:
   m_ObjectHideFlags: 1
