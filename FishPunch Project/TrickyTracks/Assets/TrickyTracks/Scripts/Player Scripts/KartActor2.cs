@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KartActor2 : MonoBehaviour {
 
+
     //Lap info.
     private LapsManager lapManager;
 
@@ -22,10 +23,15 @@ public class KartActor2 : MonoBehaviour {
     [HideInInspector]
     public int lapNumber = 0;
 
+    //Checkpoint checks boiiiii.
     bool check1 = false;
     bool check2 = false;
     bool check3 = false;
     bool check4 = false;
+
+    //Bool to assign new traps on lap pass.
+    [HideInInspector]
+    public bool assignNewTraps = false;
 
     //Karts rigidbody
     Rigidbody kartBody;
@@ -37,6 +43,7 @@ public class KartActor2 : MonoBehaviour {
 
     public ParticleSystem[] wheelTrails = new ParticleSystem[2];
 
+    
    
     public GameObject mesh;
 
@@ -211,7 +218,7 @@ public class KartActor2 : MonoBehaviour {
             lastCheckPoint = lapManager.FinishLine;
         }
 
-
+        //The wheels on the bus go round and round.
         //for(int i = 0; i <= 1; i++)
         //{
         //    wheelRenderers[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
@@ -223,7 +230,7 @@ public class KartActor2 : MonoBehaviour {
 
         //Audio
 
-        //Gamepad assignment based on kart prefab name.
+        //Gamepad assignment based on kart prefab NUMBAAA.
         switch (playerNumber)
         {
             case 1:
@@ -593,6 +600,7 @@ public class KartActor2 : MonoBehaviour {
             {
                 lastCheckPoint = lapManager.FinishLine;
                 lapNumber += 1;
+                assignNewTraps = true;
                 lapManager.lapNumber += 1;
                 check1 = false;
                 check2 = false;

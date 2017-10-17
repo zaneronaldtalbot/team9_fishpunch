@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class NewPlacementController : MonoBehaviour {
 
+
+
+
+
+
     private GameObject manager;
     private GamePadManager gpManager;
     private PlayerSelectActor psActor;
@@ -164,12 +169,32 @@ public class NewPlacementController : MonoBehaviour {
         switch(psActor.playerCount)
         {
             case 1:
+
+                if(kart1.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP1);
+                    allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
+                
                 if(currentPlaceableObject1 != null)
                 {
                     fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
                 }
                 break;
             case 2:
+                if (kart1.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP1);
+                    allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
+                if (kart2.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP2);
+                    allocateRandItems(randNumP2, itemPrefabs, trapPrefabs, itemsP2);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
                 if (currentPlaceableObject1 != null)
                 {
                     fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
@@ -180,6 +205,24 @@ public class NewPlacementController : MonoBehaviour {
                 }
                 break;
             case 3:
+                if (kart1.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP1);
+                    allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
+                if (kart2.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP2);
+                    allocateRandItems(randNumP2, itemPrefabs, trapPrefabs, itemsP2);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
+                if (kart3.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP3);
+                    allocateRandItems(randNumP3, itemPrefabs, trapPrefabs, itemsP3);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
                 if (currentPlaceableObject1 != null)
                 {
                     fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
@@ -194,6 +237,30 @@ public class NewPlacementController : MonoBehaviour {
                 }
                 break;
             case 4:
+                if (kart1.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP1);
+                    allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
+                if (kart2.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP2);
+                    allocateRandItems(randNumP2, itemPrefabs, trapPrefabs, itemsP2);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
+                if (kart3.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP3);
+                    allocateRandItems(randNumP3, itemPrefabs, trapPrefabs, itemsP3);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
+                if (kart4.GetComponent<KartActor2>().assignNewTraps)
+                {
+                    randomiseItems(randTempNum1, randNumP4);
+                    allocateRandItems(randNumP4, itemPrefabs, trapPrefabs, itemsP4);
+                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                }
                 if (currentPlaceableObject1 != null)
                 {
                     fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
@@ -214,6 +281,9 @@ public class NewPlacementController : MonoBehaviour {
             default:
                 break;
         }
+
+      
+
     }
 
 
@@ -370,7 +440,7 @@ public class NewPlacementController : MonoBehaviour {
 
         if (psActor.playerCount == 2)
         {
-            if (gamepad1.GetButtonDown("A"))
+            if (gamepad1.GetButton("A"))
             {
                 if (gamepad1.GetButton("RB"))
                 {
@@ -381,7 +451,7 @@ public class NewPlacementController : MonoBehaviour {
                     gamepad1.triggerRotation -= prefabRotationSpeed;
                 }
             }
-            if (gamepad2.GetButtonDown("A"))
+            if (gamepad2.GetButton("A"))
             {
                 if (gamepad2.GetButton("RB"))
                 {
@@ -396,7 +466,7 @@ public class NewPlacementController : MonoBehaviour {
 
         if (psActor.playerCount == 3)
         {
-            if (gamepad1.GetButtonDown("A"))
+            if (gamepad1.GetButton("A"))
             {
                 if (gamepad1.GetButton("RB"))
                 {
@@ -407,7 +477,7 @@ public class NewPlacementController : MonoBehaviour {
                     gamepad1.triggerRotation -= prefabRotationSpeed;
                 }
             }
-            if (gamepad2.GetButtonDown("A"))
+            if (gamepad2.GetButton("A"))
             {
                 if (gamepad2.GetButton("RB"))
                 {
@@ -418,7 +488,7 @@ public class NewPlacementController : MonoBehaviour {
                     gamepad2.triggerRotation -= prefabRotationSpeed;
                 }
             }
-            if (gamepad3.GetButtonDown("A"))
+            if (gamepad3.GetButton("A"))
             {
                 if (gamepad3.GetButton("RB"))
                 {
@@ -434,7 +504,7 @@ public class NewPlacementController : MonoBehaviour {
 
         if (psActor.playerCount == 4)
         {
-            if (gamepad1.GetButtonDown("A"))
+            if (gamepad1.GetButton("A"))
             {
                 if (gamepad1.GetButton("RB"))
                 {
@@ -445,7 +515,7 @@ public class NewPlacementController : MonoBehaviour {
                     gamepad1.triggerRotation -= prefabRotationSpeed;
                 }
             }
-            if (gamepad2.GetButtonDown("A"))
+            if (gamepad2.GetButton("A"))
             {
                 if (gamepad2.GetButton("RB"))
                 {
@@ -456,7 +526,7 @@ public class NewPlacementController : MonoBehaviour {
                     gamepad2.triggerRotation -= prefabRotationSpeed;
                 }
             }
-            if (gamepad3.GetButtonDown("A"))
+            if (gamepad3.GetButton("A"))
             {
                 if (gamepad3.GetButton("RB"))
                 {
@@ -467,7 +537,7 @@ public class NewPlacementController : MonoBehaviour {
                     gamepad3.triggerRotation -= prefabRotationSpeed;
                 }
             }
-            if (gamepad4.GetButtonDown("A"))
+            if (gamepad4.GetButton("A"))
             {
                 if (gamepad4.GetButton("RB"))
                 {
