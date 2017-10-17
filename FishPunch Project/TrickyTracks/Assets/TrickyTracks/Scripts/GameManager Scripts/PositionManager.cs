@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PositionManager : MonoBehaviour {
 
@@ -9,9 +10,15 @@ public class PositionManager : MonoBehaviour {
     private KartActor2 kart1, kart2, kart3, kart4;
     private GameObject go_kart1, go_kart2, go_kart3, go_kart4;
 
+    private Text playerOnePosition, playerTwoPosition, playerThreePosition, playerFourPosition;
+    private Text playerOneLap, playerTwoLap, playerThreeLap, playerFourLap;
+
+
     // Use this for initialization
     void Start() {
         psActor = GetComponent<PlayerSelectActor>();
+
+     
 
         switch (psActor.playerCount)
         {
@@ -20,6 +27,18 @@ public class PositionManager : MonoBehaviour {
                 kart1 = go_kart1.GetComponent<KartActor2>();
                 go_kart2 = GameObject.Find("PlayerCharacter_002");
                 kart2 = go_kart2.GetComponent<KartActor2>();
+                playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Text>();
+                playerTwoPosition = GameObject.Find("PlayerThreePosition").GetComponent<Text>();
+                GameObject.Find("PlayerTwoPosition").SetActive(false);
+                GameObject.Find("PlayerFourPosition").SetActive(false);
+
+                playerOneLap = GameObject.Find("PlayerTwoLaps").GetComponent<Text>();
+                playerTwoLap = GameObject.Find("PlayerFourLaps").GetComponent<Text>();
+
+                GameObject.Find("PlayerThreeLaps").SetActive(false);
+                GameObject.Find("PlayerOneLaps").SetActive(false);
+                
+
                 break;
             case 3:
                 go_kart1 = GameObject.Find("PlayerCharacter_001");
@@ -28,6 +47,17 @@ public class PositionManager : MonoBehaviour {
                 kart2 = go_kart2.GetComponent<KartActor2>();
                 go_kart3 = GameObject.Find("PlayerCharacter_003");
                 kart3 = go_kart3.GetComponent<KartActor2>();
+                playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Text>();
+                playerTwoPosition = GameObject.Find("PlayerTwoPosition").GetComponent<Text>();
+                playerThreePosition = GameObject.Find("PlayerThreePosition").GetComponent<Text>();
+                GameObject.Find("PlayerFourPosition").SetActive(false);
+
+                playerOneLap = GameObject.Find("PlayerOneLaps").GetComponent<Text>();
+                playerTwoLap = GameObject.Find("PlayerTwoLaps").GetComponent<Text>();
+                playerThreeLap = GameObject.Find("PlayerThreeLaps").GetComponent<Text>();
+
+                GameObject.Find("PlayerFourLaps").SetActive(false);
+                
 
                 break;
             case 4:
@@ -39,6 +69,15 @@ public class PositionManager : MonoBehaviour {
                 kart3 = go_kart3.GetComponent<KartActor2>();
                 go_kart4 = GameObject.Find("PlayerCharacter_004");
                 kart4 = go_kart4.GetComponent<KartActor2>();
+                playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Text>();
+                playerTwoPosition = GameObject.Find("PlayerTwoPosition").GetComponent<Text>();
+                playerThreePosition = GameObject.Find("PlayerThreePosition").GetComponent<Text>();
+                playerFourPosition = GameObject.Find("PlayerFourPosition").GetComponent<Text>();
+
+                playerOneLap = GameObject.Find("PlayerOneLaps").GetComponent<Text>();
+                playerTwoLap = GameObject.Find("PlayerTwoLaps").GetComponent<Text>();
+                playerThreeLap = GameObject.Find("PlayerThreeLaps").GetComponent<Text>();
+                playerFourLap = GameObject.Find("PlayerFourLaps").GetComponent<Text>();
                 break;
             default:
                 break;
@@ -50,18 +89,246 @@ public class PositionManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        
+
         switch(psActor.playerCount)
         {
             case 2:
                 positionCalculator(kart1, go_kart1, kart2, go_kart2);
+                if(kart1.kartPosition == 1 && kart2.kartPosition == 2)
+                {
+                    playerOnePosition.text = "1st";
+                    playerTwoPosition.text = "2nd";
+
+                }
+                else
+                {
+                    playerOnePosition.text = "2nd";
+                    playerTwoPosition.text = "1st";
+                }
+
+                playerOneLap.text = (kart1.lapNumber + 1) + "/3";
+                playerTwoLap.text = (kart2.lapNumber + 1) + "/3";
+
                 break;
             case 3:
                 positionCalculator(kart1, go_kart1, kart2, go_kart2, kart3, go_kart3);
+                if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 3)
+                {
+                    playerOnePosition.text = "1st";
+                    playerTwoPosition.text = "2nd";
+                    playerThreePosition.text = "3rd";
+                }
+                else if(kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 2)
+                {
+                    playerOnePosition.text = "1st";
+                    playerTwoPosition.text = "3rd";
+                    playerThreePosition.text = "2nd";
+                }
+                else if(kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 1)
+                {
+                    playerOnePosition.text = "2nd";
+                    playerTwoPosition.text = "3rd";
+                    playerThreePosition.text = "1st";
+                }
+                else if(kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 3)
+                {
+                    playerOnePosition.text = "2nd";
+                    playerTwoPosition.text = "1st";
+                    playerFourPosition.text = "3rd";
+
+                }
+                else if(kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 2)
+                {
+                    playerOnePosition.text = "3rd";
+                    playerTwoPosition.text = "1st";
+                    playerThreePosition.text = "2nd";
+                }
+                else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 1)
+                {
+                    playerOnePosition.text = "3rd";
+                    playerTwoPosition.text = "2nd";
+                    playerThreePosition.text = "1st";
+                }
                 break;
             case 4:
                 positionCalculator(kart1, go_kart1, kart2, go_kart2, kart3, go_kart3, kart4, go_kart4);
+                //1st
+                if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 3 && kart4.kartPosition == 4)
+                {
+                    playerOnePosition.text = "1st";
+                    playerTwoPosition.text = "2nd";
+                    playerThreePosition.text = "3rd";
+                    playerFourPosition.text = "4th";
+                }
+                else if(kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 4 && kart4.kartPosition == 3)
+                {
+                    playerOnePosition.text = "1st";
+                    playerTwoPosition.text = "2nd";
+                    playerThreePosition.text = "4th";
+                    playerFourPosition.text = "3rd";
+                }
+                else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 2 && kart4.kartPosition == 4)
+                {
+                    playerOnePosition.text = "1st";
+                    playerTwoPosition.text = "3rd";
+                    playerThreePosition.text = "2nd";
+                    playerFourPosition.text = "4th";
+                }
+                else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 4 && kart4.kartPosition == 2)
+                {
+                    playerOnePosition.text = "1st";
+                    playerTwoPosition.text = "3rd";
+                    playerThreePosition.text = "1st";
+                    playerFourPosition.text = "4th";
+                }
+                else if (kart1.kartPosition == 1 && kart2.kartPosition == 4 && kart3.kartPosition == 2 && kart4.kartPosition == 3)
+                {
+                    playerOnePosition.text = "1st";
+                    playerTwoPosition.text = "4th";
+                    playerThreePosition.text = "2nd";
+                    playerFourPosition.text = "3rd";
+                }
+                else if (kart1.kartPosition == 1 && kart2.kartPosition == 4 && kart3.kartPosition == 3 && kart4.kartPosition == 2)
+                {
+                    playerOnePosition.text = "1st";
+                    playerTwoPosition.text = "4th";
+                    playerThreePosition.text = "3rd";
+                    playerFourPosition.text = "2nd";
+                }
+                //2md
+                else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 3 && kart4.kartPosition == 4)
+                {
+                    playerOnePosition.text = "2nd";
+                    playerTwoPosition.text = "1st";
+                    playerThreePosition.text = "3rd";
+                    playerFourPosition.text = "4th";
+                }
+                else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 4 && kart4.kartPosition == 3)
+                {
+                    playerOnePosition.text = "2nd";
+                    playerTwoPosition.text = "1st";
+                    playerThreePosition.text = "4th";
+                    playerFourPosition.text = "3rd";
+                }
+                else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 4 && kart4.kartPosition == 1)
+                {
+                    playerOnePosition.text = "2nd";
+                    playerTwoPosition.text = "3rd";
+                    playerThreePosition.text = "4th";
+                    playerFourPosition.text = "1st";
+                }
+                else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 1 && kart4.kartPosition == 4)
+                {
+                    playerOnePosition.text = "2nd";
+                    playerTwoPosition.text = "3rd";
+                    playerThreePosition.text = "1st";
+                    playerFourPosition.text = "4th";
+                }
+                else if (kart1.kartPosition == 2 && kart2.kartPosition == 4 && kart3.kartPosition == 1 && kart4.kartPosition == 3)
+                {
+                    playerOnePosition.text = "2nd";
+                    playerTwoPosition.text = "4th";
+                    playerThreePosition.text = "1st";
+                    playerFourPosition.text = "3rd";
+                }
+                else if (kart1.kartPosition == 2 && kart2.kartPosition == 4 && kart3.kartPosition == 3 && kart4.kartPosition == 1)
+                {
+                    playerOnePosition.text = "2nd";
+                    playerTwoPosition.text = "4th";
+                    playerThreePosition.text = "3rd";
+                    playerFourPosition.text = "1st";
+                }
+                //3rd
+                else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 2 && kart4.kartPosition == 4)
+                {
+                    playerOnePosition.text = "3rd";
+                    playerTwoPosition.text = "1st";
+                    playerThreePosition.text = "2nd";
+                    playerFourPosition.text = "4th";
+                }
+                else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 4 && kart4.kartPosition == 2)
+                {
+                    playerOnePosition.text = "3rd";
+                    playerTwoPosition.text = "1st";
+                    playerThreePosition.text = "4th";
+                    playerFourPosition.text = "2nd";
+                }
+                else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 1 && kart4.kartPosition == 4)
+                {
+                    playerOnePosition.text = "3rd";
+                    playerTwoPosition.text = "2nd";
+                    playerThreePosition.text = "1st";
+                    playerFourPosition.text = "4th";
+                }
+                else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 4 && kart4.kartPosition == 1)
+                {
+                    playerOnePosition.text = "3rd";
+                    playerTwoPosition.text = "2nd";
+                    playerThreePosition.text = "4th";
+                    playerFourPosition.text = "1st";
+                }
+                else if (kart1.kartPosition == 3 && kart2.kartPosition == 4 && kart3.kartPosition == 1 && kart4.kartPosition == 2)
+                {
+                    playerOnePosition.text = "3rd";
+                    playerTwoPosition.text = "4th";
+                    playerThreePosition.text = "1st";
+                    playerFourPosition.text = "2nd";
+                }
+                else if (kart1.kartPosition == 3 && kart2.kartPosition == 4 && kart3.kartPosition == 2 && kart4.kartPosition == 1)
+                {
+                    playerOnePosition.text = "3rd";
+                    playerTwoPosition.text = "4th";
+                    playerThreePosition.text = "2nd";
+                    playerFourPosition.text = "1st";
+                }
+                //4th
+                else if (kart1.kartPosition == 4 && kart2.kartPosition == 1 && kart3.kartPosition == 2 && kart4.kartPosition == 3)
+                {
+                    playerOnePosition.text = "4th";
+                    playerTwoPosition.text = "1st";
+                    playerThreePosition.text = "2nd";
+                    playerFourPosition.text = "3rd";
+                }
+                else if (kart1.kartPosition == 4 && kart2.kartPosition == 1 && kart3.kartPosition == 3 && kart4.kartPosition == 2)
+                {
+                    playerOnePosition.text = "4th";
+                    playerTwoPosition.text = "1st";
+                    playerThreePosition.text = "3rd";
+                    playerFourPosition.text = "2nd";
+                }
+                else if (kart1.kartPosition == 4 && kart2.kartPosition == 2 && kart3.kartPosition == 3 && kart4.kartPosition == 1)
+                {
+                    playerOnePosition.text = "4th";
+                    playerTwoPosition.text = "2nd";
+                    playerThreePosition.text = "3rd";
+                    playerFourPosition.text = "1st";
+                }
+                else if (kart1.kartPosition == 4 && kart2.kartPosition == 2 && kart3.kartPosition == 1 && kart4.kartPosition == 3)
+                {
+                    playerOnePosition.text = "4th";
+                    playerTwoPosition.text = "2nd";
+                    playerThreePosition.text = "1st";
+                    playerFourPosition.text = "3rd";
+                }
+                else if (kart1.kartPosition == 4 && kart2.kartPosition == 3 && kart3.kartPosition == 1 && kart4.kartPosition == 2)
+                {
+                    playerOnePosition.text = "4th";
+                    playerTwoPosition.text = "3rd";
+                    playerThreePosition.text = "1st";
+                    playerFourPosition.text = "2nd";
+                }
+                else if (kart1.kartPosition == 4 && kart2.kartPosition == 3 && kart3.kartPosition == 2 && kart4.kartPosition == 1)
+                {
+                    playerOnePosition.text = "4th";
+                    playerTwoPosition.text = "3rd";
+                    playerThreePosition.text = "2nd";
+                    playerFourPosition.text = "1st";
+                }
                 break;
         }
+
+      
   
 
     }
