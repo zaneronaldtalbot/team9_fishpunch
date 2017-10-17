@@ -20,10 +20,13 @@ public class LapsManager : MonoBehaviour
 
     private GameObject raceRestart;
     private Text restartText;
+    private Text first, second, third, fourth;
+    private Text raceEnd;
 
     private float restartTime = 10.0f;
+    private float endRaceTime = 10;
     private int intTime;
-
+    private int enndTime;
     public List<GameObject> checkPoints;
 
     private GameObject checkpoint;
@@ -37,8 +40,8 @@ public class LapsManager : MonoBehaviour
     [HideInInspector]
     public bool check4 = false;
 
-    
 
+    private KartActor2 kart1, kart2, kart3, kart4;
 
 
     public GameObject Lapcounter;
@@ -69,6 +72,35 @@ public class LapsManager : MonoBehaviour
 
         raceRestart = GameObject.Find("RestartRace");
         restartText = raceRestart.GetComponent<Text>();
+        first = GameObject.Find("firstPlace").GetComponent<Text>();
+        second = GameObject.Find("secondPlace").GetComponent<Text>();
+        third = GameObject.Find("thirdPlace").GetComponent<Text>();
+        fourth = GameObject.Find("fourthPlace").GetComponent<Text>();
+        raceEnd = GameObject.Find("RaceEnd").GetComponent<Text>();
+
+        switch(psActor.playerCount)
+        {
+            case 2:
+                kart1 = GameObject.Find("PlayerCharacter_001").GetComponent<KartActor2>();
+                kart2 = GameObject.Find("PlayerCharacter_002").GetComponent<KartActor2>();
+                break;
+            case 3:
+
+                kart1 = GameObject.Find("PlayerCharacter_001").GetComponent<KartActor2>();
+                kart2 = GameObject.Find("PlayerCharacter_002").GetComponent<KartActor2>();
+                kart3 = GameObject.Find("PlayerCharacter_003").GetComponent<KartActor2>();
+
+                break;
+            case 4:
+                kart1 = GameObject.Find("PlayerCharacter_001").GetComponent<KartActor2>();
+                kart2 = GameObject.Find("PlayerCharacter_002").GetComponent<KartActor2>();
+                kart3 = GameObject.Find("PlayerCharacter_003").GetComponent<KartActor2>();
+                kart4 = GameObject.Find("PlayerCharacter_004").GetComponent<KartActor2>();
+                break;
+        }
+        
+
+
     }
 
     private void Update()
@@ -76,7 +108,7 @@ public class LapsManager : MonoBehaviour
         Debug.Log("Lap: " + lapNumber);
 
 
-        switch(psActor.playerCount)
+        switch (psActor.playerCount)
         {
             case 1:
                 if (lapNumber == 4)
@@ -87,6 +119,8 @@ public class LapsManager : MonoBehaviour
                     restartText.enabled = true;
                     intTime = (int)restartTime;
                     restartText.text = "Race Restarts in: " + intTime.ToString();
+
+
 
                     iManager.enabled = false;
                     npc.enabled = false;
@@ -102,6 +136,53 @@ public class LapsManager : MonoBehaviour
                 }
                 break;
             case 2:
+                if (kart1.lapNumber == 2 || kart2.lapNumber == 3)
+                {
+                    endRaceTime -= Time.deltaTime;
+                    enndTime = (int)endRaceTime;
+                    raceEnd.enabled = true;
+                    raceEnd.text = "Race ends in: " + enndTime.ToString();
+
+                    if(enndTime < 0)
+                    {
+                        restartTime -= Time.deltaTime;
+
+                        raceOver = true;
+                        restartText.enabled = true;
+                        intTime = (int)restartTime;
+                        restartText.text = "Race Restarts in: " + intTime.ToString();
+
+                        first.enabled = true;
+                        second.enabled = true;
+                        if (kart1.kartPosition == 1 && kart2.kartPosition == 2)
+                        {
+                            first.color = Color.red;
+                            first.text += "1st: Player 1";
+                            second.color = Color.blue;
+                            second.text += "2nd: Player 2";
+                        }
+                        else
+                        {
+                            first.color = Color.blue;
+                            first.text = "1st: Player 2";
+                            second.color = Color.red;
+                            second.text += "2nd: Player 1";
+                        }
+
+
+                        iManager.enabled = false;
+                        npc.enabled = false;
+                        this.enabled = false;
+                        psActor.enabled = true;
+
+                        if (restartTime < 0)
+                        {
+                            SceneManager.LoadScene(1);
+                            Instantiate(newManager);
+                            GameObject.Destroy(this.gameObject);
+                        }
+                    }
+                }
                 if (lapNumber == 7)
                 {
                     restartTime -= Time.deltaTime;
@@ -110,6 +191,24 @@ public class LapsManager : MonoBehaviour
                     restartText.enabled = true;
                     intTime = (int)restartTime;
                     restartText.text = "Race Restarts in: " + intTime.ToString();
+
+                    first.enabled = true;
+                    second.enabled = true;
+                    if(kart1.kartPosition == 1 && kart2.kartPosition == 2)
+                    {
+                        first.color = Color.red;
+                        first.text += " Player 1";
+                        second.color = Color.blue;
+                        second.text += " Player 2";
+                    }
+                    else
+                    {
+                        first.color = Color.blue;
+                        first.text += " Player 2";
+                        second.color = Color.red;
+                        second.text += " Player 1";
+                    }
+                  
 
                     iManager.enabled = false;
                     npc.enabled = false;

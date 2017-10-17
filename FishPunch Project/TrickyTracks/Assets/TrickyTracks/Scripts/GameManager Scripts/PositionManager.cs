@@ -150,6 +150,10 @@ public class PositionManager : MonoBehaviour {
                     playerTwoPosition.text = "2nd";
                     playerThreePosition.text = "1st";
                 }
+
+                playerOneLap.text = (kart1.lapNumber + 1) + "/3";
+                playerTwoLap.text = (kart2.lapNumber + 1) + "/3";
+                playerThreeLap.text = (kart3.lapNumber + 1) + "/3";
                 break;
             case 4:
                 positionCalculator(kart1, go_kart1, kart2, go_kart2, kart3, go_kart3, kart4, go_kart4);
@@ -325,6 +329,11 @@ public class PositionManager : MonoBehaviour {
                     playerThreePosition.text = "2nd";
                     playerFourPosition.text = "1st";
                 }
+
+                playerOneLap.text = (kart1.lapNumber + 1) + "/3";
+                playerTwoLap.text = (kart2.lapNumber + 1) + "/3";
+                playerThreeLap.text = (kart3.lapNumber + 1) + "/3";
+                playerFourLap.text = (kart4.lapNumber + 1) + "/3";
                 break;
         }
 
