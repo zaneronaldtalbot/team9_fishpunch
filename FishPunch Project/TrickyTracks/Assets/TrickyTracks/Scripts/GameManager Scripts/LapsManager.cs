@@ -11,6 +11,8 @@ public class LapsManager : MonoBehaviour
     private NewPlacementController npc;
     private PlayerSelectActor psActor;
 
+
+
     public GameObject newManager;
 
     [HideInInspector]
@@ -35,13 +37,16 @@ public class LapsManager : MonoBehaviour
     [HideInInspector]
     public bool check4 = false;
 
+    
+
 
 
     public GameObject Lapcounter;
 
     public GameObject FinishLine;
+
     [HideInInspector]
-    public int lapNumber = 3;
+    public int lapNumber = 0;
 
     void Start()
     {
@@ -70,27 +75,125 @@ public class LapsManager : MonoBehaviour
     {
         Debug.Log("Lap: " + lapNumber);
 
-        if(lapNumber == 3)
+
+        switch(psActor.playerCount)
         {
-            restartTime -= Time.deltaTime;
+            case 1:
+                if (lapNumber == 4)
+                {
+                    restartTime -= Time.deltaTime;
 
-            raceOver = true;
-            restartText.enabled = true;
-            intTime = (int)restartTime;
-            restartText.text = "Race Restarts in: " + intTime.ToString();
+                    raceOver = true;
+                    restartText.enabled = true;
+                    intTime = (int)restartTime;
+                    restartText.text = "Race Restarts in: " + intTime.ToString();
 
-            iManager.enabled = false;
-            npc.enabled = false;
-            this.enabled = false;
-            psActor.enabled = true;
+                    iManager.enabled = false;
+                    npc.enabled = false;
+                    this.enabled = false;
+                    psActor.enabled = true;
 
-            if(restartTime < 0)
-            {
-                SceneManager.LoadScene(1);
-                Instantiate(newManager);
-                GameObject.Destroy(this.gameObject);
-            }
+                    if (restartTime < 0)
+                    {
+                        SceneManager.LoadScene(1);
+                        Instantiate(newManager);
+                        GameObject.Destroy(this.gameObject);
+                    }
+                }
+                break;
+            case 2:
+                if (lapNumber == 7)
+                {
+                    restartTime -= Time.deltaTime;
+
+                    raceOver = true;
+                    restartText.enabled = true;
+                    intTime = (int)restartTime;
+                    restartText.text = "Race Restarts in: " + intTime.ToString();
+
+                    iManager.enabled = false;
+                    npc.enabled = false;
+                    this.enabled = false;
+                    psActor.enabled = true;
+
+                    if (restartTime < 0)
+                    {
+                        SceneManager.LoadScene(1);
+                        Instantiate(newManager);
+                        GameObject.Destroy(this.gameObject);
+                    }
+                }
+                break;
+            case 3:
+                if (lapNumber == 10)
+                {
+                    restartTime -= Time.deltaTime;
+
+                    raceOver = true;
+                    restartText.enabled = true;
+                    intTime = (int)restartTime;
+                    restartText.text = "Race Restarts in: " + intTime.ToString();
+
+                    iManager.enabled = false;
+                    npc.enabled = false;
+                    this.enabled = false;
+                    psActor.enabled = true;
+
+                    if (restartTime < 0)
+                    {
+                        SceneManager.LoadScene(1);
+                        Instantiate(newManager);
+                        GameObject.Destroy(this.gameObject);
+                    }
+                }
+                break;
+            case 4:
+                if (lapNumber == 13)
+                {
+                    restartTime -= Time.deltaTime;
+
+                    raceOver = true;
+                    restartText.enabled = true;
+                    intTime = (int)restartTime;
+                    restartText.text = "Race Restarts in: " + intTime.ToString();
+
+                    iManager.enabled = false;
+                    npc.enabled = false;
+                    this.enabled = false;
+                    psActor.enabled = true;
+
+                    if (restartTime < 0)
+                    {
+                        SceneManager.LoadScene(1);
+                        Instantiate(newManager);
+                        GameObject.Destroy(this.gameObject);
+                    }
+                }
+                break;
         }
+
+
+        //if(lapNumber == 3)
+        //{
+        //    restartTime -= Time.deltaTime;
+
+        //    raceOver = true;
+        //    restartText.enabled = true;
+        //    intTime = (int)restartTime;
+        //    restartText.text = "Race Restarts in: " + intTime.ToString();
+
+        //    iManager.enabled = false;
+        //    npc.enabled = false;
+        //    this.enabled = false;
+        //    psActor.enabled = true;
+
+        //    if(restartTime < 0)
+        //    {
+        //        SceneManager.LoadScene(1);
+        //        Instantiate(newManager);
+        //        GameObject.Destroy(this.gameObject);
+        //    }
+        //}
     }
 
 

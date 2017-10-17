@@ -7,8 +7,20 @@ public class KartActor2 : MonoBehaviour {
     //Lap info.
     private LapsManager lapManager;
 
-    private GameObject lastCheckPoint;
+    [HideInInspector]
+    public GameObject lastCheckPoint;
 
+    [HideInInspector]
+    public GameObject nextCheckPoint;
+
+    [HideInInspector]
+    public int checkPointCounter = 0;
+
+    [HideInInspector]
+    public int kartPosition = 0;
+
+    [HideInInspector]
+    public int lapNumber = 0;
 
     bool check1 = false;
     bool check2 = false;
@@ -127,7 +139,7 @@ public class KartActor2 : MonoBehaviour {
         turnStrengthCopy = turnStrength;
 
         lapManager = GameObject.Find("Manager").GetComponent<LapsManager>();
-
+        
         
 
         checkPointPosition = GameObject.Find("RespawnPoint");
@@ -190,6 +202,14 @@ public class KartActor2 : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        Debug.Log("Kart " + playerNumber + ": " + kartPosition);
+
+        if(checkPointCounter == 0)
+        {
+            nextCheckPoint = lapManager.checkPoints[0];
+            lastCheckPoint = lapManager.FinishLine;
+        }
 
 
         //for(int i = 0; i <= 1; i++)
@@ -528,6 +548,8 @@ public class KartActor2 : MonoBehaviour {
                 {
                     check1 = true;
                     lastCheckPoint = lapManager.checkPoints[0];
+                    nextCheckPoint = lapManager.checkPoints[1];
+                    checkPointCounter += 1;
                 }
             }
 
@@ -537,6 +559,8 @@ public class KartActor2 : MonoBehaviour {
                 {
                     check2 = true;
                     lastCheckPoint = lapManager.checkPoints[1];
+                    nextCheckPoint = lapManager.checkPoints[2];
+                    checkPointCounter += 1;
                 }
             }
 
@@ -546,6 +570,8 @@ public class KartActor2 : MonoBehaviour {
                 {
                     check3 = true;
                     lastCheckPoint = lapManager.checkPoints[2];
+                    nextCheckPoint = lapManager.checkPoints[3];
+                    checkPointCounter += 1;
                 }
             }
 
@@ -555,6 +581,8 @@ public class KartActor2 : MonoBehaviour {
                 {
                     check4 = true;
                     lastCheckPoint = lapManager.checkPoints[3];
+                    nextCheckPoint = lapManager.FinishLine;
+                    checkPointCounter += 1;
                 }
             }
         }
@@ -564,12 +592,15 @@ public class KartActor2 : MonoBehaviour {
             if(check1 && check2 && check3 && check4)
             {
                 lastCheckPoint = lapManager.FinishLine;
+                lapNumber += 1;
                 lapManager.lapNumber += 1;
                 check1 = false;
                 check2 = false;
                 check3 = false;
                 check4 = false;
+                checkPointCounter = 0;
             }
+       
         }
 
 

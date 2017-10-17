@@ -39,6 +39,7 @@ public class ItemManager : MonoBehaviour {
     void Update() {
         timer1 += Time.deltaTime;
 
+        
 
         //Grabs copies of the players kart gameobject and script
         //based on the connected controller total.
