@@ -82,6 +82,7 @@ public class PlayerSelectActor : MonoBehaviour
 
         int intTimer = (int)timer;
         textTimer.text = "Time Left: " + intTimer.ToString();
+       
     
         for (int i = 1; i <= 4; ++i)
         {

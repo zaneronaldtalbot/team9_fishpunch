@@ -6,24 +6,24 @@ public class KartActor2 : MonoBehaviour {
 
 
     //Lap info.
+    //Private lap manager instance.
     private LapsManager lapManager;
-
+    
+    //Public lap related varaibles.
     [HideInInspector]
     public GameObject lastCheckPoint;
-
     [HideInInspector]
     public GameObject nextCheckPoint;
-
     [HideInInspector]
     public int checkPointCounter = 0;
-
     [HideInInspector]
     public int kartPosition = 0;
-
+    [HideInInspector]
+    public int finalPosition = 0;
     [HideInInspector]
     public int lapNumber = 0;
 
-    //Checkpoint checks boiiiii.
+    //Checkpoint checks
     bool check1 = false;
     bool check2 = false;
     bool check3 = false;
@@ -44,7 +44,7 @@ public class KartActor2 : MonoBehaviour {
     public ParticleSystem[] wheelTrails = new ParticleSystem[2];
 
     
-   
+    //Object to apply mesh to turn on and off
     public GameObject mesh;
 
     //Makes controller less sensitive to input.
@@ -211,6 +211,11 @@ public class KartActor2 : MonoBehaviour {
     void Update() {
 
         Debug.Log("Kart " + playerNumber + ": " + kartPosition);
+
+        if(lapManager.endTime < 0 && lapNumber < 3)
+        {
+            finalPosition = kartPosition;
+        }
 
         if(checkPointCounter == 0)
         {
@@ -594,9 +599,9 @@ public class KartActor2 : MonoBehaviour {
             }
         }
 
-        if(coll.gameObject.tag == "StartLine")
+        if (coll.gameObject.tag == "StartLine")
         {
-            if(check1 && check2 && check3 && check4)
+            if ((check1 && check2 && check3 && check4) && (lapNumber < 3))
             {
                 lastCheckPoint = lapManager.FinishLine;
                 lapNumber += 1;
@@ -608,10 +613,12 @@ public class KartActor2 : MonoBehaviour {
                 check4 = false;
                 checkPointCounter = 0;
             }
-       
+            if (check1 && check2 && check3 && check4 && (lapNumber >= 3))
+            {
+                finalPosition = kartPosition;
+            }
+
         }
-
-
         if (coll.gameObject.tag == "ItemRPG")
         {
             GameObject.Destroy(coll.gameObject.transform.parent.gameObject);

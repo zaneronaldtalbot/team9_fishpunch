@@ -26,7 +26,8 @@ public class LapsManager : MonoBehaviour
     private float restartTime = 10.0f;
     private float endRaceTime = 10;
     private int intTime;
-    private int enndTime;
+    [HideInInspector]
+    public int endTime;
     public List<GameObject> checkPoints;
 
     private GameObject checkpoint;
@@ -50,7 +51,6 @@ public class LapsManager : MonoBehaviour
 
     [HideInInspector]
     public int lapNumber = 0;
-
     void Start()
     {
         npc = this.gameObject.GetComponent<NewPlacementController>();
@@ -111,7 +111,7 @@ public class LapsManager : MonoBehaviour
         switch (psActor.playerCount)
         {
             case 1:
-                if (lapNumber == 4)
+                if (lapNumber == 3)
                 {
                     restartTime -= Time.deltaTime;
 
@@ -136,18 +136,18 @@ public class LapsManager : MonoBehaviour
                 }
                 break;
             case 2:
-                if (kart1.lapNumber == 2 || kart2.lapNumber == 3)
+                if ((kart1.lapNumber == 3 || kart2.lapNumber == 3) && !raceOver)
                 {
                     endRaceTime -= Time.deltaTime;
-                    enndTime = (int)endRaceTime;
+                    endTime = (int)endRaceTime;
                     raceEnd.enabled = true;
-                    raceEnd.text = "Race ends in: " + enndTime.ToString();
-
-                    if(enndTime < 0)
+                    raceEnd.text = "Race ends in: " + endTime.ToString();
+                }
+                if (endTime < 0)
                     {
                         restartTime -= Time.deltaTime;
-
                         raceOver = true;
+                             raceEnd.enabled = false;
                         restartText.enabled = true;
                         intTime = (int)restartTime;
                         restartText.text = "Race Restarts in: " + intTime.ToString();
@@ -157,16 +157,16 @@ public class LapsManager : MonoBehaviour
                         if (kart1.kartPosition == 1 && kart2.kartPosition == 2)
                         {
                             first.color = Color.red;
-                            first.text += "1st: Player 1";
+                            first.text+= "1st: Player 1";
                             second.color = Color.blue;
-                            second.text += "2nd: Player 2";
+                            second.text = "2nd: Player 2";
                         }
-                        else
+                        else if(kart1.kartPosition == 2 && kart2.kartPosition ==1)
                         {
                             first.color = Color.blue;
                             first.text = "1st: Player 2";
                             second.color = Color.red;
-                            second.text += "2nd: Player 1";
+                            second.text = "2nd: Player 1";
                         }
 
 
@@ -181,47 +181,47 @@ public class LapsManager : MonoBehaviour
                             Instantiate(newManager);
                             GameObject.Destroy(this.gameObject);
                         }
-                    }
+                  
                 }
-                if (lapNumber == 7)
-                {
-                    restartTime -= Time.deltaTime;
+                //if (lapNumber == 7)
+                //{
+                //    restartTime -= Time.deltaTime;
 
-                    raceOver = true;
-                    restartText.enabled = true;
-                    intTime = (int)restartTime;
-                    restartText.text = "Race Restarts in: " + intTime.ToString();
+                //    raceOver = true;
+                //    restartText.enabled = true;
+                //    intTime = (int)restartTime;
+                //    restartText.text = "Race Restarts in: " + intTime.ToString();
 
-                    first.enabled = true;
-                    second.enabled = true;
-                    if(kart1.kartPosition == 1 && kart2.kartPosition == 2)
-                    {
-                        first.color = Color.red;
-                        first.text += " Player 1";
-                        second.color = Color.blue;
-                        second.text += " Player 2";
-                    }
-                    else
-                    {
-                        first.color = Color.blue;
-                        first.text += " Player 2";
-                        second.color = Color.red;
-                        second.text += " Player 1";
-                    }
+                //    first.enabled = true;
+                //    second.enabled = true;
+                //    if(kart1.kartPosition == 1 && kart2.kartPosition == 2)
+                //    {
+                //        first.color = Color.red;
+                //        first.text += " Player 1";
+                //        second.color = Color.blue;
+                //        second.text += " Player 2";
+                //    }
+                //    else
+                //    {
+                //        first.color = Color.blue;
+                //        first.text += " Player 2";
+                //        second.color = Color.red;
+                //        second.text += " Player 1";
+                //    }
                   
 
-                    iManager.enabled = false;
-                    npc.enabled = false;
-                    this.enabled = false;
-                    psActor.enabled = true;
+                //    iManager.enabled = false;
+                //    npc.enabled = false;
+                //    this.enabled = false;
+                //    psActor.enabled = true;
 
-                    if (restartTime < 0)
-                    {
-                        SceneManager.LoadScene(1);
-                        Instantiate(newManager);
-                        GameObject.Destroy(this.gameObject);
-                    }
-                }
+                //    if (restartTime < 0)
+                //    {
+                //        SceneManager.LoadScene(1);
+                //        Instantiate(newManager);
+                //        GameObject.Destroy(this.gameObject);
+                //    }
+                //}
                 break;
             case 3:
                 if (lapNumber == 10)

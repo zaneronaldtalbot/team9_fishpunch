@@ -79,6 +79,7 @@ public class GamePadManager : MonoBehaviour {
             itemManager.enabled = true;
             posManager.enabled = true;
             psActor.enabled = false;
+            GamePadCount = psActor.playerCount;
 
             newPlacementController.enabled = true;  
             if (!findGameObjects)
@@ -217,7 +218,7 @@ public class GamePadManager : MonoBehaviour {
     public void activatePrefab()
     {
         //Activates the prefab depending on the connected total of controllers.
-        if (ConnectedTotal() == 1 && player1 != null)
+        if (psActor.playerCount == 1 && player1 != null)
         {
             player1.SetActive(true);
 
@@ -228,21 +229,21 @@ public class GamePadManager : MonoBehaviour {
             player4.SetActive(false);
             
         }
-        else if (ConnectedTotal() == 2 && player2 != null)
+        else if (psActor.playerCount == 2 && player2 != null)
         {
             player1.SetActive(false);
             player2.SetActive(true);
             player3.SetActive(false);
             player4.SetActive(false);
         }
-        else if (ConnectedTotal() == 3 && player3 != null)
+        else if (psActor.playerCount == 3 && player3 != null)
         {
             player3.SetActive(true);
             player1.SetActive(false);
             player2.SetActive(false);
             player4.SetActive(false);
         }
-        else if (ConnectedTotal() == 4 && player4 != null)
+        else if (psActor.playerCount == 4 && player4 != null)
         {
             player1.SetActive(false);
             player2.SetActive(false);

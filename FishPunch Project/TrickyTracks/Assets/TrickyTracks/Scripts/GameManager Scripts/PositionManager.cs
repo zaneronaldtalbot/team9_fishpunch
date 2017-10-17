@@ -107,9 +107,14 @@ public class PositionManager : MonoBehaviour {
                     playerTwoPosition.text = "1st";
                 }
 
-                playerOneLap.text = (kart1.lapNumber + 1) + "/3";
-                playerTwoLap.text = (kart2.lapNumber + 1) + "/3";
-
+                if (kart1.lapNumber < 3)
+                {
+                    playerOneLap.text = (kart1.lapNumber + 1) + "/3";
+                }
+                if (kart2.lapNumber < 3)
+                {
+                    playerTwoLap.text = (kart2.lapNumber + 1) + "/3";
+                }
                 break;
             case 3:
                 positionCalculator(kart1, go_kart1, kart2, go_kart2, kart3, go_kart3);
