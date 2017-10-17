@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Tree_002_Enviroment_001_Sphere
+    4300002: Tree_002_Environment_001_Sphere
   materials:
     importMaterials: 0
     materialName: 0

@@ -6,9 +6,13 @@ ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Sword_005_Enviroment_001_Full
     400000: //RootNode
+    400002: Sword_005_Enviroment_001_Full
     2300000: //RootNode
+    2300002: Sword_005_Enviroment_001_Full
     3300000: //RootNode
+    3300002: Sword_005_Enviroment_001_Full
     4300000: Sword_005_Enviroment_001_Full
   materials:
     importMaterials: 0
