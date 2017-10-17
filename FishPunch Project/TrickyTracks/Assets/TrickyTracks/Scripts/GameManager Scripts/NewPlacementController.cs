@@ -8,6 +8,8 @@ public class NewPlacementController : MonoBehaviour {
     private GamePadManager gpManager;
     private PlayerSelectActor psActor;
 
+    private GameObject itemListcopy1, itemListCopy2, itemListCopy3, itemListCopy4;
+
     public float prefabRotationSpeed = 2.0f;
 
     private xbox_gamepad gamepad1, gamepad2, gamepad3, gamepad4;
@@ -220,81 +222,111 @@ public class NewPlacementController : MonoBehaviour {
         switch(psActor.playerCount)
         {
             case 1:
-                if (currentPlaceableObject1 == null)
+                if (gamepad1.GetButtonDown("A"))
                 {
-                    if (itemsP1.Count > 0)
+                    if (currentPlaceableObject1 == null)
                     {
-                        currentPlaceableObject1 = Instantiate(placeableObject1);
+                        if (itemsP1.Count > 0)
+                        {
+                            currentPlaceableObject1 = Instantiate(placeableObject1);
 
+                        }
                     }
                 }
                 break;
             case 2:
-                if (currentPlaceableObject1 == null)
+                if (gamepad1.GetButtonDown("A"))
                 {
-                    if (itemsP1.Count > 0)
+                    if (currentPlaceableObject1 == null)
                     {
-                        currentPlaceableObject1 = Instantiate(placeableObject1);
+                        if (itemsP1.Count > 0)
+                        {
+                            currentPlaceableObject1 = Instantiate(placeableObject1);
+                        }
                     }
                 }
-                if (currentPlaceableObject2 == null)
+                if (gamepad2.GetButtonDown("A"))
                 {
-                    if (itemsP2.Count > 0)
+                    if (currentPlaceableObject2 == null)
                     {
-                        currentPlaceableObject2 = Instantiate(placeableObject2);
+                        if (itemsP2.Count > 0)
+                        {
+                            currentPlaceableObject2 = Instantiate(placeableObject2);
+                        }
                     }
                 }
                 break;
             case 3:
-                if (currentPlaceableObject1 == null)
+                if (gamepad1.GetButtonDown("A"))
                 {
-                    if (itemsP1.Count > 0)
+                    if (currentPlaceableObject1 == null)
                     {
-                        currentPlaceableObject1 = Instantiate(placeableObject1);
+                        if (itemsP1.Count > 0)
+                        {
+                            currentPlaceableObject1 = Instantiate(placeableObject1);
+                        }
                     }
                 }
-                if (currentPlaceableObject2 == null)
+                if (gamepad2.GetButtonDown("A"))
                 {
-                    if (itemsP2.Count > 0)
+                    if (currentPlaceableObject2 == null)
                     {
-                        currentPlaceableObject2 = Instantiate(placeableObject2);
+                        if (itemsP2.Count > 0)
+                        {
+                            currentPlaceableObject2 = Instantiate(placeableObject2);
+                        }
                     }
                 }
-                if(currentPlaceableObject3 == null)
+                if (gamepad3.GetButtonDown("A"))
                 {
-                    if(itemsP3.Count > 0)
+                    if (currentPlaceableObject3 == null)
                     {
-                        currentPlaceableObject3 = Instantiate(placeableObject3);
+                        if (itemsP3.Count > 0)
+                        {
+                            currentPlaceableObject3 = Instantiate(placeableObject3);
+                        }
                     }
                 }
                 break;
             case 4:
-                if (currentPlaceableObject1 == null)
+                if (gamepad1.GetButtonDown("A"))
                 {
-                    if (itemsP1.Count > 0)
+                    if (currentPlaceableObject1 == null)
                     {
-                        currentPlaceableObject1 = Instantiate(placeableObject1);
+                        if (itemsP1.Count > 0)
+                        {
+                            currentPlaceableObject1 = Instantiate(placeableObject1);
+                        }
                     }
                 }
-                if (currentPlaceableObject2 == null)
+                if (gamepad2.GetButtonDown("A"))
                 {
-                    if (itemsP2.Count > 0)
+                    if (currentPlaceableObject2 == null)
                     {
-                        currentPlaceableObject2 = Instantiate(placeableObject2);
+                        if (itemsP2.Count > 0)
+                        {
+                            currentPlaceableObject2 = Instantiate(placeableObject2);
+                        }
                     }
                 }
-                if (currentPlaceableObject3 == null)
+                if (gamepad3.GetButtonDown("A"))
                 {
-                    if (itemsP3.Count > 0)
+                    if (currentPlaceableObject3 == null)
                     {
-                        currentPlaceableObject3 = Instantiate(placeableObject3);
+                        if (itemsP3.Count > 0)
+                        {
+                            currentPlaceableObject3 = Instantiate(placeableObject3);
+                        }
                     }
                 }
-                if (currentPlaceableObject4 == null)
+                if (gamepad4.GetButtonDown("A"))
                 {
-                    if (itemsP4.Count > 0)
+                    if (currentPlaceableObject4 == null)
                     {
-                        currentPlaceableObject4 = Instantiate(placeableObject4);
+                        if (itemsP4.Count > 0)
+                        {
+                            currentPlaceableObject4 = Instantiate(placeableObject4);
+                        }
                     }
                 }
                 break;
@@ -323,115 +355,167 @@ public class NewPlacementController : MonoBehaviour {
     {
         if (psActor.playerCount == 1)
         {
-            if (gamepad1.GetButton("RB"))
+            if (gamepad1.GetButton("A"))
             {
-                gamepad1.triggerRotation += prefabRotationSpeed;
-            }
-            if (gamepad1.GetButton("LB"))
-            {
-                gamepad1.triggerRotation -= prefabRotationSpeed;
+                if (gamepad1.GetButton("RB"))
+                {
+                    gamepad1.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad1.GetButton("LB"))
+                {
+                    gamepad1.triggerRotation -= prefabRotationSpeed;
+                }
             }
         }
 
         if (psActor.playerCount == 2)
         {
-            if (gamepad1.GetButton("RB"))
+            if (gamepad1.GetButtonDown("A"))
             {
-                gamepad1.triggerRotation += prefabRotationSpeed;
+                if (gamepad1.GetButton("RB"))
+                {
+                    gamepad1.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad1.GetButton("LB"))
+                {
+                    gamepad1.triggerRotation -= prefabRotationSpeed;
+                }
             }
-            if (gamepad1.GetButton("LB"))
+            if (gamepad2.GetButtonDown("A"))
             {
-                gamepad1.triggerRotation -= prefabRotationSpeed;
-            }
-            if (gamepad2.GetButton("RB"))
-            {
-                gamepad2.triggerRotation += prefabRotationSpeed;
-            }
-            if (gamepad2.GetButton("LB"))
-            {
-                gamepad2.triggerRotation -= prefabRotationSpeed;
+                if (gamepad2.GetButton("RB"))
+                {
+                    gamepad2.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad2.GetButton("LB"))
+                {
+                    gamepad2.triggerRotation -= prefabRotationSpeed;
+                }
             }
         }
 
         if (psActor.playerCount == 3)
         {
-            if (gamepad1.GetButton("RB"))
+            if (gamepad1.GetButtonDown("A"))
             {
-                gamepad1.triggerRotation += prefabRotationSpeed;
+                if (gamepad1.GetButton("RB"))
+                {
+                    gamepad1.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad1.GetButton("LB"))
+                {
+                    gamepad1.triggerRotation -= prefabRotationSpeed;
+                }
             }
-            if (gamepad1.GetButton("LB"))
+            if (gamepad2.GetButtonDown("A"))
             {
-                gamepad1.triggerRotation -= prefabRotationSpeed;
+                if (gamepad2.GetButton("RB"))
+                {
+                    gamepad2.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad2.GetButton("LB"))
+                {
+                    gamepad2.triggerRotation -= prefabRotationSpeed;
+                }
             }
-            if (gamepad2.GetButton("RB"))
+            if (gamepad3.GetButtonDown("A"))
             {
-                gamepad2.triggerRotation += prefabRotationSpeed;
-            }
-            if (gamepad2.GetButton("LB"))
-            {
-                gamepad2.triggerRotation -= prefabRotationSpeed;
-            }
-            if (gamepad3.GetButton("RB"))
-            {
-                gamepad3.triggerRotation += prefabRotationSpeed;
-            }
-            if (gamepad3.GetButton("LB"))
-            {
-                gamepad3.triggerRotation -= prefabRotationSpeed;
+                if (gamepad3.GetButton("RB"))
+                {
+                    gamepad3.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad3.GetButton("LB"))
+                {
+                    gamepad3.triggerRotation -= prefabRotationSpeed;
+                }
             }
 
         }
 
         if (psActor.playerCount == 4)
         {
-            if (gamepad1.GetButton("RB"))
+            if (gamepad1.GetButtonDown("A"))
             {
-                gamepad1.triggerRotation += prefabRotationSpeed;
+                if (gamepad1.GetButton("RB"))
+                {
+                    gamepad1.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad1.GetButton("LB"))
+                {
+                    gamepad1.triggerRotation -= prefabRotationSpeed;
+                }
             }
-            if (gamepad1.GetButton("LB"))
+            if (gamepad2.GetButtonDown("A"))
             {
-                gamepad1.triggerRotation -= prefabRotationSpeed;
+                if (gamepad2.GetButton("RB"))
+                {
+                    gamepad2.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad2.GetButton("LB"))
+                {
+                    gamepad2.triggerRotation -= prefabRotationSpeed;
+                }
             }
-            if (gamepad2.GetButton("RB"))
+            if (gamepad3.GetButtonDown("A"))
             {
-                gamepad2.triggerRotation += prefabRotationSpeed;
+                if (gamepad3.GetButton("RB"))
+                {
+                    gamepad3.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad3.GetButton("LB"))
+                {
+                    gamepad3.triggerRotation -= prefabRotationSpeed;
+                }
             }
-            if (gamepad2.GetButton("LB"))
+            if (gamepad4.GetButtonDown("A"))
             {
-                gamepad2.triggerRotation -= prefabRotationSpeed;
-            }
-            if (gamepad3.GetButton("RB"))
-            {
-                gamepad3.triggerRotation += prefabRotationSpeed;
-            }
-            if (gamepad3.GetButton("LB"))
-            {
-                gamepad3.triggerRotation -= prefabRotationSpeed;
-            }
-            if (gamepad4.GetButton("RB"))
-            {
-                gamepad4.triggerRotation += prefabRotationSpeed;
-            }
-            if (gamepad4.GetButton("LB"))
-            {
-                gamepad4.triggerRotation -= prefabRotationSpeed;
+                if (gamepad4.GetButton("RB"))
+                {
+                    gamepad4.triggerRotation += prefabRotationSpeed;
+                }
+                if (gamepad4.GetButton("LB"))
+                {
+                    gamepad4.triggerRotation -= prefabRotationSpeed;
+                }
             }
 
         }
 
-
-
-
-
     }
 
+    void changePrefab()
+    {
+        switch (psActor.playerCount)
+        {
+            case 1:
+                if (itemsP1.Count > 0)
+                {
+                    if (gamepad1.GetButtonDown("RB"))
+                    {
+                        itemListcopy1 = itemsP1[0];
+                        itemsP1[0] = itemsP1[1];
+
+                        //itemsP1[2] 
+                    }
+                }
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
+    }
 
     void releasePrefab()
     {
         switch(psActor.playerCount)
         {
             case 1:
-                if (gamepad1.GetButtonDown("A"))
+                if (gamepad1.GetButtonUp("A"))
                 {
                     if (itemsP1.Count > 0)
                     {
@@ -448,7 +532,7 @@ public class NewPlacementController : MonoBehaviour {
 
                 break;
             case 2:
-                if (gamepad1.GetButtonDown("A"))
+                if (gamepad1.GetButtonUp("A"))
                 {
                     if (itemsP1.Count > 0)
                     {
@@ -461,7 +545,7 @@ public class NewPlacementController : MonoBehaviour {
                         placeableObject1 = null;
                     }
                 }
-                if (gamepad2.GetButtonDown("A"))
+                if (gamepad2.GetButtonUp("A"))
                 {
                     if (itemsP2.Count > 0)
                     {
@@ -477,7 +561,7 @@ public class NewPlacementController : MonoBehaviour {
 
                 break;
             case 3:
-                if (gamepad1.GetButtonDown("A"))
+                if (gamepad1.GetButtonUp("A"))
                 {
                     if (itemsP1.Count > 0)
                     {
@@ -490,7 +574,7 @@ public class NewPlacementController : MonoBehaviour {
                         placeableObject1 = null;
                     }
                 }
-                if (gamepad2.GetButtonDown("A"))
+                if (gamepad2.GetButtonUp("A"))
                 {
                     if (itemsP2.Count > 0)
                     {
@@ -503,7 +587,7 @@ public class NewPlacementController : MonoBehaviour {
                         placeableObject2 = null;
                     }
                 }
-                if (gamepad3.GetButtonDown("A"))
+                if (gamepad3.GetButtonUp("A"))
                 {
                     if (itemsP3.Count > 0)
                     {
@@ -518,7 +602,7 @@ public class NewPlacementController : MonoBehaviour {
                 }
                 break;
             case 4:
-                if (gamepad1.GetButtonDown("A"))
+                if (gamepad1.GetButtonUp("A"))
                 {
                     if (itemsP1.Count > 0)
                     {
@@ -531,7 +615,7 @@ public class NewPlacementController : MonoBehaviour {
                         placeableObject1 = null;
                     }
                 }
-                if (gamepad2.GetButtonDown("A"))
+                if (gamepad2.GetButtonUp("A"))
                 {
                     if (itemsP2.Count > 0)
                     {
@@ -544,7 +628,7 @@ public class NewPlacementController : MonoBehaviour {
                         placeableObject2 = null;
                     }
                 }
-                if (gamepad3.GetButtonDown("A"))
+                if (gamepad3.GetButtonUp("A"))
                 {
                     if (itemsP3.Count > 0)
                     {
@@ -557,7 +641,7 @@ public class NewPlacementController : MonoBehaviour {
                         placeableObject3 = null;
                     }
                 }
-                if (gamepad4.GetButtonDown("A"))
+                if (gamepad4.GetButtonUp("A"))
                 {
                     if (itemsP4.Count > 0)
                     {
