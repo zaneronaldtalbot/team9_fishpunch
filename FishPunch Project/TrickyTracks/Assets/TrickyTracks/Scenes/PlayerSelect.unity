@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731195, g: 0.3807401, b: 0.35872737, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 111365627}
   m_Layer: 0
-  m_Name: '----------UI----------'
+  m_Name: '-----------------UI-----------------'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -615,7 +615,7 @@ GameObject:
   m_Component:
   - component: {fileID: 264361687}
   m_Layer: 0
-  m_Name: '----------Lighting----------'
+  m_Name: '-----------------Lighting-----------------'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -899,7 +899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413862683}
   m_Layer: 0
-  m_Name: '----------Managers----------'
+  m_Name: '-----------------Managers-----------------'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2020,7 +2020,7 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c5a5406cc106a1a4fa5c344c95fed995, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2641,7 +2641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2117116959}
   m_Layer: 0
-  m_Name: '----------Camera----------'
+  m_Name: '-----------------Camera-----------------'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
