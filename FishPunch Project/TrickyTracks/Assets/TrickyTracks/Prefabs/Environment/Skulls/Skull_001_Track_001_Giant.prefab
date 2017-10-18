@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33058065570940516}
   - component: {fileID: 23216613648587748}
   - component: {fileID: 64337904327320344}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Skull_001_Track_001_Giant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4845738535321762}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Skull_001_Track_001_Giant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,27 +50,27 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1177367742438778}
-  m_LocalRotation: {x: 0.08977623, y: 0.6052501, z: -0.053507082, w: 0.7891449}
-  m_LocalPosition: {x: -125.16971, y: 11.689999, z: -190.8476}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -242.51332, y: -49.885437, z: -67.30439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4915374583740984}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 11.915001, y: 0.12200001, z: 1.419}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4915374583740984
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020236784396162}
-  m_LocalRotation: {x: -0.081516646, y: -0.7023914, z: 0.08151641, w: 0.7023935}
-  m_LocalPosition: {x: -139.99998, y: 14.3, z: 66}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4845738535321762}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 13.240001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23216613648587748
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -84,7 +84,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b577e0f314034794c87443f783553b1f, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

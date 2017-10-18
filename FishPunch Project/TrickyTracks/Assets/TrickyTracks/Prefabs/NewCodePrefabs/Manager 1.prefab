@@ -26,7 +26,6 @@ GameObject:
   - component: {fileID: 114614013113791172}
   - component: {fileID: 114868786040494802}
   - component: {fileID: 114047121571280066}
-  - component: {fileID: 114028757716800992}
   m_Layer: 0
   m_Name: Manager 1
   m_TagString: Untagged
@@ -47,31 +46,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114028757716800992
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1054725577444936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12dcb3240b0a5cd439a855db80705d07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114047121571280066
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054725577444936}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bc11858c79b4d643b510b7022e9204b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   newManager: {fileID: 1054725577444936}
   raceOver: 0
-  endTime: 0
   checkPoints: []
   check1: 0
   check2: 0
@@ -97,7 +84,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054725577444936}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e03c3cd8fc07d240bb6baae8162a7b1, type: 3}
   m_Name: 
@@ -106,8 +93,8 @@ MonoBehaviour:
   kart2: {fileID: 0}
   kart3: {fileID: 0}
   kart4: {fileID: 0}
-  Rocket: {fileID: 1269485267151800, guid: 2a7eea52854ce8343aff82ddba21d99a, type: 2}
-  Mine: {fileID: 1167898131728830, guid: 937eeef060e9f3c4ca1b342a59b6610d, type: 2}
+  Rocket: {fileID: 1357176560903178, guid: 275862ff1dce50846ac756d8e5d49664, type: 2}
+  Mine: {fileID: 1259604615254950, guid: 6f99728a08694fb4690150683632f213, type: 2}
   rocketFired: 0
 --- !u!114 &114640896587626856
 MonoBehaviour:
@@ -156,28 +143,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placingCountdown: 20
   cursor: {fileID: 0}
-  buzzSaw: {fileID: 1849817869010572, guid: 127ba31ea85039b4a90fa3e4bcc21419, type: 2}
-  oilSlick: {fileID: 1108393284799084, guid: ad2eab46c757e074190e52851549c570, type: 2}
-  boost: {fileID: 1679311294139506, guid: f9d30d0bf5f463a44be51178cf891aa8, type: 2}
-  mine: {fileID: 1167898131728830, guid: 937eeef060e9f3c4ca1b342a59b6610d, type: 2}
-  rpg: {fileID: 1741885286793100, guid: 438f90e60ad951f46a151d6fea7f2dd3, type: 2}
-  ramp: {fileID: 1919238938044964, guid: 0477b951a96b6a44c9112de40d8dce0e, type: 2}
+  buzzSaw: {fileID: 1788449724218994, guid: 2a694c808f1a4a34295b4c29cb44477d, type: 2}
+  oilSlick: {fileID: 1199855343562384, guid: c0b4a191f0f45cf4bac5541ebe946ef6, type: 2}
+  boost: {fileID: 1009864689174384, guid: f72d98d87524fb545a493d8b6e5ae535, type: 2}
+  mine: {fileID: 1758811178503366, guid: c23d292bb188b744db8c132aba7cf716, type: 2}
+  rpg: {fileID: 1222910457246154, guid: d2bd37217e7b2ba4fb22cd8f31da45b6, type: 2}
+  ramp: {fileID: 1346199037696874, guid: e7f60b01c39508a488163140c730509d, type: 2}
 --- !u!114 &114868786040494802
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054725577444936}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e1c632bd482dcd41a28328ae63da0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabRotationSpeed: 2
-  buzzsaw: {fileID: 1849817869010572, guid: 127ba31ea85039b4a90fa3e4bcc21419, type: 2}
-  ramp: {fileID: 1919238938044964, guid: 0477b951a96b6a44c9112de40d8dce0e, type: 2}
-  oilslick: {fileID: 1108393284799084, guid: ad2eab46c757e074190e52851549c570, type: 2}
-  boostsaw: {fileID: 1219607142368722, guid: 7989d0c397844484e802390bc399c16b, type: 2}
-  boost: {fileID: 1679311294139506, guid: f9d30d0bf5f463a44be51178cf891aa8, type: 2}
-  rpg: {fileID: 1269485267151800, guid: 2a7eea52854ce8343aff82ddba21d99a, type: 2}
-  mine: {fileID: 1167898131728830, guid: 937eeef060e9f3c4ca1b342a59b6610d, type: 2}
+  buzzsaw: {fileID: 1788449724218994, guid: 2a694c808f1a4a34295b4c29cb44477d, type: 2}
+  ramp: {fileID: 1346199037696874, guid: e7f60b01c39508a488163140c730509d, type: 2}
+  oilslick: {fileID: 1199855343562384, guid: c0b4a191f0f45cf4bac5541ebe946ef6, type: 2}
+  boostsaw: {fileID: 1788449724218994, guid: 2a694c808f1a4a34295b4c29cb44477d, type: 2}
+  boost: {fileID: 1009864689174384, guid: f72d98d87524fb545a493d8b6e5ae535, type: 2}
+  rpg: {fileID: 1222910457246154, guid: d2bd37217e7b2ba4fb22cd8f31da45b6, type: 2}
+  mine: {fileID: 1758811178503366, guid: c23d292bb188b744db8c132aba7cf716, type: 2}
