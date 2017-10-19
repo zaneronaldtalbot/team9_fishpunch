@@ -5,10 +5,6 @@ using UnityEngine;
 public class NewPlacementController : MonoBehaviour {
 
 
-
-
-
-
     private GameObject manager;
     private GamePadManager gpManager;
     private PlayerSelectActor psActor;

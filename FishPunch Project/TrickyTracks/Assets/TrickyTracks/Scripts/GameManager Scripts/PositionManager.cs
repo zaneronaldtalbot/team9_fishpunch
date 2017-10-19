@@ -18,8 +18,6 @@ public class PositionManager : MonoBehaviour {
     void Start() {
         psActor = GetComponent<PlayerSelectActor>();
 
-     
-
         switch (psActor.playerCount)
         {
             case 2:
