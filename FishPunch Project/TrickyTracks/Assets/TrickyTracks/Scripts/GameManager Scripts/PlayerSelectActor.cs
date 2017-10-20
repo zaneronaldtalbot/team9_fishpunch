@@ -29,6 +29,8 @@ public class PlayerSelectActor : MonoBehaviour
 
     private Text textTimer;
 
+    xbox_gamepad gamepad;
+
     // Use this for initialization
     void Start()
     {
@@ -82,11 +84,11 @@ public class PlayerSelectActor : MonoBehaviour
 
         int intTimer = (int)timer;
         textTimer.text = "Time Left: " + intTimer.ToString();
-       
-    
-        for (int i = 1; i <= 4; ++i)
+
+        int n = GamePadManager.Instance.ConnectedTotal();
+        for (int i = 1; i <= n; ++i)
         {
-            startPressed(i);
+               startPressed(i);
         }
 
      
@@ -96,8 +98,8 @@ public class PlayerSelectActor : MonoBehaviour
 
     void startPressed(int index)
     {
-        xbox_gamepad gamepad;
-        gamepad = gpManager.GetGamePad(index);
+    
+        gamepad = GamePadManager.Instance.GetGamePad(index);
 
 
             if (gamepad.GetButtonDown("Start"))
