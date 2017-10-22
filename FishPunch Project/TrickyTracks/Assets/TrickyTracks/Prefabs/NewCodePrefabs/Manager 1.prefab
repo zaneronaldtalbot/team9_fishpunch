@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 114709056488049174}
   - component: {fileID: 114614013113791172}
   - component: {fileID: 114868786040494802}
-  - component: {fileID: 114047121571280066}
   m_Layer: 0
   m_Name: Manager 1
   m_TagString: Untagged
@@ -46,27 +45,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114047121571280066
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1054725577444936}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bc11858c79b4d643b510b7022e9204b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newManager: {fileID: 1054725577444936}
-  raceOver: 0
-  checkPoints: []
-  check1: 0
-  check2: 0
-  check3: 0
-  check4: 0
-  Lapcounter: {fileID: 0}
-  FinishLine: {fileID: 0}
-  lapNumber: 1
 --- !u!114 &114238257521207802
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -29,6 +29,9 @@ public class KartActor2 : MonoBehaviour {
     bool check3 = false;
     bool check4 = false;
 
+    private List<bool> checks = new List<bool>();
+
+
     //Bool to assign new traps on lap pass.
     [HideInInspector]
     public bool assignNewTraps = false;
@@ -39,10 +42,6 @@ public class KartActor2 : MonoBehaviour {
     //Xbox controller.
     [HideInInspector]
     public xbox_gamepad gamepad;
-    
-
-    public ParticleSystem[] wheelTrails = new ParticleSystem[2];
-
     
     //Object to apply mesh to turn on and off
     public GameObject mesh;
@@ -88,10 +87,6 @@ public class KartActor2 : MonoBehaviour {
     [Header("Raycast Wheels: ")]
     public GameObject[] wheelPoints;
 
-    //[Header("Wheel Collider/Mesh objects: ")]
-    //public MeshCollider[] wheelColliders;
-    //public MeshRenderer[] wheelRenderers;
-  
     //public variables that traps and obstacles will use.
     [HideInInspector]
     public float thrust = 0f;
@@ -136,7 +131,12 @@ public class KartActor2 : MonoBehaviour {
     public int numberOfPlayers = 4;
 
     public Camera playerCamera;
-   
+   void Awake()
+    {
+     
+
+    }
+
     // Use this for initialization
     void Start () {
         //Create copies of the default values to be able to reset them.
@@ -159,7 +159,9 @@ public class KartActor2 : MonoBehaviour {
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
 
-     //   SetUpCamera();
+        //   SetUpCamera();
+
+     
 
     }
 
@@ -222,16 +224,6 @@ public class KartActor2 : MonoBehaviour {
             nextCheckPoint = lapManager.checkPoints[0];
             lastCheckPoint = lapManager.FinishLine;
         }
-
-        //The wheels on the bus go round and round.
-        //for(int i = 0; i <= 1; i++)
-        //{
-        //    wheelRenderers[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        //    wheelColliders[i].transform.Rotate(0, 0, kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        //    wheelRenderers[i + 2].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        //    wheelColliders[i + 2].transform.Rotate(0, 0, -kartBody.velocity.sqrMagnitude * Time.deltaTime);
-        //}
-
 
         //Audio
 
@@ -445,8 +437,7 @@ public class KartActor2 : MonoBehaviour {
     {
         RaycastHit hit;
         bool grounded = false;
-
-        
+ 
 
         //if i is less than the wheel points length.
         for (int i = 0; i < wheelPoints.Length; ++i)
@@ -464,6 +455,7 @@ public class KartActor2 : MonoBehaviour {
                 if (transform.position.y > wheelPoint.transform.position.y)
                 {
                     kartBody.AddForceAtPosition(wheelPoint.transform.up * gravityForce, wheelPoint.transform.position);
+                    kartBody.AddRelativeTorque(gameObject.transform.up * 0.7f);
                 }
                 else
                 {
@@ -476,7 +468,7 @@ public class KartActor2 : MonoBehaviour {
         if (grounded)
         {
             kartBody.drag = groundedDrag;
-         
+
         }
         else if(!grounded)
         {
@@ -485,6 +477,7 @@ public class KartActor2 : MonoBehaviour {
             kartBody.drag = airbornDrag;
             thrust /= airbornThrust;
             turnValue /= airbornTurnValue;
+            
         }
 
         //Handle accelerating forward and reversing forces.
