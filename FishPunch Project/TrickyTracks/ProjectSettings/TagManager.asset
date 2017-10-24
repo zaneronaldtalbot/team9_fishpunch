@@ -11,6 +11,7 @@ TagManager:
   - OilSlick
   - ItemRPG
   - Boost
+  - OffRoad
   layers:
   - Default
   - TransparentFX

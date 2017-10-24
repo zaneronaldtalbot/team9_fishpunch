@@ -7,7 +7,7 @@ public class PositionManager : MonoBehaviour {
 
     private PlayerSelectActor psActor;
 
-    private KartActor2 kart1, kart2, kart3, kart4;
+    private PlayerActor kart1, kart2, kart3, kart4;
     private GameObject go_kart1, go_kart2, go_kart3, go_kart4;
 
     private Text playerOnePosition, playerTwoPosition, playerThreePosition, playerFourPosition;
@@ -22,9 +22,9 @@ public class PositionManager : MonoBehaviour {
         {
             case 2:
                 go_kart1 = GameObject.Find("PlayerCharacter_001");
-                kart1 = go_kart1.GetComponent<KartActor2>();
+                kart1 = go_kart1.GetComponent<PlayerActor>();
                 go_kart2 = GameObject.Find("PlayerCharacter_002");
-                kart2 = go_kart2.GetComponent<KartActor2>();
+                kart2 = go_kart2.GetComponent<PlayerActor>();
                 playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Text>();
                 playerTwoPosition = GameObject.Find("PlayerThreePosition").GetComponent<Text>();
                 GameObject.Find("PlayerTwoPosition").SetActive(false);
@@ -40,11 +40,11 @@ public class PositionManager : MonoBehaviour {
                 break;
             case 3:
                 go_kart1 = GameObject.Find("PlayerCharacter_001");
-                kart1 = go_kart1.GetComponent<KartActor2>();
+                kart1 = go_kart1.GetComponent<PlayerActor>();
                 go_kart2 = GameObject.Find("PlayerCharacter_002");
-                kart2 = go_kart2.GetComponent<KartActor2>();
+                kart2 = go_kart2.GetComponent<PlayerActor>();
                 go_kart3 = GameObject.Find("PlayerCharacter_003");
-                kart3 = go_kart3.GetComponent<KartActor2>();
+                kart3 = go_kart3.GetComponent<PlayerActor>();
                 playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Text>();
                 playerTwoPosition = GameObject.Find("PlayerTwoPosition").GetComponent<Text>();
                 playerThreePosition = GameObject.Find("PlayerThreePosition").GetComponent<Text>();
@@ -60,13 +60,13 @@ public class PositionManager : MonoBehaviour {
                 break;
             case 4:
                 go_kart1 = GameObject.Find("PlayerCharacter_001");
-                kart1 = go_kart1.GetComponent<KartActor2>();
+                kart1 = go_kart1.GetComponent<PlayerActor>();
                 go_kart2 = GameObject.Find("PlayerCharacter_002");
-                kart2 = go_kart2.GetComponent<KartActor2>();
+                kart2 = go_kart2.GetComponent<PlayerActor>();
                 go_kart3 = GameObject.Find("PlayerCharacter_003");
-                kart3 = go_kart3.GetComponent<KartActor2>();
+                kart3 = go_kart3.GetComponent<PlayerActor>();
                 go_kart4 = GameObject.Find("PlayerCharacter_004");
-                kart4 = go_kart4.GetComponent<KartActor2>();
+                kart4 = go_kart4.GetComponent<PlayerActor>();
                 playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Text>();
                 playerTwoPosition = GameObject.Find("PlayerTwoPosition").GetComponent<Text>();
                 playerThreePosition = GameObject.Find("PlayerThreePosition").GetComponent<Text>();
@@ -345,7 +345,7 @@ public class PositionManager : MonoBehaviour {
 
     }
 
-    void positionCalculator(KartActor2 kart, GameObject go_kart, KartActor2 karttwo, GameObject go_karttwo)
+    void positionCalculator(PlayerActor kart, GameObject go_kart, PlayerActor karttwo, GameObject go_karttwo)
     {
         if (kart.lapNumber > karttwo.lapNumber)
         {
@@ -393,7 +393,7 @@ public class PositionManager : MonoBehaviour {
     }
 
     //Checks first kart against others.
-    bool kartLapCheck(KartActor2 kart, KartActor2 karttwo, KartActor2 kartthree)
+    bool kartLapCheck(PlayerActor kart, PlayerActor karttwo, PlayerActor kartthree)
     {
         if ((kart.lapNumber > karttwo.lapNumber) && (karttwo.lapNumber > kartthree.lapNumber))
         {
@@ -402,7 +402,7 @@ public class PositionManager : MonoBehaviour {
         return false;
     }
 
-    bool kartCheckpointCheck(KartActor2 kart, KartActor2 karttwo, KartActor2 kartthree)
+    bool kartCheckpointCheck(PlayerActor kart, PlayerActor karttwo, PlayerActor kartthree)
     {
         if((kart.checkPointCounter > karttwo.checkPointCounter) && (karttwo.checkPointCounter > kartthree.checkPointCounter))
         {
@@ -411,7 +411,7 @@ public class PositionManager : MonoBehaviour {
         return false;
     }
 
-    bool kartLapCheck(KartActor2 kart, KartActor2 karttwo, KartActor2 kartthree, KartActor2 kartfour)
+    bool kartLapCheck(PlayerActor kart, PlayerActor karttwo, PlayerActor kartthree, PlayerActor kartfour)
     {
         if ((kart.lapNumber > karttwo.lapNumber) && (karttwo.lapNumber > kartthree.lapNumber)
             && (kartthree.lapNumber > kartfour.lapNumber))
@@ -423,7 +423,7 @@ public class PositionManager : MonoBehaviour {
 
 
 
-    bool kartCheckpointCheck(KartActor2 kart, KartActor2 karttwo, KartActor2 kartthree, KartActor2 kartfour)
+    bool kartCheckpointCheck(PlayerActor kart, PlayerActor karttwo, PlayerActor kartthree, PlayerActor kartfour)
     {
         if ((kart.checkPointCounter > karttwo.checkPointCounter) && (karttwo.checkPointCounter > kartthree.checkPointCounter)
             && (kartthree.checkPointCounter > kartfour.checkPointCounter))
@@ -433,8 +433,8 @@ public class PositionManager : MonoBehaviour {
         return false;
     }
 
-    void positionCalculator(KartActor2 kart, GameObject go_kart, KartActor2 karttwo, GameObject go_karttwo,
-                            KartActor2 kartthree, GameObject go_kartthree)
+    void positionCalculator(PlayerActor kart, GameObject go_kart, PlayerActor karttwo, GameObject go_karttwo,
+                            PlayerActor kartthree, GameObject go_kartthree)
     {
 
         if (kartLapCheck(kart, karttwo, kartthree))
@@ -564,8 +564,8 @@ public class PositionManager : MonoBehaviour {
 
     //Position calculator calculates each karts lap counter
     //
-    void positionCalculator(KartActor2 kart, GameObject go_kart, KartActor2 karttwo, GameObject go_karttwo,
-                            KartActor2 kartthree, GameObject go_kartthree, KartActor2 kartfour, GameObject go_kartfour)
+    void positionCalculator(PlayerActor kart, GameObject go_kart, PlayerActor karttwo, GameObject go_karttwo,
+                            PlayerActor kartthree, GameObject go_kartthree, PlayerActor kartfour, GameObject go_kartfour)
     {
         //First player winning
         if (kartLapCheck(kart, karttwo, kartthree, kartfour))

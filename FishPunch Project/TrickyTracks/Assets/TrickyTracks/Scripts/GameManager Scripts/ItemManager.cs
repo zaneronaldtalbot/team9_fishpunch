@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour {
 
-    //Kart Scripts
+    //Kart Script
+
     [HideInInspector]
-    public KartActor2 kart1, kart2, kart3, kart4;
+    public PlayerActor wc_kart1, wc_kart2, wc_kart3, wc_kart4;
 
     private RocketActor rocketActor;
 
@@ -49,58 +50,58 @@ public class ItemManager : MonoBehaviour {
                 if (go_kart1 == null)
                 {
                     go_kart1 = GameObject.Find("PlayerCharacter_001");
-                    kart1 = go_kart1.GetComponent<KartActor2>();
+                    wc_kart1 = go_kart1.GetComponent<PlayerActor>();
                 }
                 break;
             case 2:
                 if (go_kart1 == null)
                 {
                     go_kart1 = GameObject.Find("PlayerCharacter_001");
-                    kart1 = go_kart1.GetComponent<KartActor2>();
+                    wc_kart1 = go_kart1.GetComponent<PlayerActor>();
                 }
                 if (go_kart2 == null)
                 {
                     go_kart2 = GameObject.Find("PlayerCharacter_002");
-                    kart2 = go_kart2.GetComponent<KartActor2>();
+                    wc_kart2 = go_kart2.GetComponent<PlayerActor>();
                 }
                 break;
             case 3:
                 if (go_kart1 == null)
                 {
                     go_kart1 = GameObject.Find("PlayerCharacter_001");
-                    kart1 = go_kart1.GetComponent<KartActor2>();
+                    wc_kart1 = go_kart1.GetComponent<PlayerActor>();
                 }
                 if (go_kart2 == null)
                 {
                     go_kart2 = GameObject.Find("PlayerCharacter_002");
-                    kart2 = go_kart2.GetComponent<KartActor2>();
+                    wc_kart2 = go_kart2.GetComponent<PlayerActor>();
                 }
                 if (go_kart3 == null)
                 {
                     go_kart3 = GameObject.Find("PlayerCharacter_003");
-                    kart3 = go_kart3.GetComponent<KartActor2>();
+                    wc_kart3 = go_kart3.GetComponent<PlayerActor>();
                 }
                 break;
             case 4:
                 if (go_kart1 == null)
                 {
                     go_kart1 = GameObject.Find("PlayerCharacter_001");
-                    kart1 = go_kart1.GetComponent<KartActor2>();
+                    wc_kart1 = go_kart1.GetComponent<PlayerActor>();
                 }
                 if (go_kart2 == null)
                 {
                     go_kart2 = GameObject.Find("PlayerCharacter_002");
-                    kart2 = go_kart2.GetComponent<KartActor2>();
+                    wc_kart2 = go_kart2.GetComponent<PlayerActor>();
                 }
                 if (go_kart3 == null)
                 {
                     go_kart3 = GameObject.Find("PlayerCharacter_003");
-                    kart3 = go_kart3.GetComponent<KartActor2>();
+                    wc_kart3 = go_kart3.GetComponent<PlayerActor>();
                 }
                 if (go_kart4 == null)
                 {
                     go_kart4 = GameObject.Find("PlayerCharacter_004");
-                    kart4 = go_kart4.GetComponent<KartActor2>();
+                    wc_kart4 = go_kart4.GetComponent<PlayerActor>();
                 }
                 break;
             default:
@@ -116,36 +117,36 @@ public class ItemManager : MonoBehaviour {
         //Checks the item conditions for all the karts.
         if (go_kart1 != null)
         {
-            kartItemChecks(kart1, go_kart1);
+            kartItemChecks(wc_kart1, go_kart1);
         }
         if (go_kart2 != null)
         {
-            kartItemChecks(kart2, go_kart2);
+            kartItemChecks(wc_kart2, go_kart2);
         }
         if (go_kart3 != null)
         {
-            kartItemChecks(kart3, go_kart3);
+            kartItemChecks(wc_kart3, go_kart3);
         }
         if (go_kart4 != null)
         {
-            kartItemChecks(kart4, go_kart4);
+            kartItemChecks(wc_kart4, go_kart4);
         }
 
 
 
     }
 
-    void kartItemChecks(KartActor2 kart, GameObject go_kart)
+    void kartItemChecks(PlayerActor wc_kart, GameObject go_kart)
     {
         {
             //If the kart has the item boost and they press
             // "X" boost the player and set get rid of the boost item.
-            if (kart.itemBoost)
+            if (wc_kart.itemBoost)
             {
-                if (kart.gamepad.GetButtonDown("X"))
+                if (wc_kart.gamepad.GetButtonDown("X"))
                 {
-                    kart.boostPlayer = true;
-                    kart.itemBoost = false;
+                    wc_kart.boostPlayer = true;
+                    wc_kart.itemBoost = false;
                 }
             }
         }
@@ -153,24 +154,24 @@ public class ItemManager : MonoBehaviour {
         //If kart grabs item mine and press x
         //Instantiate mine behind the karts position
         //and set itemmine to false.
-        if (kart.itemMine)
+        if (wc_kart.itemMine)
         {
-            if (kart.gamepad.GetButtonDown("X"))
+            if (wc_kart.gamepad.GetButtonDown("X"))
             {
                 Instantiate(Mine, go_kart.transform.position + (-go_kart.transform.forward * 3), go_kart.transform.rotation);
-                kart.itemMine = false;
+                wc_kart.itemMine = false;
             }
         }
 
         //If kart grabs item rpg and presses X
         //fire rocket and set item RPG to false.
-        if (kart.itemRPG)
+        if (wc_kart.itemRPG)
         {
-            if (kart.gamepad.GetButtonDown("X"))
+            if (wc_kart.gamepad.GetButtonDown("X"))
             {
                 rocketFired = true;
                 tempRocket = Instantiate(Rocket, go_kart.transform.position + (go_kart.transform.forward * 5), (go_kart.transform.rotation)) as GameObject;
-                kart.itemRPG = false;
+                wc_kart.itemRPG = false;
             }
         }
 

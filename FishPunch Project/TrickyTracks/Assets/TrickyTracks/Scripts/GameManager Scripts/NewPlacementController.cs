@@ -14,7 +14,6 @@ public class NewPlacementController : MonoBehaviour
     //Copy of item lists.
     private GameObject itemListcopy1, itemListCopy2, itemListCopy3, itemListCopy4;
 
-
     public float prefabRotationSpeed = 2.0f;
 
     //Player Gamepad Instances
@@ -254,12 +253,12 @@ public class NewPlacementController : MonoBehaviour
         {
             case 1:
 
-                if (kart1.GetComponent<KartActor2>().assignNewTraps)
+                if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP1.Clear();
                     randomiseItems(randTempNum1, randNumP1);
                     allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
-                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart1.GetComponent<PlayerActor>().assignNewTraps = false;
                     placeableObject1 = itemsP1[0];
                 }
 
@@ -272,20 +271,20 @@ public class NewPlacementController : MonoBehaviour
 
                 break;
             case 2:
-                if (kart1.GetComponent<KartActor2>().assignNewTraps)
+                if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP1.Clear();
                     randomiseItems(randTempNum1, randNumP1);
                     allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
-                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart1.GetComponent<PlayerActor>().assignNewTraps = false;
                     placeableObject1 = itemsP1[0];
                 }
-                if (kart2.GetComponent<KartActor2>().assignNewTraps)
+                if (kart2.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP2.Clear();
                     randomiseItems(randTempNum1, randNumP2);
                     allocateRandItems(randNumP2, itemPrefabs, trapPrefabs, itemsP2);
-                    kart2.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart2.GetComponent<PlayerActor>().assignNewTraps = false;
                     placeableObject2 = itemsP2[0];
                 }
                 if (currentPlaceableObject1 != null)
@@ -302,28 +301,28 @@ public class NewPlacementController : MonoBehaviour
 
                 break;
             case 3:
-                if (kart1.GetComponent<KartActor2>().assignNewTraps)
+                if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP1.Clear();
                     randomiseItems(randTempNum1, randNumP1);
                     allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
-                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart1.GetComponent<PlayerActor>().assignNewTraps = false;
                     placeableObject1 = itemsP1[0];
                 }
-                if (kart2.GetComponent<KartActor2>().assignNewTraps)
+                if (kart2.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP2.Clear();
                     randomiseItems(randTempNum1, randNumP2);
                     allocateRandItems(randNumP2, itemPrefabs, trapPrefabs, itemsP2);
-                    kart2.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart2.GetComponent<PlayerActor>().assignNewTraps = false;
                     placeableObject2 = itemsP2[0];
                 }
-                if (kart3.GetComponent<KartActor2>().assignNewTraps)
+                if (kart3.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP3.Clear();
                     randomiseItems(randTempNum1, randNumP3);
                     allocateRandItems(randNumP3, itemPrefabs, trapPrefabs, itemsP3);
-                    kart3.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart3.GetComponent<PlayerActor>().assignNewTraps = false;
                     placeableObject3 = itemsP3[0];
                 }
                 if (currentPlaceableObject1 != null)
@@ -343,33 +342,33 @@ public class NewPlacementController : MonoBehaviour
 
                 break;
             case 4:
-                if (kart1.GetComponent<KartActor2>().assignNewTraps)
+                if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP1.Clear();
                     randomiseItems(randTempNum1, randNumP1);
                     allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
-                    kart1.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart1.GetComponent<PlayerActor>().assignNewTraps = false;
                 }
-                if (kart2.GetComponent<KartActor2>().assignNewTraps)
+                if (kart2.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP2.Clear();
                     randomiseItems(randTempNum1, randNumP2);
                     allocateRandItems(randNumP2, itemPrefabs, trapPrefabs, itemsP2);
-                    kart2.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart2.GetComponent<PlayerActor>().assignNewTraps = false;
                 }
-                if (kart3.GetComponent<KartActor2>().assignNewTraps)
+                if (kart3.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP3.Clear();
                     randomiseItems(randTempNum1, randNumP3);
                     allocateRandItems(randNumP3, itemPrefabs, trapPrefabs, itemsP3);
-                    kart3.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart3.GetComponent<PlayerActor>().assignNewTraps = false;
                 }
-                if (kart4.GetComponent<KartActor2>().assignNewTraps)
+                if (kart4.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP4.Clear();
                     randomiseItems(randTempNum1, randNumP4);
                     allocateRandItems(randNumP4, itemPrefabs, trapPrefabs, itemsP4);
-                    kart4.GetComponent<KartActor2>().assignNewTraps = false;
+                    kart4.GetComponent<PlayerActor>().assignNewTraps = false;
                 }
                 if (currentPlaceableObject1 != null)
                 {

@@ -64,7 +64,8 @@ public class PlayerActor : MonoBehaviour {
     public float driftTraction = 0f;
     public float driftDeceleration = 0.05f;
 
-    private xbox_gamepad gamepad;
+    [HideInInspector]
+    public xbox_gamepad gamepad;
 
     private Vector3 groundedPosition;
 
@@ -77,7 +78,7 @@ public class PlayerActor : MonoBehaviour {
     void Start () {
         kart = GetComponent<KartController>();
 
-        lapManager = GameObject.Find("Manager").GetComponent<LapsManager>();
+       // lapManager = GameObject.Find("Manager").GetComponent<LapsManager>();
         checkPointPosition = GameObject.Find("RespawnPoint");
 
         //Layer mask to ignore the kart.
@@ -88,16 +89,16 @@ public class PlayerActor : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (lapManager.endTime < 0 && lapNumber < 3)
-        {
-            finalPosition = kartPosition;
-        }
+        //if (lapManager.endTime < 0 && lapNumber < 3)
+        //{
+        //    finalPosition = kartPosition;
+        //}
 
-        if (checkPointCounter == 0)
-        {
-            nextCheckPoint = lapManager.checkPoints[0];
-            lastCheckPoint = lapManager.FinishLine;
-        }
+        //if (checkPointCounter == 0)
+        //{
+        //    nextCheckPoint = lapManager.checkPoints[0];
+        //    lastCheckPoint = lapManager.FinishLine;
+        //}
 
         //Acquire gamepad based on player number
         switch (playerNumber)

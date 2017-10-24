@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class KartCamera : MonoBehaviour
 {
+    [Serializable]
     public class AdvancedOptions
     {
         public bool updateCameraInUpdate;

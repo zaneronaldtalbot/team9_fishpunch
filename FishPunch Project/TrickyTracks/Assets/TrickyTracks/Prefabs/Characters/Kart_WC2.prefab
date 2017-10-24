@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4882154964789624}
   m_Layer: 8
-  m_Name: CameraRig
+  m_Name: CameraObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +425,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166289437310364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -328.67377, y: -57.578354, z: -131.33379}
+  m_LocalPosition: {x: -158.6118, y: -68.14273, z: -47.390285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4316340274808024}
@@ -883,7 +883,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1159757021906746}
-  m_Material: {fileID: 13400000, guid: c07a3f074c73ede409f759475317ee64, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -973,7 +973,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3775d717311f88a4f82c1f09fe68f0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastCheckPoint: {fileID: 0}
+  nextCheckPoint: {fileID: 0}
+  checkPointCounter: 0
+  kartPosition: 0
+  finalPosition: 0
+  lapNumber: 0
+  assignNewTraps: 0
+  mesh: {fileID: 0}
+  itemBoost: 0
+  itemMine: 0
+  itemRPG: 0
+  playerDisabled: 0
+  boostPlayer: 0
+  placeMine: 0
+  fireRPG: 0
   playerNumber: 1
+  numberOfPlayers: 4
   breakPower: 20
   driftTraction: 0
   driftDeceleration: 0.05
