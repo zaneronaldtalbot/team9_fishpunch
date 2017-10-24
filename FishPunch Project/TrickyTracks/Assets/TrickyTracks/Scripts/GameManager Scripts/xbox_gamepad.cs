@@ -247,6 +247,16 @@ public class xbox_gamepad : MonoBehaviour {
     //right trigger
     public float GetTrigger_R() { return state.Triggers.Right; }
 
+    public bool GetTriggerDown_R()
+    {
+        return (RT.current_value >= 0.1) ? true : false;
+    }
+
+    public bool GetTriggerDown_L()
+    {
+        return (LT.current_value >= 0.1) ? true : false;
+    }
+
     //checks if left trigger was tapped on current frame.
     public bool GetTriggerTap_L()
     {
