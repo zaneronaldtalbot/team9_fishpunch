@@ -155,9 +155,7 @@ public class KartActor2 : MonoBehaviour {
         kartBody = GetComponent<Rigidbody>();
         kartBody.centerOfMass = Vector3.down;
 
-        //Layer mask to ignore the kart.
-        layerMask = 1 << LayerMask.NameToLayer("Vehicle");
-        layerMask = ~layerMask;
+        
 
         //   SetUpCamera();
 

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class KartCamera : MonoBehaviour
 {
-    [Serializable]
     public class AdvancedOptions
     {
         public bool updateCameraInUpdate;
@@ -11,12 +10,17 @@ public class KartCamera : MonoBehaviour
         public bool updateCameraInLateUpdate;
     }
 
+    //How smoothly camera follows
     public float smoothing = 6f;
+
+    //where the camera should look
     public Transform lookAtTarget;
+
+    //Where the target of the camera is.
     public Transform positionTarget;
+    
     public AdvancedOptions advancedOptions;
 
-    bool m_ShowingSideView;
 
     private void FixedUpdate()
     {
