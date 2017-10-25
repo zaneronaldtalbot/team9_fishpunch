@@ -75,9 +75,9 @@ public class GamePadManager : MonoBehaviour {
         currentScene = SceneManager.GetActiveScene();
         if (currentScene.buildIndex == 2)
         {
-            lpManager.enabled = true;
-            itemManager.enabled = true;
-            posManager.enabled = true;
+      //      lpManager.enabled = true;
+        //    itemManager.enabled = true;
+        //    posManager.enabled = true;
             psActor.enabled = false;
             GamePadCount = psActor.playerCount;
 
@@ -91,14 +91,6 @@ public class GamePadManager : MonoBehaviour {
                 player3 = GameObject.Find("3 Player");
 
                 player4 = GameObject.Find("4 Player");
-
-                TrapCamP1 = GameObject.Find("TrapCamSetP1");
-
-                TrapCamP2 = GameObject.Find("TrapCamSetP2");
-
-                TrapCamP3 = GameObject.Find("TrapCamSetP3");
-
-                TrapCamP4 = GameObject.Find("TrapCamSetP4");
 
                 findGameObjects = true;
             }

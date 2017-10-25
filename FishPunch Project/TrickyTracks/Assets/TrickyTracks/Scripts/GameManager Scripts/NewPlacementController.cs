@@ -20,10 +20,12 @@ public class NewPlacementController : MonoBehaviour
     private xbox_gamepad gamepad1, gamepad2, gamepad3, gamepad4;
 
     //Images for item UI that displays current item, next item and previous item.
-    private Image currentItem1, nextItem1, previousItem1;
-    private Image currentItem2, nextItem2, previousItem2;
-    private Image currentItem3, nextItem3, previousItem3;
-    private Image currentItem4, nextItem4, previousItem4;
+    private Image currentItem1, nextItem1, previousItem1, currentItemBack1, nextItemBack1, previousItemBack1;
+    private Image currentItem2, nextItem2, previousItem2, currentItemBack2, nextItemBack2, previousItemBack2;
+    private Image currentItem3, nextItem3, previousItem3, currentItemBack3, nextItemBack3, previousItemBack3;
+    private Image currentItem4, nextItem4, previousItem4, currentItemBack4, nextItemBack4, previousItemBack4;
+    
+    
 
     //Traps gameobject prefabs
     [Header("Traps")]
@@ -47,6 +49,12 @@ public class NewPlacementController : MonoBehaviour
     public Sprite mineIcon;
     public Sprite rpgIcon;
     public Sprite blankIcon;
+
+    [Header("Player Icons")]
+    public Sprite playerSprite1;
+    public Sprite playerSprite2;
+    public Sprite playerSprite3;
+    public Sprite playerSprite4;
 
     //Object that the raycast shoots down from.
     private GameObject raycastObject1, raycastObject2, raycastObject3, raycastObject4;
@@ -100,6 +108,14 @@ public class NewPlacementController : MonoBehaviour
         itemPrefabs.Add(boost);
         itemPrefabs.Add(rpg);
         itemPrefabs.Add(mine);
+
+        currentItemBack1 = GameObject.Find("CurrentItemBack1").GetComponent<Image>();
+        // currentItemBack2 = GameObject.Find("CurrentItemBack2").GetComponent<Image>();
+        //   currentItemBack3 = GameObject.Find("CurrentItemBack3").GetComponent<Image>();
+        //     currentItemBack4 = GameObject.Find("CurrentItemBack4").GetComponent<Image>();
+        previousItemBack1 = GameObject.Find("PreviousItemBack1").GetComponent<Image>();
+        nextItemBack1 = GameObject.Find("NextItemBack1").GetComponent<Image>();
+
 
         //Get image for each players item UI sprite.
         currentItem1 = GameObject.Find("CurrentItem1").GetComponent<Image>();
@@ -247,7 +263,7 @@ public class NewPlacementController : MonoBehaviour
         releasePrefab();
         rotatePrefab();
         changePrefab();
-       
+
 
         switch (psActor.playerCount)
         {
@@ -394,6 +410,7 @@ public class NewPlacementController : MonoBehaviour
             default:
                 break;
         }
+
     }
 
     //Generates new object when players A button is down and item count is above 0.
@@ -1043,10 +1060,11 @@ public class NewPlacementController : MonoBehaviour
             {
                 currentItem.sprite = boostIcon;
             }
-            if(playerItems[prefabIndex] == null)
+            if (playerItems[prefabIndex] == null)
             {
-
+                currentItem.sprite = blankIcon;
             }
+
 
             if(prefabIndex == (playerItems.Count - 1))
             {
@@ -1076,8 +1094,9 @@ public class NewPlacementController : MonoBehaviour
                 }
                 if(playerItems[0] == null)
                 {
-
+                    nextItem.sprite = blankIcon;
                 }
+
             }
             else if(playerItems.Count > 1)
             {
@@ -1105,6 +1124,11 @@ public class NewPlacementController : MonoBehaviour
                 {
                     nextItem.sprite = oilslickIcon;
                 }
+                if (playerItems[prefabIndex + 1] == null)
+                {
+                    nextItem.sprite = blankIcon;
+                }
+
             }
 
 
@@ -1133,6 +1157,10 @@ public class NewPlacementController : MonoBehaviour
                 if(playerItems[(playerItems.Count - 1)] == rpg)
                 {
                     previousItem.sprite = rpgIcon;
+                }
+                if (playerItems[(playerItems.Count - 1)] == null)
+                {
+                    previousItem.sprite = blankIcon;
                 }
             }
             else if(playerItems.Count > 1)
@@ -1163,8 +1191,8 @@ public class NewPlacementController : MonoBehaviour
                 }
                 if(playerItems[prefabIndex - 1] == null)
                 {
-
-                }
+                    previousItem.sprite = blankIcon;
+                }           
 
             }
         }

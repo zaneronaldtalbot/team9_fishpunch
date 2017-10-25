@@ -52,7 +52,7 @@ public class PlayerSelectActor : MonoBehaviour
             case 1:
                 if (playerReady1)
                 {
-                    SceneManager.LoadScene("MainLevel001");
+                    SceneManager.LoadScene("MainLevel001_UI");
                    
                 }
                 break;

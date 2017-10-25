@@ -119,7 +119,6 @@ public class PlayerActor : MonoBehaviour {
                 break;
 
         }
-              Debug.Log(kart.physicsBody.velocity.sqrMagnitude);
         if (gamepad.GetTriggerDown_R())
         {
             kart.Thrust = gamepad.GetTrigger_R();

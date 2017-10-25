@@ -887,7 +887,84 @@ Prefab:
       propertyPath: go_timer
       value: 
       objectReference: {fileID: 1374835906}
-    m_RemovedComponents: []
+    - target: {fileID: 114647843070873168, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: GamePadCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: playerSprite1
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f02634310f5a0947971329b7c1fe9ef,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: playerSprite2
+      value: 
+      objectReference: {fileID: 21300000, guid: 2727cfe91ef50394e9f6bb524a5b2040,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: playerSprite4
+      value: 
+      objectReference: {fileID: 21300000, guid: c0b72eb5e54873145b945e54708f6635,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: playerSprite3
+      value: 
+      objectReference: {fileID: 21300000, guid: 28e5f8fe5ab75664facd33ea0e30b386,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: rampIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 3b8258373c42b414b9711b0d1d7f006c,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: buzzsawIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 91eadf6810292134aa3ddd08b4d2cf2d,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: boostIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: d06fc27e1ec895c4aa4f7f6e551c391a,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: mineIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: d22a57b2a9caee04a97d1274cdb986f3,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: oilslickIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8e99e3aec0af6b24f83a013b6bba41b7,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: rpgIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 9904dc1049975474b870f191c4c1bc97,
+        type: 3}
+    - target: {fileID: 114868786040494802, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: blankIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 65b53f26e9420024d98840fc511d7a79,
+        type: 3}
+    - target: {fileID: 114614013113791172, guid: e473789c0d56e864fb1f15789e3ce519,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114709056488049174, guid: e473789c0d56e864fb1f15789e3ce519, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e473789c0d56e864fb1f15789e3ce519, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &413862682
