@@ -1,8 +1,36 @@
 fileFormatVersion: 2
+<<<<<<< .mine
+<<<<<<< .mine
+guid: a00d7e43e5632f34da73aa0ee61b7a88
+||||||| .r124
+guid: 6670fe504b33feb4ba4f0f28468eedca
+=======
+guid: 18e6c8369932b3e4381b1e435748e1fb
+||||||| .r137
+guid: 18e6c8369932b3e4381b1e435748e1fb
+=======
 guid: ef19673630935c84f9123b112b38e225
+>>>>>>> .r144
+>>>>>>> .r137
 folderAsset: yes
+<<<<<<< .mine
+<<<<<<< .mine
+timeCreated: 1508188529
+licenseType: Pro
+||||||| .r124
+timeCreated: 1508193388
+licenseType: Pro
+=======
+timeCreated: 1508313170
+licenseType: Free
+||||||| .r137
+timeCreated: 1508313170
+licenseType: Free
+=======
 timeCreated: 1508881673
 licenseType: Pro
+>>>>>>> .r144
+>>>>>>> .r137
 DefaultImporter:
   userData: 
   assetBundleName: 
