@@ -1,21 +1,17 @@
 fileFormatVersion: 2
-guid: 2cbc85613ae418244a82228c3ce55aa3
-timeCreated: 1507512784
+guid: b11e369a17de33e4d8614ee12011b834
+timeCreated: 1508732704
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Sword_007_Enviroment_001_Full
     400000: //RootNode
-    400002: Sword_007_Enviroment_001_Full
     2300000: //RootNode
-    2300002: Sword_007_Enviroment_001_Full
     3300000: //RootNode
-    3300002: Sword_007_Enviroment_001_Full
-    4300000: Sword_007_Enviroment_001_Full
+    4300000: Exhaust_002_Enviroment_001_Broken
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

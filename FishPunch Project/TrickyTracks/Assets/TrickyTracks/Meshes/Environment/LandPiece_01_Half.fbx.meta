@@ -1,21 +1,24 @@
 fileFormatVersion: 2
-guid: 2cbc85613ae418244a82228c3ce55aa3
-timeCreated: 1507512784
+guid: 204e42ab3ba84b841bd4f991bdb97d97
+timeCreated: 1508732702
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Sword_007_Enviroment_001_Full
-    400000: //RootNode
-    400002: Sword_007_Enviroment_001_Full
-    2300000: //RootNode
-    2300002: Sword_007_Enviroment_001_Full
-    3300000: //RootNode
-    3300002: Sword_007_Enviroment_001_Full
-    4300000: Sword_007_Enviroment_001_Full
+    100000: group16
+    100002: group23
+    100004: LandPiece_01_Half
+    100006: //RootNode
+    400000: group16
+    400002: group23
+    400004: LandPiece_01_Half
+    400006: //RootNode
+    2300000: LandPiece_01_Half
+    3300000: LandPiece_01_Half
+    4300000: LandPiece_01_Half
+    9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -83,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
