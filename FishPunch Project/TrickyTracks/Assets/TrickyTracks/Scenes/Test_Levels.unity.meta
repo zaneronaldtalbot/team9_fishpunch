@@ -1,5 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< .mine
+guid: 3eedf8d8273b496479bc9e9ea30f5493
+||||||| .r99
+guid: 53708d65de68c284f9c1b712a5ea32d7
+=======
 guid: 7ebc0dbe9ef0f8045a20f7c0ce18949c
+>>>>>>> .r104
 timeCreated: 1507443242
 licenseType: Free
 DefaultImporter:

@@ -1,6 +1,20 @@
 fileFormatVersion: 2
+<<<<<<< .mine
+<<<<<<< .mine
+guid: 396f6d99ddbd95347a1fbc9e6362e739
+||||||| .r99
+guid: 53708d65de68c284f9c1b712a5ea32d7
+=======
+guid: b09d1a7c9ab07cf4cb0f30f9f6d0e7e5
+>>>>>>> .r104
+timeCreated: 1507443242
+||||||| .r124
+guid: b09d1a7c9ab07cf4cb0f30f9f6d0e7e5
+timeCreated: 1507443242
+=======
 guid: 6ffb96d896c97774ea6125ac1f19d7b2
 timeCreated: 1508312855
+>>>>>>> .r137
 licenseType: Free
 DefaultImporter:
   userData: 
