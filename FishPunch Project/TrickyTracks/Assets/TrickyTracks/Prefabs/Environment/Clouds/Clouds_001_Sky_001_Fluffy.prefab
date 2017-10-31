@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4314278812965012}
   - component: {fileID: 33524648876016012}
   - component: {fileID: 23523749259930600}
-  - component: {fileID: 64117788867211884}
   m_Layer: 0
   m_Name: Clouds_001_Sky_001_Fluffy
   m_TagString: Untagged
@@ -50,14 +49,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1207511384386182}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.9346246, z: -0, w: -0.35563585}
+  m_LocalPosition: {x: 471.20108, y: 336.51227, z: -96.421234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4314278812965012}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 221.665, z: 0}
 --- !u!4 &4314278812965012
 Transform:
   m_ObjectHideFlags: 1
@@ -109,18 +108,4 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1499443929360680}
-  m_Mesh: {fileID: 4300000, guid: d65622db3c89fba44af10f29511e07aa, type: 3}
---- !u!64 &64117788867211884
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1499443929360680}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: d65622db3c89fba44af10f29511e07aa, type: 3}
