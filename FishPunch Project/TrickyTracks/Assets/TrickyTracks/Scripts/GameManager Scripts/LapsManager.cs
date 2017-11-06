@@ -176,7 +176,7 @@ public class LapsManager : MonoBehaviour
         switch (psActor.playerCount)
         {
             case 1:
-                if (lapNumber == 3)
+                if (lapNumber == 4)
                 {
                     restartTime -= Time.deltaTime;
 
@@ -201,7 +201,7 @@ public class LapsManager : MonoBehaviour
                 }
                 break;
             case 2:
-                if ((kart1.lapNumber == 3 || kart2.lapNumber == 3) && !raceOver)
+                if ((kart1.lapNumber == 4 || kart2.lapNumber == 4) && !raceOver)
                 {
                     endRaceTime -= Time.deltaTime;
                     endTime = (int)endRaceTime;
@@ -250,7 +250,7 @@ public class LapsManager : MonoBehaviour
                 }
                 break;
             case 3:
-                if ((kart1.lapNumber == 3 || kart2.lapNumber == 3 || kart3.lapNumber == 3) && !raceOver)
+                if ((kart1.lapNumber == 4 || kart2.lapNumber == 4 || kart3.lapNumber == 4) && !raceOver)
                 {
                     endRaceTime -= Time.deltaTime;
                     endTime = (int)endRaceTime;
@@ -339,7 +339,7 @@ public class LapsManager : MonoBehaviour
                 }
                 break;
             case 4:               
-                if ((kart1.lapNumber == 3 || kart2.lapNumber == 3 || kart3.lapNumber == 3 || kart4.lapNumber == 3) && !raceOver)
+                if ((kart1.lapNumber == 4 || kart2.lapNumber == 4 || kart3.lapNumber == 4 || kart4.lapNumber == 4) && !raceOver)
                 {
                     endRaceTime -= Time.deltaTime;
                     endTime = (int)endRaceTime;

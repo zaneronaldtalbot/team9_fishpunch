@@ -44,7 +44,6 @@ public class PlayerActor : MonoBehaviour {
     //Karts rigidbody
     Rigidbody kartBody;
 
-
     //Object to apply mesh to turn on and off
     public GameObject mesh;
 
@@ -427,7 +426,7 @@ public class PlayerActor : MonoBehaviour {
         if (coll.gameObject.tag == "StartLine")
         {
             if ((check1 && check2 && check3 && check4 && check5 && check6
-                && check7 && check8 && check9 && check10 && check11 && check12) && (lapNumber < 3))
+                && check7 && check8 && check9 && check10 && check11 && check12) && (lapNumber < 4))
             {
                 lastCheckPoint = lapManager.FinishLine;
                 nextCheckPoint = lapManager.checkPoints[0];
