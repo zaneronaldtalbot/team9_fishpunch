@@ -20,13 +20,13 @@ public class NewPlacementController : MonoBehaviour
     private xbox_gamepad gamepad1, gamepad2, gamepad3, gamepad4;
 
     //Images for item UI that displays current item, next item and previous item.
-    private Image currentItem1, nextItem1, previousItem1, currentItemBack1, nextItemBack1, previousItemBack1;
-    private Image currentItem2, nextItem2, previousItem2, currentItemBack2, nextItemBack2, previousItemBack2;
-    private Image currentItem3, nextItem3, previousItem3, currentItemBack3, nextItemBack3, previousItemBack3;
-    private Image currentItem4, nextItem4, previousItem4, currentItemBack4, nextItemBack4, previousItemBack4;
+    private Image currentItem1, currentItemBack1;
+    private Image currentItem2, currentItemBack2;
+    private Image currentItem3, currentItemBack3;
+    private Image currentItem4, currentItemBack4;
+    private Image powerup1, powerup2, powerup3, powerup4, powerup1_2P, powerup2_2P;
+    private Image powerupIcon1, powerupIcon2, powerupIcon3, powerupIcon4, powerupIcon1_2P, powerupIcon2_2P;
     
-    
-
     //Traps gameobject prefabs
     [Header("Traps")]
     public GameObject buzzsaw;
@@ -49,6 +49,7 @@ public class NewPlacementController : MonoBehaviour
     public Sprite mineIcon;
     public Sprite rpgIcon;
     public Sprite blankIcon;
+    public Sprite blankPowerupIcon;
 
     [Header("Player Icons")]
     public Sprite playerSprite1;
@@ -82,7 +83,8 @@ public class NewPlacementController : MonoBehaviour
                       randNumP3 = new List<int>(), randNumP4 = new List<int>();
 
     //The list where player items are stored.
-    private List<GameObject> itemsP1 = new List<GameObject>(), itemsP2 = new List<GameObject>(),
+    [HideInInspector]
+    public List<GameObject> itemsP1 = new List<GameObject>(), itemsP2 = new List<GameObject>(),
                              itemsP3 = new List<GameObject>(), itemsP4 = new List<GameObject>();
 
     //temporary number that random function assigns a number to before pushing to a random number list.
@@ -98,6 +100,7 @@ public class NewPlacementController : MonoBehaviour
         manager = this.gameObject;
         gpManager = GetComponent<GamePadManager>();
         psActor = manager.GetComponent<PlayerSelectActor>();
+        
 
         //add traps to trap list.
         trapPrefabs.Add(buzzsaw);
@@ -110,27 +113,30 @@ public class NewPlacementController : MonoBehaviour
         itemPrefabs.Add(mine);
 
         currentItemBack1 = GameObject.Find("CurrentItemBack1").GetComponent<Image>();
-        // currentItemBack2 = GameObject.Find("CurrentItemBack2").GetComponent<Image>();
-        //   currentItemBack3 = GameObject.Find("CurrentItemBack3").GetComponent<Image>();
-        //     currentItemBack4 = GameObject.Find("CurrentItemBack4").GetComponent<Image>();
-        previousItemBack1 = GameObject.Find("PreviousItemBack1").GetComponent<Image>();
-        nextItemBack1 = GameObject.Find("NextItemBack1").GetComponent<Image>();
+        currentItemBack2 = GameObject.Find("CurrentItemBack2").GetComponent<Image>();
+        currentItemBack3 = GameObject.Find("CurrentItemBack3").GetComponent<Image>();
+        currentItemBack4 = GameObject.Find("CurrentItemBack4").GetComponent<Image>();
 
-
-        //Get image for each players item UI sprite.
         currentItem1 = GameObject.Find("CurrentItem1").GetComponent<Image>();
-        nextItem1 = GameObject.Find("NextItem1").GetComponent<Image>();
-        previousItem1 = GameObject.Find("PreviousItem1").GetComponent<Image>();
         currentItem2 = GameObject.Find("CurrentItem2").GetComponent<Image>();
-        nextItem2 = GameObject.Find("NextItem2").GetComponent<Image>();
-        previousItem2 = GameObject.Find("PreviousItem2").GetComponent<Image>();
         currentItem3 = GameObject.Find("CurrentItem3").GetComponent<Image>();
-        nextItem3 = GameObject.Find("NextItem3").GetComponent<Image>();
-        previousItem3 = GameObject.Find("PreviousItem3").GetComponent<Image>();
         currentItem4 = GameObject.Find("CurrentItem4").GetComponent<Image>();
-        nextItem4 = GameObject.Find("NextItem4").GetComponent<Image>();
-        previousItem4 = GameObject.Find("PreviousItem4").GetComponent<Image>();
 
+        powerup1 = GameObject.Find("Powerup1").GetComponent<Image>();
+        powerup2 = GameObject.Find("Powerup2").GetComponent<Image>();
+        powerup3 = GameObject.Find("Powerup3").GetComponent<Image>();
+        powerup4 = GameObject.Find("Powerup4").GetComponent<Image>();
+
+        powerup1_2P = GameObject.Find("Powerup1_2P").GetComponent<Image>();
+        powerup2_2P = GameObject.Find("Powerup2_2P").GetComponent<Image>();
+
+        powerupIcon1 = GameObject.Find("PowerupIcon1").GetComponent<Image>();
+        powerupIcon2 = GameObject.Find("PowerupIcon2").GetComponent<Image>();
+        powerupIcon3 = GameObject.Find("PowerupIcon3").GetComponent<Image>();
+        powerupIcon4 = GameObject.Find("PowerupIcon4").GetComponent<Image>();
+
+        powerupIcon1_2P = GameObject.Find("PowerupIcon1_2P").GetComponent<Image>();
+        powerupIcon2_2P = GameObject.Find("PowerupIcon2_2P").GetComponent<Image>();
 
         //depending on playercount.
         switch (psActor.playerCount)
@@ -148,14 +154,8 @@ public class NewPlacementController : MonoBehaviour
 
                 //All UI except first player disabled.
                 currentItem2.enabled = false;
-                nextItem2.enabled = false;
-                previousItem2.enabled = false;
                 currentItem3.enabled = false;
-                nextItem3.enabled = false;
-                previousItem3.enabled = false;
                 currentItem4.enabled = false;
-                nextItem4.enabled = false;
-                previousItem4.enabled = false;
 
                 break;
             case 2:
@@ -179,14 +179,20 @@ public class NewPlacementController : MonoBehaviour
 
                 //disabled UI sprites.
                 currentItem2.enabled = false;
-                nextItem2.enabled = false;
-                previousItem2.enabled = false;
                 currentItem4.enabled = false;
-                nextItem4.enabled = false;
-                previousItem4.enabled = false;
+                currentItemBack2.enabled = false;
+                currentItemBack4.enabled = false;
+                currentItemBack3.sprite = playerSprite2;
 
-
-
+                powerup1.enabled = false;
+                powerup2.enabled = false;
+                powerup3.enabled = false;
+                powerup4.enabled = false;
+                powerupIcon1.enabled = false;
+                powerupIcon2.enabled = false;
+                powerupIcon3.enabled = false;
+                powerupIcon4.enabled = false;
+              
                 break;
             case 3:
                 //Randomise items.
@@ -211,6 +217,13 @@ public class NewPlacementController : MonoBehaviour
                 kart1 = GameObject.Find("PlayerCharacter_001");
                 kart2 = GameObject.Find("PlayerCharacter_002");
                 kart3 = GameObject.Find("PlayerCharacter_003");
+
+                currentItemBack4.enabled = false;
+                currentItem4.enabled = false;
+
+                powerup1_2P.enabled = false;
+                powerup2_2P.enabled = false;
+                powerup4.enabled = false;
 
                 break;
             case 4:
@@ -242,6 +255,10 @@ public class NewPlacementController : MonoBehaviour
                 kart2 = GameObject.Find("PlayerCharacter_002");
                 kart3 = GameObject.Find("PlayerCharacter_003");
                 kart4 = GameObject.Find("PlayerCharacter_004");
+
+
+                powerup1_2P.enabled = false;
+                powerup2_2P.enabled = false;
 
                 break;
             default:
@@ -283,7 +300,7 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
                 }
 
-                switchItemIcons(prefabIndex1, currentItem1, nextItem1, previousItem1, itemsP1);
+                switchItemIcons(prefabIndex1, currentItem1, itemsP1);
 
                 break;
             case 2:
@@ -312,8 +329,11 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject2, currentPlaceableObject2, gamepad2);
                 }
 
-                switchItemIcons(prefabIndex1, currentItem1, nextItem1, previousItem1, itemsP1);
-                switchItemIcons(prefabIndex2, currentItem3, nextItem3, previousItem3, itemsP2);
+                switchItemIcons(prefabIndex1, currentItem1, itemsP1);
+                switchItemIcons(prefabIndex2, currentItem3, itemsP2);
+
+                switchPowerupIcons(powerupIcon1_2P, kart1);
+                switchPowerupIcons(powerupIcon2_2P, kart2);
 
                 break;
             case 3:
@@ -354,7 +374,14 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject3, currentPlaceableObject3, gamepad3);
                 }
 
+                switchItemIcons(prefabIndex1, currentItem1, itemsP1);
+                switchItemIcons(prefabIndex2, currentItem2, itemsP2);
+                switchItemIcons(prefabIndex3, currentItem3, itemsP3);
 
+                switchPowerupIcons(powerupIcon1, kart1);
+                switchPowerupIcons(powerupIcon2, kart2);
+                switchPowerupIcons(powerupIcon3, kart3);
+                
 
                 break;
             case 4:
@@ -406,6 +433,19 @@ public class NewPlacementController : MonoBehaviour
                 placeableObject2 = itemsP2[0];
                 placeableObject3 = itemsP3[0];
                 placeableObject4 = itemsP4[0];
+
+
+                switchItemIcons(prefabIndex1, currentItem1, itemsP1);
+                switchItemIcons(prefabIndex2, currentItem2, itemsP2);
+                switchItemIcons(prefabIndex3, currentItem3, itemsP3);
+                switchItemIcons(prefabIndex4, currentItem4, itemsP4);
+
+
+                switchPowerupIcons(powerupIcon1, kart1);
+                switchPowerupIcons(powerupIcon2, kart2);
+                switchPowerupIcons(powerupIcon3, kart3);
+                switchPowerupIcons(powerupIcon4, kart4);
+
                 break;
             default:
                 break;
@@ -1018,24 +1058,28 @@ public class NewPlacementController : MonoBehaviour
         //Trap Allocation.
         for (int i = 0; i < 3; ++i)
         {
-            playerItemList.Add(trapList[numberList[i]]);
-        }
+            if (playerItemList.Count <= 12)
+            {
+                playerItemList.Add(trapList[numberList[i]]);
+
+            }
+         }
 
         //Item allocation.
         for (int i = 3; i < 6; ++i)
         {
-            playerItemList.Add(itemList[numberList[i]]);
+            if (playerItemList.Count <= 12)
+            {
+                playerItemList.Add(itemList[numberList[i]]);
+            }
         }
-
     }
 
     //Switches between item icons displaying current selected item, previous item and next item.
     //if itemlist index = certain trap or item assign icon.
-    void switchItemIcons(int prefabIndex, Image currentItem, Image nextItem, Image previousItem, List<GameObject> playerItems)
+    void switchItemIcons(int prefabIndex, Image currentItem, List<GameObject> playerItems)
     {
-
-        if (playerItems.Count > 0)
-        {
+      
             if (playerItems[prefabIndex] == buzzsaw)
             {
                 currentItem.sprite = buzzsawIcon;
@@ -1063,138 +1107,30 @@ public class NewPlacementController : MonoBehaviour
             if (playerItems[prefabIndex] == null)
             {
                 currentItem.sprite = blankIcon;
-            }
+            } 
 
+    }
 
-            if(prefabIndex == (playerItems.Count - 1))
-            {
-                if(playerItems[0] == boost)
-                {
-                    nextItem.sprite = boostIcon;
-                }
-                if(playerItems[0] == buzzsaw)
-                {
-                    nextItem.sprite = buzzsawIcon;
-                }
-                if(playerItems[0] == ramp)
-                {
-                    nextItem.sprite = rampIcon;
-                }
-                if(playerItems[0] == boost)
-                {
-                    nextItem.sprite = boostIcon;
-                }
-                if(playerItems[0] == rpg)
-                {
-                    nextItem.sprite = rpgIcon;
-                }
-                if(playerItems[0] == mine)
-                {
-                    nextItem.sprite = mineIcon;
-                }
-                if(playerItems[0] == null)
-                {
-                    nextItem.sprite = blankIcon;
-                }
+    private void switchPowerupIcons(Image powerupIcon, GameObject kart)
+    {
+        if(kart.GetComponent<PlayerActor>().itemRPG)
+        {
+            powerupIcon.sprite = rpgIcon;
+        }
 
-            }
-            else if(playerItems.Count > 1)
-            {
-                if(playerItems[prefabIndex + 1] == boost)
-                {
-                    nextItem.sprite = boostIcon;
-                }
-                if (playerItems[prefabIndex + 1] == rpg)
-                {
-                    nextItem.sprite = rpgIcon;
-                }
-                if (playerItems[prefabIndex + 1] == mine)
-                {
-                    nextItem.sprite = mineIcon;
-                }
-                if (playerItems[prefabIndex + 1] == ramp)
-                {
-                    nextItem.sprite = rampIcon;
-                }
-                if (playerItems[prefabIndex + 1] == buzzsaw)
-                {
-                    nextItem.sprite = buzzsawIcon;
-                }
-                if (playerItems[prefabIndex + 1] == oilslick)
-                {
-                    nextItem.sprite = oilslickIcon;
-                }
-                if (playerItems[prefabIndex + 1] == null)
-                {
-                    nextItem.sprite = blankIcon;
-                }
+        if(kart.GetComponent<PlayerActor>().itemBoost)
+        {
+            powerupIcon.sprite = boostIcon;
+        }
 
-            }
+        if (kart.GetComponent<PlayerActor>().itemMine)
+        {
+            powerupIcon.sprite = mineIcon;
+        }
 
-
-            if (prefabIndex == 0)
-            {
-                if (playerItems[(playerItems.Count -1)] == buzzsaw)
-                {
-                    previousItem.sprite = buzzsawIcon;
-                }
-                if (playerItems[(playerItems.Count - 1)] == oilslick)
-                {
-                    previousItem.sprite = oilslickIcon;
-                }
-                if (playerItems[(playerItems.Count - 1)] == ramp)
-                {
-                    previousItem.sprite = rampIcon;
-                }
-                if (playerItems[(playerItems.Count - 1)] == mine)
-                {
-                    previousItem.sprite = mineIcon;
-                }
-                if (playerItems[(playerItems.Count - 1)] == boost)
-                {
-                    previousItem.sprite = boostIcon;
-                }
-                if(playerItems[(playerItems.Count - 1)] == rpg)
-                {
-                    previousItem.sprite = rpgIcon;
-                }
-                if (playerItems[(playerItems.Count - 1)] == null)
-                {
-                    previousItem.sprite = blankIcon;
-                }
-            }
-            else if(playerItems.Count > 1)
-            {
-                if(playerItems[prefabIndex - 1] == boost)
-                {
-                    previousItem.sprite = boostIcon;
-                }
-                if (playerItems[prefabIndex - 1] == mine)
-                {
-                    previousItem.sprite = mineIcon;
-                }
-                if (playerItems[prefabIndex - 1] == rpg)
-                {
-                    previousItem.sprite = rpgIcon;
-                }
-                if (playerItems[prefabIndex - 1] == ramp)
-                {
-                    previousItem.sprite = rampIcon;
-                }
-                if (playerItems[prefabIndex - 1] == oilslick)
-                {
-                    previousItem.sprite = oilslickIcon;
-                }
-                if (playerItems[prefabIndex - 1] == buzzsaw)
-                {
-                    previousItem.sprite = buzzsawIcon;
-                }
-                if(playerItems[prefabIndex - 1] == null)
-                {
-                    previousItem.sprite = blankIcon;
-                }           
-
-            }
+        if (!kart.GetComponent<PlayerActor>().itemRPG && !kart.GetComponent<PlayerActor>().itemBoost && !kart.GetComponent<PlayerActor>().itemMine)
+        {
+            powerupIcon.sprite = blankPowerupIcon;
         }
 
     }

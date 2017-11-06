@@ -7,7 +7,7 @@ public class ItemRocket : MonoBehaviour {
     public float rotationSpeed = 50.0f;
     
     [HideInInspector]
-    public KartActor2 kart;
+    public PlayerActor kart;
     private GameObject rocketPrefab;
 
 	// Use this for initialization
@@ -38,7 +38,7 @@ public class ItemRocket : MonoBehaviour {
         //If it hits a player grab kart script and set item rpg to true.
         if (coll.gameObject.tag == "Player")
         {
-            kart = coll.gameObject.GetComponentInParent<KartActor2>();
+            kart = coll.gameObject.GetComponentInParent<PlayerActor>();
 
             if (!kart.itemBoost && !kart.itemMine)
             {

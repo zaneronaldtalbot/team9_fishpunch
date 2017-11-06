@@ -7,7 +7,7 @@ public class ItemMine : MonoBehaviour
 
     public float rotationSpeed = 50.0f;
 
-    private KartActor2 kart;
+    private PlayerActor kart;
     private GameObject minePrefab;
 
 
@@ -41,7 +41,7 @@ public class ItemMine : MonoBehaviour
         //If player hits mine set item mine to true.
         if (coll.gameObject.tag == "Player")
         {
-            kart = coll.gameObject.GetComponentInParent<KartActor2>();
+            kart = coll.gameObject.GetComponentInParent<PlayerActor>();
             if (!kart.itemRPG && !kart.itemBoost)
             {
                 kart.itemMine = true;

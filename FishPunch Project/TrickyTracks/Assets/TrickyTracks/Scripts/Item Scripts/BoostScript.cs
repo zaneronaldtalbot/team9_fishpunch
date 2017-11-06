@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoostScript : MonoBehaviour
 {
 
-    private KartActor2 kart;
+    private PlayerActor kart;
 
     public float rotationSpeed = 50.0f;
     private GameObject boostPrefab;
@@ -40,7 +40,7 @@ public class BoostScript : MonoBehaviour
         //If player hits boost set item boost to true.
         if (coll.gameObject.tag == "Player")
         {
-            kart = coll.gameObject.GetComponentInParent<KartActor2>();
+            kart = coll.gameObject.GetComponentInParent<PlayerActor>();
             if (!kart.itemMine && !kart.itemRPG)
             {
                 kart.itemBoost = true;

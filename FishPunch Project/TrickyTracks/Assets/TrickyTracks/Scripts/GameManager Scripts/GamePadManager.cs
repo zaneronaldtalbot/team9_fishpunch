@@ -8,11 +8,13 @@ public class GamePadManager : MonoBehaviour {
     //How many gamepads
     public int GamePadCount = 4;
 
+    //List of gamepads
     private List<xbox_gamepad> gamepads;
+
+    //Manager variables.
     private static GamePadManager manager;
     private PositionManager posManager;
     private LapsManager lpManager;
-
     private PlayerSelectActor psActor;
     
     //Public GameObjects.
@@ -22,8 +24,7 @@ public class GamePadManager : MonoBehaviour {
     private GameObject player3;
     private GameObject player4;
 
-    private GameObject TrapCamP1, TrapCamP2, TrapCamP3, TrapCamP4;
-    private PlacementController placementController;
+
     private ItemManager itemManager;
     private NewPlacementController newPlacementController;
 
@@ -51,7 +52,6 @@ public class GamePadManager : MonoBehaviour {
             lpManager = GetComponent<LapsManager>();
             posManager = GetComponent<PositionManager>();
             newPlacementController = GetComponent<NewPlacementController>();
-            placementController = GetComponent<PlacementController>();
             psActor = GetComponent<PlayerSelectActor>();
 
             //Lock gamepadcount based on range
@@ -72,16 +72,23 @@ public class GamePadManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //Get current scene.
         currentScene = SceneManager.GetActiveScene();
+        //If scene is the main scene.
         if (currentScene.buildIndex == 2)
         {
-      //      lpManager.enabled = true;
-        //    itemManager.enabled = true;
-        //    posManager.enabled = true;
+            //enable lap, item, position managers.
+            //disable player select actor
+            lpManager.enabled = true;
+            itemManager.enabled = true;
+            posManager.enabled = true;
             psActor.enabled = false;
+
             GamePadCount = psActor.playerCount;
 
             newPlacementController.enabled = true;  
+
+            //Find gameobjects.
             if (!findGameObjects)
             {
                 player1 = GameObject.Find("1 Player");
@@ -100,13 +107,6 @@ public class GamePadManager : MonoBehaviour {
                 activatePrefab();
                 loadPlayerOnce = true;
             }
-
-            if (!loadTrapCamOnce)
-            {
-           //     activateTraps();
-                loadTrapCamOnce = true; 
-            }
-
            
         }
 
@@ -119,6 +119,7 @@ public class GamePadManager : MonoBehaviour {
       
     }
 
+    //Refresh all gamepads.
     public void Refresh()
     {
         for(int i = 0; i < gamepads.Count; ++i)
@@ -243,40 +244,5 @@ public class GamePadManager : MonoBehaviour {
             player4.SetActive(true);
         }
     }
-
-    //void activateTraps()
-    //{
-
-    //    switch(ConnectedTotal())
-    //    {
-    //        case 1:
-    //            TrapCamP1.SetActive(true);
-    //            TrapCamP2.SetActive(false);
-    //            TrapCamP3.SetActive(false);
-    //            TrapCamP4.SetActive(false);
-    //            break;
-    //        case 2:
-    //            TrapCamP1.SetActive(false);
-    //            TrapCamP2.SetActive(true);
-    //            TrapCamP3.SetActive(false);
-    //            TrapCamP4.SetActive(false);
-    //            break;
-    //        case 3:
-    //            TrapCamP1.SetActive(false);
-    //            TrapCamP2.SetActive(false);
-    //            TrapCamP3.SetActive(true);
-    //            TrapCamP4.SetActive(false);
-    //            break;
-    //        case 4:
-    //            TrapCamP1.SetActive(false);
-    //            TrapCamP2.SetActive(false);
-    //            TrapCamP3.SetActive(false);
-    //            TrapCamP4.SetActive(true);
-    //            break;
-    //        default:
-    //            break;
-    //    }
-
-    //}
 
 }

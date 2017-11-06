@@ -60,8 +60,8 @@ public class BuzzsawActor : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-            KartActor2 kart;
-            kart = coll.gameObject.GetComponentInParent<KartActor2>();
+            PlayerActor kart;
+            kart = coll.gameObject.GetComponentInParent<PlayerActor>();
             kart.playerDisabled = true;
 
         }

@@ -289,7 +289,7 @@ public class KartActor2 : MonoBehaviour {
             //Reset kart position a little bit back.
             if (setOnce)
             {
-                this.gameObject.transform.position = gameObject.transform.position + (transform.forward * -5);
+                this.gameObject.transform.position = gameObject.transform.position + (transform.forward * -8);
                 gameObject.transform.position = gameObject.transform.position + (transform.up * 2);
                 setOnce = false;
             }

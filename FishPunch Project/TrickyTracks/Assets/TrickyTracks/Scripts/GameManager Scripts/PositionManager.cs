@@ -10,8 +10,14 @@ public class PositionManager : MonoBehaviour {
     private PlayerActor kart1, kart2, kart3, kart4;
     private GameObject go_kart1, go_kart2, go_kart3, go_kart4;
 
-    private Text playerOnePosition, playerTwoPosition, playerThreePosition, playerFourPosition;
-    private Text playerOneLap, playerTwoLap, playerThreeLap, playerFourLap;
+    private Image playerOnePosition, playerTwoPosition, playerThreePosition, playerFourPosition;
+    private Image playerOneLap, playerTwoLap, playerThreeLap, playerFourLap;
+
+    private Image playerOnePos, playerTwoPos, playerThreePos, playerFourPos;
+    private Image playerOneLp, playerTwoLp, playerThreeLp, playerFourLp;
+
+    public Sprite positionOne, positionTwo, positionThree, positionFour;
+    public Sprite lapOne, lapTwo, lapThree;
 
 
     // Use this for initialization
@@ -25,13 +31,13 @@ public class PositionManager : MonoBehaviour {
                 kart1 = go_kart1.GetComponent<PlayerActor>();
                 go_kart2 = GameObject.Find("PlayerCharacter_002");
                 kart2 = go_kart2.GetComponent<PlayerActor>();
-                playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Text>();
-                playerTwoPosition = GameObject.Find("PlayerThreePosition").GetComponent<Text>();
+                playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Image>();
+                playerTwoPosition = GameObject.Find("PlayerThreePosition").GetComponent<Image>();
                 GameObject.Find("PlayerTwoPosition").SetActive(false);
                 GameObject.Find("PlayerFourPosition").SetActive(false);
 
-                playerOneLap = GameObject.Find("PlayerTwoLaps").GetComponent<Text>();
-                playerTwoLap = GameObject.Find("PlayerFourLaps").GetComponent<Text>();
+                playerOneLap = GameObject.Find("PlayerTwoLaps").GetComponent<Image>();
+                playerTwoLap = GameObject.Find("PlayerFourLaps").GetComponent<Image>();
 
                 GameObject.Find("PlayerThreeLaps").SetActive(false);
                 GameObject.Find("PlayerOneLaps").SetActive(false);
@@ -45,14 +51,14 @@ public class PositionManager : MonoBehaviour {
                 kart2 = go_kart2.GetComponent<PlayerActor>();
                 go_kart3 = GameObject.Find("PlayerCharacter_003");
                 kart3 = go_kart3.GetComponent<PlayerActor>();
-                playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Text>();
-                playerTwoPosition = GameObject.Find("PlayerTwoPosition").GetComponent<Text>();
-                playerThreePosition = GameObject.Find("PlayerThreePosition").GetComponent<Text>();
+                playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Image>();
+                playerTwoPosition = GameObject.Find("PlayerTwoPosition").GetComponent<Image>();
+                playerThreePosition = GameObject.Find("PlayerThreePosition").GetComponent<Image>();
                 GameObject.Find("PlayerFourPosition").SetActive(false);
 
-                playerOneLap = GameObject.Find("PlayerOneLaps").GetComponent<Text>();
-                playerTwoLap = GameObject.Find("PlayerTwoLaps").GetComponent<Text>();
-                playerThreeLap = GameObject.Find("PlayerThreeLaps").GetComponent<Text>();
+                playerOneLap = GameObject.Find("PlayerOneLaps").GetComponent<Image>();
+                playerTwoLap = GameObject.Find("PlayerTwoLaps").GetComponent<Image>();
+                playerThreeLap = GameObject.Find("PlayerThreeLaps").GetComponent<Image>();
 
                 GameObject.Find("PlayerFourLaps").SetActive(false);
                 
@@ -67,15 +73,15 @@ public class PositionManager : MonoBehaviour {
                 kart3 = go_kart3.GetComponent<PlayerActor>();
                 go_kart4 = GameObject.Find("PlayerCharacter_004");
                 kart4 = go_kart4.GetComponent<PlayerActor>();
-                playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Text>();
-                playerTwoPosition = GameObject.Find("PlayerTwoPosition").GetComponent<Text>();
-                playerThreePosition = GameObject.Find("PlayerThreePosition").GetComponent<Text>();
-                playerFourPosition = GameObject.Find("PlayerFourPosition").GetComponent<Text>();
+                playerOnePosition = GameObject.Find("PlayerOnePosition").GetComponent<Image>();
+                playerTwoPosition = GameObject.Find("PlayerTwoPosition").GetComponent<Image>();
+                playerThreePosition = GameObject.Find("PlayerThreePosition").GetComponent<Image>();
+                playerFourPosition = GameObject.Find("PlayerFourPosition").GetComponent<Image>();
 
-                playerOneLap = GameObject.Find("PlayerOneLaps").GetComponent<Text>();
-                playerTwoLap = GameObject.Find("PlayerTwoLaps").GetComponent<Text>();
-                playerThreeLap = GameObject.Find("PlayerThreeLaps").GetComponent<Text>();
-                playerFourLap = GameObject.Find("PlayerFourLaps").GetComponent<Text>();
+                playerOneLap = GameObject.Find("PlayerOneLaps").GetComponent<Image>();
+                playerTwoLap = GameObject.Find("PlayerTwoLaps").GetComponent<Image>();
+                playerThreeLap = GameObject.Find("PlayerThreeLaps").GetComponent<Image>();
+                playerFourLap = GameObject.Find("PlayerFourLaps").GetComponent<Image>();
                 break;
             default:
                 break;
@@ -95,248 +101,358 @@ public class PositionManager : MonoBehaviour {
                 positionCalculator(kart1, go_kart1, kart2, go_kart2);
                 if(kart1.kartPosition == 1 && kart2.kartPosition == 2)
                 {
-                    playerOnePosition.text = "1st";
-                    playerTwoPosition.text = "2nd";
+                    playerOnePosition.sprite = positionOne;
+                    playerTwoPosition.sprite = positionTwo;
 
                 }
                 else
                 {
-                    playerOnePosition.text = "2nd";
-                    playerTwoPosition.text = "1st";
+                    playerOnePosition.sprite = positionTwo;
+                    playerTwoPosition.sprite = positionOne;
                 }
 
-                if (kart1.lapNumber < 3)
+                if(kart1.lapNumber == 1)
                 {
-                    playerOneLap.text = (kart1.lapNumber + 1) + "/3";
+                    playerOneLap.sprite = lapOne;
                 }
-                if (kart2.lapNumber < 3)
+                else if(kart1.lapNumber == 2)
                 {
-                    playerTwoLap.text = (kart2.lapNumber + 1) + "/3";
+                    playerOneLap.sprite = lapTwo;
                 }
+                else if(kart1.lapNumber == 3)
+                {
+                    playerOneLap.sprite = lapThree;
+                }
+
+                if(kart2.lapNumber ==1 )
+                {
+                    playerTwoLap.sprite = lapOne;
+                }
+                else if(kart2.lapNumber == 2)
+                {
+                    playerTwoLap.sprite = lapTwo;
+                }
+                else if(kart2.lapNumber == 3)
+                {
+                    playerTwoLap.sprite = lapThree;
+
+
+
+                                    }
+                //if (kart1.lapNumber < 3)
+                //{
+                //    playerOneLap.text = (kart1.lapNumber + 1) + "/3";
+                //}
+                //if (kart2.lapNumber < 3)
+                //{
+                //    playerTwoLap.text = (kart2.lapNumber + 1) + "/3";
+                //}
                 break;
             case 3:
                 positionCalculator(kart1, go_kart1, kart2, go_kart2, kart3, go_kart3);
                 if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 3)
                 {
-                    playerOnePosition.text = "1st";
-                    playerTwoPosition.text = "2nd";
-                    playerThreePosition.text = "3rd";
+                    playerOnePosition.sprite = positionOne;
+                    playerTwoPosition.sprite = positionTwo;
+                    playerThreePosition.sprite = positionThree;
                 }
                 else if(kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 2)
                 {
-                    playerOnePosition.text = "1st";
-                    playerTwoPosition.text = "3rd";
-                    playerThreePosition.text = "2nd";
+                    playerOnePosition.sprite = positionOne;
+                    playerTwoPosition.sprite = positionThree;
+                    playerThreePosition.sprite = positionTwo;
                 }
                 else if(kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 1)
                 {
-                    playerOnePosition.text = "2nd";
-                    playerTwoPosition.text = "3rd";
-                    playerThreePosition.text = "1st";
+                    playerOnePosition.sprite = positionTwo;
+                    playerTwoPosition.sprite = positionThree;
+                    playerThreePosition.sprite = positionOne;
                 }
                 else if(kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 3)
                 {
-                    playerOnePosition.text = "2nd";
-                    playerTwoPosition.text = "1st";
-                    playerFourPosition.text = "3rd";
+                    playerOnePosition.sprite = positionTwo;
+                    playerTwoPosition.sprite = positionOne;
+                    playerFourPosition.sprite = positionThree;
 
                 }
                 else if(kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 2)
                 {
-                    playerOnePosition.text = "3rd";
-                    playerTwoPosition.text = "1st";
-                    playerThreePosition.text = "2nd";
+                    playerOnePosition.sprite = positionThree;
+                    playerTwoPosition.sprite = positionOne;
+                    playerThreePosition.sprite = positionTwo;
                 }
                 else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 1)
                 {
-                    playerOnePosition.text = "3rd";
-                    playerTwoPosition.text = "2nd";
-                    playerThreePosition.text = "1st";
+                    playerOnePosition.sprite = positionThree;
+                    playerTwoPosition.sprite = positionTwo;
+                    playerThreePosition.sprite = positionOne;
                 }
 
-                playerOneLap.text = (kart1.lapNumber + 1) + "/3";
-                playerTwoLap.text = (kart2.lapNumber + 1) + "/3";
-                playerThreeLap.text = (kart3.lapNumber + 1) + "/3";
-                break;
+                if (kart1.lapNumber == 1)
+                {
+                    playerOneLap.sprite = lapOne;
+                }
+                else if (kart1.lapNumber == 2)
+                {
+                    playerOneLap.sprite = lapTwo;
+                }
+                else if (kart1.lapNumber == 3)
+                {
+                    playerOneLap.sprite = lapThree;
+                }
+
+                if (kart2.lapNumber == 1)
+                {
+                    playerTwoLap.sprite = lapOne;
+                }
+                else if (kart2.lapNumber == 2)
+                {
+                    playerTwoLap.sprite = lapTwo;
+                }
+                else if (kart2.lapNumber == 3)
+                {
+                    playerTwoLap.sprite = lapThree;
+
+                }
+                if(kart3.lapNumber == 1)
+                {
+                    playerThreeLap.sprite = lapOne;
+                }
+                else if(kart3.lapNumber == 2)
+                {
+                    playerThreeLap.sprite = lapTwo;
+                }
+                else if(kart3.lapNumber == 3)
+                {
+                    playerThreeLap.sprite = lapThree;
+                }
+                    break;
             case 4:
                 positionCalculator(kart1, go_kart1, kart2, go_kart2, kart3, go_kart3, kart4, go_kart4);
                 //1st
                 if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 3 && kart4.kartPosition == 4)
                 {
-                    playerOnePosition.text = "1st";
-                    playerTwoPosition.text = "2nd";
-                    playerThreePosition.text = "3rd";
-                    playerFourPosition.text = "4th";
+                    playerOnePosition.sprite = positionOne;
+                    playerTwoPosition.sprite = positionTwo;
+                    playerThreePosition.sprite = positionThree;
+                    playerFourPosition.sprite = positionFour;
                 }
                 else if(kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 4 && kart4.kartPosition == 3)
                 {
-                    playerOnePosition.text = "1st";
-                    playerTwoPosition.text = "2nd";
-                    playerThreePosition.text = "4th";
-                    playerFourPosition.text = "3rd";
+                    playerOnePosition.sprite = positionOne;
+                    playerTwoPosition.sprite = positionTwo;
+                    playerThreePosition.sprite = positionFour;
+                    playerFourPosition.sprite = positionThree;
                 }
                 else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 2 && kart4.kartPosition == 4)
                 {
-                    playerOnePosition.text = "1st";
-                    playerTwoPosition.text = "3rd";
-                    playerThreePosition.text = "2nd";
-                    playerFourPosition.text = "4th";
+                    playerOnePosition.sprite = positionOne;
+                    playerTwoPosition.sprite = positionThree;
+                    playerThreePosition.sprite = positionTwo;
+                    playerFourPosition.sprite = positionFour;
                 }
                 else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 4 && kart4.kartPosition == 2)
                 {
-                    playerOnePosition.text = "1st";
-                    playerTwoPosition.text = "3rd";
-                    playerThreePosition.text = "1st";
-                    playerFourPosition.text = "4th";
+                    playerOnePosition.sprite = positionOne;
+                    playerTwoPosition.sprite = positionThree;
+                    playerThreePosition.sprite = positionFour;
+                    playerFourPosition.sprite = positionTwo;
                 }
                 else if (kart1.kartPosition == 1 && kart2.kartPosition == 4 && kart3.kartPosition == 2 && kart4.kartPosition == 3)
                 {
-                    playerOnePosition.text = "1st";
-                    playerTwoPosition.text = "4th";
-                    playerThreePosition.text = "2nd";
-                    playerFourPosition.text = "3rd";
+                    playerOnePosition.sprite = positionOne;
+                    playerTwoPosition.sprite = positionFour;
+                    playerThreePosition.sprite = positionTwo;
+                    playerFourPosition.sprite = positionThree;
                 }
                 else if (kart1.kartPosition == 1 && kart2.kartPosition == 4 && kart3.kartPosition == 3 && kart4.kartPosition == 2)
                 {
-                    playerOnePosition.text = "1st";
-                    playerTwoPosition.text = "4th";
-                    playerThreePosition.text = "3rd";
-                    playerFourPosition.text = "2nd";
+                    playerOnePosition.sprite = positionOne;
+                    playerTwoPosition.sprite = positionFour;
+                    playerThreePosition.sprite = positionThree;
+                    playerFourPosition.sprite = positionTwo;
                 }
                 //2md
                 else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 3 && kart4.kartPosition == 4)
                 {
-                    playerOnePosition.text = "2nd";
-                    playerTwoPosition.text = "1st";
-                    playerThreePosition.text = "3rd";
-                    playerFourPosition.text = "4th";
+                    playerOnePosition.sprite = positionTwo;
+                    playerTwoPosition.sprite = positionOne;
+                    playerThreePosition.sprite = positionThree;
+                    playerFourPosition.sprite = positionFour;
                 }
                 else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 4 && kart4.kartPosition == 3)
                 {
-                    playerOnePosition.text = "2nd";
-                    playerTwoPosition.text = "1st";
-                    playerThreePosition.text = "4th";
-                    playerFourPosition.text = "3rd";
+                    playerOnePosition.sprite = positionTwo;
+                    playerTwoPosition.sprite = positionOne;
+                    playerThreePosition.sprite = positionFour;
+                    playerFourPosition.sprite = positionThree;
                 }
                 else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 4 && kart4.kartPosition == 1)
                 {
-                    playerOnePosition.text = "2nd";
-                    playerTwoPosition.text = "3rd";
-                    playerThreePosition.text = "4th";
-                    playerFourPosition.text = "1st";
+                    playerOnePosition.sprite = positionTwo;
+                    playerTwoPosition.sprite = positionThree;
+                    playerThreePosition.sprite = positionFour;
+                    playerFourPosition.sprite = positionOne;
                 }
                 else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 1 && kart4.kartPosition == 4)
                 {
-                    playerOnePosition.text = "2nd";
-                    playerTwoPosition.text = "3rd";
-                    playerThreePosition.text = "1st";
-                    playerFourPosition.text = "4th";
+                    playerOnePosition.sprite = positionTwo;
+                    playerTwoPosition.sprite = positionThree;
+                    playerThreePosition.sprite = positionOne;
+                    playerFourPosition.sprite = positionFour;
                 }
                 else if (kart1.kartPosition == 2 && kart2.kartPosition == 4 && kart3.kartPosition == 1 && kart4.kartPosition == 3)
                 {
-                    playerOnePosition.text = "2nd";
-                    playerTwoPosition.text = "4th";
-                    playerThreePosition.text = "1st";
-                    playerFourPosition.text = "3rd";
+                    playerOnePosition.sprite = positionTwo;
+                    playerTwoPosition.sprite = positionFour;
+                    playerThreePosition.sprite = positionOne;
+                    playerFourPosition.sprite = positionThree;
                 }
                 else if (kart1.kartPosition == 2 && kart2.kartPosition == 4 && kart3.kartPosition == 3 && kart4.kartPosition == 1)
                 {
-                    playerOnePosition.text = "2nd";
-                    playerTwoPosition.text = "4th";
-                    playerThreePosition.text = "3rd";
-                    playerFourPosition.text = "1st";
+                    playerOnePosition.sprite = positionTwo;
+                    playerTwoPosition.sprite = positionFour;
+                    playerThreePosition.sprite = positionThree;
+                    playerFourPosition.sprite = positionOne;
                 }
                 //3rd
                 else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 2 && kart4.kartPosition == 4)
                 {
-                    playerOnePosition.text = "3rd";
-                    playerTwoPosition.text = "1st";
-                    playerThreePosition.text = "2nd";
-                    playerFourPosition.text = "4th";
+                    playerOnePosition.sprite = positionThree;
+                    playerTwoPosition.sprite = positionOne;
+                    playerThreePosition.sprite = positionTwo;
+                    playerFourPosition.sprite = positionFour;
                 }
                 else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 4 && kart4.kartPosition == 2)
                 {
-                    playerOnePosition.text = "3rd";
-                    playerTwoPosition.text = "1st";
-                    playerThreePosition.text = "4th";
-                    playerFourPosition.text = "2nd";
+                    playerOnePosition.sprite = positionThree;
+                    playerTwoPosition.sprite = positionOne;
+                    playerThreePosition.sprite = positionFour;
+                    playerFourPosition.sprite = positionTwo;
                 }
                 else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 1 && kart4.kartPosition == 4)
                 {
-                    playerOnePosition.text = "3rd";
-                    playerTwoPosition.text = "2nd";
-                    playerThreePosition.text = "1st";
-                    playerFourPosition.text = "4th";
+                    playerOnePosition.sprite = positionThree;
+                    playerTwoPosition.sprite = positionTwo;
+                    playerThreePosition.sprite = positionOne;
+                    playerFourPosition.sprite = positionFour;
                 }
                 else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 4 && kart4.kartPosition == 1)
                 {
-                    playerOnePosition.text = "3rd";
-                    playerTwoPosition.text = "2nd";
-                    playerThreePosition.text = "4th";
-                    playerFourPosition.text = "1st";
+                    playerOnePosition.sprite = positionThree;
+                    playerTwoPosition.sprite = positionTwo;
+                    playerThreePosition.sprite = positionFour;
+                    playerFourPosition.sprite = positionOne;
                 }
                 else if (kart1.kartPosition == 3 && kart2.kartPosition == 4 && kart3.kartPosition == 1 && kart4.kartPosition == 2)
                 {
-                    playerOnePosition.text = "3rd";
-                    playerTwoPosition.text = "4th";
-                    playerThreePosition.text = "1st";
-                    playerFourPosition.text = "2nd";
+                    playerOnePosition.sprite = positionThree;
+                    playerTwoPosition.sprite = positionFour;
+                    playerThreePosition.sprite = positionOne;
+                    playerFourPosition.sprite = positionTwo;
                 }
                 else if (kart1.kartPosition == 3 && kart2.kartPosition == 4 && kart3.kartPosition == 2 && kart4.kartPosition == 1)
                 {
-                    playerOnePosition.text = "3rd";
-                    playerTwoPosition.text = "4th";
-                    playerThreePosition.text = "2nd";
-                    playerFourPosition.text = "1st";
+                    playerOnePosition.sprite = positionThree;
+                    playerTwoPosition.sprite = positionFour;
+                    playerThreePosition.sprite = positionTwo;
+                    playerFourPosition.sprite = positionOne;
                 }
                 //4th
                 else if (kart1.kartPosition == 4 && kart2.kartPosition == 1 && kart3.kartPosition == 2 && kart4.kartPosition == 3)
                 {
-                    playerOnePosition.text = "4th";
-                    playerTwoPosition.text = "1st";
-                    playerThreePosition.text = "2nd";
-                    playerFourPosition.text = "3rd";
+                    playerOnePosition.sprite = positionFour;
+                    playerTwoPosition.sprite = positionOne;
+                    playerThreePosition.sprite = positionTwo;
+                    playerFourPosition.sprite = positionThree;
                 }
                 else if (kart1.kartPosition == 4 && kart2.kartPosition == 1 && kart3.kartPosition == 3 && kart4.kartPosition == 2)
                 {
-                    playerOnePosition.text = "4th";
-                    playerTwoPosition.text = "1st";
-                    playerThreePosition.text = "3rd";
-                    playerFourPosition.text = "2nd";
+                    playerOnePosition.sprite = positionFour;
+                    playerTwoPosition.sprite = positionOne;
+                    playerThreePosition.sprite = positionThree;
+                    playerFourPosition.sprite = positionTwo;
                 }
                 else if (kart1.kartPosition == 4 && kart2.kartPosition == 2 && kart3.kartPosition == 3 && kart4.kartPosition == 1)
                 {
-                    playerOnePosition.text = "4th";
-                    playerTwoPosition.text = "2nd";
-                    playerThreePosition.text = "3rd";
-                    playerFourPosition.text = "1st";
+                    playerOnePosition.sprite = positionFour;
+                    playerTwoPosition.sprite = positionTwo;
+                    playerThreePosition.sprite = positionThree;
+                    playerFourPosition.sprite = positionOne;
                 }
                 else if (kart1.kartPosition == 4 && kart2.kartPosition == 2 && kart3.kartPosition == 1 && kart4.kartPosition == 3)
                 {
-                    playerOnePosition.text = "4th";
-                    playerTwoPosition.text = "2nd";
-                    playerThreePosition.text = "1st";
-                    playerFourPosition.text = "3rd";
+                    playerOnePosition.sprite = positionFour;
+                    playerTwoPosition.sprite = positionTwo;
+                    playerThreePosition.sprite = positionOne;
+                    playerFourPosition.sprite = positionThree;
                 }
                 else if (kart1.kartPosition == 4 && kart2.kartPosition == 3 && kart3.kartPosition == 1 && kart4.kartPosition == 2)
                 {
-                    playerOnePosition.text = "4th";
-                    playerTwoPosition.text = "3rd";
-                    playerThreePosition.text = "1st";
-                    playerFourPosition.text = "2nd";
+                    playerOnePosition.sprite = positionFour;
+                    playerTwoPosition.sprite = positionThree;
+                    playerThreePosition.sprite = positionOne;
+                    playerFourPosition.sprite = positionTwo;
                 }
                 else if (kart1.kartPosition == 4 && kart2.kartPosition == 3 && kart3.kartPosition == 2 && kart4.kartPosition == 1)
                 {
-                    playerOnePosition.text = "4th";
-                    playerTwoPosition.text = "3rd";
-                    playerThreePosition.text = "2nd";
-                    playerFourPosition.text = "1st";
+                    playerOnePosition.sprite = positionFour;
+                    playerTwoPosition.sprite = positionThree;
+                    playerThreePosition.sprite = positionTwo;
+                    playerFourPosition.sprite = positionOne;
                 }
 
-                playerOneLap.text = (kart1.lapNumber + 1) + "/3";
-                playerTwoLap.text = (kart2.lapNumber + 1) + "/3";
-                playerThreeLap.text = (kart3.lapNumber + 1) + "/3";
-                playerFourLap.text = (kart4.lapNumber + 1) + "/3";
+                if (kart1.lapNumber == 1)
+                {
+                    playerOneLap.sprite = lapOne;
+                }
+                else if (kart1.lapNumber == 2)
+                {
+                    playerOneLap.sprite = lapTwo;
+                }
+                else if (kart1.lapNumber == 3)
+                {
+                    playerOneLap.sprite = lapThree;
+                }
+
+                if (kart2.lapNumber == 1)
+                {
+                    playerTwoLap.sprite = lapOne;
+                }
+                else if (kart2.lapNumber == 2)
+                {
+                    playerTwoLap.sprite = lapTwo;
+                }
+                else if (kart2.lapNumber == 3)
+                {
+                    playerTwoLap.sprite = lapThree;
+
+                }
+                if (kart3.lapNumber == 1)
+                {
+                    playerThreeLap.sprite = lapOne;
+                }
+                else if (kart3.lapNumber == 2)
+                {
+                    playerThreeLap.sprite = lapTwo;
+                }
+                else if (kart3.lapNumber == 3)
+                {
+                    playerThreeLap.sprite = lapThree;
+                }
+
+                if(kart4.lapNumber == 1)
+                {
+                    playerFourLap.sprite = lapOne;
+                }
+                else if(kart4.lapNumber == 2)
+                {
+                    playerFourLap.sprite = lapTwo;
+                }
+                else if(kart4.lapNumber == 3)
+                {
+                    playerFourLap.sprite = lapThree;
+                }
                 break;
         }
 
@@ -966,7 +1082,7 @@ public class PositionManager : MonoBehaviour {
                     kartfour.kartPosition = 2;
                 }
                 //Kart2
-                if ((dist2 < dist1) && (dist1 < dist3) && (dist3 < dist4))
+                else if ((dist2 < dist1) && (dist1 < dist3) && (dist3 < dist4))
                 {
                     kart.kartPosition = 2;
                     karttwo.kartPosition = 1;
@@ -1009,7 +1125,7 @@ public class PositionManager : MonoBehaviour {
                     kartfour.kartPosition = 2;
                 }
                 //Kart3
-                if ((dist3 < dist1) && (dist1 < dist2) && (dist2 < dist4))
+                else if ((dist3 < dist1) && (dist1 < dist2) && (dist2 < dist4))
                 {
                     kart.kartPosition = 2;
                     karttwo.kartPosition = 3;
@@ -1052,7 +1168,7 @@ public class PositionManager : MonoBehaviour {
                     kartfour.kartPosition = 2;
                 }
                 //Kart4
-                if ((dist4 < dist1) && (dist1 < dist2) && (dist2 < dist3))
+                else if ((dist4 < dist1) && (dist1 < dist2) && (dist2 < dist3))
                 {
                     kart.kartPosition = 2;
                     karttwo.kartPosition = 3;

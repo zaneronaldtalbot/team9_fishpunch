@@ -1,30 +1,39 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour {
 
     //Kart Script
-
     [HideInInspector]
     public PlayerActor wc_kart1, wc_kart2, wc_kart3, wc_kart4;
 
+    //rocketactor.
     private RocketActor rocketActor;
 
+    
+
+    //Gameobjects.
     private GameObject go_kart1;
     private GameObject go_kart2;
     private GameObject go_kart3;
     private GameObject go_kart4;
 
+    //Rocket mine gameobjects.
     public GameObject Rocket;
     public GameObject Mine;
 
     private GameObject tempRocket;
     [HideInInspector]
     public bool rocketFired = false;
-
+    
+    //Manager.
     private GameObject manager;
     private GamePadManager gpmanager;
+
+    //PsActor.
+    private PlayerSelectActor psActor;
 
     // Use this for initialization
     void Start() {
@@ -32,6 +41,7 @@ public class ItemManager : MonoBehaviour {
         manager = this.gameObject;
         gpmanager = manager.GetComponent<GamePadManager>();
         rocketActor = Rocket.GetComponentInChildren<RocketActor>();
+        psActor = manager.GetComponent<PlayerSelectActor>();
 
     }
     float timer1 = 0.0f;
@@ -39,12 +49,10 @@ public class ItemManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         timer1 += Time.deltaTime;
-
-        
-
+       
         //Grabs copies of the players kart gameobject and script
         //based on the connected controller total.
-        switch(gpmanager.ConnectedTotal())
+        switch(psActor.playerCount)
         {
             case 1:
                 if (go_kart1 == null)
@@ -107,12 +115,6 @@ public class ItemManager : MonoBehaviour {
             default:
                 break;
         }
-
-
-
-
-
-
 
         //Checks the item conditions for all the karts.
         if (go_kart1 != null)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 /// <summary>
 /// The Kart Controller. Handles all the dynamics for the kart and also implements some helper functions for 
 /// things like speed boosts/penalties, and making the kart spin/wiggle/jump.
+/// Kart Controller base made by deercat, edited By Angus Secomb for use in project.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class KartController : MonoBehaviour
@@ -12,9 +13,9 @@ public class KartController : MonoBehaviour
 	public float accelTime = 1.0f;				// time in seconds the vehicle takes to go from stationary to top speed
 	public float traction = 0.4f;				// 0-1 value that determines how much traction the vehicle has on the road
 	public float decelerationSpeed = 0.5f;      // 0-1 value that determines how quickly the vehicle comes to a rest when thrust is released
-    public float decelerationSpeedCopy;
-    public float breakPower = 0.0f;
-    public float tractionCopy;
+    public float decelerationSpeedCopy;         //Copy of the deceleration speed value used to reset values after drifting.
+    public float breakPower = 0.0f;             //How fast the kart breaks.
+    public float tractionCopy;                  //Copy of the karts traction that resets traction to default after drifting.
 
 	public Transform body;						// the kart body object
 
@@ -44,6 +45,12 @@ public class KartController : MonoBehaviour
 		get { return thrust; }
 		set { thrust = Mathf.Clamp(value, -1.0f, 1.0f); }
 	}
+
+    public void LockSteering(float steerValue, float time)
+    {
+        steerLockTimer = time;
+        steerLockValue = steerValue;
+    }
 
 	/// <summary>
 	/// Gets or sets the steering value.
@@ -211,6 +218,9 @@ public class KartController : MonoBehaviour
 	private float wiggleMaxAngle = 15.0f;	// maximum angle a wiggle rotates the vehicle by
 	private float wiggleTimer;
 
+    private float steerLockTimer;
+    private float steerLockValue;
+
 	private float boostMPH;
 	private float boostAccel;
 	private float boostAmount;
@@ -253,6 +263,8 @@ public class KartController : MonoBehaviour
         decelerationSpeedCopy = decelerationSpeed;
         tractionCopy = traction;
 
+      
+
 		// set an artificially low center of gravity to aid in stability.
 		Vector3 frontAxleCenter = 0.5f * (wheelFL.localPosition + wheelFR.localPosition);
 		Vector3 rearAxleCenter = 0.5f * (wheelBL.localPosition + wheelBR.localPosition);
@@ -267,6 +279,7 @@ public class KartController : MonoBehaviour
 		visualBody.position = body.position;
 		visualBody.rotation = body.rotation;
 		visualBody.localScale = Vector3.one;
+        visualBody.tag = "Player";
 		while (body.childCount > 0)
 		{
 			body.GetChild(0).parent = visualBody;
@@ -280,7 +293,7 @@ public class KartController : MonoBehaviour
 		wheel.transform.parent = body;
 		wheel.transform.position = position;
 		wheel.transform.localRotation = Quaternion.identity;
-
+        wheel.tag = "Player";
 		WheelCollider collider = wheel.AddComponent<WheelCollider>();
 		collider.radius = radius;
 		collider.suspensionDistance = 0.1f;
@@ -490,6 +503,18 @@ public class KartController : MonoBehaviour
 		}
 	}
 
+    private void UpdateSteerLock()
+    {
+        steerLockTimer -= Time.deltaTime;
+        if(steerLockTimer > 0)
+        {
+           // steer = steerLockValue;
+
+            steer = Mathf.SmoothDamp(steer, steerLockValue, ref steer, 2.0f);
+        }
+       
+    }
+
 	private void UpdateWiggle()
 	{
 		if(wiggleTime > 0.0f)
@@ -538,6 +563,7 @@ public class KartController : MonoBehaviour
 		UpdateSpin();
 		UpdateBoost();
 		UpdatePenalty();
+        UpdateSteerLock();
 	}
 
 	#endregion

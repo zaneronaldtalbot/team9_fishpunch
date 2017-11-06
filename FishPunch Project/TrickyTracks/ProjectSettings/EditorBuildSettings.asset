@@ -8,15 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TrickyTracks/Scenes/MainMenu.unity
     guid: 7b9f399b565d75546b7b48bce01ddfb6
-  - enabled: 0
-    path: 
-    guid: afdd7c598384ad24283760024da2bfa5
-  - enabled: 0
-    path: 
-    guid: a16d725da8e1c0b44970995bcf788181
   - enabled: 1
-    path: Assets/TrickyTracks/Scenes/Options_Menu.unity
-    guid: 0d465a24bb21aa640b5137b4e3e80847
+    path: Assets/TrickyTracks/Scenes/PlayerSelect.unity
+    guid: d8e8d8a9846dd2246960b531bb220db9
   - enabled: 1
     path: Assets/TrickyTracks/Scenes/Peter's Map.unity
     guid: afa37882ed2f67a4789faad824268020
+  - enabled: 1
+    path: Assets/TrickyTracks/Scenes/Options_Menu.unity
+    guid: 0d465a24bb21aa640b5137b4e3e80847

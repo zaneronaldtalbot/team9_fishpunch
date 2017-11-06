@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MineActor : MonoBehaviour {
 
-    private KartActor2 kart;
+    private PlayerActor kart;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,7 @@ public class MineActor : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-            kart = coll.gameObject.GetComponentInParent<KartActor2>();
+            kart = coll.gameObject.GetComponentInParent<PlayerActor>();
             kart.playerDisabled = true;
             GameObject.Destroy(this.gameObject.transform.parent.gameObject);
         }

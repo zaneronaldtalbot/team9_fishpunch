@@ -11,8 +11,6 @@ public class LapsManager : MonoBehaviour
     private NewPlacementController npc;
     private PlayerSelectActor psActor;
 
-
-
     public GameObject newManager;
 
     [HideInInspector]
@@ -22,6 +20,15 @@ public class LapsManager : MonoBehaviour
     private Text restartText;
     private Text first, second, third, fourth;
     private Text raceEnd;
+    private Text raceCountdown;
+
+    public Sprite greenLight;
+    public Sprite redLight;
+
+    private Image countOne, countTwo, countThree, countFour;
+
+    private float raceCountdownTimer = 3.0f;
+    private int intRaceCountdown;
 
     private float restartTime = 10.0f;
     private float endRaceTime = 10;
@@ -41,9 +48,7 @@ public class LapsManager : MonoBehaviour
     [HideInInspector]
     public bool check4 = false;
 
-
-    private KartActor2 kart1, kart2, kart3, kart4;
-
+    private PlayerActor kart1, kart2, kart3, kart4;
 
     public GameObject Lapcounter;
 
@@ -68,7 +73,38 @@ public class LapsManager : MonoBehaviour
         checkpoint = GameObject.Find("CheckPoint4");
         checkPoints.Add(checkpoint);
 
+        checkpoint = GameObject.Find("CheckPoint5");
+        checkPoints.Add(checkpoint);
+
+        checkpoint = GameObject.Find("CheckPoint6");
+        checkPoints.Add(checkpoint);
+
+        checkpoint = GameObject.Find("CheckPoint7");
+        checkPoints.Add(checkpoint);
+
+        checkpoint = GameObject.Find("CheckPoint8");
+        checkPoints.Add(checkpoint);
+
+        checkpoint = GameObject.Find("CheckPoint9");
+        checkPoints.Add(checkpoint);
+
+        checkpoint = GameObject.Find("CheckPoint10");
+        checkPoints.Add(checkpoint);
+
+        checkpoint = GameObject.Find("CheckPoint11");
+        checkPoints.Add(checkpoint);
+
+        checkpoint = GameObject.Find("CheckPoint12");
+        checkPoints.Add(checkpoint);
+
         FinishLine = GameObject.Find("StartLine");
+
+        countOne = GameObject.Find("Startlight1").GetComponent<Image>();
+        countTwo = GameObject.Find("Startlight2").GetComponent<Image>();
+        countThree = GameObject.Find("Startlight3").GetComponent<Image>();
+        countFour = GameObject.Find("Startlight4").GetComponent<Image>();
+
+        raceCountdown = GameObject.Find("RaceCountdown").GetComponent<Text>();
 
         raceRestart = GameObject.Find("RestartRace");
         restartText = raceRestart.GetComponent<Text>();
@@ -81,21 +117,21 @@ public class LapsManager : MonoBehaviour
         switch(psActor.playerCount)
         {
             case 2:
-                kart1 = GameObject.Find("PlayerCharacter_001").GetComponent<KartActor2>();
-                kart2 = GameObject.Find("PlayerCharacter_002").GetComponent<KartActor2>();
+                kart1 = GameObject.Find("PlayerCharacter_001").GetComponent<PlayerActor>();
+                kart2 = GameObject.Find("PlayerCharacter_002").GetComponent<PlayerActor>();
                 break;
             case 3:
 
-                kart1 = GameObject.Find("PlayerCharacter_001").GetComponent<KartActor2>();
-                kart2 = GameObject.Find("PlayerCharacter_002").GetComponent<KartActor2>();
-                kart3 = GameObject.Find("PlayerCharacter_003").GetComponent<KartActor2>();
+                kart1 = GameObject.Find("PlayerCharacter_001").GetComponent<PlayerActor>();
+                kart2 = GameObject.Find("PlayerCharacter_002").GetComponent<PlayerActor>();
+                kart3 = GameObject.Find("PlayerCharacter_003").GetComponent<PlayerActor>();
 
                 break;
             case 4:
-                kart1 = GameObject.Find("PlayerCharacter_001").GetComponent<KartActor2>();
-                kart2 = GameObject.Find("PlayerCharacter_002").GetComponent<KartActor2>();
-                kart3 = GameObject.Find("PlayerCharacter_003").GetComponent<KartActor2>();
-                kart4 = GameObject.Find("PlayerCharacter_004").GetComponent<KartActor2>();
+                kart1 = GameObject.Find("PlayerCharacter_001").GetComponent<PlayerActor>();
+                kart2 = GameObject.Find("PlayerCharacter_002").GetComponent<PlayerActor>();
+                kart3 = GameObject.Find("PlayerCharacter_003").GetComponent<PlayerActor>();
+                kart4 = GameObject.Find("PlayerCharacter_004").GetComponent<PlayerActor>();
                 break;
         }
         
@@ -106,7 +142,36 @@ public class LapsManager : MonoBehaviour
     private void Update()
     {
         Debug.Log("Lap: " + lapNumber);
-
+        raceCountdownTimer -= Time.deltaTime;
+        intRaceCountdown = (int)raceCountdownTimer;
+        raceCountdown.text = intRaceCountdown.ToString();
+        if(raceCountdownTimer < 0)
+        {
+            raceCountdown.enabled = false;
+        }
+        if(raceCountdownTimer < 3)
+        {
+            countOne.sprite = greenLight;
+        }
+        if(raceCountdownTimer <  2)
+        {
+            countTwo.sprite = greenLight;
+        }
+        if(raceCountdownTimer < 1)
+        {
+            countThree.sprite = greenLight;
+        }
+        if(raceCountdownTimer < 0)
+        {
+            countFour.sprite = greenLight;
+        }
+        if(raceCountdownTimer < -0.5f)
+        {
+            countFour.enabled = false;
+            countThree.enabled = false;
+            countTwo.enabled = false;
+            countOne.enabled = false;
+        }
 
         switch (psActor.playerCount)
         {
@@ -157,7 +222,7 @@ public class LapsManager : MonoBehaviour
                     if (kart1.kartPosition == 1 && kart2.kartPosition == 2)
                     {
                         first.color = Color.red;
-                        first.text += "1st: Player 1";
+                        first.text = "1st: Player 1";
                         second.color = Color.blue;
                         second.text = "2nd: Player 2";
                     }

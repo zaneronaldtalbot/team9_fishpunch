@@ -25,6 +25,12 @@ public class PlayerSelectActor : MonoBehaviour
     [HideInInspector]
     public bool playerReady4 = false;
 
+    private int playerOneIndex = 0, playerTwoIndex = 0, playerThreeIndex = 0, playerFourIndex = 0;
+
+    [Tooltip("Kart prefab Instances.")]
+    public GameObject kartOne, kartTwo, kartThree, kartFour;
+
+
     public float timer = 60.0f;
 
     private Text textTimer;
@@ -44,7 +50,7 @@ public class PlayerSelectActor : MonoBehaviour
     {
         if (timer < 0.0f)
         {
-            SceneManager.LoadScene("MainLevel001");
+            SceneManager.LoadScene("Peter's Map");
         }
 
         switch (gpManager.ConnectedTotal())
@@ -52,26 +58,26 @@ public class PlayerSelectActor : MonoBehaviour
             case 1:
                 if (playerReady1)
                 {
-                    SceneManager.LoadScene("MainLevel001_UI");
+                    SceneManager.LoadScene("Peter's Map");
                    
                 }
                 break;
             case 2:
                 if (playerReady1 && playerReady2)
                 {
-                    SceneManager.LoadScene("MainLevel001");
+                    SceneManager.LoadScene("Peter's Map");
                 }
                 break;
             case 3:
                 if (playerReady1 && playerReady2 && playerReady3)
                 {
-                    SceneManager.LoadScene("MainLevel001");
+                    SceneManager.LoadScene("Peter's Map");
                 }
                 break;
             case 4:
                 if (playerReady1 && playerReady2 && playerReady3 && playerReady4)
                 {
-                    SceneManager.LoadScene("MainLevel001");
+                    SceneManager.LoadScene("Peter's Map");
                 }
                 break;
             default:
@@ -93,6 +99,14 @@ public class PlayerSelectActor : MonoBehaviour
 
      
       
+    }
+
+    void selectKart(int playerIndex)
+    {
+
+
+
+
     }
 
 
