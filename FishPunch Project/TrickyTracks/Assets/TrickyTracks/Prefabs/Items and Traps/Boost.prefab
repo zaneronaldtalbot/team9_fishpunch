@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1009864689174384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.201378, y: 9.48, z: -172.11298}
+  m_LocalPosition: {x: 75.431946, y: 17.448956, z: -185.29626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4036349819588090}
@@ -209,3 +209,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 5
   prefabSet: 0
+  transparentItem: {fileID: 2100000, guid: d214fe9c36c12ed4d9947edafcadcbd1, type: 2}

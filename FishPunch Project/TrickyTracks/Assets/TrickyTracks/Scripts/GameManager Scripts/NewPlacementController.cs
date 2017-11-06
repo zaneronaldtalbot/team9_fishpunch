@@ -1141,6 +1141,21 @@ public class NewPlacementController : MonoBehaviour
 
     void OnTriggerEnter(Collider coll)
     {
+        if((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
+        {
+            cannotPlace = true;
+            Material currentMaterial;
+            
 
+        }
+    }
+
+    void OnTriggerExit(Collider coll)
+    {
+        if ((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
+        {
+            cannotPlace = false;
+
+        }
     }
 }

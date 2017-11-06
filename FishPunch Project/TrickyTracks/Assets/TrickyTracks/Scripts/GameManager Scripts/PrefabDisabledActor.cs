@@ -12,9 +12,15 @@ public class PrefabDisabledActor : MonoBehaviour
 
     public bool prefabSet = false;
 
+    public Material transparentItem;
+    private Material noo;
+
+    private Renderer rend;
     // Use this for initialization
     void Start()
     {
+   
+
         if (this.gameObject.name == "Buzzsaw(Clone)")
         {
             colliderObject = this.gameObject.transform.Find("SawBlade_001").gameObject;
@@ -42,6 +48,12 @@ public class PrefabDisabledActor : MonoBehaviour
         if (timer < 0)
         {
             colliderObject.SetActive(true);
+
+        }
+        else
+        {
+
+
         }
 
         lastPos = this.gameObject.transform.position;

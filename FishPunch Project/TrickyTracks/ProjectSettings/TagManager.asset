@@ -12,6 +12,7 @@ TagManager:
   - ItemRPG
   - Boost
   - OffRoad
+  - Item
   layers:
   - Default
   - TransparentFX
