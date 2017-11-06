@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc11858c79b4d643b510b7022e9204b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newManager: {fileID: 0}
+  newManager: {fileID: 1721877393238298}
   raceOver: 0
   greenLight: {fileID: 21300000, guid: 7fa368b3233869644a68f60d930b2593, type: 3}
   redLight: {fileID: 21300000, guid: eb8163cc43717304ba690eaff36a0c10, type: 3}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabRotationSpeed: 2
   buzzsaw: {fileID: 1788449724218994, guid: 2a694c808f1a4a34295b4c29cb44477d, type: 2}
-  ramp: {fileID: 1346199037696874, guid: e7f60b01c39508a488163140c730509d, type: 2}
+  ramp: {fileID: 1722413512801098, guid: 35c3ffe3660be8046b026a40e4eb1284, type: 2}
   oilslick: {fileID: 1199855343562384, guid: c0b4a191f0f45cf4bac5541ebe946ef6, type: 2}
   boostsaw: {fileID: 1788449724218994, guid: 2a694c808f1a4a34295b4c29cb44477d, type: 2}
   boost: {fileID: 1009864689174384, guid: f72d98d87524fb545a493d8b6e5ae535, type: 2}
@@ -144,6 +144,8 @@ MonoBehaviour:
   playerSprite2: {fileID: 21300000, guid: 3dec4e76b9588af49be73b4f698014d4, type: 3}
   playerSprite3: {fileID: 21300000, guid: ebc7085e479c0b746945c5299a01f2c4, type: 3}
   playerSprite4: {fileID: 21300000, guid: 4e7211af8edff6d46b4fea01b00978cb, type: 3}
+  redItem: {fileID: 0}
+  transparentItem: {fileID: 0}
   itemsP1: []
   itemsP2: []
   itemsP3: []

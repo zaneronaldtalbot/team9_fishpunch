@@ -57,6 +57,8 @@ public class NewPlacementController : MonoBehaviour
     public Sprite playerSprite3;
     public Sprite playerSprite4;
 
+    public Material redItem, transparentItem;
+
     //Object that the raycast shoots down from.
     private GameObject raycastObject1, raycastObject2, raycastObject3, raycastObject4;
     
@@ -70,6 +72,8 @@ public class NewPlacementController : MonoBehaviour
 
     //Index for each player item list.
     private int prefabIndex1 = 0, prefabIndex2 = 0, prefabIndex3 = 0, prefabIndex4 = 0;
+
+    private bool cannotPlace = false;
 
     //kart gameobjects.
     private GameObject kart1, kart2, kart3, kart4;
@@ -1132,6 +1136,11 @@ public class NewPlacementController : MonoBehaviour
         {
             powerupIcon.sprite = blankPowerupIcon;
         }
+
+    }
+
+    void OnTriggerEnter(Collider coll)
+    {
 
     }
 }

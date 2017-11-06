@@ -40,8 +40,7 @@ public class PositionManager : MonoBehaviour {
                 playerTwoLap = GameObject.Find("PlayerFourLaps").GetComponent<Image>();
 
                 GameObject.Find("PlayerThreeLaps").SetActive(false);
-                GameObject.Find("PlayerOneLaps").SetActive(false);
-                
+                GameObject.Find("PlayerOneLaps").SetActive(false);            
 
                 break;
             case 3:
@@ -60,8 +59,7 @@ public class PositionManager : MonoBehaviour {
                 playerTwoLap = GameObject.Find("PlayerTwoLaps").GetComponent<Image>();
                 playerThreeLap = GameObject.Find("PlayerThreeLaps").GetComponent<Image>();
 
-                GameObject.Find("PlayerFourLaps").SetActive(false);
-                
+                GameObject.Find("PlayerFourLaps").SetActive(false);              
 
                 break;
             case 4:
@@ -87,13 +85,10 @@ public class PositionManager : MonoBehaviour {
                 break;
         }
 
-
     }
 
     // Update is called once per frame
     void Update() {
-
-        
 
         switch(psActor.playerCount)
         {
@@ -136,9 +131,7 @@ public class PositionManager : MonoBehaviour {
                 {
                     playerTwoLap.sprite = lapThree;
 
-
-
-                                    }
+                                   }
                 //if (kart1.lapNumber < 3)
                 //{
                 //    playerOneLap.text = (kart1.lapNumber + 1) + "/3";
@@ -455,10 +448,6 @@ public class PositionManager : MonoBehaviour {
                 }
                 break;
         }
-
-      
-  
-
     }
 
     void positionCalculator(PlayerActor kart, GameObject go_kart, PlayerActor karttwo, GameObject go_karttwo)
@@ -503,9 +492,6 @@ public class PositionManager : MonoBehaviour {
             }
 
         }
-
-
-
     }
 
     //Checks first kart against others.
@@ -669,13 +655,8 @@ public class PositionManager : MonoBehaviour {
                     karttwo.kartPosition = 2;
                     kartthree.kartPosition = 1;
                 }
-
-
             }
-
         }
-
-
     }
 
     //Position calculator calculates each karts lap counter
