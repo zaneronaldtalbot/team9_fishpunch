@@ -883,12 +883,6 @@ Prefab:
       propertyPath: go_timer
       value: 
       objectReference: {fileID: 1374835906}
-    - target: {fileID: 114183311590410610, guid: de3efa0efb84d7d478bc044b75bbd15a,
-        type: 2}
-      propertyPath: newManager
-      value: 
-      objectReference: {fileID: 1721877393238298, guid: de3efa0efb84d7d478bc044b75bbd15a,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de3efa0efb84d7d478bc044b75bbd15a, type: 2}
   m_IsPrefabParent: 0

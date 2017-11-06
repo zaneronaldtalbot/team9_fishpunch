@@ -124,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1222910457246154}
   m_LocalRotation: {x: -0.0028299396, y: -0.094722524, z: -0.008338817, w: 0.9954648}
-  m_LocalPosition: {x: 201.59547, y: -0.425842, z: 431.1277}
+  m_LocalPosition: {x: 60.710373, y: 8.240894, z: -174.3682}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4578055104857686}
@@ -145,7 +145,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: fda1f7e464a34af478973610bde8a066, type: 2}
+  - {fileID: 2100000, guid: 00d13b942eebeec4fa43681b8df16c4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,7 +170,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831065732176476}
-  m_Mesh: {fileID: 4300004, guid: 3fb693f6321227047b647c3bce4c4b5d, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 3454da08df32ffb408ff7b6b11688cef, type: 3}
 --- !u!64 &64249114146154394
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 5
+  prefabSet: 0
 --- !u!114 &114535164899896620
 MonoBehaviour:
   m_ObjectHideFlags: 1

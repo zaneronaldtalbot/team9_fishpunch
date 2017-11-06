@@ -115,7 +115,7 @@ public class NewPlacementController : MonoBehaviour
         itemPrefabs.Add(boost);
         itemPrefabs.Add(rpg);
         itemPrefabs.Add(mine);
-
+        
         currentItemBack1 = GameObject.Find("CurrentItemBack1").GetComponent<Image>();
         currentItemBack2 = GameObject.Find("CurrentItemBack2").GetComponent<Image>();
         currentItemBack3 = GameObject.Find("CurrentItemBack3").GetComponent<Image>();

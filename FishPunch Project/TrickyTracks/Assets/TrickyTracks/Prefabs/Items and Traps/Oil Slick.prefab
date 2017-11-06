@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1199855343562384}
   m_LocalRotation: {x: -0.0029500285, y: 0.85115457, z: -0.009843519, w: 0.5248146}
-  m_LocalPosition: {x: 193.6224, y: -0.34083638, z: 432.16577}
+  m_LocalPosition: {x: 61.35141, y: 8.252235, z: -177.39465}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4412310223752976}
@@ -145,7 +145,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 10342cebe4cddae4bb45686aba03af04, type: 2}
+  - {fileID: 2100000, guid: 00d13b942eebeec4fa43681b8df16c4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,7 +170,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1308117897512268}
-  m_Mesh: {fileID: 4300004, guid: ad0d0899f333a0348bbf8259c2e25f50, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 89024e4887392034989ee863b25bb7f3, type: 3}
 --- !u!64 &64843417836480990
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 5
+  prefabSet: 0
 --- !u!114 &114318157630777840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,5 +226,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c07ada2e30e9ff43b89ef653c5ada26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinOutSpeed: 20
-  spinOutTime: 3
