@@ -3,13 +3,18 @@ guid: df08cff9d07422347a49d0c89c22fce2
 timeCreated: 1506980576
 licenseType: Pro
 ModelImporter:
-  serializedVersion: 21
+  serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Tree_001_Environment_001_Pine
     400000: //RootNode
+    400002: Tree_001_Environment_001_Pine
     2300000: //RootNode
+    2300002: Tree_001_Environment_001_Pine
     3300000: //RootNode
+    3300002: Tree_001_Environment_001_Pine
     4300000: Tree_001_Enviroment_001_Pine
+    4300002: Tree_001_Environment_001_Pine
   materials:
     importMaterials: 0
     materialName: 0
@@ -20,8 +25,6 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -32,7 +35,6 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -40,10 +42,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -59,7 +58,6 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

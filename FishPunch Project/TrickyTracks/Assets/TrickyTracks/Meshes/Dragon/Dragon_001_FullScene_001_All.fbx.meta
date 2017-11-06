@@ -1,0 +1,979 @@
+fileFormatVersion: 2
+guid: 6ead066557739854c953ce0763596302
+timeCreated: 1509930249
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Chain_002_Track_001_Giant
+    100002: Chain_002_Track_001_Giant1
+    100004: Chain_002_Track_001_Giant2
+    100006: Chain_002_Track_001_Giant3
+    100008: Chain_002_Track_001_Giant4
+    100010: Chain_002_Track_001_Giant5
+    100012: Chain_002_Track_001_Giant6
+    100014: Chain_Skulls
+    100016: Chain_Skulls1
+    100018: Chains1
+    100020: ChainSkull_001_Enviroment_001_Full
+    100022: ChainSkull_001_Enviroment_001_Full 1
+    100024: ChainSkull_001_Enviroment_001_Full1
+    100026: ChainSkull_001_Enviroment_001_Full1 1
+    100028: ChainSkull_001_Enviroment_001_Full2
+    100030: ChainSkull_001_Enviroment_001_Full2 1
+    100032: ChainSkull_001_Enviroment_001_Full3
+    100034: ChainSkull_001_Enviroment_001_Full3 1
+    100036: ChainSkull_001_Enviroment_001_Full4
+    100038: ChainSkull_001_Enviroment_001_Full4 1
+    100040: Claw_1
+    100042: Claw_1 1
+    100044: Claw_2
+    100046: Claw_2 1
+    100048: Claw_3
+    100050: Claw_3 1
+    100052: Clouds
+    100054: Clouds_001_Sky_001_Fluffy
+    100056: Clouds_001_Sky_001_Fluffy1
+    100058: Clouds_001_Sky_001_Fluffy2
+    100060: Clouds_001_Sky_001_Fluffy3
+    100062: Clouds_001_Sky_001_Fluffy4
+    100064: Clouds_001_Sky_001_Fluffy5
+    100066: Dragon
+    100068: //RootNode
+    100070: Dragon_001_Head_001_Top
+    100072: Dragon_002_Head_001_Bottom
+    100074: ElbowJoint
+    100076: ElbowJoint 1
+    100078: Fence1
+    100080: Fence_002_Enviroment_001_Long3
+    100082: Fence_002_Enviroment_001_Long4
+    100084: Fence_002_Enviroment_001_Long5
+    100086: Floating_Islands
+    100088: FloatingIsland_003_Island_001_Drivethru
+    100090: FloatingIsland_007_Island_002_CandyCane_004
+    100092: FloatingIsland_007_Island_002_CandyCane_005
+    100094: FloatingIsland_007_Island_002_CandyCane_006
+    100096: FloatingIsland_007_Island_002_CandyCane_007
+    100098: FloatingIsland_007_Island_002_CandyCane_008
+    100100: ForearmJoint
+    100102: ForearmJoint 1
+    100104: ForeArmJoint_1
+    100106: ForeArmJoint_1 1
+    100108: ForeArmJoint_2
+    100110: ForeArmJoint_2 1
+    100112: Hand
+    100114: Hand1
+    100116: Hand2
+    100118: Hand_001_Environment_001_Giant_001
+    100120: Hand_001_Environment_001_Giant_001 1
+    100122: Hand_001_Environment_001_Giant_001 2
+    100124: Hand_001_Environment_001_Giant_002
+    100126: Hand_001_Environment_001_Giant_002 1
+    100128: Hand_001_Environment_001_Giant_002 2
+    100130: Hand_001_Environment_001_Giant_003
+    100132: Hand_001_Environment_001_Giant_003 1
+    100134: Hand_001_Environment_001_Giant_003 2
+    100136: Hand_001_Environment_001_Giant_004
+    100138: Hand_001_Environment_001_Giant_005
+    100140: Leg_Left
+    100142: Leg_Right
+    100144: LegJoints
+    100146: LegJoints 1
+    100148: pCube305
+    100150: pCube305 1
+    100152: pCylinder19
+    100154: pCylinder19 1
+    100156: pCylinder19 2
+    100158: pCylinder19 3
+    100160: pCylinder19 4
+    100162: pCylinder19 5
+    100164: pCylinder20
+    100166: pCylinder20 1
+    100168: pCylinder20 2
+    100170: pCylinder20 3
+    100172: pCylinder20 4
+    100174: pCylinder20 5
+    100176: pCylinder26
+    100178: pCylinder28
+    100180: pCylinder29
+    100182: pCylinder30
+    100184: pCylinder31
+    100186: pCylinder32
+    100188: pCylinder33
+    100190: pCylinder34
+    100192: pCylinder35
+    100194: pCylinder36
+    100196: polySurface176
+    100198: polySurface178
+    100200: polySurface179
+    100202: Rib_Cage
+    100204: Rock_001_Enviroment_001_Rocky
+    100206: Rock_001_Enviroment_001_Rocky1
+    100208: Rock_001_Enviroment_001_Rocky2
+    100210: Rock_002_Enviroment_001_Pointy
+    100212: Rock_003_Enviroment_001_Blocky
+    100214: Rocks
+    100216: ShoulderPlate1
+    100218: ShoulderPlate2
+    100220: Skull
+    100222: Skull_001_Track_001_Giant
+    100224: Skull_001_Track_001_Giant1
+    100226: Skull_001_Track_001_Giant2
+    100228: Skull_001_Track_001_Giant3
+    100230: Skull_001_Track_001_Giant4
+    100232: Skull_001_Track_001_Giant5
+    100234: Skull_001_Track_001_Giant6
+    100236: Spider_001_Enviroment_001_Giant
+    100238: Spikes
+    100240: Spikes1
+    100242: Spikes_004_Enviroment_001_Small
+    100244: Spikes_004_Enviroment_001_Small 1
+    100246: Spikes_004_Enviroment_001_Small1
+    100248: Spikes_004_Enviroment_001_Small1 1
+    100250: Spikes_004_Enviroment_001_Small2
+    100252: Spikes_004_Enviroment_001_Small2 1
+    100254: Spikes_004_Enviroment_001_Small3
+    100256: Spikes_004_Enviroment_001_Small3 1
+    100258: Spine
+    100260: Spine_Spike_Joint
+    100262: Spine_Spike_Joint1
+    100264: Spine_Spike_Joint10
+    100266: Spine_Spike_Joint11
+    100268: Spine_Spike_Joint2
+    100270: Spine_Spike_Joint3
+    100272: Spine_Spike_Joint4
+    100274: Spine_Spike_Joint5
+    100276: Spine_Spike_Joint6
+    100278: Spine_Spike_Joint7
+    100280: Spine_Spike_Joint8
+    100282: Spine_Spike_Joint9
+    100284: Sword_001_Enviroment_001_Full
+    100286: Sword_001_Enviroment_001_Full1
+    100288: Sword_001_Enviroment_001_Full2
+    100290: Sword_001_Enviroment_001_Full3
+    100292: Sword_002_Enviroment_001_Broken
+    100294: Sword_007_Enviroment_001_Full
+    100296: Sword_007_Enviroment_001_Full1
+    100298: Sword_007_Enviroment_001_Full2
+    100300: Sword_007_Enviroment_001_Full3
+    100302: Swords1
+    100304: TombStone_004_Enviroment_001_Full
+    100306: TombStone_004_Enviroment_001_Full 1
+    100308: TombStone_004_Enviroment_001_Full 2
+    100310: TombStone_004_Enviroment_001_Full 3
+    100312: TombStone_004_Enviroment_001_Full1
+    100314: TombStone_004_Enviroment_001_Full1 1
+    100316: TombStone_004_Enviroment_001_Full1 2
+    100318: TombStone_004_Enviroment_001_Full1 3
+    100320: TombStone_004_Enviroment_001_Full2
+    100322: TombStone_004_Enviroment_001_Full2 1
+    100324: TombStone_004_Enviroment_001_Full2 2
+    100326: TombStone_004_Enviroment_001_Full2 3
+    100328: TombStone_004_Enviroment_001_Full3
+    100330: TombStone_004_Enviroment_001_Full3 1
+    100332: TombStone_004_Enviroment_001_Full3 2
+    100334: TombStone_004_Enviroment_001_Full3 3
+    100336: TombStone_004_Enviroment_001_Full4
+    100338: TombStone_004_Enviroment_001_Full4 1
+    100340: TombStone_004_Enviroment_001_Full4 2
+    100342: TombStone_004_Enviroment_001_Full4 3
+    100344: Tombstones1
+    100346: Tombstones2
+    100348: Tombstones3
+    100350: Tombstones4
+    100352: Tree_001_Enviroment_001_Pine
+    100354: Tree_001_Enviroment_001_Pine1
+    100356: Tree_001_Enviroment_001_Pine2
+    100358: Tree_001_Enviroment_001_Pine3
+    100360: Tree_001_Enviroment_001_Pine4
+    100362: Tree_001_Enviroment_001_Pine5
+    100364: Tree_001_Enviroment_001_Pine6
+    100366: Tree_001_Enviroment_001_Pine7
+    100368: Tree_003_Enviroment_001_Stump
+    100370: Tree_003_Enviroment_001_Stump1
+    100372: Tree_003_Enviroment_001_Stump2
+    100374: Trees
+    100376: Wing_Joints
+    100378: Wing_Joints 1
+    100380: Wing_Left
+    100382: Wing_Right
+    100384: Wing_Webbing_Joints
+    100386: Wing_Webbing_Joints 1
+    100388: WingJointFirst
+    100390: WingJointFirst 1
+    100392: WingJointFirst1
+    100394: WingJointFirst1 1
+    100396: WingJointFirst4
+    100398: WingJointFirst4 1
+    100400: WingJointFirst5
+    100402: WingJointFirst5 1
+    100404: WingJointSecond
+    100406: WingJointSecond 1
+    400000: Chain_002_Track_001_Giant
+    400002: Chain_002_Track_001_Giant1
+    400004: Chain_002_Track_001_Giant2
+    400006: Chain_002_Track_001_Giant3
+    400008: Chain_002_Track_001_Giant4
+    400010: Chain_002_Track_001_Giant5
+    400012: Chain_002_Track_001_Giant6
+    400014: Chain_Skulls
+    400016: Chain_Skulls1
+    400018: Chains1
+    400020: ChainSkull_001_Enviroment_001_Full
+    400022: ChainSkull_001_Enviroment_001_Full 1
+    400024: ChainSkull_001_Enviroment_001_Full1
+    400026: ChainSkull_001_Enviroment_001_Full1 1
+    400028: ChainSkull_001_Enviroment_001_Full2
+    400030: ChainSkull_001_Enviroment_001_Full2 1
+    400032: ChainSkull_001_Enviroment_001_Full3
+    400034: ChainSkull_001_Enviroment_001_Full3 1
+    400036: ChainSkull_001_Enviroment_001_Full4
+    400038: ChainSkull_001_Enviroment_001_Full4 1
+    400040: Claw_1
+    400042: Claw_1 1
+    400044: Claw_2
+    400046: Claw_2 1
+    400048: Claw_3
+    400050: Claw_3 1
+    400052: Clouds
+    400054: Clouds_001_Sky_001_Fluffy
+    400056: Clouds_001_Sky_001_Fluffy1
+    400058: Clouds_001_Sky_001_Fluffy2
+    400060: Clouds_001_Sky_001_Fluffy3
+    400062: Clouds_001_Sky_001_Fluffy4
+    400064: Clouds_001_Sky_001_Fluffy5
+    400066: Dragon
+    400068: //RootNode
+    400070: Dragon_001_Head_001_Top
+    400072: Dragon_002_Head_001_Bottom
+    400074: ElbowJoint
+    400076: ElbowJoint 1
+    400078: Fence1
+    400080: Fence_002_Enviroment_001_Long3
+    400082: Fence_002_Enviroment_001_Long4
+    400084: Fence_002_Enviroment_001_Long5
+    400086: Floating_Islands
+    400088: FloatingIsland_003_Island_001_Drivethru
+    400090: FloatingIsland_007_Island_002_CandyCane_004
+    400092: FloatingIsland_007_Island_002_CandyCane_005
+    400094: FloatingIsland_007_Island_002_CandyCane_006
+    400096: FloatingIsland_007_Island_002_CandyCane_007
+    400098: FloatingIsland_007_Island_002_CandyCane_008
+    400100: ForearmJoint
+    400102: ForearmJoint 1
+    400104: ForeArmJoint_1
+    400106: ForeArmJoint_1 1
+    400108: ForeArmJoint_2
+    400110: ForeArmJoint_2 1
+    400112: Hand
+    400114: Hand1
+    400116: Hand2
+    400118: Hand_001_Environment_001_Giant_001
+    400120: Hand_001_Environment_001_Giant_001 1
+    400122: Hand_001_Environment_001_Giant_001 2
+    400124: Hand_001_Environment_001_Giant_002
+    400126: Hand_001_Environment_001_Giant_002 1
+    400128: Hand_001_Environment_001_Giant_002 2
+    400130: Hand_001_Environment_001_Giant_003
+    400132: Hand_001_Environment_001_Giant_003 1
+    400134: Hand_001_Environment_001_Giant_003 2
+    400136: Hand_001_Environment_001_Giant_004
+    400138: Hand_001_Environment_001_Giant_005
+    400140: Leg_Left
+    400142: Leg_Right
+    400144: LegJoints
+    400146: LegJoints 1
+    400148: pCube305
+    400150: pCube305 1
+    400152: pCylinder19
+    400154: pCylinder19 1
+    400156: pCylinder19 2
+    400158: pCylinder19 3
+    400160: pCylinder19 4
+    400162: pCylinder19 5
+    400164: pCylinder20
+    400166: pCylinder20 1
+    400168: pCylinder20 2
+    400170: pCylinder20 3
+    400172: pCylinder20 4
+    400174: pCylinder20 5
+    400176: pCylinder26
+    400178: pCylinder28
+    400180: pCylinder29
+    400182: pCylinder30
+    400184: pCylinder31
+    400186: pCylinder32
+    400188: pCylinder33
+    400190: pCylinder34
+    400192: pCylinder35
+    400194: pCylinder36
+    400196: polySurface176
+    400198: polySurface178
+    400200: polySurface179
+    400202: Rib_Cage
+    400204: Rock_001_Enviroment_001_Rocky
+    400206: Rock_001_Enviroment_001_Rocky1
+    400208: Rock_001_Enviroment_001_Rocky2
+    400210: Rock_002_Enviroment_001_Pointy
+    400212: Rock_003_Enviroment_001_Blocky
+    400214: Rocks
+    400216: ShoulderPlate1
+    400218: ShoulderPlate2
+    400220: Skull
+    400222: Skull_001_Track_001_Giant
+    400224: Skull_001_Track_001_Giant1
+    400226: Skull_001_Track_001_Giant2
+    400228: Skull_001_Track_001_Giant3
+    400230: Skull_001_Track_001_Giant4
+    400232: Skull_001_Track_001_Giant5
+    400234: Skull_001_Track_001_Giant6
+    400236: Spider_001_Enviroment_001_Giant
+    400238: Spikes
+    400240: Spikes1
+    400242: Spikes_004_Enviroment_001_Small
+    400244: Spikes_004_Enviroment_001_Small 1
+    400246: Spikes_004_Enviroment_001_Small1
+    400248: Spikes_004_Enviroment_001_Small1 1
+    400250: Spikes_004_Enviroment_001_Small2
+    400252: Spikes_004_Enviroment_001_Small2 1
+    400254: Spikes_004_Enviroment_001_Small3
+    400256: Spikes_004_Enviroment_001_Small3 1
+    400258: Spine
+    400260: Spine_Spike_Joint
+    400262: Spine_Spike_Joint1
+    400264: Spine_Spike_Joint10
+    400266: Spine_Spike_Joint11
+    400268: Spine_Spike_Joint2
+    400270: Spine_Spike_Joint3
+    400272: Spine_Spike_Joint4
+    400274: Spine_Spike_Joint5
+    400276: Spine_Spike_Joint6
+    400278: Spine_Spike_Joint7
+    400280: Spine_Spike_Joint8
+    400282: Spine_Spike_Joint9
+    400284: Sword_001_Enviroment_001_Full
+    400286: Sword_001_Enviroment_001_Full1
+    400288: Sword_001_Enviroment_001_Full2
+    400290: Sword_001_Enviroment_001_Full3
+    400292: Sword_002_Enviroment_001_Broken
+    400294: Sword_007_Enviroment_001_Full
+    400296: Sword_007_Enviroment_001_Full1
+    400298: Sword_007_Enviroment_001_Full2
+    400300: Sword_007_Enviroment_001_Full3
+    400302: Swords1
+    400304: TombStone_004_Enviroment_001_Full
+    400306: TombStone_004_Enviroment_001_Full 1
+    400308: TombStone_004_Enviroment_001_Full 2
+    400310: TombStone_004_Enviroment_001_Full 3
+    400312: TombStone_004_Enviroment_001_Full1
+    400314: TombStone_004_Enviroment_001_Full1 1
+    400316: TombStone_004_Enviroment_001_Full1 2
+    400318: TombStone_004_Enviroment_001_Full1 3
+    400320: TombStone_004_Enviroment_001_Full2
+    400322: TombStone_004_Enviroment_001_Full2 1
+    400324: TombStone_004_Enviroment_001_Full2 2
+    400326: TombStone_004_Enviroment_001_Full2 3
+    400328: TombStone_004_Enviroment_001_Full3
+    400330: TombStone_004_Enviroment_001_Full3 1
+    400332: TombStone_004_Enviroment_001_Full3 2
+    400334: TombStone_004_Enviroment_001_Full3 3
+    400336: TombStone_004_Enviroment_001_Full4
+    400338: TombStone_004_Enviroment_001_Full4 1
+    400340: TombStone_004_Enviroment_001_Full4 2
+    400342: TombStone_004_Enviroment_001_Full4 3
+    400344: Tombstones1
+    400346: Tombstones2
+    400348: Tombstones3
+    400350: Tombstones4
+    400352: Tree_001_Enviroment_001_Pine
+    400354: Tree_001_Enviroment_001_Pine1
+    400356: Tree_001_Enviroment_001_Pine2
+    400358: Tree_001_Enviroment_001_Pine3
+    400360: Tree_001_Enviroment_001_Pine4
+    400362: Tree_001_Enviroment_001_Pine5
+    400364: Tree_001_Enviroment_001_Pine6
+    400366: Tree_001_Enviroment_001_Pine7
+    400368: Tree_003_Enviroment_001_Stump
+    400370: Tree_003_Enviroment_001_Stump1
+    400372: Tree_003_Enviroment_001_Stump2
+    400374: Trees
+    400376: Wing_Joints
+    400378: Wing_Joints 1
+    400380: Wing_Left
+    400382: Wing_Right
+    400384: Wing_Webbing_Joints
+    400386: Wing_Webbing_Joints 1
+    400388: WingJointFirst
+    400390: WingJointFirst 1
+    400392: WingJointFirst1
+    400394: WingJointFirst1 1
+    400396: WingJointFirst4
+    400398: WingJointFirst4 1
+    400400: WingJointFirst5
+    400402: WingJointFirst5 1
+    400404: WingJointSecond
+    400406: WingJointSecond 1
+    2300000: Chain_002_Track_001_Giant
+    2300002: Chain_002_Track_001_Giant1
+    2300004: Chain_002_Track_001_Giant2
+    2300006: Chain_002_Track_001_Giant3
+    2300008: Chain_002_Track_001_Giant4
+    2300010: Chain_002_Track_001_Giant5
+    2300012: Chain_002_Track_001_Giant6
+    2300014: ChainSkull_001_Enviroment_001_Full
+    2300016: ChainSkull_001_Enviroment_001_Full 1
+    2300018: ChainSkull_001_Enviroment_001_Full1
+    2300020: ChainSkull_001_Enviroment_001_Full1 1
+    2300022: ChainSkull_001_Enviroment_001_Full2
+    2300024: ChainSkull_001_Enviroment_001_Full2 1
+    2300026: ChainSkull_001_Enviroment_001_Full3
+    2300028: ChainSkull_001_Enviroment_001_Full3 1
+    2300030: ChainSkull_001_Enviroment_001_Full4
+    2300032: ChainSkull_001_Enviroment_001_Full4 1
+    2300034: Clouds_001_Sky_001_Fluffy
+    2300036: Clouds_001_Sky_001_Fluffy1
+    2300038: Clouds_001_Sky_001_Fluffy2
+    2300040: Clouds_001_Sky_001_Fluffy3
+    2300042: Clouds_001_Sky_001_Fluffy4
+    2300044: Clouds_001_Sky_001_Fluffy5
+    2300046: Dragon_002_Head_001_Bottom
+    2300048: ElbowJoint
+    2300050: ElbowJoint 1
+    2300052: Fence_002_Enviroment_001_Long3
+    2300054: Fence_002_Enviroment_001_Long4
+    2300056: Fence_002_Enviroment_001_Long5
+    2300058: FloatingIsland_003_Island_001_Drivethru
+    2300060: FloatingIsland_007_Island_002_CandyCane_004
+    2300062: FloatingIsland_007_Island_002_CandyCane_005
+    2300064: FloatingIsland_007_Island_002_CandyCane_006
+    2300066: FloatingIsland_007_Island_002_CandyCane_007
+    2300068: FloatingIsland_007_Island_002_CandyCane_008
+    2300070: ForeArmJoint_1
+    2300072: ForeArmJoint_1 1
+    2300074: ForeArmJoint_2
+    2300076: ForeArmJoint_2 1
+    2300078: Hand_001_Environment_001_Giant_001
+    2300080: Hand_001_Environment_001_Giant_001 1
+    2300082: Hand_001_Environment_001_Giant_001 2
+    2300084: Hand_001_Environment_001_Giant_002
+    2300086: Hand_001_Environment_001_Giant_002 1
+    2300088: Hand_001_Environment_001_Giant_002 2
+    2300090: Hand_001_Environment_001_Giant_003
+    2300092: Hand_001_Environment_001_Giant_003 1
+    2300094: Hand_001_Environment_001_Giant_003 2
+    2300096: Hand_001_Environment_001_Giant_004
+    2300098: Hand_001_Environment_001_Giant_005
+    2300100: pCube305
+    2300102: pCube305 1
+    2300104: pCylinder19
+    2300106: pCylinder19 1
+    2300108: pCylinder19 2
+    2300110: pCylinder19 3
+    2300112: pCylinder19 4
+    2300114: pCylinder19 5
+    2300116: pCylinder20
+    2300118: pCylinder20 1
+    2300120: pCylinder20 2
+    2300122: pCylinder20 3
+    2300124: pCylinder20 4
+    2300126: pCylinder20 5
+    2300128: pCylinder26
+    2300130: pCylinder28
+    2300132: pCylinder29
+    2300134: pCylinder30
+    2300136: pCylinder31
+    2300138: pCylinder32
+    2300140: pCylinder33
+    2300142: pCylinder34
+    2300144: pCylinder35
+    2300146: pCylinder36
+    2300148: polySurface176
+    2300150: polySurface178
+    2300152: polySurface179
+    2300154: Rib_Cage
+    2300156: Rock_001_Enviroment_001_Rocky
+    2300158: Rock_001_Enviroment_001_Rocky1
+    2300160: Rock_001_Enviroment_001_Rocky2
+    2300162: Rock_002_Enviroment_001_Pointy
+    2300164: Rock_003_Enviroment_001_Blocky
+    2300166: ShoulderPlate1
+    2300168: ShoulderPlate2
+    2300170: Skull_001_Track_001_Giant
+    2300172: Skull_001_Track_001_Giant1
+    2300174: Skull_001_Track_001_Giant2
+    2300176: Skull_001_Track_001_Giant3
+    2300178: Skull_001_Track_001_Giant4
+    2300180: Skull_001_Track_001_Giant5
+    2300182: Skull_001_Track_001_Giant6
+    2300184: Spider_001_Enviroment_001_Giant
+    2300186: Spikes_004_Enviroment_001_Small
+    2300188: Spikes_004_Enviroment_001_Small 1
+    2300190: Spikes_004_Enviroment_001_Small1
+    2300192: Spikes_004_Enviroment_001_Small1 1
+    2300194: Spikes_004_Enviroment_001_Small2
+    2300196: Spikes_004_Enviroment_001_Small2 1
+    2300198: Spikes_004_Enviroment_001_Small3
+    2300200: Spikes_004_Enviroment_001_Small3 1
+    2300202: Spine_Spike_Joint
+    2300204: Spine_Spike_Joint1
+    2300206: Spine_Spike_Joint10
+    2300208: Spine_Spike_Joint11
+    2300210: Spine_Spike_Joint2
+    2300212: Spine_Spike_Joint3
+    2300214: Spine_Spike_Joint4
+    2300216: Spine_Spike_Joint5
+    2300218: Spine_Spike_Joint6
+    2300220: Spine_Spike_Joint7
+    2300222: Spine_Spike_Joint8
+    2300224: Spine_Spike_Joint9
+    2300226: Sword_001_Enviroment_001_Full
+    2300228: Sword_001_Enviroment_001_Full1
+    2300230: Sword_001_Enviroment_001_Full2
+    2300232: Sword_001_Enviroment_001_Full3
+    2300234: Sword_002_Enviroment_001_Broken
+    2300236: Sword_007_Enviroment_001_Full
+    2300238: Sword_007_Enviroment_001_Full1
+    2300240: Sword_007_Enviroment_001_Full2
+    2300242: Sword_007_Enviroment_001_Full3
+    2300244: TombStone_004_Enviroment_001_Full
+    2300246: TombStone_004_Enviroment_001_Full 1
+    2300248: TombStone_004_Enviroment_001_Full 2
+    2300250: TombStone_004_Enviroment_001_Full 3
+    2300252: TombStone_004_Enviroment_001_Full1
+    2300254: TombStone_004_Enviroment_001_Full1 1
+    2300256: TombStone_004_Enviroment_001_Full1 2
+    2300258: TombStone_004_Enviroment_001_Full1 3
+    2300260: TombStone_004_Enviroment_001_Full2
+    2300262: TombStone_004_Enviroment_001_Full2 1
+    2300264: TombStone_004_Enviroment_001_Full2 2
+    2300266: TombStone_004_Enviroment_001_Full2 3
+    2300268: TombStone_004_Enviroment_001_Full3
+    2300270: TombStone_004_Enviroment_001_Full3 1
+    2300272: TombStone_004_Enviroment_001_Full3 2
+    2300274: TombStone_004_Enviroment_001_Full3 3
+    2300276: TombStone_004_Enviroment_001_Full4
+    2300278: TombStone_004_Enviroment_001_Full4 1
+    2300280: TombStone_004_Enviroment_001_Full4 2
+    2300282: TombStone_004_Enviroment_001_Full4 3
+    2300284: Tree_001_Enviroment_001_Pine
+    2300286: Tree_001_Enviroment_001_Pine1
+    2300288: Tree_001_Enviroment_001_Pine2
+    2300290: Tree_001_Enviroment_001_Pine3
+    2300292: Tree_001_Enviroment_001_Pine4
+    2300294: Tree_001_Enviroment_001_Pine5
+    2300296: Tree_001_Enviroment_001_Pine6
+    2300298: Tree_001_Enviroment_001_Pine7
+    2300300: Tree_003_Enviroment_001_Stump
+    2300302: Tree_003_Enviroment_001_Stump1
+    2300304: Tree_003_Enviroment_001_Stump2
+    2300306: WingJointFirst
+    2300308: WingJointFirst 1
+    2300310: WingJointFirst1
+    2300312: WingJointFirst1 1
+    2300314: WingJointFirst4
+    2300316: WingJointFirst4 1
+    2300318: WingJointFirst5
+    2300320: WingJointFirst5 1
+    2300322: WingJointSecond
+    2300324: WingJointSecond 1
+    3300000: Chain_002_Track_001_Giant
+    3300002: Chain_002_Track_001_Giant1
+    3300004: Chain_002_Track_001_Giant2
+    3300006: Chain_002_Track_001_Giant3
+    3300008: Chain_002_Track_001_Giant4
+    3300010: Chain_002_Track_001_Giant5
+    3300012: Chain_002_Track_001_Giant6
+    3300014: ChainSkull_001_Enviroment_001_Full
+    3300016: ChainSkull_001_Enviroment_001_Full 1
+    3300018: ChainSkull_001_Enviroment_001_Full1
+    3300020: ChainSkull_001_Enviroment_001_Full1 1
+    3300022: ChainSkull_001_Enviroment_001_Full2
+    3300024: ChainSkull_001_Enviroment_001_Full2 1
+    3300026: ChainSkull_001_Enviroment_001_Full3
+    3300028: ChainSkull_001_Enviroment_001_Full3 1
+    3300030: ChainSkull_001_Enviroment_001_Full4
+    3300032: ChainSkull_001_Enviroment_001_Full4 1
+    3300034: Clouds_001_Sky_001_Fluffy
+    3300036: Clouds_001_Sky_001_Fluffy1
+    3300038: Clouds_001_Sky_001_Fluffy2
+    3300040: Clouds_001_Sky_001_Fluffy3
+    3300042: Clouds_001_Sky_001_Fluffy4
+    3300044: Clouds_001_Sky_001_Fluffy5
+    3300046: Dragon_002_Head_001_Bottom
+    3300048: ElbowJoint
+    3300050: ElbowJoint 1
+    3300052: Fence_002_Enviroment_001_Long3
+    3300054: Fence_002_Enviroment_001_Long4
+    3300056: Fence_002_Enviroment_001_Long5
+    3300058: FloatingIsland_003_Island_001_Drivethru
+    3300060: FloatingIsland_007_Island_002_CandyCane_004
+    3300062: FloatingIsland_007_Island_002_CandyCane_005
+    3300064: FloatingIsland_007_Island_002_CandyCane_006
+    3300066: FloatingIsland_007_Island_002_CandyCane_007
+    3300068: FloatingIsland_007_Island_002_CandyCane_008
+    3300070: ForeArmJoint_1
+    3300072: ForeArmJoint_1 1
+    3300074: ForeArmJoint_2
+    3300076: ForeArmJoint_2 1
+    3300078: Hand_001_Environment_001_Giant_001
+    3300080: Hand_001_Environment_001_Giant_001 1
+    3300082: Hand_001_Environment_001_Giant_001 2
+    3300084: Hand_001_Environment_001_Giant_002
+    3300086: Hand_001_Environment_001_Giant_002 1
+    3300088: Hand_001_Environment_001_Giant_002 2
+    3300090: Hand_001_Environment_001_Giant_003
+    3300092: Hand_001_Environment_001_Giant_003 1
+    3300094: Hand_001_Environment_001_Giant_003 2
+    3300096: Hand_001_Environment_001_Giant_004
+    3300098: Hand_001_Environment_001_Giant_005
+    3300100: pCube305
+    3300102: pCube305 1
+    3300104: pCylinder19
+    3300106: pCylinder19 1
+    3300108: pCylinder19 2
+    3300110: pCylinder19 3
+    3300112: pCylinder19 4
+    3300114: pCylinder19 5
+    3300116: pCylinder20
+    3300118: pCylinder20 1
+    3300120: pCylinder20 2
+    3300122: pCylinder20 3
+    3300124: pCylinder20 4
+    3300126: pCylinder20 5
+    3300128: pCylinder26
+    3300130: pCylinder28
+    3300132: pCylinder29
+    3300134: pCylinder30
+    3300136: pCylinder31
+    3300138: pCylinder32
+    3300140: pCylinder33
+    3300142: pCylinder34
+    3300144: pCylinder35
+    3300146: pCylinder36
+    3300148: polySurface176
+    3300150: polySurface178
+    3300152: polySurface179
+    3300154: Rib_Cage
+    3300156: Rock_001_Enviroment_001_Rocky
+    3300158: Rock_001_Enviroment_001_Rocky1
+    3300160: Rock_001_Enviroment_001_Rocky2
+    3300162: Rock_002_Enviroment_001_Pointy
+    3300164: Rock_003_Enviroment_001_Blocky
+    3300166: ShoulderPlate1
+    3300168: ShoulderPlate2
+    3300170: Skull_001_Track_001_Giant
+    3300172: Skull_001_Track_001_Giant1
+    3300174: Skull_001_Track_001_Giant2
+    3300176: Skull_001_Track_001_Giant3
+    3300178: Skull_001_Track_001_Giant4
+    3300180: Skull_001_Track_001_Giant5
+    3300182: Skull_001_Track_001_Giant6
+    3300184: Spider_001_Enviroment_001_Giant
+    3300186: Spikes_004_Enviroment_001_Small
+    3300188: Spikes_004_Enviroment_001_Small 1
+    3300190: Spikes_004_Enviroment_001_Small1
+    3300192: Spikes_004_Enviroment_001_Small1 1
+    3300194: Spikes_004_Enviroment_001_Small2
+    3300196: Spikes_004_Enviroment_001_Small2 1
+    3300198: Spikes_004_Enviroment_001_Small3
+    3300200: Spikes_004_Enviroment_001_Small3 1
+    3300202: Spine_Spike_Joint
+    3300204: Spine_Spike_Joint1
+    3300206: Spine_Spike_Joint10
+    3300208: Spine_Spike_Joint11
+    3300210: Spine_Spike_Joint2
+    3300212: Spine_Spike_Joint3
+    3300214: Spine_Spike_Joint4
+    3300216: Spine_Spike_Joint5
+    3300218: Spine_Spike_Joint6
+    3300220: Spine_Spike_Joint7
+    3300222: Spine_Spike_Joint8
+    3300224: Spine_Spike_Joint9
+    3300226: Sword_001_Enviroment_001_Full
+    3300228: Sword_001_Enviroment_001_Full1
+    3300230: Sword_001_Enviroment_001_Full2
+    3300232: Sword_001_Enviroment_001_Full3
+    3300234: Sword_002_Enviroment_001_Broken
+    3300236: Sword_007_Enviroment_001_Full
+    3300238: Sword_007_Enviroment_001_Full1
+    3300240: Sword_007_Enviroment_001_Full2
+    3300242: Sword_007_Enviroment_001_Full3
+    3300244: TombStone_004_Enviroment_001_Full
+    3300246: TombStone_004_Enviroment_001_Full 1
+    3300248: TombStone_004_Enviroment_001_Full 2
+    3300250: TombStone_004_Enviroment_001_Full 3
+    3300252: TombStone_004_Enviroment_001_Full1
+    3300254: TombStone_004_Enviroment_001_Full1 1
+    3300256: TombStone_004_Enviroment_001_Full1 2
+    3300258: TombStone_004_Enviroment_001_Full1 3
+    3300260: TombStone_004_Enviroment_001_Full2
+    3300262: TombStone_004_Enviroment_001_Full2 1
+    3300264: TombStone_004_Enviroment_001_Full2 2
+    3300266: TombStone_004_Enviroment_001_Full2 3
+    3300268: TombStone_004_Enviroment_001_Full3
+    3300270: TombStone_004_Enviroment_001_Full3 1
+    3300272: TombStone_004_Enviroment_001_Full3 2
+    3300274: TombStone_004_Enviroment_001_Full3 3
+    3300276: TombStone_004_Enviroment_001_Full4
+    3300278: TombStone_004_Enviroment_001_Full4 1
+    3300280: TombStone_004_Enviroment_001_Full4 2
+    3300282: TombStone_004_Enviroment_001_Full4 3
+    3300284: Tree_001_Enviroment_001_Pine
+    3300286: Tree_001_Enviroment_001_Pine1
+    3300288: Tree_001_Enviroment_001_Pine2
+    3300290: Tree_001_Enviroment_001_Pine3
+    3300292: Tree_001_Enviroment_001_Pine4
+    3300294: Tree_001_Enviroment_001_Pine5
+    3300296: Tree_001_Enviroment_001_Pine6
+    3300298: Tree_001_Enviroment_001_Pine7
+    3300300: Tree_003_Enviroment_001_Stump
+    3300302: Tree_003_Enviroment_001_Stump1
+    3300304: Tree_003_Enviroment_001_Stump2
+    3300306: WingJointFirst
+    3300308: WingJointFirst 1
+    3300310: WingJointFirst1
+    3300312: WingJointFirst1 1
+    3300314: WingJointFirst4
+    3300316: WingJointFirst4 1
+    3300318: WingJointFirst5
+    3300320: WingJointFirst5 1
+    3300322: WingJointSecond
+    3300324: WingJointSecond 1
+    4300000: polySurface176
+    4300002: polySurface178
+    4300004: polySurface179
+    4300006: Dragon_002_Head_001_Bottom
+    4300008: Spine_Spike_Joint
+    4300010: Rib_Cage
+    4300012: ShoulderPlate1
+    4300014: ShoulderPlate2
+    4300016: pCylinder26
+    4300018: Spine_Spike_Joint1
+    4300020: Spine_Spike_Joint2
+    4300022: Spine_Spike_Joint3
+    4300024: Spine_Spike_Joint4
+    4300026: Spine_Spike_Joint5
+    4300028: Spine_Spike_Joint6
+    4300030: Spine_Spike_Joint7
+    4300032: Spine_Spike_Joint8
+    4300034: Spine_Spike_Joint9
+    4300036: Spine_Spike_Joint10
+    4300038: Spine_Spike_Joint11
+    4300040: pCylinder28
+    4300042: pCylinder29
+    4300044: pCylinder30
+    4300046: pCylinder31
+    4300048: pCylinder32
+    4300050: pCylinder33
+    4300052: pCylinder34
+    4300054: pCylinder35
+    4300056: pCylinder36
+    4300058: WingJointFirst1
+    4300060: WingJointFirst4
+    4300062: WingJointFirst5
+    4300064: WingJointFirst
+    4300066: WingJointSecond
+    4300068: WingJointFirst1
+    4300070: WingJointFirst4
+    4300072: WingJointFirst5
+    4300074: WingJointFirst
+    4300076: WingJointSecond
+    4300078: pCube305
+    4300080: ForeArmJoint_1
+    4300082: ElbowJoint
+    4300084: ForeArmJoint_2
+    4300086: pCylinder19
+    4300088: pCylinder20
+    4300090: pCylinder19
+    4300092: pCylinder20
+    4300094: pCylinder19
+    4300096: pCylinder20
+    4300098: pCube305
+    4300100: ForeArmJoint_1
+    4300102: ElbowJoint
+    4300104: ForeArmJoint_2
+    4300106: pCylinder19
+    4300108: pCylinder20
+    4300110: pCylinder19
+    4300112: pCylinder20
+    4300114: pCylinder19
+    4300116: pCylinder20
+    4300118: TombStone_004_Enviroment_001_Full1
+    4300120: TombStone_004_Enviroment_001_Full2
+    4300122: TombStone_004_Enviroment_001_Full
+    4300124: TombStone_004_Enviroment_001_Full4
+    4300126: TombStone_004_Enviroment_001_Full3
+    4300128: TombStone_004_Enviroment_001_Full1
+    4300130: TombStone_004_Enviroment_001_Full2
+    4300132: TombStone_004_Enviroment_001_Full
+    4300134: TombStone_004_Enviroment_001_Full4
+    4300136: TombStone_004_Enviroment_001_Full3
+    4300138: TombStone_004_Enviroment_001_Full1
+    4300140: TombStone_004_Enviroment_001_Full2
+    4300142: TombStone_004_Enviroment_001_Full
+    4300144: TombStone_004_Enviroment_001_Full4
+    4300146: TombStone_004_Enviroment_001_Full3
+    4300148: TombStone_004_Enviroment_001_Full1
+    4300150: TombStone_004_Enviroment_001_Full2
+    4300152: TombStone_004_Enviroment_001_Full
+    4300154: TombStone_004_Enviroment_001_Full4
+    4300156: TombStone_004_Enviroment_001_Full3
+    4300158: Spider_001_Enviroment_001_Giant
+    4300160: Spikes_004_Enviroment_001_Small2
+    4300162: Spikes_004_Enviroment_001_Small3
+    4300164: Spikes_004_Enviroment_001_Small1
+    4300166: Spikes_004_Enviroment_001_Small
+    4300168: Spikes_004_Enviroment_001_Small2
+    4300170: Spikes_004_Enviroment_001_Small3
+    4300172: Spikes_004_Enviroment_001_Small1
+    4300174: Spikes_004_Enviroment_001_Small
+    4300176: Sword_007_Enviroment_001_Full3
+    4300178: Sword_007_Enviroment_001_Full2
+    4300180: Sword_007_Enviroment_001_Full1
+    4300182: Sword_007_Enviroment_001_Full
+    4300184: Sword_002_Enviroment_001_Broken
+    4300186: Sword_001_Enviroment_001_Full3
+    4300188: Sword_001_Enviroment_001_Full2
+    4300190: Sword_001_Enviroment_001_Full1
+    4300192: Sword_001_Enviroment_001_Full
+    4300194: Chain_002_Track_001_Giant6
+    4300196: Chain_002_Track_001_Giant5
+    4300198: Chain_002_Track_001_Giant4
+    4300200: Chain_002_Track_001_Giant3
+    4300202: Chain_002_Track_001_Giant2
+    4300204: Chain_002_Track_001_Giant1
+    4300206: Chain_002_Track_001_Giant
+    4300208: FloatingIsland_007_Island_002_CandyCane_008
+    4300210: FloatingIsland_007_Island_002_CandyCane_007
+    4300212: FloatingIsland_007_Island_002_CandyCane_006
+    4300214: FloatingIsland_007_Island_002_CandyCane_005
+    4300216: FloatingIsland_007_Island_002_CandyCane_004
+    4300218: FloatingIsland_003_Island_001_Drivethru
+    4300220: Rock_001_Enviroment_001_Rocky2
+    4300222: Rock_001_Enviroment_001_Rocky1
+    4300224: Rock_001_Enviroment_001_Rocky
+    4300226: Rock_003_Enviroment_001_Blocky
+    4300228: Rock_002_Enviroment_001_Pointy
+    4300230: ChainSkull_001_Enviroment_001_Full2
+    4300232: ChainSkull_001_Enviroment_001_Full3
+    4300234: ChainSkull_001_Enviroment_001_Full4
+    4300236: ChainSkull_001_Enviroment_001_Full1
+    4300238: ChainSkull_001_Enviroment_001_Full
+    4300240: ChainSkull_001_Enviroment_001_Full2
+    4300242: ChainSkull_001_Enviroment_001_Full3
+    4300244: ChainSkull_001_Enviroment_001_Full4
+    4300246: ChainSkull_001_Enviroment_001_Full1
+    4300248: ChainSkull_001_Enviroment_001_Full
+    4300250: Fence_002_Enviroment_001_Long3
+    4300252: Fence_002_Enviroment_001_Long4
+    4300254: Fence_002_Enviroment_001_Long5
+    4300256: Hand_001_Environment_001_Giant_003
+    4300258: Hand_001_Environment_001_Giant_002
+    4300260: Hand_001_Environment_001_Giant_001
+    4300262: Hand_001_Environment_001_Giant_003
+    4300264: Hand_001_Environment_001_Giant_002
+    4300266: Hand_001_Environment_001_Giant_001
+    4300268: Hand_001_Environment_001_Giant_003
+    4300270: Hand_001_Environment_001_Giant_002
+    4300272: Hand_001_Environment_001_Giant_001
+    4300274: Hand_001_Environment_001_Giant_004
+    4300276: Hand_001_Environment_001_Giant_005
+    4300278: Clouds_001_Sky_001_Fluffy
+    4300280: Clouds_001_Sky_001_Fluffy1
+    4300282: Clouds_001_Sky_001_Fluffy2
+    4300284: Clouds_001_Sky_001_Fluffy3
+    4300286: Clouds_001_Sky_001_Fluffy4
+    4300288: Clouds_001_Sky_001_Fluffy5
+    4300290: Tree_001_Enviroment_001_Pine
+    4300292: Tree_001_Enviroment_001_Pine1
+    4300294: Tree_001_Enviroment_001_Pine2
+    4300296: Tree_001_Enviroment_001_Pine3
+    4300298: Tree_001_Enviroment_001_Pine4
+    4300300: Tree_001_Enviroment_001_Pine5
+    4300302: Tree_001_Enviroment_001_Pine6
+    4300304: Tree_001_Enviroment_001_Pine7
+    4300306: Tree_003_Enviroment_001_Stump
+    4300308: Tree_003_Enviroment_001_Stump1
+    4300310: Tree_003_Enviroment_001_Stump2
+    4300312: Skull_001_Track_001_Giant6
+    4300314: Skull_001_Track_001_Giant5
+    4300316: Skull_001_Track_001_Giant4
+    4300318: Skull_001_Track_001_Giant3
+    4300320: Skull_001_Track_001_Giant2
+    4300322: Skull_001_Track_001_Giant1
+    4300324: Skull_001_Track_001_Giant
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

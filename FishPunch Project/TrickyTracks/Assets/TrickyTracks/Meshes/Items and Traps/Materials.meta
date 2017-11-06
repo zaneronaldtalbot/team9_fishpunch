@@ -1,8 +1,22 @@
 fileFormatVersion: 2
+<<<<<<< .mine
+guid: 35060cb8e990a2442959488f4eedf249
+||||||| .r160
+guid: 605d0b49a44b7344293d40ec621daefe
+=======
 guid: 6d3ef3a34d1626148bb24fdb2b6d5686
+>>>>>>> .r162
 folderAsset: yes
+<<<<<<< .mine
+timeCreated: 1509489048
+licenseType: Pro
+||||||| .r160
+timeCreated: 1509405508
+licenseType: Free
+=======
 timeCreated: 1509919468
 licenseType: Pro
+>>>>>>> .r162
 DefaultImporter:
   userData: 
   assetBundleName: 
