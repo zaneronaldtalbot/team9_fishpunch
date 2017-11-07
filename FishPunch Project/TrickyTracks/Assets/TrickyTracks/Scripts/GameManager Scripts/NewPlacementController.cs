@@ -11,6 +11,8 @@ public class NewPlacementController : MonoBehaviour
     private GamePadManager gpManager;
     private PlayerSelectActor psActor;
 
+    private LapsManager lapManager;
+
     //Copy of item lists.
     private GameObject itemListcopy1, itemListCopy2, itemListCopy3, itemListCopy4;
 
@@ -104,6 +106,7 @@ public class NewPlacementController : MonoBehaviour
         manager = this.gameObject;
         gpManager = GetComponent<GamePadManager>();
         psActor = manager.GetComponent<PlayerSelectActor>();
+        lapManager = manager.GetComponent<LapsManager>();
         
 
         //add traps to trap list.
@@ -280,11 +283,14 @@ public class NewPlacementController : MonoBehaviour
         Debug.Log("items count: " + itemsP1.Count);
         Debug.Log("index: " + prefabIndex1);
 
-        objectGeneration();
-        releasePrefab();
-        rotatePrefab();
-        changePrefab();
 
+        if (lapManager.raceCountdownTimer < 0)
+        {
+            objectGeneration();
+            releasePrefab();
+            rotatePrefab();
+            changePrefab();
+        }
 
         switch (psActor.playerCount)
         {
@@ -308,8 +314,9 @@ public class NewPlacementController : MonoBehaviour
 
                 break;
             case 2:
-                switchPowerupIcons(powerupIcon1_2P, kart1);
-                switchPowerupIcons(powerupIcon2_2P, kart2);
+         
+                switchItemIcons(prefabIndex1, currentItem1, itemsP1);
+                switchItemIcons(prefabIndex2, currentItem3, itemsP2);
 
                 if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
@@ -327,6 +334,11 @@ public class NewPlacementController : MonoBehaviour
                     kart2.GetComponent<PlayerActor>().assignNewTraps = false;
                     placeableObject2 = itemsP2[0];
                 }
+
+
+                       switchPowerupIcons(powerupIcon1_2P, kart1);
+                switchPowerupIcons(powerupIcon2_2P, kart2);
+
                 if (currentPlaceableObject1 != null)
                 {
                     fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
@@ -336,13 +348,21 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject2, currentPlaceableObject2, gamepad2);
                 }
 
-                switchItemIcons(prefabIndex1, currentItem1, itemsP1);
-                switchItemIcons(prefabIndex2, currentItem3, itemsP2);
+       
 
             
 
                 break;
             case 3:
+
+                switchItemIcons(prefabIndex1, currentItem1, itemsP1);
+                switchItemIcons(prefabIndex2, currentItem2, itemsP2);
+                switchItemIcons(prefabIndex3, currentItem3, itemsP3);
+
+                switchPowerupIcons(powerupIcon1, kart1);
+                switchPowerupIcons(powerupIcon2, kart2);
+                switchPowerupIcons(powerupIcon3, kart3);
+
                 if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP1.Clear();
@@ -380,13 +400,7 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject3, currentPlaceableObject3, gamepad3);
                 }
 
-                switchItemIcons(prefabIndex1, currentItem1, itemsP1);
-                switchItemIcons(prefabIndex2, currentItem2, itemsP2);
-                switchItemIcons(prefabIndex3, currentItem3, itemsP3);
-
-                switchPowerupIcons(powerupIcon1, kart1);
-                switchPowerupIcons(powerupIcon2, kart2);
-                switchPowerupIcons(powerupIcon3, kart3);
+           
                 
 
                 break;
@@ -916,13 +930,39 @@ public class NewPlacementController : MonoBehaviour
 
                 break;
             case 2:
+                //if (gamepad1.GetButtonUp("A"))
+                //{
+                //    if (itemsP1.Count > 0)
+                //    {
+                //        currentPlaceableObject1 = null;
+                //        itemsP1.RemoveAt(0);
+                //        placeableObject1 = itemsP1[0];
+                //    }
+                //    if (itemsP1.Count == 0)
+                //    {
+                //        placeableObject1 = null;
+                //    }
+                //}
                 if (gamepad1.GetButtonUp("A"))
                 {
                     if (itemsP1.Count > 0)
                     {
+                        //make current object copy null
+                        //remove item at the index
                         currentPlaceableObject1 = null;
-                        itemsP1.RemoveAt(0);
-                        placeableObject1 = itemsP1[0];
+                        itemsP1.RemoveAt(prefabIndex1);
+                        if (prefabIndex1 == (itemsP1.Count))
+                        {
+                            if (prefabIndex1 != 0)
+                            {
+                                prefabIndex1--;
+                            }
+                        }
+                        if (itemsP1.Count >= 1)
+                        {
+
+                            placeableObject1 = itemsP1[prefabIndex1];
+                        }
                     }
                     if (itemsP1.Count == 0)
                     {
@@ -933,25 +973,50 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP2.Count > 0)
                     {
+                        //make current object copy null
+                        //remove item at the index
                         currentPlaceableObject2 = null;
-                        itemsP2.RemoveAt(0);
-                        placeableObject2 = itemsP2[0];
+                        itemsP2.RemoveAt(prefabIndex2);
+                        if (prefabIndex2 == (itemsP2.Count))
+                        {
+                            if (prefabIndex2 != 0)
+                            {
+                                prefabIndex2--;
+                            }
+                        }
+                        if (itemsP2.Count >= 1)
+                        {
+
+                            placeableObject2 = itemsP2[prefabIndex2];
+                        }
                     }
                     if (itemsP2.Count == 0)
                     {
                         placeableObject2 = null;
                     }
                 }
-
                 break;
             case 3:
                 if (gamepad1.GetButtonUp("A"))
                 {
                     if (itemsP1.Count > 0)
                     {
+                        //make current object copy null
+                        //remove item at the index
                         currentPlaceableObject1 = null;
-                        itemsP1.RemoveAt(0);
-                        placeableObject1 = itemsP1[0];
+                        itemsP1.RemoveAt(prefabIndex1);
+                        if (prefabIndex1 == (itemsP1.Count))
+                        {
+                            if (prefabIndex1 != 0)
+                            {
+                                prefabIndex1--;
+                            }
+                        }
+                        if (itemsP1.Count >= 1)
+                        {
+
+                            placeableObject1 = itemsP1[prefabIndex1];
+                        }
                     }
                     if (itemsP1.Count == 0)
                     {
@@ -962,9 +1027,22 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP2.Count > 0)
                     {
+                        //make current object copy null
+                        //remove item at the index
                         currentPlaceableObject2 = null;
-                        itemsP2.RemoveAt(0);
-                        placeableObject2 = itemsP2[0];
+                        itemsP2.RemoveAt(prefabIndex2);
+                        if (prefabIndex2 == (itemsP2.Count))
+                        {
+                            if (prefabIndex2 != 0)
+                            {
+                                prefabIndex2--;
+                            }
+                        }
+                        if (itemsP2.Count >= 1)
+                        {
+
+                            placeableObject2 = itemsP2[prefabIndex2];
+                        }
                     }
                     if (itemsP2.Count == 0)
                     {
@@ -975,9 +1053,22 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP3.Count > 0)
                     {
+                        //make current object copy null
+                        //remove item at the index
                         currentPlaceableObject3 = null;
-                        itemsP3.RemoveAt(0);
-                        placeableObject3 = itemsP3[0];
+                        itemsP3.RemoveAt(prefabIndex3);
+                        if (prefabIndex3 == (itemsP3.Count))
+                        {
+                            if (prefabIndex3 != 0)
+                            {
+                                prefabIndex3--;
+                            }
+                        }
+                        if (itemsP3.Count >= 1)
+                        {
+
+                            placeableObject3 = itemsP3[prefabIndex3];
+                        }
                     }
                     if (itemsP3.Count == 0)
                     {
@@ -990,9 +1081,22 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP1.Count > 0)
                     {
+                        //make current object copy null
+                        //remove item at the index
                         currentPlaceableObject1 = null;
-                        itemsP1.RemoveAt(0);
-                        placeableObject1 = itemsP1[0];
+                        itemsP1.RemoveAt(prefabIndex1);
+                        if (prefabIndex1 == (itemsP1.Count))
+                        {
+                            if (prefabIndex1 != 0)
+                            {
+                                prefabIndex1--;
+                            }
+                        }
+                        if (itemsP1.Count >= 1)
+                        {
+
+                            placeableObject1 = itemsP1[prefabIndex1];
+                        }
                     }
                     if (itemsP1.Count == 0)
                     {
@@ -1003,9 +1107,22 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP2.Count > 0)
                     {
+                        //make current object copy null
+                        //remove item at the index
                         currentPlaceableObject2 = null;
-                        itemsP2.RemoveAt(0);
-                        placeableObject2 = itemsP2[0];
+                        itemsP2.RemoveAt(prefabIndex2);
+                        if (prefabIndex2 == (itemsP2.Count))
+                        {
+                            if (prefabIndex2 != 0)
+                            {
+                                prefabIndex2--;
+                            }
+                        }
+                        if (itemsP2.Count >= 1)
+                        {
+
+                            placeableObject2 = itemsP2[prefabIndex2];
+                        }
                     }
                     if (itemsP2.Count == 0)
                     {
@@ -1016,9 +1133,22 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP3.Count > 0)
                     {
+                        //make current object copy null
+                        //remove item at the index
                         currentPlaceableObject3 = null;
-                        itemsP3.RemoveAt(0);
-                        placeableObject3 = itemsP3[0];
+                        itemsP3.RemoveAt(prefabIndex3);
+                        if (prefabIndex3 == (itemsP3.Count))
+                        {
+                            if (prefabIndex3 != 0)
+                            {
+                                prefabIndex3--;
+                            }
+                        }
+                        if (itemsP3.Count >= 1)
+                        {
+
+                            placeableObject3 = itemsP3[prefabIndex3];
+                        }
                     }
                     if (itemsP3.Count == 0)
                     {
@@ -1029,9 +1159,22 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP4.Count > 0)
                     {
+                        //make current object copy null
+                        //remove item at the index
                         currentPlaceableObject4 = null;
-                        itemsP4.RemoveAt(0);
-                        placeableObject4 = itemsP4[0];
+                        itemsP4.RemoveAt(prefabIndex4);
+                        if (prefabIndex4 == (itemsP4.Count))
+                        {
+                            if (prefabIndex4 != 0)
+                            {
+                                prefabIndex4--;
+                            }
+                        }
+                        if (itemsP4.Count >= 1)
+                        {
+
+                            placeableObject4 = itemsP4[prefabIndex4];
+                        }
                     }
                     if (itemsP4.Count == 0)
                     {
