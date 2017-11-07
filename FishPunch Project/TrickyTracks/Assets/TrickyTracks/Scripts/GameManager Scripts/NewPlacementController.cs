@@ -308,6 +308,9 @@ public class NewPlacementController : MonoBehaviour
 
                 break;
             case 2:
+                switchPowerupIcons(powerupIcon1_2P, kart1);
+                switchPowerupIcons(powerupIcon2_2P, kart2);
+
                 if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP1.Clear();
@@ -336,8 +339,7 @@ public class NewPlacementController : MonoBehaviour
                 switchItemIcons(prefabIndex1, currentItem1, itemsP1);
                 switchItemIcons(prefabIndex2, currentItem3, itemsP2);
 
-                switchPowerupIcons(powerupIcon1_2P, kart1);
-                switchPowerupIcons(powerupIcon2_2P, kart2);
+            
 
                 break;
             case 3:
@@ -1139,23 +1141,35 @@ public class NewPlacementController : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider coll)
-    {
-        if((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
-        {
-            cannotPlace = true;
-            Material currentMaterial;
+    //void OnTriggerEnter(Collider coll)
+    //{
+    //    //if((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
+    //    //{
+    //    //    cannotPlace = true;
+    //    //    Material currentMaterial;
             
 
-        }
-    }
+    //    //}
 
-    void OnTriggerExit(Collider coll)
-    {
-        if ((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
-        {
-            cannotPlace = false;
+    //    if((coll.gameObject.tag == "ColliderField"))
+    //    {
+    //        cannotPlace = true;
+            
 
-        }
-    }
+    //    }
+    //}
+
+    //void OnTriggerExit(Collider coll)
+    //{
+    //    if ((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
+    //    {
+    //        cannotPlace = false;
+
+    //    }
+
+    //    if(coll.gameObject.tag == "ColliderField")
+    //    {
+    //        cannotPlace = false;
+    //    }
+    //}
 }
