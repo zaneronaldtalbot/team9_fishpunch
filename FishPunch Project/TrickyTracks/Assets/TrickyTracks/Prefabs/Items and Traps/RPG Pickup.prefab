@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1897509117779154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4158592155539802}
@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1102167696951394}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4637177351932580}
@@ -124,8 +124,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1222910457246154}
   m_LocalRotation: {x: -0.0028299396, y: -0.094722524, z: -0.008338817, w: 0.9954648}
-  m_LocalPosition: {x: 60.710373, y: 8.240894, z: -174.3682}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4578055104857686}
   - {fileID: 4249511107276796}
@@ -184,7 +184,7 @@ MeshCollider:
   m_Convex: 1
   m_InflateMesh: 0
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300004, guid: 3fb693f6321227047b647c3bce4c4b5d, type: 3}
+  m_Mesh: {fileID: 4300000, guid: aa42a720923f3ae42beaa8d853bd47b5, type: 3}
 --- !u!114 &114497482620277946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 5
   prefabSet: 0
+  transparentItem: {fileID: 0}
 --- !u!114 &114535164899896620
 MonoBehaviour:
   m_ObjectHideFlags: 1

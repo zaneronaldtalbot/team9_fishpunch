@@ -288,7 +288,7 @@ public class NewPlacementController : MonoBehaviour
         {
             objectGeneration();
             releasePrefab();
-            rotatePrefab();
+         //   rotatePrefab();
             changePrefab();
         }
 
@@ -950,23 +950,26 @@ public class NewPlacementController : MonoBehaviour
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject1 = null;
+                        
                         itemsP1.RemoveAt(prefabIndex1);
-                        if (prefabIndex1 == (itemsP1.Count))
+                        if (prefabIndex1 <= (itemsP1.Count))
                         {
                             if (prefabIndex1 != 0)
                             {
                                 prefabIndex1--;
                             }
                         }
-                        if (itemsP1.Count >= 1)
+                        if (itemsP1.Count > 1)
                         {
-
+                            
                             placeableObject1 = itemsP1[prefabIndex1];
+                          
                         }
                     }
                     if (itemsP1.Count == 0)
                     {
                         placeableObject1 = null;
+                   
                     }
                 }
                 if (gamepad2.GetButtonUp("A"))
@@ -1228,33 +1231,38 @@ public class NewPlacementController : MonoBehaviour
     //if itemlist index = certain trap or item assign icon.
     void switchItemIcons(int prefabIndex, Image currentItem, List<GameObject> playerItems)
     {
-      
+            if(playerItems.Count > 0)
             if (playerItems[prefabIndex] == buzzsaw)
             {
                 currentItem.sprite = buzzsawIcon;
             }
+        if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == ramp)
             {
                 currentItem.sprite = rampIcon;
             }
+        if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == oilslick)
             {
                 currentItem.sprite = oilslickIcon;
             }
+        if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == rpg)
             {
                 currentItem.sprite = rpgIcon;
             }
+        if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == mine)
             {
                 currentItem.sprite = mineIcon;
             }
+        if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == boost)
             {
                 currentItem.sprite = boostIcon;
             }
-            if (playerItems[prefabIndex] == null)
-            {
+        if (playerItems.Count == 0)
+        { 
                 currentItem.sprite = blankIcon;
             } 
 
