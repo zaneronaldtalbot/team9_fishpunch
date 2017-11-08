@@ -117,8 +117,14 @@ public class PlayerActor : MonoBehaviour {
         //If counter = 0 finish line = last checkpoint and first checkpoint = next.
         if (checkPointCounter == 0)
         {
-            nextCheckPoint = lapManager.checkPoints[0];
-            lastCheckPoint = lapManager.FinishLine;
+            if (lapManager.checkPoints[0] != null)
+            {
+                nextCheckPoint = lapManager.checkPoints[0];
+            }
+            if (lapManager.FinishLine != null)
+            {
+                lastCheckPoint = lapManager.FinishLine;
+            }
         }
 
         //if (lapManager.endTime < 0 && lapNumber < 3)

@@ -202,6 +202,13 @@ public class NewPlacementController : MonoBehaviour
               
                 break;
             case 3:
+
+                powerup1_2P.enabled = false;
+                powerup2_2P.enabled = false;
+                powerupIcon1_2P.enabled = false;
+                powerupIcon2_2P.enabled = false;
+                powerup4.enabled = false;
+                powerupIcon4.enabled = false;
                 //Randomise items.
                 randomiseItems(randTempNum1, randNumP1);
                 allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
@@ -228,12 +235,15 @@ public class NewPlacementController : MonoBehaviour
                 currentItemBack4.enabled = false;
                 currentItem4.enabled = false;
 
-                powerup1_2P.enabled = false;
-                powerup2_2P.enabled = false;
-                powerup4.enabled = false;
-
+              
                 break;
             case 4:
+
+                powerup1_2P.enabled = false;
+                powerup2_2P.enabled = false;
+                powerupIcon1_2P.enabled = false;
+                powerupIcon2_2P.enabled = false;
+
                 randomiseItems(randTempNum1, randNumP1);
                 allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
                 randomiseItems(randTempNum1, randNumP2);
@@ -355,6 +365,10 @@ public class NewPlacementController : MonoBehaviour
                 break;
             case 3:
 
+                powerup1_2P.enabled = false;
+                powerup2_2P.enabled = false;
+                powerup4.enabled = false;
+
                 switchItemIcons(prefabIndex1, currentItem1, itemsP1);
                 switchItemIcons(prefabIndex2, currentItem2, itemsP2);
                 switchItemIcons(prefabIndex3, currentItem3, itemsP3);
@@ -400,7 +414,7 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject3, currentPlaceableObject3, gamepad3);
                 }
 
-           
+            
                 
 
                 break;
@@ -886,8 +900,295 @@ public class NewPlacementController : MonoBehaviour
                 }
                 break;
             case 3:
+                if (itemsP1.Count > 0)
+                {
+                    if (!gamepad1.GetButton("A"))
+                    {
+                        if (gamepad1.GetButtonDown("RB"))
+                        {
+                            Destroy(currentPlaceableObject1);
+                            if (prefabIndex1 < itemsP1.Count - 1)
+                            {
+                                prefabIndex1++;
+                            }
+                            else
+                            {
+                                prefabIndex1 = 0;
+                            }
+                            placeableObject1 = itemsP1[prefabIndex1];
+                        }
+                        if (gamepad1.GetButtonDown("LB"))
+                        {
+                            Destroy(currentPlaceableObject1);
+                            if (prefabIndex1 > 0)
+                            {
+                                prefabIndex1--;
+                            }
+                            else
+                            {
+                                if (itemsP1.Count == 0)
+                                {
+                                    prefabIndex1 = itemsP1.Count;
+                                }
+                                if (itemsP1.Count > 0)
+                                {
+                                    prefabIndex1 = itemsP1.Count - 1;
+                                }
+
+                            }
+                            placeableObject1 = itemsP1[prefabIndex1];
+                        }
+
+                    }
+                }
+                if (itemsP2.Count > 0)
+                {
+                    if (!gamepad2.GetButton("A"))
+                    {
+                        if (gamepad2.GetButtonDown("RB"))
+                        {
+                            Destroy(currentPlaceableObject2);
+                            if (prefabIndex2 < itemsP2.Count - 1)
+                            {
+                                prefabIndex2++;
+                            }
+                            else
+                            {
+                                prefabIndex2 = 0;
+                            }
+                            placeableObject2 = itemsP2[prefabIndex2];
+                        }
+                        if (gamepad2.GetButtonDown("LB"))
+                        {
+                            Destroy(currentPlaceableObject2);
+                            if (prefabIndex2 > 0)
+                            {
+                                prefabIndex2--;
+                            }
+                            else
+                            {
+                                if (itemsP2.Count == 0)
+                                {
+                                    prefabIndex2 = itemsP2.Count;
+                                }
+                                if (itemsP2.Count > 0)
+                                {
+                                    prefabIndex2 = itemsP2.Count - 1;
+                                }
+
+                            }
+                            placeableObject2 = itemsP2[prefabIndex2];
+                        }
+
+                    }
+                }
+                if (itemsP3.Count > 0)
+                {
+                    if (!gamepad3.GetButton("A"))
+                    {
+                        if (gamepad3.GetButtonDown("RB"))
+                        {
+                            Destroy(currentPlaceableObject3);
+                            if (prefabIndex3 < itemsP3.Count - 1)
+                            {
+                                prefabIndex3++;
+                            }
+                            else
+                            {
+                                prefabIndex3 = 0;
+                            }
+                            placeableObject3 = itemsP3[prefabIndex3];
+                        }
+                        if (gamepad3.GetButtonDown("LB"))
+                        {
+                            Destroy(currentPlaceableObject3);
+                            if (prefabIndex3 > 0)
+                            {
+                                prefabIndex3--;
+                            }
+                            else
+                            {
+                                if (itemsP3.Count == 0)
+                                {
+                                    prefabIndex3 = itemsP3.Count;
+                                }
+                                if (itemsP3.Count > 0)
+                                {
+                                    prefabIndex3 = itemsP3.Count - 1;
+                                }
+
+                            }
+                            placeableObject3 = itemsP3[prefabIndex3];
+                        }
+
+                    }
+                }
                 break;
             case 4:
+                if (itemsP1.Count > 0)
+                {
+                    if (!gamepad1.GetButton("A"))
+                    {
+                        if (gamepad1.GetButtonDown("RB"))
+                        {
+                            Destroy(currentPlaceableObject1);
+                            if (prefabIndex1 < itemsP1.Count - 1)
+                            {
+                                prefabIndex1++;
+                            }
+                            else
+                            {
+                                prefabIndex1 = 0;
+                            }
+                            placeableObject1 = itemsP1[prefabIndex1];
+                        }
+                        if (gamepad1.GetButtonDown("LB"))
+                        {
+                            Destroy(currentPlaceableObject1);
+                            if (prefabIndex1 > 0)
+                            {
+                                prefabIndex1--;
+                            }
+                            else
+                            {
+                                if (itemsP1.Count == 0)
+                                {
+                                    prefabIndex1 = itemsP1.Count;
+                                }
+                                if (itemsP1.Count > 0)
+                                {
+                                    prefabIndex1 = itemsP1.Count - 1;
+                                }
+
+                            }
+                            placeableObject1 = itemsP1[prefabIndex1];
+                        }
+
+                    }
+                }
+                if (itemsP2.Count > 0)
+                {
+                    if (!gamepad2.GetButton("A"))
+                    {
+                        if (gamepad2.GetButtonDown("RB"))
+                        {
+                            Destroy(currentPlaceableObject2);
+                            if (prefabIndex2 < itemsP2.Count - 1)
+                            {
+                                prefabIndex2++;
+                            }
+                            else
+                            {
+                                prefabIndex2 = 0;
+                            }
+                            placeableObject2 = itemsP2[prefabIndex2];
+                        }
+                        if (gamepad2.GetButtonDown("LB"))
+                        {
+                            Destroy(currentPlaceableObject2);
+                            if (prefabIndex2 > 0)
+                            {
+                                prefabIndex2--;
+                            }
+                            else
+                            {
+                                if (itemsP2.Count == 0)
+                                {
+                                    prefabIndex2 = itemsP2.Count;
+                                }
+                                if (itemsP2.Count > 0)
+                                {
+                                    prefabIndex2 = itemsP2.Count - 1;
+                                }
+
+                            }
+                            placeableObject2 = itemsP2[prefabIndex2];
+                        }
+
+                    }
+                }
+                if (itemsP3.Count > 0)
+                {
+                    if (!gamepad3.GetButton("A"))
+                    {
+                        if (gamepad3.GetButtonDown("RB"))
+                        {
+                            Destroy(currentPlaceableObject3);
+                            if (prefabIndex3 < itemsP3.Count - 1)
+                            {
+                                prefabIndex3++;
+                            }
+                            else
+                            {
+                                prefabIndex3 = 0;
+                            }
+                            placeableObject3 = itemsP3[prefabIndex3];
+                        }
+                        if (gamepad3.GetButtonDown("LB"))
+                        {
+                            Destroy(currentPlaceableObject3);
+                            if (prefabIndex3 > 0)
+                            {
+                                prefabIndex3--;
+                            }
+                            else
+                            {
+                                if (itemsP3.Count == 0)
+                                {
+                                    prefabIndex3 = itemsP3.Count;
+                                }
+                                if (itemsP3.Count > 0)
+                                {
+                                    prefabIndex3 = itemsP3.Count - 1;
+                                }
+
+                            }
+                            placeableObject3 = itemsP3[prefabIndex3];
+                        }
+
+                    }
+                }
+                if (itemsP4.Count > 0)
+                {
+                    if (!gamepad4.GetButton("A"))
+                    {
+                        if (gamepad4.GetButtonDown("RB"))
+                        {
+                            Destroy(currentPlaceableObject4);
+                            if (prefabIndex4 < itemsP4.Count - 1)
+                            {
+                                prefabIndex4++;
+                            }
+                            else
+                            {
+                                prefabIndex4 = 0;
+                            }
+                            placeableObject4 = itemsP4[prefabIndex4];
+                        }
+                        if (gamepad4.GetButtonDown("LB"))
+                        {
+                            Destroy(currentPlaceableObject4);
+                            if (prefabIndex4 > 0)
+                            {
+                                prefabIndex4--;
+                            }
+                            else
+                            {
+                                if (itemsP4.Count == 0)
+                                {
+                                    prefabIndex4 = itemsP4.Count;
+                                }
+                                if (itemsP4.Count > 0)
+                                {
+                                    prefabIndex4 = itemsP4.Count - 1;
+                                }
+
+                            }
+                            placeableObject4 = itemsP4[prefabIndex4];
+                        }
+
+                    }
+                }
                 break;
             default:
                 break;

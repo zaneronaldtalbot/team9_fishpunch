@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PrefabDisabledActor : MonoBehaviour
 {
-
+    private NewPlacementController npController;
     private GameObject colliderObject;
     private Vector3 lastPos;
 
@@ -19,8 +19,8 @@ public class PrefabDisabledActor : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-   
 
+        npController = GameObject.Find("Manager").GetComponent<NewPlacementController>();
         if (this.gameObject.name == "Buzzsaw(Clone)")
         {
             colliderObject = this.gameObject.transform.Find("SawBlade_001").gameObject;
@@ -60,6 +60,35 @@ public class PrefabDisabledActor : MonoBehaviour
 
     }
 
+    //void OnTriggerEnter(Collider coll)
+    //{
+    //    //if((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
+    //    //{
+    //    //    cannotPlace = true;
+    //    //    Material currentMaterial;
 
+
+    //    //}
+
+    //    if ((coll.gameObject.tag == "ColliderField"))
+    //    {
+    //        npc.cannotPlace = true;
+
+    //    }
+    //}
+
+    //void OnTriggerExit(Collider coll)
+    //{
+    //    if ((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
+    //    {
+    //        cannotPlace = false;
+
+    //    }
+
+    //    if (coll.gameObject.tag == "ColliderField")
+    //    {
+    //        cannotPlace = false;
+    //    }
+    //}
 
 }

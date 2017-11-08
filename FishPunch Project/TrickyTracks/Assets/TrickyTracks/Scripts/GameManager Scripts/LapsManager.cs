@@ -22,12 +22,16 @@ public class LapsManager : MonoBehaviour
     private Text raceEnd;
     private Text raceCountdown;
 
+    public Sprite firstP, secondP, thirdP, fourthP;
+    private Image posOne, posTwo, posThree, posFour;
+
     public Sprite greenLight;
     public Sprite redLight;
 
     private Image countOne, countTwo, countThree, countFour;
 
-    private float raceCountdownTimer = 3.0f;
+    [HideInInspector]
+    public float raceCountdownTimer = 3.0f;
     private int intRaceCountdown;
 
     private float restartTime = 10.0f;
@@ -49,6 +53,8 @@ public class LapsManager : MonoBehaviour
     public bool check4 = false;
 
     private PlayerActor kart1, kart2, kart3, kart4;
+
+    private Image firstPlace, secondPlace, thirdPlace, fourthPlace;
 
     public GameObject Lapcounter;
 
@@ -108,11 +114,15 @@ public class LapsManager : MonoBehaviour
 
         raceRestart = GameObject.Find("RestartRace");
         restartText = raceRestart.GetComponent<Text>();
-        first = GameObject.Find("firstPlace").GetComponent<Text>();
-        second = GameObject.Find("secondPlace").GetComponent<Text>();
-        third = GameObject.Find("thirdPlace").GetComponent<Text>();
-        fourth = GameObject.Find("fourthPlace").GetComponent<Text>();
+        posOne = GameObject.Find("firstPlayer").GetComponent<Image>();
+        posTwo = GameObject.Find("secondPlayer").GetComponent<Image>();
+        posThree = GameObject.Find("thirdPlayer").GetComponent<Image>();
+        posFour = GameObject.Find("fourthPlayer").GetComponent<Image>();
         raceEnd = GameObject.Find("RaceEnd").GetComponent<Text>();
+        thirdPlace = GameObject.Find("thirdPlace").GetComponent<Image>();
+        fourthPlace = GameObject.Find("fourthPlace").GetComponent<Image>();
+        firstPlace = GameObject.Find("firstPlace").GetComponent<Image>();
+        secondPlace = GameObject.Find("secondPlace").GetComponent<Image>();
 
         switch(psActor.playerCount)
         {
@@ -134,8 +144,15 @@ public class LapsManager : MonoBehaviour
                 kart4 = GameObject.Find("PlayerCharacter_004").GetComponent<PlayerActor>();
                 break;
         }
-        
 
+        posOne.enabled = false;
+        posTwo.enabled = false;
+        posThree.enabled = false;
+        posFour.enabled = false;
+        firstPlace.enabled = false;
+        secondPlace.enabled = false;
+        thirdPlace.enabled = false;
+        fourthPlace.enabled = false;
 
     }
 
@@ -201,6 +218,7 @@ public class LapsManager : MonoBehaviour
                 }
                 break;
             case 2:
+
                 if ((kart1.lapNumber == 4 || kart2.lapNumber == 4) && !raceOver)
                 {
                     endRaceTime -= Time.deltaTime;
@@ -217,21 +235,19 @@ public class LapsManager : MonoBehaviour
                     intTime = (int)restartTime;
                     restartText.text = "Race Restarts in: " + intTime.ToString();
 
-                    first.enabled = true;
-                    second.enabled = true;
+                    posOne.enabled = true;
+                    posTwo.enabled = true;
+                    firstPlace.enabled = true;
+                    secondPlace.enabled = true;
                     if (kart1.kartPosition == 1 && kart2.kartPosition == 2)
                     {
-                        first.color = Color.red;
-                        first.text = "1st: Player 1";
-                        second.color = Color.blue;
-                        second.text = "2nd: Player 2";
+                        posOne.sprite = firstP;
+                        posTwo.sprite = secondP;
                     }
                     else if (kart1.kartPosition == 2 && kart2.kartPosition == 1)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 2";
-                        second.color = Color.red;
-                        second.text = "2nd: Player 1";
+                        posOne.sprite = secondP;
+                        posTwo.sprite = firstP;
                     }
 
 
@@ -250,6 +266,8 @@ public class LapsManager : MonoBehaviour
                 }
                 break;
             case 3:
+
+
                 if ((kart1.lapNumber == 4 || kart2.lapNumber == 4 || kart3.lapNumber == 4) && !raceOver)
                 {
                     endRaceTime -= Time.deltaTime;
@@ -266,62 +284,47 @@ public class LapsManager : MonoBehaviour
                     intTime = (int)restartTime;
                     restartText.text = "Race Restarts in: " + intTime.ToString();
 
-                    first.enabled = true;
-                    second.enabled = true;
-                    third.enabled = true;
+                    posOne.enabled = true;
+                    posTwo.enabled = true;
+                    posThree.enabled = true;
+                    firstPlace.enabled = true;
+                    secondPlace.enabled = true;
+                    thirdPlace.enabled = true;
                     if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 3)
                     {
-                        first.color = Color.red;
-                        first.text = "1st: Player 1";
-                        second.color = Color.blue;
-                        second.text = "2nd: Player 2";
-                        third.color = Color.green;
-                        third.text = "3rd: Player 3";
+                        posOne.sprite = firstP;
+                        posTwo.sprite = secondP;
+                        posThree.sprite = thirdP;
                     }
                     else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 2)
                     {
-                        first.color = Color.red;
-                        first.text = "1st: Player 1";
-                        second.color = Color.green;
-                        second.text = "2nd: Player 3";
-                        third.color = Color.blue;
-                        third.text = "3rd: Player 2";
+                        posOne.sprite = firstP;
+                        posTwo.sprite = thirdP;
+                        posThree.sprite = secondP;
                     }
                     else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 3)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 2";
-                        second.color = Color.red;
-                        second.text = "2nd: Player 1";
-                        third.color = Color.green;
-                        third.text = "3rd: Player 3";
+                        posOne.sprite = secondP;
+                        posTwo.sprite = firstP;
+                        posThree.sprite = thirdP;
                     }
                     else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 1)
                     {
-                        first.color = Color.green;
-                        first.text = "1st: Player 3";
-                        second.color = Color.red;
-                        second.text = "2nd: Player 1";
-                        third.color = Color.blue;
-                        third.text = "3rd: Player 2";
+                        posOne.sprite = secondP;
+                        posTwo.sprite = thirdP;
+                        posThree.sprite = firstP;
                     }
                     else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 1)
                     {
-                        first.color = Color.green;
-                        first.text = "1st: Player 3";
-                        second.color = Color.blue;
-                        second.text = "2nd: Player 2";
-                        third.color = Color.red;
-                        third.text = "3rd: Player 1";
+                        posOne.sprite = thirdP;
+                        posTwo.sprite = secondP;
+                        posThree.sprite = firstP;
                     }
                     else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 2)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 2";
-                        second.color = Color.green;
-                        second.text = "2nd: Player 3";
-                        third.color = Color.red;
-                        third.text = "3rd: Player 1";
+                        posOne.sprite = thirdP;
+                        posTwo.sprite = firstP;
+                        posThree.sprite = secondP;
                     }
 
                     iManager.enabled = false;
@@ -355,276 +358,185 @@ public class LapsManager : MonoBehaviour
                     intTime = (int)restartTime;
                     restartText.text = "Race Restarts in: " + intTime.ToString();
 
-                    first.enabled = true;
-                    second.enabled = true;
-                    third.enabled = true;
+                    posOne.enabled = true;
+                    posTwo.enabled = true;
+                    posThree.enabled = true;
+                    posFour.enabled = true;
+                    firstPlace.enabled = true;
+                    secondPlace.enabled = true;
+                    thirdPlace.enabled = true;
+                    fourthPlace.enabled = true;
                     //Kart 1
                     if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 3 && kart4.kartPosition == 4)
                     {
-                        first.color = Color.red;
-                        first.text = "1st: Player 1";
-                        second.color = Color.blue;
-                        second.text = "2nd: Player 2";
-                        third.color = Color.green;
-                        third.text = "3rd: Player 3";
-                        fourth.color = Color.magenta;
-                        fourth.text = "4th: Player 4";
+                        posOne.sprite = firstP;
+                        posTwo.sprite = secondP;
+                        posThree.sprite = thirdP;
+                        posFour.sprite = fourthP;
                     }
                     else if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 4 && kart4.kartPosition == 3)
                     {
-                        first.color = Color.red;
-                        first.text = "1st: Player 1";
-                        second.color = Color.blue;
-                        second.text = "2nd: Player 2";
-                        third.color = Color.magenta;
-                        third.text = "3rd: Player 4";
-                        fourth.color = Color.green;
-                        fourth.text = "4th: Player 3";
+                        posOne.sprite = firstP;
+                        posTwo.sprite = secondP;
+                        posThree.sprite = fourthP;
+                        posFour.sprite = thirdP;
                     }
                     else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 2 && kart4.kartPosition == 4)
                     {
-                        first.color = Color.red;
-                        first.text = "1st: Player 1";
-                        second.color = Color.green;
-                        second.text = "2nd: Player 3";
-                        third.color = Color.blue;
-                        third.text = "3rd: Player 2";
-                        fourth.color = Color.magenta;
-                        fourth.text = "4th: Player 4";
+                        posOne.sprite = firstP;
+                        posTwo.sprite = thirdP;
+                        posThree.sprite = secondP;
+                        posFour.sprite = fourthP;
                     }
                     else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 4 && kart4.kartPosition == 2)
                     {
-                        first.color = Color.red;
-                        first.text = "1st: Player 1";
-                        second.color = Color.magenta;
-                        second.text = "2nd: Player 4";
-                        third.color = Color.blue;
-                        third.text = "3rd: Player 2";
-                        fourth.color = Color.green;
-                        fourth.text = "4th: Player 3";
+                        posOne.sprite = firstP;
+                        posTwo.sprite = thirdP;
+                        posThree.sprite = fourthP;
+                        posFour.sprite = secondP;
                     }
                     else if (kart1.kartPosition == 1 && kart2.kartPosition == 4 && kart3.kartPosition == 2 && kart4.kartPosition == 3)
                     {
-                        first.color = Color.red;
-                        first.text = "1st: Player 1";
-                        second.color = Color.green;
-                        second.text = "2nd: Player 3";
-                        third.color = Color.magenta;
-                        third.text = "3rd: Player 4";
-                        fourth.color = Color.blue;
-                        fourth.text = "4th: Player 2";
+                        posOne.sprite = firstP;
+                        posTwo.sprite = fourthP;
+                        posThree.sprite = secondP;
+                        posFour.sprite = thirdP;
                     }
                     else if (kart1.kartPosition == 1 && kart2.kartPosition == 4 && kart3.kartPosition == 3 && kart4.kartPosition == 2)
                     {
-                        first.color = Color.red;
-                        first.text = "1st: Player 1";
-                        second.color = Color.magenta;
-                        second.text = "2nd: Player 4";
-                        third.color = Color.green;
-                        third.text = "3rd: Player 3";
-                        fourth.color = Color.blue;
-                        fourth.text = "4th: Player 2";
+                        posOne.sprite = firstP;
+                        posTwo.sprite = fourthP;
+                        posThree.sprite = thirdP;
+                        posFour.sprite = secondP;
                     }
                     //Kart 2
                     else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 3 && kart4.kartPosition == 4)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 2";
-                        second.color = Color.red;
-                        second.text = "2nd: Player 1";
-                        third.color = Color.green;
-                        third.text = "3rd: Player 3";
-                        fourth.color = Color.magenta;
-                        fourth.text = "4th: Player 4";
+                        posOne.sprite = secondP;
+                        posTwo.sprite = firstP;
+                        posThree.sprite = thirdP;
+                        posFour.sprite = fourthP;
                     }
                     else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 4 && kart4.kartPosition == 3)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 2";
-                        second.color = Color.red;
-                        second.text = "2nd: Player 1";
-                        third.color = Color.magenta;
-                        third.text = "3rd: Player 4";
-                        fourth.color = Color.green;
-                        fourth.text = "4th: Player 3";
+                        posOne.sprite = secondP;
+                        posTwo.sprite = firstP;
+                        posThree.sprite = fourthP;
+                        posFour.sprite = thirdP;
                     }
                     else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 1 && kart4.kartPosition == 4)
                     {
-                        first.color = Color.green;
-                        first.text = "1st: Player 3";
-                        second.color = Color.red;
-                        second.text = "2nd: Player 1";
-                        third.color = Color.blue;
-                        third.text = "3rd: Player 2";
-                        fourth.color = Color.magenta;
-                        fourth.text = "4th: Player 4";
+                        posOne.sprite = secondP;
+                        posTwo.sprite = thirdP;
+                        posThree.sprite = firstP;
+                        posFour.sprite = fourthP;
                     }
                     else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 4 && kart4.kartPosition == 1)
                     {
-                        first.color = Color.magenta;
-                        first.text = "1st: Player 4";
-                        second.color = Color.red;
-                        second.text = "2nd: Player 1";
-                        third.color = Color.blue;
-                        third.text = "3rd: Player 2";
-                        fourth.color = Color.green;
-                        fourth.text = "4th: Player 3";
+                        posOne.sprite = secondP;
+                        posTwo.sprite = thirdP;
+                        posThree.sprite = fourthP;
+                        posFour.sprite = firstP;
                     }
                     else if (kart1.kartPosition == 2 && kart2.kartPosition == 4 && kart3.kartPosition == 1 && kart4.kartPosition == 3)
                     {
-                        first.color = Color.green;
-                        first.text = "1st: Player 3";
-                        second.color = Color.red;
-                        second.text = "2nd: Player 1";
-                        third.color = Color.magenta;
-                        third.text = "3rd: Player 4";
-                        fourth.color = Color.blue;
-                        fourth.text = "4th: Player 2";
+                        posOne.sprite = secondP;
+                        posTwo.sprite = fourthP;
+                        posThree.sprite = firstP;
+                        posFour.sprite = thirdP;
                     }
                     else if (kart1.kartPosition == 2 && kart2.kartPosition == 4 && kart3.kartPosition == 3 && kart4.kartPosition == 1)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 1";
-                        second.color = Color.magenta;
-                        second.text = "2nd: Player 4";
-                        third.color = Color.green;
-                        third.text = "3rd: Player 3";
-                        fourth.color = Color.blue;
-                        fourth.text = "4th: Player 2";
+                        posOne.sprite = secondP;
+                        posTwo.sprite = fourthP;
+                        posThree.sprite = thirdP;
+                        posFour.sprite = firstP;
                     }
                     //kart 3
                     else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 2 && kart4.kartPosition == 4)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 2";
-                        second.color = Color.green;
-                        second.text = "2nd: Player 3";
-                        third.color = Color.red;
-                        third.text = "3rd: Player 1";
-                        fourth.color = Color.magenta;
-                        fourth.text = "4th: Player 4";
+                        posOne.sprite = thirdP;
+                        posTwo.sprite = firstP;
+                        posThree.sprite = secondP;
+                        posFour.sprite = fourthP;
                     }
                     else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 4 && kart4.kartPosition == 2)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 2";
-                        second.color = Color.magenta;
-                        second.text = "2nd: Player 4";
-                        third.color = Color.red;
-                        third.text = "3rd: Player 1";
-                        fourth.color = Color.green;
-                        fourth.text = "4th: Player 3";
+                        posOne.sprite = thirdP;
+                        posTwo.sprite = firstP;
+                        posThree.sprite = fourthP;
+                        posFour.sprite = secondP;
                     }
                     else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 1 && kart4.kartPosition == 4)
                     {
-                        first.color = Color.green;
-                        first.text = "1st: Player 3";
-                        second.color = Color.blue;
-                        second.text = "2nd: Player 2";
-                        third.color = Color.red;
-                        third.text = "3rd: Player 1";
-                        fourth.color = Color.magenta;
-                        fourth.text = "4th: Player 4";
+                        posOne.sprite = thirdP;
+                        posTwo.sprite = secondP;
+                        posThree.sprite = firstP;
+                        posFour.sprite = fourthP;
                     }
                     else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 4 && kart4.kartPosition == 1)
                     {
-                        first.color = Color.magenta;
-                        first.text = "1st: Player 4";
-                        second.color = Color.blue;
-                        second.text = "2nd: Player 2";
-                        third.color = Color.red;
-                        third.text = "3rd: Player 1";
-                        fourth.color = Color.green;
-                        fourth.text = "4th: Player 3";
+                        posOne.sprite = thirdP;
+                        posTwo.sprite = secondP;
+                        posThree.sprite = fourthP;
+                        posFour.sprite = firstP;
                     }
                     else if (kart1.kartPosition == 3 && kart2.kartPosition == 4 && kart3.kartPosition == 1 && kart4.kartPosition == 2)
                     {
-                        first.color = Color.green;
-                        first.text = "1st: Player 3";
-                        second.color = Color.magenta;
-                        second.text = "2nd: Player 4";
-                        third.color = Color.red;
-                        third.text = "3rd: Player 1";
-                        fourth.color = Color.blue;
-                        fourth.text = "4th: Player 2";
+                        posOne.sprite = thirdP;
+                        posTwo.sprite = fourthP;
+                        posThree.sprite = firstP;
+                        posFour.sprite = secondP;
                     }
                     else if (kart1.kartPosition == 3 && kart2.kartPosition == 4 && kart3.kartPosition == 2 && kart4.kartPosition == 1)
                     {
-                        first.color = Color.magenta;
-                        first.text = "1st: Player 4";
-                        second.color = Color.green;
-                        second.text = "2nd: Player 3";
-                        third.color = Color.red;
-                        third.text = "3rd: Player 1";
-                        fourth.color = Color.blue;
-                        fourth.text = "4th: Player 2";
+                        posOne.sprite = thirdP;
+                        posTwo.sprite = fourthP;
+                        posThree.sprite = secondP;
+                        posFour.sprite = firstP;
                     }
                     //kart 4
                     else if (kart1.kartPosition == 4 && kart2.kartPosition == 1 && kart3.kartPosition == 2 && kart4.kartPosition == 3)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 2";
-                        second.color = Color.green;
-                        second.text = "2nd: Player 3";
-                        third.color = Color.magenta;
-                        third.text = "3rd: Player 4";
-                        fourth.color = Color.red;
-                        fourth.text = "4th: Player 1";
+                        posOne.sprite = fourthP;
+                        posTwo.sprite = firstP;
+                        posThree.sprite = secondP;
+                        posFour.sprite = thirdP;
                     }
                     else if (kart1.kartPosition == 4 && kart2.kartPosition == 1 && kart3.kartPosition == 3 && kart4.kartPosition == 2)
                     {
-                        first.color = Color.blue;
-                        first.text = "1st: Player 2";
-                        second.color = Color.magenta;
-                        second.text = "2nd: Player 4";
-                        third.color = Color.green;
-                        third.text = "3rd: Player 3";
-                        fourth.color = Color.red;
-                        fourth.text = "4th: Player 1";
+                        posOne.sprite = fourthP;
+                        posTwo.sprite = firstP;
+                        posThree.sprite = thirdP;
+                        posFour.sprite = secondP;
                     }
                     else if (kart1.kartPosition == 4 && kart2.kartPosition == 2 && kart3.kartPosition == 1 && kart4.kartPosition == 3)
                     {
-                        first.color = Color.green;
-                        first.text = "1st: Player 3";
-                        second.color = Color.blue;
-                        second.text = "2nd: Player 2";
-                        third.color = Color.magenta;
-                        third.text = "3rd: Player 4";
-                        fourth.color = Color.red;
-                        fourth.text = "4th: Player 1";
+                        posOne.sprite = fourthP;
+                        posTwo.sprite = secondP;
+                        posThree.sprite = firstP;
+                        posFour.sprite = thirdP;
                     }
                     else if (kart1.kartPosition == 4 && kart2.kartPosition == 2 && kart3.kartPosition == 3 && kart4.kartPosition == 1)
                     {
-                        first.color = Color.magenta;
-                        first.text = "1st: Player 4";
-                        second.color = Color.blue;
-                        second.text = "2nd: Player 2";
-                        third.color = Color.green;
-                        third.text = "3rd: Player 3";
-                        fourth.color = Color.red;
-                        fourth.text = "4th: Player 1";
+                        posOne.sprite = fourthP;
+                        posTwo.sprite = secondP;
+                        posThree.sprite = thirdP;
+                        posFour.sprite = firstP;
                     }
                     else if (kart1.kartPosition == 4 && kart2.kartPosition == 3 && kart3.kartPosition == 1 && kart4.kartPosition == 2)
                     {
-                        first.color = Color.green;
-                        first.text = "1st: Player 3";
-                        second.color = Color.magenta;
-                        second.text = "2nd: Player 4";
-                        third.color = Color.blue;
-                        third.text = "3rd: Player 2";
-                        fourth.color = Color.red;
-                        fourth.text = "4th: Player 1";
+                        posOne.sprite = fourthP;
+                        posTwo.sprite = thirdP;
+                        posThree.sprite = firstP;
+                        posFour.sprite = secondP;
                     }
                     else if (kart1.kartPosition == 4 && kart2.kartPosition == 3 && kart3.kartPosition == 2 && kart4.kartPosition == 1)
                     {
-                        first.color = Color.magenta;
-                        first.text = "1st: Player 4";
-                        second.color = Color.green;
-                        second.text = "2nd: Player 3";
-                        third.color = Color.blue;
-                        third.text = "3rd: Player 2";
-                        fourth.color = Color.red;
-                        fourth.text = "4th: Player 1";
+                        posOne.sprite = fourthP;
+                        posTwo.sprite = thirdP;
+                        posThree.sprite = secondP;
+                        posFour.sprite = firstP;
                     }
 
                     iManager.enabled = false;

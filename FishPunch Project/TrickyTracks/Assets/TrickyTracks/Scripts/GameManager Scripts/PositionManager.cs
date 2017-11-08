@@ -165,7 +165,7 @@ public class PositionManager : MonoBehaviour {
                 {
                     playerOnePosition.sprite = positionTwo;
                     playerTwoPosition.sprite = positionOne;
-                    playerFourPosition.sprite = positionThree;
+                    playerThreePosition.sprite = positionThree;
 
                 }
                 else if(kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 2)

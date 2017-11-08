@@ -13,6 +13,7 @@ TagManager:
   - Boost
   - OffRoad
   - Item
+  - ColliderField
   layers:
   - Default
   - TransparentFX
