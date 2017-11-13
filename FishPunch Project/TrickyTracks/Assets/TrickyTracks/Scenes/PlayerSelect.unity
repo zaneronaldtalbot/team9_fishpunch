@@ -920,7 +920,7 @@ Prefab:
     - target: {fileID: 114577235946804588, guid: de3efa0efb84d7d478bc044b75bbd15a,
         type: 2}
       propertyPath: GamePadCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de3efa0efb84d7d478bc044b75bbd15a, type: 2}

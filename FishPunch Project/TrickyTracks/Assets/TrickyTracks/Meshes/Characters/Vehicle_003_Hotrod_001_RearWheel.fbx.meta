@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 53f2c23ca44e3044bb1830dcdde5cc30
-timeCreated: 1505964305
-licenseType: Free
+guid: 6d2f853d93bdead4c8ea67b830de7ee8
+timeCreated: 1510533708
+licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
@@ -9,13 +9,9 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Kart01
-    4300002: pCylinder2
-    4300004: PlayerCharacter_Vehicle_wheel1_Right_001
-    4300006: Vehicle_001_Hotrod_002_FrontWheel
-    4300008: pCylinder15
+    4300000: pCylinder14
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
