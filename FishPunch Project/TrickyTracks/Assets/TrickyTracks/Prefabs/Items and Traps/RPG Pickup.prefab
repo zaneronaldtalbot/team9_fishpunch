@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114497482620277946}
   m_Layer: 9
   m_Name: RPG Pickup
-  m_TagString: ItemRPG
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

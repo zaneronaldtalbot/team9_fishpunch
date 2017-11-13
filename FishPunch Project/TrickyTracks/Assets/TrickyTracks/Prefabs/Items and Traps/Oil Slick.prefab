@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114205947530360226}
   m_Layer: 9
   m_Name: Oil Slick
-  m_TagString: OilSlick
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 5
   prefabSet: 0
+  transparentItem: {fileID: 0}
 --- !u!114 &114318157630777840
 MonoBehaviour:
   m_ObjectHideFlags: 1

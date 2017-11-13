@@ -539,124 +539,315 @@ public class PositionManager : MonoBehaviour {
                             PlayerActor kartthree, GameObject go_kartthree)
     {
 
-        if (kartLapCheck(kart, karttwo, kartthree))
+        if (kartCheckpointCheck(kart, karttwo, kartthree))
         {
             kart.kartPosition = 1;
             karttwo.kartPosition = 2;
             kartthree.kartPosition = 3;
         }
-        else if (kartLapCheck(kart, kartthree, karttwo))
+        else if (kartCheckpointCheck(kart, kartthree, karttwo))
         {
             kart.kartPosition = 1;
             kartthree.kartPosition = 2;
             karttwo.kartPosition = 3;
         }
-        else if (kartLapCheck(karttwo, kart, kartthree))
+        else if (kartCheckpointCheck(karttwo, kart, kartthree))
         {
             karttwo.kartPosition = 1;
             kart.kartPosition = 2;
             kartthree.kartPosition = 3;
         }
-        else if (kartLapCheck(karttwo, kartthree, kart))
+        else if (kartCheckpointCheck(karttwo, kartthree, kart))
         {
             karttwo.kartPosition = 1;
             kartthree.kartPosition = 2;
             kart.kartPosition = 3;
         }
-        else if (kartLapCheck(kartthree, kart, karttwo))
+        else if (kartCheckpointCheck(kartthree, kart, karttwo))
         {
             kartthree.kartPosition = 1;
             kart.kartPosition = 2;
             karttwo.kartPosition = 3;
         }
-        else if (kartLapCheck(kartthree, karttwo, kart))
+        else if (kartCheckpointCheck(kartthree, karttwo, kart))
         {
             kartthree.kartPosition = 1;
             karttwo.kartPosition = 2;
             kart.kartPosition = 3;
         }
-        else if ((kart.lapNumber == karttwo.lapNumber) && (kart.lapNumber == kartthree.lapNumber) && (karttwo.lapNumber == kartthree.lapNumber))
+        else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (kartthree.checkPointCounter > karttwo.checkPointCounter))
         {
-            if(kartCheckpointCheck(kart, karttwo, kartthree))
-            {
-                kart.kartPosition = 1;
-                karttwo.kartPosition = 2;
-                kartthree.kartPosition = 3;
-            }
-            else if(kartCheckpointCheck(kart, kartthree, karttwo))
-            {
-                kart.kartPosition = 1;
-                kartthree.kartPosition = 2;
-                karttwo.kartPosition = 3;
-            }
-            else if(kartCheckpointCheck(karttwo, kart, kartthree))
-            {
-                karttwo.kartPosition = 1;
-                kart.kartPosition = 2;
-                kartthree.kartPosition = 3;
-            }
-            else if(kartCheckpointCheck(karttwo, kartthree, kart))
-            {
-                karttwo.kartPosition = 1;
-                kartthree.kartPosition = 2;
-                kart.kartPosition = 3;
-            }
-            else if(kartCheckpointCheck(kartthree, kart, karttwo))
-            {
-                kartthree.kartPosition = 1;
-                kart.kartPosition = 2;
-                karttwo.kartPosition = 3;
-            }
-            else if(kartCheckpointCheck(kartthree, karttwo, kart))
-            {
-                kartthree.kartPosition = 1;
-                karttwo.kartPosition = 2;
-                kart.kartPosition = 3;
-            }
-            else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter))
-            {
-                float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
-                float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position);
-                float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position);
 
-                if ((dist1 < dist2) && (dist2 < dist3))
-                {
-                    kart.kartPosition = 1;
-                    karttwo.kartPosition = 2;
-                    kartthree.kartPosition = 3;
-                }
-                else if ((dist1 < dist3) && (dist3 < dist2))
-                {
-                    kart.kartPosition = 1;
-                    karttwo.kartPosition = 3;
-                    kartthree.kartPosition = 2;
-                }
-                else if ((dist2 < dist1) && (dist1 < dist3))
-                {
-                    kart.kartPosition = 2;
-                    karttwo.kartPosition = 1;
-                    kartthree.kartPosition = 3;
-                }
-                else if ((dist2 < dist3) && (dist3 < dist1))
-                {
-                    kart.kartPosition = 3;
-                    karttwo.kartPosition = 1;
-                    kartthree.kartPosition = 2;
-                }
-                else if ((dist3 < dist1) && (dist1 < dist2))
-                {
-                    kart.kartPosition = 2;
-                    karttwo.kartPosition = 3;
-                    kartthree.kartPosition = 1;
-                }
-                else if ((dist3 < dist2) && (dist2 < dist1))
-                {
-                    kart.kartPosition = 3;
-                    karttwo.kartPosition = 2;
-                    kartthree.kartPosition = 1;
-                }
+            kartthree.kartPosition = 1;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position);
+
+            if ((dist1 > dist2))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 2;
+            }
+            else if ((dist1 < dist2))
+            {
+                karttwo.kartPosition = 3;
+                kart.kartPosition = 2;
+            }
+
+        }
+        else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (kartthree.checkPointCounter < karttwo.checkPointCounter))
+        {
+            kartthree.kartPosition = 3;
+
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position);
+
+            if ((dist1 > dist2))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 1;
+            }
+            else if ((dist1 < dist2))
+            {
+                karttwo.kartPosition = 2;
+                kart.kartPosition = 1;
             }
         }
+        else if ((kart.checkPointCounter == kartthree.checkPointCounter) && (karttwo.checkPointCounter > kart.checkPointCounter))
+        {
+            karttwo.kartPosition = 1;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist1 > dist3)
+            {
+                kart.kartPosition = 3;
+                kartthree.kartPosition = 2;
+            }
+            else if (dist1 < dist3)
+            {
+                kart.kartPosition = 2;
+                kartthree.kartPosition = 3;
+            }
+        }
+        else if ((kart.checkPointCounter == kartthree.checkPointCounter) && (karttwo.checkPointCounter < kart.checkPointCounter))
+        {
+            karttwo.kartPosition = 3;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist1 > dist3)
+            {
+                kart.kartPosition = 2;
+                kartthree.kartPosition = 1;
+            }
+            else if (dist1 < dist3)
+            {
+                kart.kartPosition = 1;
+                kartthree.kartPosition = 2;
+            }
+        }
+        else if (karttwo.checkPointCounter == kartthree.checkPointCounter && (kart.checkPointCounter > karttwo.checkPointCounter))
+        {
+            kart.kartPosition = 1;
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist2 > dist3)
+            {
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 2;
+            }
+            else if (dist2 < dist3)
+            {
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 3;
+            }
+
+        }
+        else if (karttwo.checkPointCounter == kartthree.checkPointCounter && (kart.checkPointCounter < karttwo.checkPointCounter))
+        {
+            kart.kartPosition = 3;
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist2 > dist3)
+            {
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 1;
+            }
+            else if (dist2 < dist3)
+            {
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 2;
+            }
+
+        }
+        else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter))
+        {
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if ((dist1 < dist2) && (dist2 < dist3))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 3;
+            }
+            else if ((dist1 < dist3) && (dist3 < dist2))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 2;
+            }
+            else if ((dist2 < dist1) && (dist1 < dist3))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 3;
+            }
+            else if ((dist2 < dist3) && (dist3 < dist1))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 2;
+            }
+            else if ((dist3 < dist1) && (dist1 < dist2))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 1;
+            }
+            else if ((dist3 < dist2) && (dist2 < dist1))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 1;
+            }
+        }
+
+
+            ////Kart One
+            //if (kartLapCheck(kart, karttwo, kartthree))
+            //{
+            //    kart.kartPosition = 1;
+            //    karttwo.kartPosition = 2;
+            //    kartthree.kartPosition = 3;
+            //}
+            //else if (kartLapCheck(kart, kartthree, karttwo))
+            //{
+            //    kart.kartPosition = 1;
+            //    kartthree.kartPosition = 2;
+            //    karttwo.kartPosition = 3;
+            //}
+            ////Kart Two.
+            //else if (kartLapCheck(karttwo, kart, kartthree))
+            //{
+            //    karttwo.kartPosition = 1;
+            //    kart.kartPosition = 2;
+            //    kartthree.kartPosition = 3;
+            //}
+            //else if (kartLapCheck(karttwo, kartthree, kart))
+            //{
+            //    karttwo.kartPosition = 1;
+            //    kartthree.kartPosition = 2;
+            //    kart.kartPosition = 3;
+            //}
+            ////kart three
+            //else if (kartLapCheck(kartthree, kart, karttwo))
+            //{
+            //    kartthree.kartPosition = 1;
+            //    kart.kartPosition = 2;
+            //    karttwo.kartPosition = 3;
+            //}
+            //else if (kartLapCheck(kartthree, karttwo, kart))
+            //{
+            //    kartthree.kartPosition = 1;
+            //    karttwo.kartPosition = 2;
+            //    kart.kartPosition = 3;
+            //}
+            //else if ((kart.lapNumber == karttwo.lapNumber) && (kart.lapNumber == kartthree.lapNumber) && (karttwo.lapNumber == kartthree.lapNumber))
+            //{
+            //    if(kartCheckpointCheck(kart, karttwo, kartthree))
+            //    {
+            //        kart.kartPosition = 1;
+            //        karttwo.kartPosition = 2;
+            //        kartthree.kartPosition = 3;
+            //    }
+            //    else if(kartCheckpointCheck(kart, kartthree, karttwo))
+            //    {
+            //        kart.kartPosition = 1;
+            //        kartthree.kartPosition = 2;
+            //        karttwo.kartPosition = 3;
+            //    }
+            //    else if(kartCheckpointCheck(karttwo, kart, kartthree))
+            //    {
+            //        karttwo.kartPosition = 1;
+            //        kart.kartPosition = 2;
+            //        kartthree.kartPosition = 3;
+            //    }
+            //    else if(kartCheckpointCheck(karttwo, kartthree, kart))
+            //    {
+            //        karttwo.kartPosition = 1;
+            //        kartthree.kartPosition = 2;
+            //        kart.kartPosition = 3;
+            //    }
+            //    else if(kartCheckpointCheck(kartthree, kart, karttwo))
+            //    {
+            //        kartthree.kartPosition = 1;
+            //        kart.kartPosition = 2;
+            //        karttwo.kartPosition = 3;
+            //    }
+            //    else if(kartCheckpointCheck(kartthree, karttwo, kart))
+            //    {
+            //        kartthree.kartPosition = 1;
+            //        karttwo.kartPosition = 2;
+            //        kart.kartPosition = 3;
+            //    }
+            //    else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter))
+            //    {
+            //        float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            //        float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position);
+            //        float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            //        if ((dist1 < dist2) && (dist2 < dist3))
+            //        {
+            //            kart.kartPosition = 1;
+            //            karttwo.kartPosition = 2;
+            //            kartthree.kartPosition = 3;
+            //        }
+            //        else if ((dist1 < dist3) && (dist3 < dist2))
+            //        {
+            //            kart.kartPosition = 1;
+            //            karttwo.kartPosition = 3;
+            //            kartthree.kartPosition = 2;
+            //        }
+            //        else if ((dist2 < dist1) && (dist1 < dist3))
+            //        {
+            //            kart.kartPosition = 2;
+            //            karttwo.kartPosition = 1;
+            //            kartthree.kartPosition = 3;
+            //        }
+            //        else if ((dist2 < dist3) && (dist3 < dist1))
+            //        {
+            //            kart.kartPosition = 3;
+            //            karttwo.kartPosition = 1;
+            //            kartthree.kartPosition = 2;
+            //        }
+            //        else if ((dist3 < dist1) && (dist1 < dist2))
+            //        {
+            //            kart.kartPosition = 2;
+            //            karttwo.kartPosition = 3;
+            //            kartthree.kartPosition = 1;
+            //        }
+            //        else if ((dist3 < dist2) && (dist2 < dist1))
+            //        {
+            //            kart.kartPosition = 3;
+            //            karttwo.kartPosition = 2;
+            //            kartthree.kartPosition = 1;
+            //        }
+            //    }
+            //}
     }
 
     //Position calculator calculates each karts lap counter
@@ -664,43 +855,219 @@ public class PositionManager : MonoBehaviour {
     void positionCalculator(PlayerActor kart, GameObject go_kart, PlayerActor karttwo, GameObject go_karttwo,
                             PlayerActor kartthree, GameObject go_kartthree, PlayerActor kartfour, GameObject go_kartfour)
     {
+        ////First player winning
+        //if (kartLapCheck(kart, karttwo, kartthree, kartfour))
+        //{
+        //    kart.kartPosition = 1;
+        //    karttwo.kartPosition = 2;
+        //    kartthree.kartPosition = 3;
+        //    kartfour.kartPosition = 4;
+        //}
+        //else if (kartLapCheck(kart, karttwo, kartfour, kartthree))
+        //{
+        //    kart.kartPosition = 1;
+        //    karttwo.kartPosition = 2;
+        //    kartthree.kartPosition = 4;
+        //    kartfour.kartPosition = 3;
+        //}
+        //else if (kartLapCheck(kart, kartthree, karttwo, kartfour))
+        //{
+        //    kart.kartPosition = 1;
+        //    karttwo.kartPosition = 3;
+        //    kartthree.kartPosition = 2;
+        //    kartfour.kartPosition = 4;
+        //}
+        //else if (kartLapCheck(kart, kartthree, kartfour, karttwo))
+        //{
+        //    kart.kartPosition = 1;
+        //    karttwo.kartPosition = 4;
+        //    kartthree.kartPosition = 2;
+        //    kartfour.kartPosition = 3;
+        //}
+        //else if (kartLapCheck(kart, kartfour, kartthree, karttwo))
+        //{
+        //    kart.kartPosition = 1;
+        //    karttwo.kartPosition = 4;
+        //    kartthree.kartPosition = 3;
+        //    kartfour.kartPosition = 2;
+        //}
+        //else if (kartLapCheck(kart, kartfour, karttwo, kartthree))
+        //{
+        //    kart.kartPosition = 1;
+        //    karttwo.kartPosition = 3;
+        //    kartthree.kartPosition = 4;
+        //    kartfour.kartPosition = 2;
+        //}
+        ////Kart two
+        //else if (kartLapCheck(karttwo, kart, kartthree, kartfour))
+        //{
+        //    kart.kartPosition = 2;
+        //    karttwo.kartPosition = 1;
+        //    kartthree.kartPosition = 3;
+        //    kartfour.kartPosition = 4;
+        //}
+        //else if (kartLapCheck(karttwo, kart, kartfour, kartthree))
+        //{
+        //    kart.kartPosition = 2;
+        //    karttwo.kartPosition = 1;
+        //    kartthree.kartPosition = 4;
+        //    kartfour.kartPosition = 3;
+        //}
+        //else if (kartLapCheck(karttwo, kartthree, kart, kartfour))
+        //{
+        //    kart.kartPosition = 3;
+        //    karttwo.kartPosition = 1;
+        //    kartthree.kartPosition = 2;
+        //    kartfour.kartPosition = 4;
+        //}
+        //else if (kartLapCheck(karttwo, kartthree, kartfour, kart))
+        //{
+        //    kart.kartPosition = 4;
+        //    karttwo.kartPosition = 1;
+        //    kartthree.kartPosition = 2;
+        //    kartfour.kartPosition = 3;
+        //}
+        //else if (kartLapCheck(karttwo, kartfour, kart, kartthree))
+        //{
+        //    kart.kartPosition = 3;
+        //    karttwo.kartPosition = 1;
+        //    kartthree.kartPosition = 4;
+        //    kartfour.kartPosition = 2;
+        //}
+        //else if (kartLapCheck(karttwo, kartfour, kartthree, kart))
+        //{
+        //    kart.kartPosition = 4;
+        //    karttwo.kartPosition = 1;
+        //    kartthree.kartPosition = 3;
+        //    kartfour.kartPosition = 2;
+        //}
+        ////Kart three
+        //else if (kartLapCheck(kartthree, kart, karttwo, kartfour))
+        //{
+        //    kart.kartPosition = 2;
+        //    karttwo.kartPosition = 3;
+        //    kartthree.kartPosition = 1;
+        //    kartfour.kartPosition = 4;
+        //}
+        //else if (kartLapCheck(kartthree, kart, kartfour, karttwo))
+        //{
+        //    kart.kartPosition = 2;
+        //    karttwo.kartPosition = 4;
+        //    kartthree.kartPosition = 1;
+        //    kartfour.kartPosition = 3;
+        //}
+        //else if (kartLapCheck(kartthree, karttwo, kart, kartfour))
+        //{
+        //    kart.kartPosition = 3;
+        //    karttwo.kartPosition = 2;
+        //    kartthree.kartPosition = 1;
+        //    kartfour.kartPosition = 4;
+        //}
+        //else if (kartLapCheck(kartthree, karttwo, kartfour, kart))
+        //{
+        //    kart.kartPosition = 4;
+        //    karttwo.kartPosition = 2;
+        //    kartthree.kartPosition = 1;
+        //    kartfour.kartPosition = 3;
+        //}
+        //else if (kartLapCheck(kartthree, kartfour, kart, karttwo))
+        //{
+        //    kart.kartPosition = 3;
+        //    karttwo.kartPosition = 4;
+        //    kartthree.kartPosition = 1;
+        //    kartfour.kartPosition = 2;
+        //}
+        //else if (kartLapCheck(kartthree, kartfour, karttwo, kart))
+        //{
+        //    kart.kartPosition = 4;
+        //    karttwo.kartPosition = 3;
+        //    kartthree.kartPosition = 1;
+        //    kartfour.kartPosition = 2;
+        //}
+        ////Kart four
+        //else if (kartLapCheck(kartfour, kart, karttwo, kartthree))
+        //{
+        //    kart.kartPosition = 2;
+        //    karttwo.kartPosition = 3;
+        //    kartthree.kartPosition = 4;
+        //    kartfour.kartPosition = 1;
+        //}
+        //else if (kartLapCheck(kartfour, kart, kartthree, karttwo))
+        //{
+        //    kart.kartPosition = 2;
+        //    karttwo.kartPosition = 4;
+        //    kartthree.kartPosition = 3;
+        //    kartfour.kartPosition = 1;
+        //}
+        //else if (kartLapCheck(kartfour, karttwo, kartthree, kart))
+        //{
+        //    kart.kartPosition = 4;
+        //    karttwo.kartPosition = 2;
+        //    kartthree.kartPosition = 3;
+        //    kartfour.kartPosition = 1;
+        //}
+        //else if (kartLapCheck(kartfour, karttwo, kart, kartthree))
+        //{
+        //    kart.kartPosition = 3;
+        //    karttwo.kartPosition = 2;
+        //    kartthree.kartPosition = 4;
+        //    kartfour.kartPosition = 1;
+        //}
+        //else if (kartLapCheck(kartfour, kartthree, kart, karttwo))
+        //{
+        //    kart.kartPosition = 3;
+        //    karttwo.kartPosition = 4;
+        //    kartthree.kartPosition = 2;
+        //    kartfour.kartPosition = 1;
+        //}
+        //else if (kartLapCheck(kartfour, kartthree, karttwo, kart))
+        //{
+        //    kart.kartPosition = 4;
+        //    karttwo.kartPosition = 3;
+        //    kartthree.kartPosition = 2;
+        //    kartfour.kartPosition = 1;
+        //}
+
+        //else if ((kart.lapNumber == karttwo.lapNumber) && (karttwo.lapNumber == kartthree.lapNumber) && (kartthree.lapNumber == kartfour.lapNumber))
+        //{
+
         //First player winning
-        if (kartLapCheck(kart, karttwo, kartthree, kartfour))
+        if (kartCheckpointCheck(kart, karttwo, kartthree, kartfour))
         {
             kart.kartPosition = 1;
             karttwo.kartPosition = 2;
             kartthree.kartPosition = 3;
             kartfour.kartPosition = 4;
         }
-        else if (kartLapCheck(kart, karttwo, kartfour, kartthree))
+        else if (kartCheckpointCheck(kart, karttwo, kartfour, kartthree))
         {
             kart.kartPosition = 1;
             karttwo.kartPosition = 2;
             kartthree.kartPosition = 4;
             kartfour.kartPosition = 3;
         }
-        else if (kartLapCheck(kart, kartthree, karttwo, kartfour))
+        else if (kartCheckpointCheck(kart, kartthree, karttwo, kartfour))
         {
             kart.kartPosition = 1;
             karttwo.kartPosition = 3;
             kartthree.kartPosition = 2;
             kartfour.kartPosition = 4;
         }
-        else if (kartLapCheck(kart, kartthree, kartfour, karttwo))
+        else if (kartCheckpointCheck(kart, kartthree, kartfour, karttwo))
         {
             kart.kartPosition = 1;
             karttwo.kartPosition = 4;
             kartthree.kartPosition = 2;
             kartfour.kartPosition = 3;
         }
-        else if (kartLapCheck(kart, kartfour, kartthree, karttwo))
+        else if (kartCheckpointCheck(kart, kartfour, kartthree, karttwo))
         {
             kart.kartPosition = 1;
             karttwo.kartPosition = 4;
             kartthree.kartPosition = 3;
             kartfour.kartPosition = 2;
         }
-        else if (kartLapCheck(kart, kartfour, karttwo, kartthree))
+        else if (kartCheckpointCheck(kart, kartfour, karttwo, kartthree))
         {
             kart.kartPosition = 1;
             karttwo.kartPosition = 3;
@@ -708,42 +1075,42 @@ public class PositionManager : MonoBehaviour {
             kartfour.kartPosition = 2;
         }
         //Kart two
-        else if (kartLapCheck(karttwo, kart, kartthree, kartfour))
+        else if (kartCheckpointCheck(karttwo, kart, kartthree, kartfour))
         {
             kart.kartPosition = 2;
             karttwo.kartPosition = 1;
             kartthree.kartPosition = 3;
             kartfour.kartPosition = 4;
         }
-        else if (kartLapCheck(karttwo, kart, kartfour, kartthree))
+        else if (kartCheckpointCheck(karttwo, kart, kartfour, kartthree))
         {
             kart.kartPosition = 2;
             karttwo.kartPosition = 1;
             kartthree.kartPosition = 4;
             kartfour.kartPosition = 3;
         }
-        else if (kartLapCheck(karttwo, kartthree, kart, kartfour))
+        else if (kartCheckpointCheck(karttwo, kartthree, kart, kartfour))
         {
             kart.kartPosition = 3;
             karttwo.kartPosition = 1;
             kartthree.kartPosition = 2;
             kartfour.kartPosition = 4;
         }
-        else if (kartLapCheck(karttwo, kartthree, kartfour, kart))
+        else if (kartCheckpointCheck(karttwo, kartthree, kartfour, kart))
         {
             kart.kartPosition = 4;
             karttwo.kartPosition = 1;
             kartthree.kartPosition = 2;
             kartfour.kartPosition = 3;
         }
-        else if (kartLapCheck(karttwo, kartfour, kart, kartthree))
+        else if (kartCheckpointCheck(karttwo, kartfour, kart, kartthree))
         {
             kart.kartPosition = 3;
             karttwo.kartPosition = 1;
             kartthree.kartPosition = 4;
             kartfour.kartPosition = 2;
         }
-        else if (kartLapCheck(karttwo, kartfour, kartthree, kart))
+        else if (kartCheckpointCheck(karttwo, kartfour, kartthree, kart))
         {
             kart.kartPosition = 4;
             karttwo.kartPosition = 1;
@@ -751,42 +1118,42 @@ public class PositionManager : MonoBehaviour {
             kartfour.kartPosition = 2;
         }
         //Kart three
-        else if (kartLapCheck(kartthree, kart, karttwo, kartfour))
+        else if (kartCheckpointCheck(kartthree, kart, karttwo, kartfour))
         {
             kart.kartPosition = 2;
             karttwo.kartPosition = 3;
             kartthree.kartPosition = 1;
             kartfour.kartPosition = 4;
         }
-        else if (kartLapCheck(kartthree, kart, kartfour, karttwo))
+        else if (kartCheckpointCheck(kartthree, kart, kartfour, karttwo))
         {
             kart.kartPosition = 2;
             karttwo.kartPosition = 4;
             kartthree.kartPosition = 1;
             kartfour.kartPosition = 3;
         }
-        else if (kartLapCheck(kartthree, karttwo, kart, kartfour))
+        else if (kartCheckpointCheck(kartthree, karttwo, kart, kartfour))
         {
             kart.kartPosition = 3;
             karttwo.kartPosition = 2;
             kartthree.kartPosition = 1;
             kartfour.kartPosition = 4;
         }
-        else if (kartLapCheck(kartthree, karttwo, kartfour, kart))
+        else if (kartCheckpointCheck(kartthree, karttwo, kartfour, kart))
         {
             kart.kartPosition = 4;
             karttwo.kartPosition = 2;
             kartthree.kartPosition = 1;
             kartfour.kartPosition = 3;
         }
-        else if (kartLapCheck(kartthree, kartfour, kart, karttwo))
+        else if (kartCheckpointCheck(kartthree, kartfour, kart, karttwo))
         {
             kart.kartPosition = 3;
             karttwo.kartPosition = 4;
             kartthree.kartPosition = 1;
             kartfour.kartPosition = 2;
         }
-        else if (kartLapCheck(kartthree, kartfour, karttwo, kart))
+        else if (kartCheckpointCheck(kartthree, kartfour, karttwo, kart))
         {
             kart.kartPosition = 4;
             karttwo.kartPosition = 3;
@@ -794,406 +1161,601 @@ public class PositionManager : MonoBehaviour {
             kartfour.kartPosition = 2;
         }
         //Kart four
-        else if (kartLapCheck(kartfour, kart, karttwo, kartthree))
+        else if (kartCheckpointCheck(kartfour, kart, karttwo, kartthree))
         {
             kart.kartPosition = 2;
             karttwo.kartPosition = 3;
             kartthree.kartPosition = 4;
             kartfour.kartPosition = 1;
         }
-        else if (kartLapCheck(kartfour, kart, kartthree, karttwo))
+        else if (kartCheckpointCheck(kartfour, kart, kartthree, karttwo))
         {
             kart.kartPosition = 2;
             karttwo.kartPosition = 4;
             kartthree.kartPosition = 3;
             kartfour.kartPosition = 1;
         }
-        else if (kartLapCheck(kartfour, karttwo, kartthree, kart))
+        else if (kartCheckpointCheck(kartfour, karttwo, kartthree, kart))
         {
             kart.kartPosition = 4;
             karttwo.kartPosition = 2;
             kartthree.kartPosition = 3;
             kartfour.kartPosition = 1;
         }
-        else if (kartLapCheck(kartfour, karttwo, kart, kartthree))
+        else if (kartCheckpointCheck(kartfour, karttwo, kart, kartthree))
         {
             kart.kartPosition = 3;
             karttwo.kartPosition = 2;
             kartthree.kartPosition = 4;
             kartfour.kartPosition = 1;
         }
-        else if (kartLapCheck(kartfour, kartthree, kart, karttwo))
+        else if (kartCheckpointCheck(kartfour, kartthree, kart, karttwo))
         {
             kart.kartPosition = 3;
             karttwo.kartPosition = 4;
             kartthree.kartPosition = 2;
             kartfour.kartPosition = 1;
         }
-        else if (kartLapCheck(kartfour, kartthree, karttwo, kart))
+        else if (kartCheckpointCheck(kartfour, kartthree, karttwo, kart))
         {
             kart.kartPosition = 4;
             karttwo.kartPosition = 3;
             kartthree.kartPosition = 2;
             kartfour.kartPosition = 1;
         }
-        else if ((kart.lapNumber == karttwo.lapNumber) && (karttwo.lapNumber == kartthree.lapNumber) && (kartthree.lapNumber == kartfour.lapNumber))
+        //if kart4 is greater than all the other karts and checkpoints are the same.
+        else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter) &&
+                (kartfour.checkPointCounter > kart.checkPointCounter))
         {
+            kartfour.kartPosition = 1;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position); //Player 1
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position); // Player 2
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position); // Player 3
 
-            //First player winning
-            if (kartCheckpointCheck(kart, karttwo, kartthree, kartfour))
-            {
-                kart.kartPosition = 1;
-                karttwo.kartPosition = 2;
-                kartthree.kartPosition = 3;
-                kartfour.kartPosition = 4;
-            }
-            else if (kartCheckpointCheck(kart, karttwo, kartfour, kartthree))
-            {
-                kart.kartPosition = 1;
-                karttwo.kartPosition = 2;
-                kartthree.kartPosition = 4;
-                kartfour.kartPosition = 3;
-            }
-            else if (kartCheckpointCheck(kart, kartthree, karttwo, kartfour))
-            {
-                kart.kartPosition = 1;
-                karttwo.kartPosition = 3;
-                kartthree.kartPosition = 2;
-                kartfour.kartPosition = 4;
-            }
-            else if (kartCheckpointCheck(kart, kartthree, kartfour, karttwo))
-            {
-                kart.kartPosition = 1;
-                karttwo.kartPosition = 4;
-                kartthree.kartPosition = 2;
-                kartfour.kartPosition = 3;
-            }
-            else if (kartCheckpointCheck(kart, kartfour, kartthree, karttwo))
-            {
-                kart.kartPosition = 1;
-                karttwo.kartPosition = 4;
-                kartthree.kartPosition = 3;
-                kartfour.kartPosition = 2;
-            }
-            else if (kartCheckpointCheck(kart, kartfour, karttwo, kartthree))
-            {
-                kart.kartPosition = 1;
-                karttwo.kartPosition = 3;
-                kartthree.kartPosition = 4;
-                kartfour.kartPosition = 2;
-            }
-            //Kart two
-            else if (kartCheckpointCheck(karttwo, kart, kartthree, kartfour))
-            {
-                kart.kartPosition = 2;
-                karttwo.kartPosition = 1;
-                kartthree.kartPosition = 3;
-                kartfour.kartPosition = 4;
-            }
-            else if (kartCheckpointCheck(karttwo, kart, kartfour, kartthree))
-            {
-                kart.kartPosition = 2;
-                karttwo.kartPosition = 1;
-                kartthree.kartPosition = 4;
-                kartfour.kartPosition = 3;
-            }
-            else if (kartCheckpointCheck(karttwo, kartthree, kart, kartfour))
-            {
-                kart.kartPosition = 3;
-                karttwo.kartPosition = 1;
-                kartthree.kartPosition = 2;
-                kartfour.kartPosition = 4;
-            }
-            else if (kartCheckpointCheck(karttwo, kartthree, kartfour, kart))
-            {
-                kart.kartPosition = 4;
-                karttwo.kartPosition = 1;
-                kartthree.kartPosition = 2;
-                kartfour.kartPosition = 3;
-            }
-            else if (kartCheckpointCheck(karttwo, kartfour, kart, kartthree))
-            {
-                kart.kartPosition = 3;
-                karttwo.kartPosition = 1;
-                kartthree.kartPosition = 4;
-                kartfour.kartPosition = 2;
-            }
-            else if (kartCheckpointCheck(karttwo, kartfour, kartthree, kart))
-            {
-                kart.kartPosition = 4;
-                karttwo.kartPosition = 1;
-                kartthree.kartPosition = 3;
-                kartfour.kartPosition = 2;
-            }
-            //Kart three
-            else if (kartCheckpointCheck(kartthree, kart, karttwo, kartfour))
-            {
-                kart.kartPosition = 2;
-                karttwo.kartPosition = 3;
-                kartthree.kartPosition = 1;
-                kartfour.kartPosition = 4;
-            }
-            else if (kartCheckpointCheck(kartthree, kart, kartfour, karttwo))
-            {
-                kart.kartPosition = 2;
-                karttwo.kartPosition = 4;
-                kartthree.kartPosition = 1;
-                kartfour.kartPosition = 3;
-            }
-            else if (kartCheckpointCheck(kartthree, karttwo, kart, kartfour))
-            {
-                kart.kartPosition = 3;
-                karttwo.kartPosition = 2;
-                kartthree.kartPosition = 1;
-                kartfour.kartPosition = 4;
-            }
-            else if (kartCheckpointCheck(kartthree, karttwo, kartfour, kart))
-            {
-                kart.kartPosition = 4;
-                karttwo.kartPosition = 2;
-                kartthree.kartPosition = 1;
-                kartfour.kartPosition = 3;
-            }
-            else if (kartCheckpointCheck(kartthree, kartfour, kart, karttwo))
-            {
-                kart.kartPosition = 3;
-                karttwo.kartPosition = 4;
-                kartthree.kartPosition = 1;
-                kartfour.kartPosition = 2;
-            }
-            else if (kartCheckpointCheck(kartthree, kartfour, karttwo, kart))
-            {
-                kart.kartPosition = 4;
-                karttwo.kartPosition = 3;
-                kartthree.kartPosition = 1;
-                kartfour.kartPosition = 2;
-            }
-            //Kart four
-            else if (kartCheckpointCheck(kartfour, kart, karttwo, kartthree))
+            if ((dist1 < dist2) && (dist2 < dist3))
             {
                 kart.kartPosition = 2;
                 karttwo.kartPosition = 3;
                 kartthree.kartPosition = 4;
-                kartfour.kartPosition = 1;
             }
-            else if (kartCheckpointCheck(kartfour, kart, kartthree, karttwo))
+            else if ((dist1 < dist3) && (dist3 < dist2))
             {
                 kart.kartPosition = 2;
                 karttwo.kartPosition = 4;
                 kartthree.kartPosition = 3;
-                kartfour.kartPosition = 1;
             }
-            else if (kartCheckpointCheck(kartfour, karttwo, kartthree, kart))
-            {
-                kart.kartPosition = 4;
-                karttwo.kartPosition = 2;
-                kartthree.kartPosition = 3;
-                kartfour.kartPosition = 1;
-            }
-            else if (kartCheckpointCheck(kartfour, karttwo, kart, kartthree))
+            else if ((dist2 < dist1) && (dist1 < dist3))
             {
                 kart.kartPosition = 3;
                 karttwo.kartPosition = 2;
                 kartthree.kartPosition = 4;
-                kartfour.kartPosition = 1;
             }
-            else if (kartCheckpointCheck(kartfour, kartthree, kart, karttwo))
+            else if ((dist2 < dist3) && (dist3 < dist1))
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 3;
+            }
+            else if ((dist3 < dist1) && (dist1 < dist2))
             {
                 kart.kartPosition = 3;
                 karttwo.kartPosition = 4;
                 kartthree.kartPosition = 2;
-                kartfour.kartPosition = 1;
             }
-            else if (kartCheckpointCheck(kartfour, kartthree, karttwo, kart))
+            else if ((dist3 < dist2) && (dist2 < dist1))
             {
                 kart.kartPosition = 4;
                 karttwo.kartPosition = 3;
                 kartthree.kartPosition = 2;
+            }
+        }
+        //if kart 4 is less then all the other karts and all the other kart checkpoints are the same
+        else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter) &&
+             (kartfour.checkPointCounter < kart.checkPointCounter))
+        {
+            kartfour.kartPosition = 4;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position); //Player 1
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position); // Player 2
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position); // Player 3
+
+            if ((dist1 < dist2) && (dist2 < dist3))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 3;
+            }
+            else if ((dist1 < dist3) && (dist3 < dist2))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 2;
+            }
+            else if ((dist2 < dist1) && (dist1 < dist3))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 3;
+            }
+            else if ((dist2 < dist3) && (dist3 < dist1))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 2;
+            }
+            else if ((dist3 < dist1) && (dist1 < dist2))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 1;
+            }
+            else if ((dist3 < dist2) && (dist2 < dist1))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 1;
+            }
+        }
+        //If kart one is greater then all the other karts and all the other karts are on the same checkpoint counter.
+        else if ((kart.checkPointCounter > karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter) &&
+                (kartthree.checkPointCounter == kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 1;
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position); // Player 2
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position); // Player 3
+            float dist4 = Vector3.Distance(go_kartfour.transform.position, kartfour.nextCheckPoint.transform.position); // Player 4
+
+            if ((dist2 < dist3) && (dist3 < dist4))
+            {
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist2 < dist4) && (dist4 < dist3))
+            {
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist3 < dist2) && (dist2 < dist4))
+            {
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist3 < dist4) && (dist4 < dist2))
+            {
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist4 < dist2) && (dist2 < dist3))
+            {
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist4 < dist3) && (dist3 < dist2))
+            {
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 2;
+            }
+        }
+        //if kart one is less then all the other karts and all the other karts are on the same checkpoint counter
+        else if ((kart.checkPointCounter < karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter) &&
+               (kartthree.checkPointCounter == kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 4;
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position); // Player 2
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position); // Player 3
+            float dist4 = Vector3.Distance(go_kartfour.transform.position, kartfour.nextCheckPoint.transform.position); // Player 4
+
+            if ((dist2 < dist3) && (dist3 < dist4))
+            {
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist2 < dist4) && (dist4 < dist3))
+            {
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist3 < dist2) && (dist2 < dist4))
+            {
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist3 < dist4) && (dist4 < dist2))
+            {
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist4 < dist2) && (dist2 < dist3))
+            {
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 3;
                 kartfour.kartPosition = 1;
             }
-            else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter)
+            else if ((dist4 < dist3) && (dist3 < dist2))
+            {
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+        }
+        //Kart two is less then all the other karts and all other karts are on the same checkpoint.
+        else if ((karttwo.checkPointCounter < kart.checkPointCounter) && (kart.checkPointCounter == kartthree.checkPointCounter) &&
+              (kartthree.checkPointCounter == kartfour.checkPointCounter))
+        {
+            karttwo.kartPosition = 4;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position); // Player 2
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position); // Player 3
+            float dist4 = Vector3.Distance(go_kartfour.transform.position, kartfour.nextCheckPoint.transform.position); // Player 4
+
+            if ((dist1 < dist3) && (dist3 < dist4))
+            {
+                kart.kartPosition = 1;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist1 < dist4) && (dist4 < dist3))
+            {
+                kart.kartPosition = 1;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist3 < dist1) && (dist1 < dist4))
+            {
+                kart.kartPosition = 2;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist3 < dist4) && (dist4 < dist1))
+            {
+                kart.kartPosition = 3;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist4 < dist1) && (dist1 < dist3))
+            {
+                kart.kartPosition = 2;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 1;
+            }
+            else if ((dist4 < dist3) && (dist3 < dist1))
+            {
+                kart.kartPosition = 3;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+        }
+        //if kart two is greater then all the other karts and all other karts are on the same checkpoint
+        else if ((karttwo.checkPointCounter > kart.checkPointCounter) && (kart.checkPointCounter == kartthree.checkPointCounter) &&
+             (kartthree.checkPointCounter == kartfour.checkPointCounter))
+        {
+            karttwo.kartPosition = 1;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position); // Player 2
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position); // Player 3
+            float dist4 = Vector3.Distance(go_kartfour.transform.position, kartfour.nextCheckPoint.transform.position); // Player 4
+
+            if ((dist1 < dist3) && (dist3 < dist4))
+            {
+                kart.kartPosition = 2;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist1 < dist4) && (dist4 < dist3))
+            {
+                kart.kartPosition = 2;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist3 < dist1) && (dist1 < dist4))
+            {
+                kart.kartPosition = 3;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist3 < dist4) && (dist4 < dist1))
+            {
+                kart.kartPosition = 4;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist4 < dist1) && (dist1 < dist3))
+            {
+                kart.kartPosition = 3;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist4 < dist3) && (dist3 < dist1))
+            {
+                kart.kartPosition = 4;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 2;
+            }
+        }
+        //Kart three is less then all the other karts and all other karts are on the same checkpoint.
+        else if ((kartthree.checkPointCounter < kart.checkPointCounter) && (kart.checkPointCounter == karttwo.checkPointCounter) &&
+              (karttwo.checkPointCounter == kartfour.checkPointCounter))
+        {
+            kartthree.kartPosition = 4;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position); // Player 2
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position); // Player 3
+            float dist4 = Vector3.Distance(go_kartfour.transform.position, kartfour.nextCheckPoint.transform.position); // Player 4
+
+            if ((dist1 < dist2) && (dist2 < dist4))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 2;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist1 < dist4) && (dist4 < dist2))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 3;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist2 < dist1) && (dist1 < dist4))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 1;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist2 < dist4) && (dist4 < dist1))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist4 < dist1) && (dist1 < dist2))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 3;
+                kartfour.kartPosition = 1;
+            }
+            else if ((dist4 < dist2) && (dist2 < dist1))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+        }
+        //Kart three is greater then all the other karts and all other karts are on the same checkpoint.
+        else if ((kartthree.checkPointCounter > kart.checkPointCounter) && (kart.checkPointCounter == karttwo.checkPointCounter) &&
+              (karttwo.checkPointCounter == kartfour.checkPointCounter))
+        {
+            kartthree.kartPosition = 1;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position); // Player 2
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position); // Player 3
+            float dist4 = Vector3.Distance(go_kartfour.transform.position, kartfour.nextCheckPoint.transform.position); // Player 4
+
+            if ((dist1 < dist2) && (dist2 < dist4))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist1 < dist4) && (dist4 < dist2))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist2 < dist1) && (dist1 < dist4))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 2;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist2 < dist4) && (dist4 < dist1))
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 2;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist4 < dist1) && (dist1 < dist2))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 4;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist4 < dist2) && (dist2 < dist1))
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 3;
+                kartfour.kartPosition = 2;
+            }
+        }
+        //If all karts are on the same checkpoint.
+        else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter)
                     && (kartthree.checkPointCounter == kartfour.checkPointCounter))
+        {
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position); //Player 1
+            float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position); // Player 2
+            float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position); // Player 3
+            float dist4 = Vector3.Distance(go_kartfour.transform.position, kartfour.nextCheckPoint.transform.position); // Player 4
+
+            // First            second        third        fourth
+            if ((dist1 < dist2) && (dist2 < dist3) && (dist3 < dist4))
             {
-                float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position); //Player 1
-                float dist2 = Vector3.Distance(go_karttwo.transform.position, karttwo.nextCheckPoint.transform.position); // Player 2
-                float dist3 = Vector3.Distance(go_kartthree.transform.position, kartthree.nextCheckPoint.transform.position); // Player 3
-                float dist4 = Vector3.Distance(go_kartfour.transform.position, kartfour.nextCheckPoint.transform.position); // Player 4
-
-                   // First            second        third        fourth
-                if ((dist1 < dist2) && (dist2 < dist3) && (dist3 < dist4))
-                {
-                    kart.kartPosition = 1;
-                    karttwo.kartPosition = 2;
-                    kartthree.kartPosition = 3;
-                    kartfour.kartPosition = 4;
-                }
-                else if ((dist1 < dist3) && (dist3 < dist2) && (dist2 < dist4))
-                {
-                    kart.kartPosition = 1;
-                    karttwo.kartPosition = 3;
-                    kartthree.kartPosition = 2;
-                    kartfour.kartPosition = 4;
-                }
-                else if ((dist1 < dist2) && (dist2 < dist4) && (dist4 < dist3))
-                {
-                    kart.kartPosition = 1;
-                    karttwo.kartPosition = 2;
-                    kartthree.kartPosition = 4;
-                    kartfour.kartPosition = 3;
-                }
-                else if ((dist1 < dist3) && (dist3 < dist4) && (dist4 < dist2))
-                {
-                    kart.kartPosition = 1;
-                    karttwo.kartPosition = 4;
-                    kartthree.kartPosition = 2;
-                    kartfour.kartPosition = 3;
-                }
-                else if ((dist1 < dist4) && (dist4 < dist2) && (dist2 < dist3))
-                {
-                    kart.kartPosition = 1;
-                    karttwo.kartPosition = 3;
-                    kartthree.kartPosition = 4;
-                    kartfour.kartPosition = 2;
-                }
-                else if ((dist1 < dist4) && (dist4 < dist3) && (dist3 < dist2))
-                {
-                    kart.kartPosition = 1;
-                    karttwo.kartPosition = 4;
-                    kartthree.kartPosition = 3;
-                    kartfour.kartPosition = 2;
-                }
-                //Kart2
-                else if ((dist2 < dist1) && (dist1 < dist3) && (dist3 < dist4))
-                {
-                    kart.kartPosition = 2;
-                    karttwo.kartPosition = 1;
-                    kartthree.kartPosition = 3;
-                    kartfour.kartPosition = 4;
-                }
-                else if ((dist2 < dist1) && (dist1 < dist4) && (dist4 < dist3))
-                {
-                    kart.kartPosition = 2;
-                    karttwo.kartPosition = 1;
-                    kartthree.kartPosition = 4;
-                    kartfour.kartPosition = 3;
-                }
-                else if ((dist2 < dist3) && (dist3 < dist1) && (dist1 < dist4))
-                {
-                    kart.kartPosition = 3;
-                    karttwo.kartPosition = 1;
-                    kartthree.kartPosition = 2;
-                    kartfour.kartPosition = 4;
-                }
-                else if ((dist2 < dist3) && (dist3 < dist4) && (dist4 < dist1))
-                {
-                    kart.kartPosition = 4;
-                    karttwo.kartPosition = 1;
-                    kartthree.kartPosition = 2;
-                    kartfour.kartPosition = 3;
-                }
-                else if ((dist2 < dist4) && (dist4 < dist1) && (dist1 < dist3))
-                {
-                    kart.kartPosition = 3;
-                    karttwo.kartPosition = 1;
-                    kartthree.kartPosition = 4;
-                    kartfour.kartPosition = 2;
-                }
-                else if ((dist2 < dist4) && (dist4 < dist3) && (dist3 < dist1))
-                {
-                    kart.kartPosition = 4;
-                    karttwo.kartPosition = 1;
-                    kartthree.kartPosition = 3;
-                    kartfour.kartPosition = 2;
-                }
-                //Kart3
-                else if ((dist3 < dist1) && (dist1 < dist2) && (dist2 < dist4))
-                {
-                    kart.kartPosition = 2;
-                    karttwo.kartPosition = 3;
-                    kartthree.kartPosition = 1;
-                    kartfour.kartPosition = 4;
-                }
-                else if ((dist3 < dist1) && (dist1 < dist4) && (dist4 < dist2))
-                {
-                    kart.kartPosition = 2;
-                    karttwo.kartPosition = 4;
-                    kartthree.kartPosition = 1;
-                    kartfour.kartPosition = 3;
-                }
-                else if ((dist3 < dist2) && (dist2 < dist1) && (dist1 < dist4))
-                {
-                    kart.kartPosition = 3;
-                    karttwo.kartPosition = 2;
-                    kartthree.kartPosition = 1;
-                    kartfour.kartPosition = 4;
-                }
-                else if ((dist3 < dist2) && (dist2 < dist4) && (dist4 < dist1))
-                {
-                    kart.kartPosition = 4;
-                    karttwo.kartPosition = 2;
-                    kartthree.kartPosition = 1;
-                    kartfour.kartPosition = 3;
-                }
-                else if ((dist3 < dist4) && (dist4 < dist2) && (dist2 < dist1))
-                {
-                    kart.kartPosition = 4;
-                    karttwo.kartPosition = 3;
-                    kartthree.kartPosition = 1;
-                    kartfour.kartPosition = 2;
-                }
-                else if ((dist3 < dist4) && (dist4 < dist1) && (dist1 < dist2))
-                {
-                    kart.kartPosition = 3;
-                    karttwo.kartPosition = 4;
-                    kartthree.kartPosition = 1;
-                    kartfour.kartPosition = 2;
-                }
-                //Kart4
-                else if ((dist4 < dist1) && (dist1 < dist2) && (dist2 < dist3))
-                {
-                    kart.kartPosition = 2;
-                    karttwo.kartPosition = 3;
-                    kartthree.kartPosition = 4;
-                    kartfour.kartPosition = 1;
-                }
-                else if ((dist4 < dist1) && (dist1 < dist3) && (dist3 < dist2))
-                {
-                    kart.kartPosition = 2;
-                    karttwo.kartPosition = 4;
-                    kartthree.kartPosition = 3;
-                    kartfour.kartPosition = 1;
-                }
-                else if ((dist4 < dist2) && (dist2 < dist1) && (dist1 < dist3))
-                {
-                    kart.kartPosition = 3;
-                    karttwo.kartPosition = 2;
-                    kartthree.kartPosition = 4;
-                    kartfour.kartPosition = 1;
-                }
-                else if ((dist4 < dist2) && (dist2 < dist3) && (dist3 < dist1))
-                {
-                    kart.kartPosition = 4;
-                    karttwo.kartPosition = 2;
-                    kartthree.kartPosition = 3;
-                    kartfour.kartPosition = 1;
-                }
-                else if ((dist4 < dist3) && (dist3 < dist2) && (dist2 < dist1))
-                {
-                    kart.kartPosition = 4;
-                    karttwo.kartPosition = 3;
-                    kartthree.kartPosition = 2;
-                    kartfour.kartPosition = 1;
-                }
-                else if ((dist4 < dist3) && (dist3 < dist1) && (dist1 < dist2))
-                {
-                    kart.kartPosition = 3;
-                    karttwo.kartPosition = 4;
-                    kartthree.kartPosition = 2;
-                    kartfour.kartPosition = 1;
-                }
-
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist1 < dist3) && (dist3 < dist2) && (dist2 < dist4))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist1 < dist2) && (dist2 < dist4) && (dist4 < dist3))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist1 < dist3) && (dist3 < dist4) && (dist4 < dist2))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist1 < dist4) && (dist4 < dist2) && (dist2 < dist3))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist1 < dist4) && (dist4 < dist3) && (dist3 < dist2))
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 2;
+            }
+            //Kart2
+            else if ((dist2 < dist1) && (dist1 < dist3) && (dist3 < dist4))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist2 < dist1) && (dist1 < dist4) && (dist4 < dist3))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist2 < dist3) && (dist3 < dist1) && (dist1 < dist4))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist2 < dist3) && (dist3 < dist4) && (dist4 < dist1))
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist2 < dist4) && (dist4 < dist1) && (dist1 < dist3))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist2 < dist4) && (dist4 < dist3) && (dist3 < dist1))
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 2;
+            }
+            //Kart3
+            else if ((dist3 < dist1) && (dist1 < dist2) && (dist2 < dist4))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist3 < dist1) && (dist1 < dist4) && (dist4 < dist2))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist3 < dist2) && (dist2 < dist1) && (dist1 < dist4))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 4;
+            }
+            else if ((dist3 < dist2) && (dist2 < dist4) && (dist4 < dist1))
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 3;
+            }
+            else if ((dist3 < dist4) && (dist4 < dist2) && (dist2 < dist1))
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+            else if ((dist3 < dist4) && (dist4 < dist1) && (dist1 < dist2))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+            //Kart4
+            else if ((dist4 < dist1) && (dist1 < dist2) && (dist2 < dist3))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 1;
+            }
+            else if ((dist4 < dist1) && (dist1 < dist3) && (dist3 < dist2))
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 1;
+            }
+            else if ((dist4 < dist2) && (dist2 < dist1) && (dist1 < dist3))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 1;
+            }
+            else if ((dist4 < dist2) && (dist2 < dist3) && (dist3 < dist1))
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 1;
+            }
+            else if ((dist4 < dist3) && (dist3 < dist2) && (dist2 < dist1))
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+            else if ((dist4 < dist3) && (dist3 < dist1) && (dist1 < dist2))
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 1;
             }
 
         }
-    }
+
+        }
+    //So I am aware this ^^ is terrible when i started it i was like "hey i don't need an array for 4 karts."
+    //my bad.. but hey it works :D
 }

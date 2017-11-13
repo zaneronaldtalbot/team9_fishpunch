@@ -47,10 +47,5 @@ public class BoostScript : MonoBehaviour
             }
         }
 
-        if (coll.gameObject.layer == 9)
-        {
-            Debug.Log("it's doing that thing i want");
-        }
-
     }
 }

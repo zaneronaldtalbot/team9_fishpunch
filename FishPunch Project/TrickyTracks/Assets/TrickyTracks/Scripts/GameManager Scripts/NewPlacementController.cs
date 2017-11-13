@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class NewPlacementController : MonoBehaviour
 {
+    private GameObject[] items;
+    private GameObject[] mines;
+    private GameObject[] boosts;
+    private GameObject[] slicks;
+
+    public Color disabledColor;
+
+    public float exclusionDistance = 10.0f;
 
     //Manager variables to access other scripts on the manager.
     private GameObject manager;
@@ -75,7 +83,7 @@ public class NewPlacementController : MonoBehaviour
     //Index for each player item list.
     private int prefabIndex1 = 0, prefabIndex2 = 0, prefabIndex3 = 0, prefabIndex4 = 0;
 
-    private bool cannotPlace = false;
+    private bool cannotPlace1 = false, cannotPlace2 = false, cannotPlace3 = false, cannotPlace4 = false;
 
     //kart gameobjects.
     private GameObject kart1, kart2, kart3, kart4;
@@ -292,8 +300,91 @@ public class NewPlacementController : MonoBehaviour
     {
         Debug.Log("items count: " + itemsP1.Count);
         Debug.Log("index: " + prefabIndex1);
+        items = GameObject.FindGameObjectsWithTag("Item");
+        //    boosts = GameObject.FindGameObjectsWithTag("Boost");
+        //      slicks = GameObject.FindGameObjectsWithTag("OilSlick");
+        //      mines = GameObject.FindGameObjectsWithTag("ItemMine");
 
+        foreach (GameObject obj in items)
+        {
+            if (currentPlaceableObject1 != null)
+            { 
+                if ((Vector3.Distance(obj.transform.position, currentPlaceableObject1.transform.position) < exclusionDistance))
+                {
+                    Renderer rend;
+                    rend = currentPlaceableObject1.GetComponentInChildren<Renderer>();
+                    rend.material.color = Color.red;
 
+                    cannotPlace1 = true;
+                }
+                else
+                {
+                    cannotPlace1 = false;
+                    Renderer rend;
+                    rend = currentPlaceableObject1.GetComponentInChildren<Renderer>();
+                    rend.material.color = Color.white;
+                    rend.material.color = new Color(0,0,0,0);
+                    
+                }
+            }
+
+            if (currentPlaceableObject2 != null)
+            {
+                if ((Vector3.Distance(obj.transform.position, currentPlaceableObject2.transform.position) < exclusionDistance))
+                {
+                    Renderer rend;
+                    rend = currentPlaceableObject2.GetComponentInChildren<Renderer>();
+                    rend.material.color = Color.red;
+                    cannotPlace2 = true;
+                }
+                else
+                {
+                    cannotPlace2 = false;
+                    Renderer rend;
+                    rend = currentPlaceableObject2.GetComponentInChildren<Renderer>();
+                    rend.material.color = Color.white;
+                    rend.material.color = new Color(0, 0, 0, 0);
+                }
+            }
+
+            if (currentPlaceableObject3 != null)
+            {
+                if ((Vector3.Distance(obj.transform.position, currentPlaceableObject3.transform.position) < exclusionDistance))
+                {
+                    Renderer rend;
+                    rend = currentPlaceableObject3.GetComponentInChildren<Renderer>();
+                    rend.material.color = Color.red;
+                    cannotPlace3 = true;
+                }
+                else
+                {
+                    cannotPlace3 = false;
+                    Renderer rend;
+                    rend = currentPlaceableObject3.GetComponentInChildren<Renderer>();
+                    rend.material.color = Color.white;
+                    rend.material.color = new Color(0, 0, 0, 0);
+                }
+            }
+
+            if (currentPlaceableObject4 != null)
+            {
+                if ((Vector3.Distance(obj.transform.position, currentPlaceableObject4.transform.position) < exclusionDistance))
+                {
+                    Renderer rend;
+                    rend = currentPlaceableObject4.GetComponentInChildren<Renderer>();
+                    rend.material.color = Color.red;
+                    cannotPlace4 = true;
+                }
+                else
+                {
+                    cannotPlace4 = false;
+                    Renderer rend;
+                    rend = currentPlaceableObject4.GetComponentInChildren<Renderer>();
+                    rend.material.color = Color.white;
+                    rend.material.color = new Color(0, 0, 0, 0);
+                }
+            }
+        }
         if (lapManager.raceCountdownTimer < 0)
         {
             objectGeneration();
@@ -358,9 +449,6 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject2, currentPlaceableObject2, gamepad2);
                 }
 
-       
-
-            
 
                 break;
             case 3:
@@ -414,8 +502,6 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject3, currentPlaceableObject3, gamepad3);
                 }
 
-            
-                
 
                 break;
             case 4:
@@ -500,7 +586,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP1.Count > 0)
                         {
                             currentPlaceableObject1 = Instantiate(placeableObject1);
-
+                            currentPlaceableObject1.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -513,6 +599,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP1.Count > 0)
                         {
                             currentPlaceableObject1 = Instantiate(placeableObject1);
+                            currentPlaceableObject1.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -523,6 +610,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP2.Count > 0)
                         {
                             currentPlaceableObject2 = Instantiate(placeableObject2);
+                            currentPlaceableObject2.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -535,6 +623,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP1.Count > 0)
                         {
                             currentPlaceableObject1 = Instantiate(placeableObject1);
+                            currentPlaceableObject1.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -545,6 +634,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP2.Count > 0)
                         {
                             currentPlaceableObject2 = Instantiate(placeableObject2);
+                            currentPlaceableObject2.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -555,6 +645,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP3.Count > 0)
                         {
                             currentPlaceableObject3 = Instantiate(placeableObject3);
+                            currentPlaceableObject3.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -567,6 +658,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP1.Count > 0)
                         {
                             currentPlaceableObject1 = Instantiate(placeableObject1);
+                            currentPlaceableObject1.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -577,6 +669,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP2.Count > 0)
                         {
                             currentPlaceableObject2 = Instantiate(placeableObject2);
+                            currentPlaceableObject2.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -587,6 +680,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP3.Count > 0)
                         {
                             currentPlaceableObject3 = Instantiate(placeableObject3);
+                            currentPlaceableObject3.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -597,6 +691,7 @@ public class NewPlacementController : MonoBehaviour
                         if (itemsP4.Count > 0)
                         {
                             currentPlaceableObject4 = Instantiate(placeableObject4);
+                            currentPlaceableObject4.tag = "PlaceableObject";
                         }
                     }
                 }
@@ -1202,10 +1297,11 @@ public class NewPlacementController : MonoBehaviour
         {
             case 1:
                 //On button release
-                if(gamepad1.GetButtonUp("A"))
+                if (gamepad1.GetButtonUp("A") && !cannotPlace1)
                 {
-                    if(itemsP1.Count > 0)
+                    if (itemsP1.Count > 0)
                     {
+                        currentPlaceableObject1.tag = "Item";
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject1 = null;
@@ -1219,14 +1315,18 @@ public class NewPlacementController : MonoBehaviour
                         }
                         if (itemsP1.Count > 1)
                         {
-                          
+
                             placeableObject1 = itemsP1[prefabIndex1];
                         }
                     }
-                    if(itemsP1.Count == 0)
+                    if (itemsP1.Count == 0)
                     {
                         placeableObject1 = null;
                     }
+                }
+                else if (gamepad1.GetButtonUp("A") && cannotPlace1)
+                {
+                    Destroy(currentPlaceableObject1);
                 }
 
                 break;
@@ -1244,14 +1344,15 @@ public class NewPlacementController : MonoBehaviour
                 //        placeableObject1 = null;
                 //    }
                 //}
-                if (gamepad1.GetButtonUp("A"))
+                if (gamepad1.GetButtonUp("A") && !cannotPlace1)
                 {
                     if (itemsP1.Count > 0)
                     {
+                        currentPlaceableObject1.tag = "Item";
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject1 = null;
-                        
+
                         itemsP1.RemoveAt(prefabIndex1);
                         if (prefabIndex1 <= (itemsP1.Count))
                         {
@@ -1262,21 +1363,27 @@ public class NewPlacementController : MonoBehaviour
                         }
                         if (itemsP1.Count > 1)
                         {
-                            
+
                             placeableObject1 = itemsP1[prefabIndex1];
-                          
+
                         }
                     }
                     if (itemsP1.Count == 0)
                     {
                         placeableObject1 = null;
-                   
+
                     }
                 }
-                if (gamepad2.GetButtonUp("A"))
+                else if (gamepad1.GetButtonUp("A") && cannotPlace1)
+                {
+                    Destroy(currentPlaceableObject1);
+                }
+
+                if (gamepad2.GetButtonUp("A") && !cannotPlace2)
                 {
                     if (itemsP2.Count > 0)
                     {
+                        currentPlaceableObject2.tag = "Item";
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject2 = null;
@@ -1298,13 +1405,18 @@ public class NewPlacementController : MonoBehaviour
                     {
                         placeableObject2 = null;
                     }
+                }
+                else if (gamepad2.GetButtonUp("A") && cannotPlace2)
+                {
+                    Destroy(currentPlaceableObject2);
                 }
                 break;
             case 3:
-                if (gamepad1.GetButtonUp("A"))
+                if (gamepad1.GetButtonUp("A") && !cannotPlace1)
                 {
                     if (itemsP1.Count > 0)
                     {
+                        currentPlaceableObject1.tag = "Item";
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject1 = null;
@@ -1327,10 +1439,15 @@ public class NewPlacementController : MonoBehaviour
                         placeableObject1 = null;
                     }
                 }
-                if (gamepad2.GetButtonUp("A"))
+                else if (gamepad1.GetButtonUp("A") && cannotPlace1)
+                {
+                    Destroy(currentPlaceableObject1);
+                }
+                if (gamepad2.GetButtonUp("A") && !cannotPlace2)
                 {
                     if (itemsP2.Count > 0)
                     {
+                        currentPlaceableObject2.tag = "Item";
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject2 = null;
@@ -1353,10 +1470,15 @@ public class NewPlacementController : MonoBehaviour
                         placeableObject2 = null;
                     }
                 }
-                if (gamepad3.GetButtonUp("A"))
+                else if (gamepad2.GetButtonUp("A") && cannotPlace2)
+                {
+                    Destroy(currentPlaceableObject2);
+                }
+                if (gamepad3.GetButtonUp("A") && !cannotPlace3)
                 {
                     if (itemsP3.Count > 0)
                     {
+                        currentPlaceableObject3.tag = "Item";
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject3 = null;
@@ -1378,13 +1500,18 @@ public class NewPlacementController : MonoBehaviour
                     {
                         placeableObject3 = null;
                     }
+                }
+                else if (gamepad3.GetButtonUp("A") && cannotPlace3)
+                {
+                    Destroy(currentPlaceableObject3);
                 }
                 break;
             case 4:
-                if (gamepad1.GetButtonUp("A"))
+                if (gamepad1.GetButtonUp("A") && !cannotPlace1)
                 {
                     if (itemsP1.Count > 0)
                     {
+                        currentPlaceableObject1.tag = "Item";
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject1 = null;
@@ -1407,7 +1534,11 @@ public class NewPlacementController : MonoBehaviour
                         placeableObject1 = null;
                     }
                 }
-                if (gamepad2.GetButtonUp("A"))
+                else if (gamepad1.GetButtonUp("A") && cannotPlace1)
+                {
+                    Destroy(currentPlaceableObject1);
+                }
+                if (gamepad2.GetButtonUp("A") && !cannotPlace1)
                 {
                     if (itemsP2.Count > 0)
                     {
@@ -1433,10 +1564,15 @@ public class NewPlacementController : MonoBehaviour
                         placeableObject2 = null;
                     }
                 }
-                if (gamepad3.GetButtonUp("A"))
+                else if (gamepad2.GetButtonUp("A") && cannotPlace1)
+                {
+                    Destroy(currentPlaceableObject2);
+                }
+                if (gamepad3.GetButtonUp("A") && !cannotPlace3)
                 {
                     if (itemsP3.Count > 0)
                     {
+                        currentPlaceableObject3.tag = "Item";
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject3 = null;
@@ -1459,10 +1595,15 @@ public class NewPlacementController : MonoBehaviour
                         placeableObject3 = null;
                     }
                 }
-                if (gamepad4.GetButtonUp("A"))
+                else if (gamepad3.GetButtonUp("A") && cannotPlace3)
+                {
+                    Destroy(currentPlaceableObject3);
+                }
+                if (gamepad4.GetButtonUp("A") && !cannotPlace4)
                 {
                     if (itemsP4.Count > 0)
                     {
+                        currentPlaceableObject4.tag = "Item";
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject4 = null;
@@ -1484,6 +1625,10 @@ public class NewPlacementController : MonoBehaviour
                     {
                         placeableObject4 = null;
                     }
+                }
+                else if(gamepad4.GetButtonUp("A") && cannotPlace4)
+                {
+                    Destroy(currentPlaceableObject4);
                 }
                 break;
             default:
@@ -1593,35 +1738,5 @@ public class NewPlacementController : MonoBehaviour
 
     }
 
-    //void OnTriggerEnter(Collider coll)
-    //{
-    //    //if((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
-    //    //{
-    //    //    cannotPlace = true;
-    //    //    Material currentMaterial;
-            
 
-    //    //}
-
-    //    if((coll.gameObject.tag == "ColliderField"))
-    //    {
-    //        cannotPlace = true;
-            
-
-    //    }
-    //}
-
-    //void OnTriggerExit(Collider coll)
-    //{
-    //    if ((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
-    //    {
-    //        cannotPlace = false;
-
-    //    }
-
-    //    if(coll.gameObject.tag == "ColliderField")
-    //    {
-    //        cannotPlace = false;
-    //    }
-    //}
 }

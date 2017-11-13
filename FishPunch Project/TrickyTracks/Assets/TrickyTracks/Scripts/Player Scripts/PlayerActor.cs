@@ -32,6 +32,7 @@ public class PlayerActor : MonoBehaviour {
     bool check1 = false, check2 = false, check3 = false, check4 = false, check5 = false, check6 = false,
          check7 = false, check8 = false, check9 = false, check10 = false, check11 = false, check12 = false;
 
+
     private List<bool> checks = new List<bool>();
 
     private float raceCountdownTimer = 3.0f;
@@ -117,13 +118,16 @@ public class PlayerActor : MonoBehaviour {
         //If counter = 0 finish line = last checkpoint and first checkpoint = next.
         if (checkPointCounter == 0)
         {
-            if (lapManager.checkPoints[0] != null)
+            if (lapManager != null)
             {
-                nextCheckPoint = lapManager.checkPoints[0];
-            }
-            if (lapManager.FinishLine != null)
-            {
-                lastCheckPoint = lapManager.FinishLine;
+                if (lapManager.checkPoints != null)
+                {
+                    nextCheckPoint = lapManager.checkPoints[0];
+                }
+                if (lapManager.FinishLine != null)
+                {
+                    lastCheckPoint = lapManager.FinishLine;
+                }
             }
         }
 
@@ -288,10 +292,13 @@ public class PlayerActor : MonoBehaviour {
                 if (!check1 && !check2 && !check3 && !check4 && !check5 && !check6
                     && !check7 && !check8 & !check9 && !check10 && !check11 && !check12)
                 {
-                    check1 = true;
-                    lastCheckPoint = lapManager.checkPoints[0];
-                    nextCheckPoint = lapManager.checkPoints[1];
-                    checkPointCounter += 1;
+                    if (!check1)
+                    {
+                        check1 = true;
+                        lastCheckPoint = lapManager.checkPoints[0];
+                        nextCheckPoint = lapManager.checkPoints[1];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -300,10 +307,13 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && !check2 && !check3 && !check4 && !check5 && !check6
                     && !check7 && !check8 && !check9 && !check10 && !check11 && !check12)
                 {
-                    check2 = true;
-                    lastCheckPoint = lapManager.checkPoints[1];
-                    nextCheckPoint = lapManager.checkPoints[2];
-                    checkPointCounter += 1;
+                    if (!check2)
+                    {
+                        check2 = true;
+                        lastCheckPoint = lapManager.checkPoints[1];
+                        nextCheckPoint = lapManager.checkPoints[2];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -312,10 +322,13 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && check2 && !check3 && !check4 && !check5 && !check6
                     && !check7 && !check8 && !check9 && !check10 && !check11 && !check12)
                 {
-                    check3 = true;
-                    lastCheckPoint = lapManager.checkPoints[2];
-                    nextCheckPoint = lapManager.checkPoints[3];
-                    checkPointCounter += 1;
+                    if (!check3)
+                    {
+                        check3 = true;
+                        lastCheckPoint = lapManager.checkPoints[2];
+                        nextCheckPoint = lapManager.checkPoints[3];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -324,10 +337,13 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && check2 && check3 && !check4 && !check5 && !check6 
                     && !check7 && !check8 && !check9 && !check10 && !check11 && !check12)
                 {
-                    check4 = true;
-                    lastCheckPoint = lapManager.checkPoints[3];
-                    nextCheckPoint = lapManager.checkPoints[4];
-                    checkPointCounter += 1;
+                    if (!check4)
+                    {
+                        check4 = true;
+                        lastCheckPoint = lapManager.checkPoints[3];
+                        nextCheckPoint = lapManager.checkPoints[4];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -336,10 +352,13 @@ public class PlayerActor : MonoBehaviour {
                 if(check1 && check2 && check3 && check4 && !check5 && !check6 &&
                    !check7 && !check8 && !check9 && !check10 && !check11 && !check12)
                 {
-                    check5 = true;
-                    lastCheckPoint = lapManager.checkPoints[4];
-                    nextCheckPoint = lapManager.checkPoints[5];
-                    checkPointCounter += 1;
+                    if (!check5)
+                    {
+                        check5 = true;
+                        lastCheckPoint = lapManager.checkPoints[4];
+                        nextCheckPoint = lapManager.checkPoints[5];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -348,10 +367,13 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && check2 && check3 && check4 && check5 && !check6 &&
                    !check7 && !check8 && !check9 && !check10 && !check11 && !check12)
                 {
-                    check6 = true;
-                    lastCheckPoint = lapManager.checkPoints[5];
-                    nextCheckPoint = lapManager.checkPoints[6];
-                    checkPointCounter += 1;
+                    if (!check6)
+                    {
+                        check6 = true;
+                        lastCheckPoint = lapManager.checkPoints[5];
+                        nextCheckPoint = lapManager.checkPoints[6];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -360,10 +382,13 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && check2 && check3 && check4 && check5 && check6 &&
                    !check7 && !check8 && !check9 && !check10 && !check11 && !check12)
                 {
-                    check7 = true;
-                    lastCheckPoint = lapManager.checkPoints[6];
-                    nextCheckPoint = lapManager.checkPoints[7];
-                    checkPointCounter += 1;
+                    if (!check7)
+                    {
+                        check7 = true;
+                        lastCheckPoint = lapManager.checkPoints[6];
+                        nextCheckPoint = lapManager.checkPoints[7];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -372,10 +397,13 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && check2 && check3 && check4 && check5 && check6 &&
                    check7 && !check8 && !check9 && !check10 && !check11 && !check12)
                 {
-                    check8 = true;
-                    lastCheckPoint = lapManager.checkPoints[7];
-                    nextCheckPoint = lapManager.checkPoints[8];
-                    checkPointCounter += 1;
+                    if (!check8)
+                    {
+                        check8 = true;
+                        lastCheckPoint = lapManager.checkPoints[7];
+                        nextCheckPoint = lapManager.checkPoints[8];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -384,10 +412,13 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && check2 && check3 && check4 && check5 && check6 &&
                    check7 && check8 && !check9 && !check10 && !check11 && !check12)
                 {
-                    check9 = true;
-                    lastCheckPoint = lapManager.checkPoints[8];
-                    nextCheckPoint = lapManager.checkPoints[9];
-                    checkPointCounter += 1;
+                    if (!check9)
+                    {
+                        check9 = true;
+                        lastCheckPoint = lapManager.checkPoints[8];
+                        nextCheckPoint = lapManager.checkPoints[9];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -396,10 +427,14 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && check2 && check3 && check4 && check5 && check6 &&
                    check7 && check8 && check9 && !check10 && !check11 && !check12)
                 {
-                    check10 = true;
-                    lastCheckPoint = lapManager.checkPoints[9];
-                    nextCheckPoint = lapManager.checkPoints[10];
-                    checkPointCounter += 1;
+                    if (!check10)
+                    {
+                        check10 = true;
+                        lastCheckPoint = lapManager.checkPoints[9];
+                        nextCheckPoint = lapManager.checkPoints[10];
+                        checkPointCounter += 1;
+                    }
+
                 }
             }
 
@@ -408,10 +443,13 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && check2 && check3 && check4 && check5 && check6 &&
                    check7 && check8 && check9 && check10 && !check11 && !check12)
                 {
-                    check11 = true;
-                    lastCheckPoint = lapManager.checkPoints[10];
-                    nextCheckPoint = lapManager.checkPoints[11];
-                    checkPointCounter += 1;
+                    if (!check11)
+                    {
+                        check11 = true;
+                        lastCheckPoint = lapManager.checkPoints[10];
+                        nextCheckPoint = lapManager.checkPoints[11];
+                        checkPointCounter += 1;
+                    }
                 }
             }
 
@@ -420,10 +458,13 @@ public class PlayerActor : MonoBehaviour {
                 if (check1 && check2 && check3 && check4 && check5 && check6 &&
                    check7 && check8 && check9 && check10 && check11 && !check12)
                 {
-                    check12 = true;
-                    lastCheckPoint = lapManager.checkPoints[11];
-                    nextCheckPoint = lapManager.FinishLine;
-                    checkPointCounter += 1;
+                    if (!check12)
+                    {
+                        check12 = true;
+                        lastCheckPoint = lapManager.checkPoints[11];
+                        nextCheckPoint = lapManager.FinishLine;
+                        checkPointCounter += 1;
+                    }
                 }
             }
         }
@@ -480,7 +521,7 @@ public class PlayerActor : MonoBehaviour {
                 check10 = false;
                 check11 = false;
                 check12 = false;
-                checkPointCounter = 0;
+           //     checkPointCounter = 0;
             }
             //if (check1 && check2 && check3 && check4 && (lapNumber >= 3))
             //{
@@ -491,15 +532,6 @@ public class PlayerActor : MonoBehaviour {
 
         //If item rpg is hit destroy the powerup and if they do not have a mine or boost
         //set itemRPG to true.
-        if (coll.gameObject.tag == "ItemRPG")
-        {
-            GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
-
-            if (!itemMine && !itemBoost)
-            {
-                itemRPG = true;
-            }
-        }
 
         //If they fall off the map and hit the killbox reset their position to the last checkpoint.
         if (coll.gameObject.tag == "Respawn")
