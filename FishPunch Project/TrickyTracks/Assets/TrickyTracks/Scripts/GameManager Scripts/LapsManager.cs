@@ -11,6 +11,12 @@ public class LapsManager : MonoBehaviour
     private NewPlacementController npc;
     private PlayerSelectActor psActor;
 
+    public AudioSource countDown1;
+    public AudioSource countDown2;
+    public AudioSource countDown3;
+    public AudioSource countDownEnd;
+
+
     public GameObject newManager;
 
     [HideInInspector]
@@ -124,6 +130,11 @@ public class LapsManager : MonoBehaviour
         firstPlace = GameObject.Find("firstPlace").GetComponent<Image>();
         secondPlace = GameObject.Find("secondPlace").GetComponent<Image>();
 
+        countDown1 = countOne.GetComponent<AudioSource>();
+        countDown2 = countTwo.GetComponent<AudioSource>();
+        countDown3 = countThree.GetComponent<AudioSource>();
+        countDownEnd = countFour.GetComponent<AudioSource>();
+
         switch(psActor.playerCount)
         {
             case 2:
@@ -166,20 +177,30 @@ public class LapsManager : MonoBehaviour
         {
             raceCountdown.enabled = false;
         }
-        if(raceCountdownTimer < 3)
+        if(raceCountdownTimer < 3 && raceCountdownTimer > 2)
         {
+            if(!countDown1.isPlaying)
+            countDown1.Play();
             countOne.sprite = greenLight;
         }
-        if(raceCountdownTimer <  2)
+        if(raceCountdownTimer <  2 && raceCountdownTimer > 1)
         {
+            if(!countDown2.isPlaying)
+            countDown2.Play();
             countTwo.sprite = greenLight;
         }
-        if(raceCountdownTimer < 1)
+        if(raceCountdownTimer < 1 && raceCountdownTimer > 0)
         {
-            countThree.sprite = greenLight;
+            if(!countDown3.isPlaying)
+            countDown3.Play();
+         countThree.sprite = greenLight;
         }
-        if(raceCountdownTimer < 0)
+        if(raceCountdownTimer < 0 && raceCountdownTimer > -0.5f)
         {
+            if (!countDownEnd.isPlaying)
+            {
+                countDownEnd.Play();
+            }
             countFour.sprite = greenLight;
         }
         if(raceCountdownTimer < -0.5f)
@@ -189,6 +210,7 @@ public class LapsManager : MonoBehaviour
             countTwo.enabled = false;
             countOne.enabled = false;
         }
+
 
         switch (psActor.playerCount)
         {

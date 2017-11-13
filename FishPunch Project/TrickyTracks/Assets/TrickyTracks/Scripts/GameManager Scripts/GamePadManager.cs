@@ -30,6 +30,9 @@ public class GamePadManager : MonoBehaviour {
 
     private Scene currentScene;
 
+    public AudioSource countSound;
+    public AudioSource countSoundEnd;
+
     private bool loadPlayerOnce = false;
     private bool loadTrapCamOnce = false;
     private bool findGameObjects = false;
@@ -77,6 +80,7 @@ public class GamePadManager : MonoBehaviour {
         //If scene is the main scene.
         if (currentScene.buildIndex == 2)
         {
+            
             //enable lap, item, position managers.
             //disable player select actor
             lpManager.enabled = true;
@@ -87,7 +91,7 @@ public class GamePadManager : MonoBehaviour {
             GamePadCount = psActor.playerCount;
 
             newPlacementController.enabled = true;  
-
+            
             //Find gameobjects.
             if (!findGameObjects)
             {
@@ -98,7 +102,6 @@ public class GamePadManager : MonoBehaviour {
                 player3 = GameObject.Find("3 Player");
 
                 player4 = GameObject.Find("4 Player");
-
                 findGameObjects = true;
             }
 

@@ -34,8 +34,9 @@ public class PlayerActor : MonoBehaviour {
 
 
     private List<bool> checks = new List<bool>();
-
-    private float raceCountdownTimer = 3.0f;
+    
+    [HideInInspector]
+    public float raceCountdownTimer = 3.0f;
 
 
     //Bool to assign new traps on lap pass.
@@ -69,6 +70,9 @@ public class PlayerActor : MonoBehaviour {
     public float driftDeceleration = 0.05f;
     [Tooltip("How long the car spins out for when it hits an oil slick.")]
     public float slickSpinOutTime = 3.0f;
+
+    public float boostPower = 150.0f;
+    public float boostTime = 3.0f;
 
     [HideInInspector]
     public xbox_gamepad gamepad;
@@ -116,26 +120,34 @@ public class PlayerActor : MonoBehaviour {
 
         kartBody = kart.physicsBody;
         //If counter = 0 finish line = last checkpoint and first checkpoint = next.
-        if (checkPointCounter == 0)
-        {
-            if (lapManager != null)
-            {
-                if (lapManager.checkPoints != null)
-                {
-                    nextCheckPoint = lapManager.checkPoints[0];
-                }
-                if (lapManager.FinishLine != null)
-                {
-                    lastCheckPoint = lapManager.FinishLine;
-                }
-            }
-        }
+        //if (checkPointCounter == 0)
+        //{
+        //    if (lapManager != null)
+        //    {
+        //        if (lapManager.checkPoints != null)
+        //        {
+        //            nextCheckPoint = lapManager.checkPoints[0];
+        //        }
+        //        if (lapManager.FinishLine != null)
+        //        {
+        //            lastCheckPoint = lapManager.FinishLine;
+        //        }
+        //    }
+        //}
 
         //if (lapManager.endTime < 0 && lapNumber < 3)
         //{
         //    finalPosition = kartPosition;
         //}
         //If kart hits slick spin kart for set time.
+
+        if (boostPlayer)
+        {
+            kart.SpeedBoost(boostPower, boostTime, 3.0f, 1.0f);
+            boostPlayer = false;
+        }
+
+
         if (hitSlick)
            {
 
@@ -155,11 +167,7 @@ public class PlayerActor : MonoBehaviour {
                 lockSteer = false;
             }
           
-            if(boostPlayer)
-            {
-                kart.SpeedBoost(100.0f, 1.0f, 3.0f, 1.0f);
-                boostPlayer = false;
-            } 
+         
         }
         raceCountdownTimer -= Time.deltaTime;
         if(raceCountdownTimer > 0)
@@ -226,7 +234,7 @@ public class PlayerActor : MonoBehaviour {
 
         //If trigger down go forward else if left trigger is down
         //bring thrust back to 0.
-        if (gamepad.GetTriggerDown_R())
+        if (gamepad.GetTriggerDown_R() && !lockSteer)
         {
             kart.Thrust = gamepad.GetTrigger_R();
         }
@@ -237,7 +245,7 @@ public class PlayerActor : MonoBehaviour {
 
         //If trigger down go backward else if right trigger isnt down
         //bring thrust back to 0.
-        if (gamepad.GetTriggerDown_L())
+        if (gamepad.GetTriggerDown_L() && !lockSteer)
         {
             kart.Thrust = -gamepad.GetTrigger_L();
         }

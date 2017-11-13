@@ -14,6 +14,9 @@ public class PlayerSelectActor : MonoBehaviour
     public int playerCount = 0;
 
     public GameObject player1Ready, player2Ready, player3Ready, player4Ready;
+    public GameObject player1Ready2, player2Ready2, player3Ready2, player4Ready2;
+
+
 
     public GameObject go_timer;
     [HideInInspector]
@@ -129,6 +132,7 @@ public class PlayerSelectActor : MonoBehaviour
                     {
                         GameObject.Find("Player1JoinText").SetActive(false);
                         player1Ready.SetActive(true);
+                        player1Ready2.SetActive(true);
                         playerCount++;
                         playerReady1 = true;
                     }
@@ -138,6 +142,7 @@ public class PlayerSelectActor : MonoBehaviour
                     {
                         GameObject.Find("Player2JoinText").SetActive(false);
                         player2Ready.SetActive(true);
+                        player2Ready2.SetActive(true);
                         playerCount++;
                         playerReady2 = true;
                     }
@@ -148,6 +153,7 @@ public class PlayerSelectActor : MonoBehaviour
                     {
                         GameObject.Find("Player3JoinText").SetActive(false);
                         player3Ready.SetActive(true);
+                        player3Ready2.SetActive(true);
                         playerCount++;
                         playerReady3 = true;
                     }
@@ -158,6 +164,7 @@ public class PlayerSelectActor : MonoBehaviour
                     {
                         GameObject.Find("Player4JoinText").SetActive(false);
                         player4Ready.SetActive(true);
+                        player4Ready2.SetActive(true);
                         playerCount++;
                         playerReady4 = true;
                     }

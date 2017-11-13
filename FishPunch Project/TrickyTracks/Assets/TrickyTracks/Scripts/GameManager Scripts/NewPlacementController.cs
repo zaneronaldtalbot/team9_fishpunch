@@ -36,6 +36,8 @@ public class NewPlacementController : MonoBehaviour
     private Image currentItem4, currentItemBack4;
     private Image powerup1, powerup2, powerup3, powerup4, powerup1_2P, powerup2_2P;
     private Image powerupIcon1, powerupIcon2, powerupIcon3, powerupIcon4, powerupIcon1_2P, powerupIcon2_2P;
+
+    private Text itemCount1, itemCount2, itemCount3, itemCount4;
     
     //Traps gameobject prefabs
     [Header("Traps")]
@@ -107,6 +109,9 @@ public class NewPlacementController : MonoBehaviour
     //Layer mask so the raycast object ignores the trap/item its placing.
     int layerMask;
 
+
+
+
     // Use this for initialization
     void Start()
     {
@@ -126,6 +131,11 @@ public class NewPlacementController : MonoBehaviour
         itemPrefabs.Add(boost);
         itemPrefabs.Add(rpg);
         itemPrefabs.Add(mine);
+
+        itemCount1 = GameObject.Find("ItemCount1").GetComponent<Text>();
+        itemCount2 = GameObject.Find("ItemCount2").GetComponent<Text>();
+        itemCount3 = GameObject.Find("ItemCount3").GetComponent<Text>();
+        itemCount4 = GameObject.Find("ItemCount4").GetComponent<Text>();
         
         currentItemBack1 = GameObject.Find("CurrentItemBack1").GetComponent<Image>();
         currentItemBack2 = GameObject.Find("CurrentItemBack2").GetComponent<Image>();
@@ -207,6 +217,9 @@ public class NewPlacementController : MonoBehaviour
                 powerupIcon2.enabled = false;
                 powerupIcon3.enabled = false;
                 powerupIcon4.enabled = false;
+
+                itemCount3.enabled = false;
+                itemCount4.enabled = false;
               
                 break;
             case 3:
@@ -242,6 +255,8 @@ public class NewPlacementController : MonoBehaviour
 
                 currentItemBack4.enabled = false;
                 currentItem4.enabled = false;
+
+                itemCount4.enabled = false;
 
               
                 break;
@@ -449,7 +464,8 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject2, currentPlaceableObject2, gamepad2);
                 }
 
-
+                itemCount1.text = "Items: " + itemsP1.Count;
+                itemCount2.text = "Items: " + itemsP2.Count;
                 break;
             case 3:
 
@@ -502,7 +518,9 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject3, currentPlaceableObject3, gamepad3);
                 }
 
-
+                itemCount1.text = "Items: " + itemsP1.Count;
+                itemCount2.text = "Items: " + itemsP3.Count;
+                itemCount3.text = "Items: " + itemsP2.Count;
                 break;
             case 4:
                 if (kart1.GetComponent<PlayerActor>().assignNewTraps)
@@ -566,6 +584,11 @@ public class NewPlacementController : MonoBehaviour
                 switchPowerupIcons(powerupIcon3, kart3);
                 switchPowerupIcons(powerupIcon4, kart4);
 
+
+                itemCount1.text = "Items: " + itemsP1.Count;
+                itemCount2.text = "Items: " + itemsP3.Count;
+                itemCount3.text = "Items: " + itemsP2.Count;
+                itemCount4.text = "Items: " + itemsP4.Count;
                 break;
             default:
                 break;

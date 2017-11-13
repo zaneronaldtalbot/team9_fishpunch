@@ -7,10 +7,10 @@ TagManager:
   - Checkpoint
   - StartLine
   - RPG
-  - ItemRPG
   - OffRoad
   - Item
   - ColliderField
+  - PlaceableObject
   layers:
   - Default
   - TransparentFX

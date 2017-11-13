@@ -5,6 +5,7 @@ using UnityEngine;
 public class PrefabDisabledActor : MonoBehaviour
 {
     private NewPlacementController npController;
+    public AudioSource sound;
     private GameObject colliderObject;
     private Vector3 lastPos;
     private GameObject[] objects;
@@ -52,6 +53,10 @@ public class PrefabDisabledActor : MonoBehaviour
         {
             colliderObject.SetActive(true);
             rend.material.color = new Color(1, 1, 1, 1);
+            if (!sound.isPlaying)
+            {
+         //       sound.Play();
+            }
         }
 
         lastPos = this.gameObject.transform.position;

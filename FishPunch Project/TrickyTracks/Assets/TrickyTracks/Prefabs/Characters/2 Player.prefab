@@ -737,8 +737,8 @@ GameObject:
   - component: {fileID: 20003125609841940}
   - component: {fileID: 124919066604093354}
   - component: {fileID: 92013203104739994}
-  - component: {fileID: 81745269726013496}
   - component: {fileID: 114647944597182000}
+  - component: {fileID: 114698068951490456}
   m_Layer: 0
   m_Name: Camera1
   m_TagString: Untagged
@@ -773,8 +773,8 @@ GameObject:
   - component: {fileID: 20065509230346314}
   - component: {fileID: 124744854039054638}
   - component: {fileID: 92198861096297002}
-  - component: {fileID: 81140219624809470}
   - component: {fileID: 114415626566980408}
+  - component: {fileID: 114689689984000010}
   m_Layer: 0
   m_Name: Camera2
   m_TagString: Untagged
@@ -954,7 +954,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4681983715702350}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4144970378026656
 Transform:
@@ -980,7 +980,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4681983715702350}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4162010182019840
 Transform:
@@ -1045,13 +1045,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1168730560869146}
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 3.06, z: -4.05}
+  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: 0, y: 2.52, z: -4.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4773654455299302}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!4 &4212996617266726
 Transform:
   m_ObjectHideFlags: 1
@@ -1101,7 +1101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1378961684821376}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4755671683853118}
@@ -1110,7 +1110,7 @@ Transform:
   - {fileID: 4952346624001486}
   - {fileID: 4585223049643654}
   m_Father: {fileID: 4681983715702350}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4346043603977188
 Transform:
@@ -1403,13 +1403,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1471349540945514}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.479292, y: 0.0052261204, z: -0.55}
+  m_LocalPosition: {x: 17.479292, y: 0.0052261204, z: -0.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4752904514056100}
   - {fileID: 4289431715472430}
-  - {fileID: 4156755781695998}
+  - {fileID: 4752904514056100}
   - {fileID: 4139485119235364}
+  - {fileID: 4156755781695998}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1420,7 +1420,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1889955060995418}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -0.82}
+  m_LocalPosition: {x: 0, y: 0, z: 3.18}
   m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
   m_Children:
   - {fileID: 4162010182019840}
@@ -1429,7 +1429,7 @@ Transform:
   - {fileID: 4377622142547704}
   - {fileID: 4597495139197812}
   m_Father: {fileID: 4681983715702350}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4755671683853118
 Transform:
@@ -1556,7 +1556,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657197555095846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 1.83}
+  m_LocalPosition: {x: 0, y: 0.58, z: 1.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4773654455299302}
@@ -2233,20 +2233,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 9947a9e340cd6fb4d9a5375cd982398d, type: 3}
---- !u!81 &81140219624809470
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1921697137009446}
-  m_Enabled: 1
---- !u!81 &81745269726013496
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1919327615792348}
-  m_Enabled: 1
 --- !u!92 &92013203104739994
 Behaviour:
   m_ObjectHideFlags: 1
@@ -2278,6 +2264,7 @@ MonoBehaviour:
   kartPosition: 0
   finalPosition: 0
   lapNumber: 0
+  raceCountdownTimer: 3
   assignNewTraps: 0
   mesh: {fileID: 1136274391095114}
   itemBoost: 0
@@ -2293,6 +2280,8 @@ MonoBehaviour:
   driftTraction: 0
   driftDeceleration: 0.05
   slickSpinOutTime: 3
+  boostPower: 150
+  boostTime: 3
   gamepad: {fileID: 0}
   lockSteerTime: 2
   slickSpeedPenalty: 0.5
@@ -2364,6 +2353,28 @@ MonoBehaviour:
     updateCameraInUpdate: 0
     updateCameraInFixedUpdate: 1
     updateCameraInLateUpdate: 0
+--- !u!114 &114689689984000010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921697137009446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114698068951490456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1919327615792348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114780253183406204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2412,6 +2423,7 @@ MonoBehaviour:
   kartPosition: 0
   finalPosition: 0
   lapNumber: 0
+  raceCountdownTimer: 3
   assignNewTraps: 0
   mesh: {fileID: 1012366373762142}
   itemBoost: 0
@@ -2427,6 +2439,8 @@ MonoBehaviour:
   driftTraction: 0
   driftDeceleration: 0.05
   slickSpinOutTime: 3
+  boostPower: 150
+  boostTime: 3
   gamepad: {fileID: 0}
   lockSteerTime: 2
   slickSpeedPenalty: 0.5
