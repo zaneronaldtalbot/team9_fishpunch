@@ -35,73 +35,176 @@ public class PlayerSelectActor : MonoBehaviour
 
     Image playB, exitB;
 
-    public float timer = 60.0f;
-
-    private Text textTimer;
+    int buttonIndex = 1;
 
     xbox_gamepad gamepad;
+
+
+    public Image player1, player2, player3, player4;
+
+    public Sprite red, blue, green, yellow, white;
+
+    List<xbox_gamepad> gamepads = new List<xbox_gamepad>();
+
+    float deadZone = 0.9f;
+
+    float coolDown = 0.3f;
+    float cdCopy = 0.3f;
+
 
     // Use this for initialization
     void Start()
     {
+        
         manager = GameObject.Find("Manager");
         gpManager = manager.GetComponent<GamePadManager>();
         playB = GameObject.Find("Play").GetComponent<Image>();
         exitB = GameObject.Find("Exit").GetComponent<Image>();
         playB.color = Color.grey;
         exitB.color = Color.grey;
+        gamepads = new List<xbox_gamepad>();
+
+        for (int i = 1; i < 5; ++i)
+        {
+            gamepads.Add(GamePadManager.Instance.GetGamePad(i));
+        }
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer < 0.0f)
-        {
-            SceneManager.LoadScene("Peter's Map");
-        }
 
+
+        switch(playerCount)
+        {
+            case 1:
+                player1.sprite = red;
+                break;
+            case 2:
+                player1.sprite = red;
+                player2.sprite = blue;
+
+                break;
+            case 3:
+                player2.sprite = blue;
+                player3.sprite = green;
+                player4.sprite = yellow;
+                break;
+            case 4:
+                player1.sprite = red;
+                player2.sprite = blue;
+                player3.sprite = green;
+                player4.sprite = yellow;
+                break;
+
+        }
 
         if(playerCount > 1)
         {
-            playB.color = Color.yellow;
-            play
+          
+            if(buttonIndex == 1)
+            {
+                playB.color = Color.yellow;
+                exitB.color = Color.grey;
+            }
+            if(buttonIndex == 2)
+            {
+                exitB.color = Color.yellow;
+                playB.color = Color.grey;
+            }
+            
         }
 
-        switch (gpManager.ConnectedTotal())
+        coolDown -= Time.deltaTime;
+
+
+
+            for(int i = 0; i < 4; ++i)
         {
-            case 2:
-                if (playerReady1 && playerReady2)
-                {
-                    SceneManager.LoadScene("Peter's Map");
-                }
-                break;
-            case 3:
-                if (playerReady1 && playerReady2 && playerReady3)
-                {
-                    SceneManager.LoadScene("Peter's Map");
-                }
-                break;
-            case 4:
-                if (playerReady1 && playerReady2 && playerReady3 && playerReady4)
-                {
-                    SceneManager.LoadScene("Peter's Map");
-                }
-                break;
-            default:
-                break;
+            switch (playerCount)
+            {
+
+                case 2:
+                    if ((playerReady1 && playerReady2) || (playerReady1 && playerReady3) || (playerReady1 && playerReady4) || (playerReady2 && playerReady3) ||
+                  (playerReady2 && playerReady4) || (playerReady3 && playerReady4))
+                    {
+
+                        if (gamepads[i].GetButtonDown("A") && buttonIndex == 1)
+                        {
+                            SceneManager.LoadScene("Peter's Map");
+                        }
+                        else if (gamepads[i].GetButtonDown("A") && buttonIndex == 2)
+                        {
+                            GameObject.Destroy(manager);
+                            GameObject.Destroy(GameObject.Find("Music"));
+                            SceneManager.LoadScene("Set_Pieces");
+                        }
+
+                    }
+
+
+                    break;
+                case 3:
+                    if ((playerReady1 && playerReady2) || (playerReady1 && playerReady3) || (playerReady1 && playerReady4) || (playerReady2 && playerReady3) ||
+                   (playerReady2 && playerReady4) || (playerReady3 && playerReady4))
+                    {
+                        if (gamepads[i].GetButtonDown("A") && buttonIndex == 1)
+                        {
+                            SceneManager.LoadScene("Peter's Map");
+                        }
+                        else if (gamepads[i].GetButtonDown("A") && buttonIndex == 2)
+                        {
+                            GameObject.Destroy(manager);
+                            GameObject.Destroy(GameObject.Find("Music"));
+                            SceneManager.LoadScene("Set_Pieces");
+                        }
+
+                    }
+                    break;
+                case 4:
+                    {
+                        if ((playerReady1 && playerReady2) || (playerReady1 && playerReady3) || (playerReady1 && playerReady4) || (playerReady2 && playerReady3) ||
+                                          (playerReady2 && playerReady4) || (playerReady3 && playerReady4))
+                        {
+
+                            if (gamepads[i].GetButtonDown("A") && buttonIndex == 1)
+                            {
+                                SceneManager.LoadScene("Peter's Map");
+                            }
+                            else if (gamepads[i].GetButtonDown("A") && buttonIndex == 2)
+                            {
+                                GameObject.Destroy(manager);
+                                GameObject.Destroy(GameObject.Find("Music"));
+                                SceneManager.LoadScene("Set_Pieces");
+                            }
+
+                        }
+                        break;
+                    }
+            }
+
+        if (gamepads[0].GetStick_L().Y > deadZone && (coolDown < 0) && buttonIndex == 2)
+        {
+            coolDown = cdCopy;
+            buttonIndex = 1;
+            
         }
 
-        timer -= Time.deltaTime;
 
-         textTimer =  go_timer.GetComponent<Text>();
+        if (gamepads[0].GetStick_L().Y < -deadZone && (coolDown < 0) && buttonIndex == 1)
+        {
+            coolDown = cdCopy;
+            buttonIndex = 2;
+        }
+      }
 
-        int intTimer = (int)timer;
-        textTimer.text = "Time Left: " + intTimer.ToString();
 
         int n = GamePadManager.Instance.ConnectedTotal();
         for (int i = 1; i <= n; ++i)
         {
+               
                startPressed(i);
         }
 

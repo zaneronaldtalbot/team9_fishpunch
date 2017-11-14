@@ -83,7 +83,9 @@ public class MenuActor : MonoBehaviour {
 
                 if(gamepad1.GetButtonDown("Start"))
                 {
+                    beepBeep.Play();
                     LoadLevel(1);
+                    GameObject.Destroy(this.gameObject);
                 }
 
                 if(gamepad1.GetButtonDown("A"))
@@ -110,6 +112,12 @@ public class MenuActor : MonoBehaviour {
                     gearShiftTwo.Play();
                     buttonIndex = 3;
                     coolDown = cdCopy;
+                }
+
+                if (gamepad1.GetButtonDown("Start"))
+                {
+                    beepBeep.Play();
+                    LoadLevel(3);
                 }
 
                 if (gamepad1.GetButtonDown("A"))
