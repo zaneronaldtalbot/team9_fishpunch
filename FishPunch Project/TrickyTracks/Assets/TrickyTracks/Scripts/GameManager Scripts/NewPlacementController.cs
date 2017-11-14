@@ -12,6 +12,8 @@ public class NewPlacementController : MonoBehaviour
 
     public Color disabledColor;
 
+    public AudioSource scrollItems1, scrollItems2, placeItem;
+
     public float exclusionDistance = 10.0f;
 
     //Manager variables to access other scripts on the manager.
@@ -37,7 +39,10 @@ public class NewPlacementController : MonoBehaviour
     private Image powerup1, powerup2, powerup3, powerup4, powerup1_2P, powerup2_2P;
     private Image powerupIcon1, powerupIcon2, powerupIcon3, powerupIcon4, powerupIcon1_2P, powerupIcon2_2P;
 
-    private Text itemCount1, itemCount2, itemCount3, itemCount4;
+    private Image itemCount1Num1, itemCount1Num2, itemCount2Num1, itemCount2Num2, itemCount3Num1, itemCount3Num2,
+                  itemCount4Num1, itemCount4Num2;
+
+    public Sprite[] nums;
     
     //Traps gameobject prefabs
     [Header("Traps")]
@@ -132,10 +137,19 @@ public class NewPlacementController : MonoBehaviour
         itemPrefabs.Add(rpg);
         itemPrefabs.Add(mine);
 
-        itemCount1 = GameObject.Find("ItemCount1").GetComponent<Text>();
-        itemCount2 = GameObject.Find("ItemCount2").GetComponent<Text>();
-        itemCount3 = GameObject.Find("ItemCount3").GetComponent<Text>();
-        itemCount4 = GameObject.Find("ItemCount4").GetComponent<Text>();
+        //I know how bad gameobject.Find is dont worry just used it as i had to write 99%
+        //of the game myself so had no time to plan out a proper system :)
+
+
+        itemCount1Num1 = GameObject.Find("ItemCount1Num1").GetComponent<Image>();
+        itemCount1Num2 = GameObject.Find("ItemCount1Num2").GetComponent<Image>();
+        itemCount2Num1 = GameObject.Find("ItemCount2Num1").GetComponent<Image>();
+        itemCount2Num2 = GameObject.Find("ItemCount2Num2").GetComponent<Image>();
+        itemCount3Num1 = GameObject.Find("ItemCount3Num1").GetComponent<Image>();
+        itemCount3Num2 = GameObject.Find("ItemCount3Num2").GetComponent<Image>();
+        itemCount4Num1 = GameObject.Find("ItemCount4Num1").GetComponent<Image>();
+        itemCount4Num2 = GameObject.Find("ItemCount4Num2").GetComponent<Image>();
+
         
         currentItemBack1 = GameObject.Find("CurrentItemBack1").GetComponent<Image>();
         currentItemBack2 = GameObject.Find("CurrentItemBack2").GetComponent<Image>();
@@ -218,9 +232,14 @@ public class NewPlacementController : MonoBehaviour
                 powerupIcon3.enabled = false;
                 powerupIcon4.enabled = false;
 
-                itemCount3.enabled = false;
-                itemCount4.enabled = false;
-              
+                GameObject.Find("ItemCount3").SetActive(false);
+                itemCount3Num1.enabled = false;
+                itemCount3Num2.enabled = false;
+
+                GameObject.Find("ItemCount4").SetActive(false);
+                itemCount4Num1.enabled = false;
+                itemCount4Num2.enabled = false;
+
                 break;
             case 3:
 
@@ -256,7 +275,9 @@ public class NewPlacementController : MonoBehaviour
                 currentItemBack4.enabled = false;
                 currentItem4.enabled = false;
 
-                itemCount4.enabled = false;
+                GameObject.Find("ItemCount4").SetActive(false);
+                itemCount4Num1.enabled = false;
+                itemCount4Num2.enabled = false;
 
               
                 break;
@@ -295,7 +316,6 @@ public class NewPlacementController : MonoBehaviour
                 kart2 = GameObject.Find("PlayerCharacter_002");
                 kart3 = GameObject.Find("PlayerCharacter_003");
                 kart4 = GameObject.Find("PlayerCharacter_004");
-
 
                 powerup1_2P.enabled = false;
                 powerup2_2P.enabled = false;
@@ -464,8 +484,10 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject2, currentPlaceableObject2, gamepad2);
                 }
 
-                itemCount1.text = "Items: " + itemsP1.Count;
-                itemCount2.text = "Items: " + itemsP2.Count;
+                playerItemCountUi(itemsP1, itemCount1Num1, itemCount1Num2);
+                playerItemCountUi(itemsP2, itemCount2Num1, itemCount2Num2);
+
+
                 break;
             case 3:
 
@@ -518,9 +540,10 @@ public class NewPlacementController : MonoBehaviour
                     fitPrefabToTrack(raycastObject3, currentPlaceableObject3, gamepad3);
                 }
 
-                itemCount1.text = "Items: " + itemsP1.Count;
-                itemCount2.text = "Items: " + itemsP3.Count;
-                itemCount3.text = "Items: " + itemsP2.Count;
+                playerItemCountUi(itemsP1, itemCount1Num1, itemCount1Num2);
+                playerItemCountUi(itemsP2, itemCount3Num1, itemCount3Num2);
+                playerItemCountUi(itemsP3, itemCount2Num1, itemCount2Num2);
+
                 break;
             case 4:
                 if (kart1.GetComponent<PlayerActor>().assignNewTraps)
@@ -585,10 +608,11 @@ public class NewPlacementController : MonoBehaviour
                 switchPowerupIcons(powerupIcon4, kart4);
 
 
-                itemCount1.text = "Items: " + itemsP1.Count;
-                itemCount2.text = "Items: " + itemsP3.Count;
-                itemCount3.text = "Items: " + itemsP2.Count;
-                itemCount4.text = "Items: " + itemsP4.Count;
+                playerItemCountUi(itemsP1, itemCount1Num1, itemCount1Num2);
+                playerItemCountUi(itemsP2, itemCount3Num1, itemCount3Num2);
+                playerItemCountUi(itemsP3, itemCount2Num1, itemCount2Num2);
+                playerItemCountUi(itemsP4, itemCount4Num1, itemCount4Num2);
+
                 break;
             default:
                 break;
@@ -940,6 +964,7 @@ public class NewPlacementController : MonoBehaviour
                     {
                         if (gamepad1.GetButtonDown("RB"))
                         {
+                            scrollItems1.Play();
                             Destroy(currentPlaceableObject1);
                             if (prefabIndex1 < itemsP1.Count - 1)
                             {
@@ -953,6 +978,7 @@ public class NewPlacementController : MonoBehaviour
                         }
                         if (gamepad1.GetButtonDown("LB"))
                         {
+                            scrollItems2.Play();
                             Destroy(currentPlaceableObject1);
                             if (prefabIndex1 > 0)
                             {
@@ -981,6 +1007,7 @@ public class NewPlacementController : MonoBehaviour
                     {
                         if (gamepad2.GetButtonDown("RB"))
                         {
+                            scrollItems1.Play();
                             Destroy(currentPlaceableObject2);
                             if (prefabIndex2 < itemsP2.Count - 1)
                             {
@@ -994,6 +1021,7 @@ public class NewPlacementController : MonoBehaviour
                         }
                         if (gamepad2.GetButtonDown("LB"))
                         {
+                            scrollItems2.Play();
                             Destroy(currentPlaceableObject2);
                             if (prefabIndex2 > 0)
                             {
@@ -1375,7 +1403,6 @@ public class NewPlacementController : MonoBehaviour
                         //make current object copy null
                         //remove item at the index
                         currentPlaceableObject1 = null;
-
                         itemsP1.RemoveAt(prefabIndex1);
                         if (prefabIndex1 <= (itemsP1.Count))
                         {
@@ -1760,6 +1787,73 @@ public class NewPlacementController : MonoBehaviour
         }
 
     }
+
+    void playerItemCountUi(List<GameObject> playerItems, Image playerSprites, Image playerSprites2)
+    {
+                switch(playerItems.Count)
+                {
+                    case 0:
+                        playerSprites.sprite = nums[0];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 1:
+                        playerSprites.sprite = nums[1];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 2:
+                        playerSprites.sprite = nums[2];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 3:
+                        playerSprites.sprite = nums[3];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 4:
+                        playerSprites.sprite = nums[4];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 5:
+                        playerSprites.sprite = nums[5];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 6:
+                        playerSprites.sprite = nums[6];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 7:
+                        playerSprites.sprite = nums[7];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 8:
+                        playerSprites.sprite = nums[8];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 9:
+                        playerSprites.sprite = nums[9];
+                        playerSprites2.enabled = false;
+                        break;
+                    case 10:
+                        playerSprites2.enabled = true;
+                        playerSprites.sprite = nums[1];
+                        playerSprites2.sprite = nums[0];
+                        break;
+                    case 11:
+                        playerSprites2.enabled = true;
+                        playerSprites.sprite = nums[1];
+                        playerSprites2.sprite = nums[1];
+                        break;
+                    case 12:
+                        playerSprites2.enabled = true;
+                        playerSprites.sprite = nums[1];
+                        playerSprites2.sprite = nums[2];
+                        break;
+                    default:
+                        break;
+                        
+                }
+    
+
+        }   
 
 
 }

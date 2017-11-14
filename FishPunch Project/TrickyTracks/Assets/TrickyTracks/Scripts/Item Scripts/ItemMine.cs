@@ -10,11 +10,13 @@ public class ItemMine : MonoBehaviour
     private PlayerActor kart;
     private GameObject minePrefab;
 
+    private Audio audioActor;
 
     // Use this for initialization
     void Start()
     {
         minePrefab = this.gameObject.transform.parent.gameObject;
+        audioActor = GameObject.Find("Manager").GetComponent<Audio>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class ItemMine : MonoBehaviour
             //Destroy mine pick up if kart grabs it.
                 if (kart.itemMine)
                 {
+                   
                     GameObject.Destroy(minePrefab);
                     GameObject.Destroy(gameObject);
                 }

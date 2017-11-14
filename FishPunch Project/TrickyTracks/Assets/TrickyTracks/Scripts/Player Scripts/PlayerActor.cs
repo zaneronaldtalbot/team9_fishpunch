@@ -112,28 +112,33 @@ public class PlayerActor : MonoBehaviour {
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
 
-
+   
     }
 
     // Update is called once per frame
     void Update() {
 
+        if(lapManager == null)
+        {
+            lapManager = GameObject.Find("Manager").GetComponent<LapsManager>();
+        }
+
         kartBody = kart.physicsBody;
         //If counter = 0 finish line = last checkpoint and first checkpoint = next.
         //if (checkPointCounter == 0)
         //{
-        //    if (lapManager != null)
-        //    {
-        //        if (lapManager.checkPoints != null)
-        //        {
-        //            nextCheckPoint = lapManager.checkPoints[0];
-        //        }
-        //        if (lapManager.FinishLine != null)
-        //        {
-        //            lastCheckPoint = lapManager.FinishLine;
-        //        }
-        //    }
-        //}
+           if (lapManager != null)
+           {
+               if (lapManager.checkPoints != null)
+               {
+                   nextCheckPoint = lapManager.checkPoints[0];
+               }
+               if (lapManager.FinishLine != null)
+               {
+                   lastCheckPoint = lapManager.FinishLine;
+               }
+           }
+      
 
         //if (lapManager.endTime < 0 && lapNumber < 3)
         //{
@@ -265,9 +270,13 @@ public class PlayerActor : MonoBehaviour {
             if (kart.Steering != 0 && kart.physicsBody.velocity.sqrMagnitude > 50.0f)
             {
                 kart.traction = driftTraction;
-
+              
                 kart.decelerationSpeed = driftDeceleration;
                 kart.breakPower = breakPower;
+                if (kart.Thrust > 10)
+                {
+                    kart.Thrust -= breakPower;
+                }
             }
             
         }

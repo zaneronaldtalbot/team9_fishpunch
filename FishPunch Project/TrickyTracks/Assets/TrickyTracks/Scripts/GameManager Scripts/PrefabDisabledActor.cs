@@ -53,46 +53,10 @@ public class PrefabDisabledActor : MonoBehaviour
         {
             colliderObject.SetActive(true);
             rend.material.color = new Color(1, 1, 1, 1);
-            if (!sound.isPlaying)
-            {
-         //       sound.Play();
-            }
         }
 
         lastPos = this.gameObject.transform.position;
 
-    }
-
-    void OnTriggerEnter(Collider coll)
-    {
-        if((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG") || (coll.gameObject.tag == "OilSlick")
-            || (coll.gameObject.tag == "Boost"))
-        {
-            //cannotPlace = true;
-            Debug.Log("Lol");
-
-
-        }
-
-        if ((coll.gameObject.tag == "ColliderField"))
-        {
-        //npc.cannotPlace = true;
-
-        }
-    }
-
-    void OnTriggerExit(Collider coll)
-    {
-        if ((coll.gameObject.tag == "Item") || (coll.gameObject.tag == "ItemMine") || (coll.gameObject.tag == "ItemRPG"))
-        {
-            //    cannotPlace = false;
-            Debug.Log("l");
-        }
-
-        if (coll.gameObject.tag == "ColliderField")
-        {
-            //cannotPlace = false;
-        }
     }
 
 }

@@ -8,6 +8,8 @@ public class GamePadManager : MonoBehaviour {
     //How many gamepads
     public int GamePadCount = 4;
 
+    private Audio audioActor;
+
     //List of gamepads
     private List<xbox_gamepad> gamepads;
 
@@ -51,6 +53,7 @@ public class GamePadManager : MonoBehaviour {
             manager = this;
             DontDestroyOnLoad(this.gameObject);
 
+            audioActor = GetComponent<Audio>();
             itemManager = GetComponent<ItemManager>();
             lpManager = GetComponent<LapsManager>();
             posManager = GetComponent<PositionManager>();
@@ -87,6 +90,7 @@ public class GamePadManager : MonoBehaviour {
             itemManager.enabled = true;
             posManager.enabled = true;
             psActor.enabled = false;
+            audioActor.enabled = true;
 
             GamePadCount = psActor.playerCount;
 

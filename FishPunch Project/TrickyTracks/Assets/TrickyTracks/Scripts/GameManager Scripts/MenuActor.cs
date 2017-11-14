@@ -9,6 +9,8 @@ public class MenuActor : MonoBehaviour {
     private GamePadManager gpManager;
     private xbox_gamepad gamepad1;
 
+    public AudioSource gearShiftOne, gearShiftTwo, beepBeep;
+
     float deadZone = 0.9f;
 
     float coolDown = 0.3f;
@@ -42,6 +44,9 @@ public class MenuActor : MonoBehaviour {
 	void Start () {
         gpManager = this.gameObject.GetComponent<GamePadManager>();
         gamepad1 = GamePadManager.Instance.GetGamePad(1);
+        gearShiftOne = GameObject.Find("GearShiftOne").GetComponent<AudioSource>();
+        gearShiftTwo = GameObject.Find("GearShiftTwo").GetComponent<AudioSource>();
+        beepBeep = GameObject.Find("BeepBeep").GetComponent<AudioSource>();
         //playButton = GameObject.Find("PlayBTN");
         //optionButton = GameObject.Find("OptionsBTN");
         //exitButton = GameObject.Find("ExitBTN");
@@ -62,17 +67,20 @@ public class MenuActor : MonoBehaviour {
                 coolDown -= Time.deltaTime;
                 if (gamepad1.GetStick_L().Y > deadZone && coolDown < 0)
                 {
+                    gearShiftOne.Play();
                     buttonIndex = 3;
                     coolDown = cdCopy;
                 }
                 if(gamepad1.GetStick_L().Y < -deadZone && coolDown < 0)
                 {
+                    gearShiftTwo.Play();
                     buttonIndex = 2;
                     coolDown = cdCopy;
                 }
 
                 if(gamepad1.GetButtonDown("A"))
                 {
+                    beepBeep.Play();
                     LoadLevel(1);
                     GameObject.Destroy(this.gameObject);
                 }
@@ -85,17 +93,20 @@ public class MenuActor : MonoBehaviour {
 
                 if (gamepad1.GetStick_L().Y > deadZone && coolDown < 0)
                 {
+                    gearShiftOne.Play();
                     buttonIndex = 1;
                     coolDown = cdCopy;
                 }
                 if (gamepad1.GetStick_L().Y < -deadZone && coolDown < 0)
                 {
+                    gearShiftTwo.Play();
                     buttonIndex = 3;
                     coolDown = cdCopy;
                 }
 
                 if (gamepad1.GetButtonDown("A"))
                 {
+                    beepBeep.Play();
                     LoadLevel(3);
                 }
                 break;
@@ -106,17 +117,20 @@ public class MenuActor : MonoBehaviour {
                 coolDown -= Time.deltaTime;
                 if (gamepad1.GetStick_L().Y > deadZone && coolDown < 0)
                 {
+                    gearShiftOne.Play();
                     coolDown = cdCopy;
                     buttonIndex = 2;
                 }
                 if (gamepad1.GetStick_L().Y < -deadZone && coolDown < 0)
                 {
+                    gearShiftTwo.Play();
                     buttonIndex = 1;
                     coolDown = cdCopy;
                 }
 
                 if (gamepad1.GetButtonDown("A"))
                 {
+                    beepBeep.Play();
                     CloseApplication();
                 }
                 break;

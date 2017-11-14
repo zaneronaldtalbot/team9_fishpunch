@@ -16,7 +16,7 @@ public class PlayerSelectActor : MonoBehaviour
     public GameObject player1Ready, player2Ready, player3Ready, player4Ready;
     public GameObject player1Ready2, player2Ready2, player3Ready2, player4Ready2;
 
-
+    public AudioSource beepBeep;
 
     public GameObject go_timer;
     [HideInInspector]
@@ -135,6 +135,7 @@ public class PlayerSelectActor : MonoBehaviour
                         player1Ready2.SetActive(true);
                         playerCount++;
                         playerReady1 = true;
+                        beepBeep.Play();
                     }
                     break;
                 case 2:
@@ -145,6 +146,7 @@ public class PlayerSelectActor : MonoBehaviour
                         player2Ready2.SetActive(true);
                         playerCount++;
                         playerReady2 = true;
+                        beepBeep.Play();
                     }
 
                     break;
@@ -156,6 +158,7 @@ public class PlayerSelectActor : MonoBehaviour
                         player3Ready2.SetActive(true);
                         playerCount++;
                         playerReady3 = true;
+                        beepBeep.Play();
                     }
 
                     break;
@@ -167,6 +170,7 @@ public class PlayerSelectActor : MonoBehaviour
                         player4Ready2.SetActive(true);
                         playerCount++;
                         playerReady4 = true;
+                        beepBeep.Play();
                     }
 
                     break;
