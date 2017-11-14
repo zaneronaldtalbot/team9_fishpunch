@@ -1731,36 +1731,43 @@ public class NewPlacementController : MonoBehaviour
             if (playerItems[prefabIndex] == buzzsaw)
             {
                 currentItem.sprite = buzzsawIcon;
+                currentItem.color = new Color(1, 1, 1, 1);
             }
         if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == ramp)
             {
                 currentItem.sprite = rampIcon;
+                currentItem.color = new Color(1, 1, 1, 1);
             }
         if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == oilslick)
             {
                 currentItem.sprite = oilslickIcon;
+                currentItem.color = new Color(1, 1, 1, 1);
             }
         if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == rpg)
             {
                 currentItem.sprite = rpgIcon;
+                currentItem.color = new Color(1, 1, 1, 1);
             }
         if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == mine)
             {
                 currentItem.sprite = mineIcon;
+                currentItem.color = new Color(1, 1, 1, 1);
             }
         if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == boost)
             {
                 currentItem.sprite = boostIcon;
+                currentItem.color = new Color(1, 1, 1, 1);
             }
         if (playerItems.Count == 0)
         { 
                 currentItem.sprite = blankIcon;
-            } 
+            currentItem.color = new Color(0,0,0,0);
+        } 
 
     }
 

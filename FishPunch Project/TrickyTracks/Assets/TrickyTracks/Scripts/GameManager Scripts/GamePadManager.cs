@@ -21,7 +21,6 @@ public class GamePadManager : MonoBehaviour {
     
     //Public GameObjects.
     [Header("Kart Gamepad Prefabs")]
-    private GameObject player1;
     private GameObject player2;
     private GameObject player3;
     private GameObject player4;
@@ -83,13 +82,13 @@ public class GamePadManager : MonoBehaviour {
         //If scene is the main scene.
         if (currentScene.buildIndex == 2)
         {
-            
+            psActor.enabled = false;
             //enable lap, item, position managers.
             //disable player select actor
             lpManager.enabled = true;
             itemManager.enabled = true;
             posManager.enabled = true;
-            psActor.enabled = false;
+      
             audioActor.enabled = true;
 
             GamePadCount = psActor.playerCount;
@@ -99,7 +98,6 @@ public class GamePadManager : MonoBehaviour {
             //Find gameobjects.
             if (!findGameObjects)
             {
-                player1 = GameObject.Find("1 Player");
 
                 player2 = GameObject.Find("2 Player");
 
@@ -218,20 +216,8 @@ public class GamePadManager : MonoBehaviour {
     public void activatePrefab()
     {
         //Activates the prefab depending on the connected total of controllers.
-        if (psActor.playerCount == 1 && player1 != null)
+        if (psActor.playerCount == 2 && player2 != null)
         {
-            player1.SetActive(true);
-
-            player2.SetActive(false);
-        
-            player3.SetActive(false);
-        
-            player4.SetActive(false);
-            
-        }
-        else if (psActor.playerCount == 2 && player2 != null)
-        {
-            player1.SetActive(false);
             player2.SetActive(true);
             player3.SetActive(false);
             player4.SetActive(false);
@@ -239,13 +225,11 @@ public class GamePadManager : MonoBehaviour {
         else if (psActor.playerCount == 3 && player3 != null)
         {
             player3.SetActive(true);
-            player1.SetActive(false);
             player2.SetActive(false);
             player4.SetActive(false);
         }
         else if (psActor.playerCount == 4 && player4 != null)
         {
-            player1.SetActive(false);
             player2.SetActive(false);
             player3.SetActive(false);
             player4.SetActive(true);

@@ -27,11 +27,13 @@ public class ParticleActor : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-     
 
-        if(kart.gamepad.GetButtonDown("B"))
+
+        if (kart != null)
         {
-       
+            if (kart.gamepad.GetButtonDown("B"))
+            {
+
                 particlesOne.time = 0.1f;
                 particlesOne.Play();
 
@@ -39,19 +41,20 @@ public class ParticleActor : MonoBehaviour {
                 particlesTwo.Play();
                 particlesTwo.time = 0.1f;
 
-        }
-        else if(kart.gamepad.GetButtonUp("B"))
-        {
-            if (particlesOne.isPlaying)
-            {
-                particlesOne.Stop();
             }
-            if (particlesTwo.isPlaying)
+            else if (kart.gamepad.GetButtonUp("B"))
             {
-                particlesTwo.Stop();
+                if (particlesOne.isPlaying)
+                {
+                    particlesOne.Stop();
+                }
+                if (particlesTwo.isPlaying)
+                {
+                    particlesTwo.Stop();
+
+                }
 
             }
-
         }
     }
 }

@@ -852,6 +852,8 @@ public class PositionManager : MonoBehaviour {
 
     //Position calculator calculates each karts lap counter
     //
+    //So I am aware this vv is terrible when i started it i was like "hey i don't need an array for 4 karts."
+    //my bad.. but hey it works :D
     void positionCalculator(PlayerActor kart, GameObject go_kart, PlayerActor karttwo, GameObject go_karttwo,
                             PlayerActor kartthree, GameObject go_kartthree, PlayerActor kartfour, GameObject go_kartfour)
     {
@@ -1067,7 +1069,7 @@ public class PositionManager : MonoBehaviour {
             kartthree.kartPosition = 3;
             kartfour.kartPosition = 2;
         }
-        else if (kartCheckpointCheck(kart, kartfour, karttwo, kartthree))
+        else if (kartCheckpointCheck(kart, kartfour, karttwo, kartthree)) // 1 2 3 4
         {
             kart.kartPosition = 1;
             karttwo.kartPosition = 3;
@@ -1202,6 +1204,489 @@ public class PositionManager : MonoBehaviour {
             karttwo.kartPosition = 3;
             kartthree.kartPosition = 2;
             kartfour.kartPosition = 1;
+        }
+        //if kart 1 and 2 are on the same checkpoint
+        else if((kart.checkPointCounter == karttwo.checkPointCounter) && (kartthree.checkPointCounter > kartfour.checkPointCounter) &&
+                (kartfour.checkPointCounter > karttwo.checkPointCounter))
+        {
+            kartthree.kartPosition = 1;
+            kartfour.kartPosition = 2;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+
+            if(dist1 > dist2)
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 3;
+            }
+            else
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 4;
+            }
+
+        }
+        //if kart 1 and 2 are on the same checkpoint.
+        else if((kart.checkPointCounter == karttwo.checkPointCounter) && (kartthree.checkPointCounter < kartfour.checkPointCounter) &&
+            (kartthree.checkPointCounter > karttwo.checkPointCounter))
+        {
+            kartthree.kartPosition = 2;
+            kartfour.kartPosition = 1;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+
+            if (dist1 > dist2)
+            {
+                kart.kartPosition = 4;
+                karttwo.kartPosition = 3;
+            }
+            else
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 4;
+            }
+        }   
+        //if kart 1 and 3 are on the same checkpoint.
+        else if((kart.checkPointCounter == kartthree.checkPointCounter) && (karttwo.checkPointCounter > kartfour.checkPointCounter) &&
+            (kartfour.checkPointCounter > kartthree.checkPointCounter))
+        {
+            karttwo.kartPosition = 1;
+            kartfour.kartPosition = 2;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist1 > dist3)
+            {
+                kart.kartPosition = 4;
+                kartthree.kartPosition = 3;
+            }
+            else
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 4;
+            }
+        }
+        //if kart 1 and 3 are on the same checkpoint.
+        else if ((kart.checkPointCounter == kartthree.checkPointCounter) && (karttwo.checkPointCounter < kartfour.checkPointCounter) &&
+          (karttwo.checkPointCounter > kartthree.checkPointCounter))
+        {
+            karttwo.kartPosition = 2;
+            kartfour.kartPosition = 1;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist1 > dist3)
+            {
+                kart.kartPosition = 4;
+                kartthree.kartPosition = 3;
+            }
+            else
+            {
+                kart.kartPosition = 3;
+                karttwo.kartPosition = 4;
+            }
+        }
+        //if kart 1 and 4 are on the same checkpoint
+        else if ((kart.checkPointCounter == kartfour.checkPointCounter) && (karttwo.checkPointCounter > kartthree.checkPointCounter) &&
+                 (kartthree.checkPointCounter > kartfour.checkPointCounter))
+        {
+            karttwo.kartPosition = 1;
+            kartthree.kartPosition = 2;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist1 > dist4)
+            {
+                kart.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else
+            {
+                kart.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+        }
+        //if kart 1 and 4 are on the same checkpoint
+        else if ((kart.checkPointCounter == kartfour.checkPointCounter) && (karttwo.checkPointCounter < kartthree.checkPointCounter) &&
+                 (karttwo.checkPointCounter > kartfour.checkPointCounter))
+        {
+            karttwo.kartPosition = 2;
+            kartthree.kartPosition = 1;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist1 > dist4)
+            {
+                kart.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else
+            {
+                kart.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+        }
+        //if kart 2 and 3 are on the same checkpoint
+        else if ((karttwo.checkPointCounter == kartthree.checkPointCounter) && (kart.checkPointCounter > kartfour.checkPointCounter) &&
+             (kartfour.checkPointCounter > kartthree.checkPointCounter))
+        {
+            kart.kartPosition = 1;
+            kartfour.kartPosition = 2;
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist2 > dist3)
+            {
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 3;
+            }
+            else
+            {
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 4;
+            }
+        }
+        //if kart 2 and 3 are on the same checkpoint
+        else if ((karttwo.checkPointCounter == kartthree.checkPointCounter) && (kart.checkPointCounter < kartfour.checkPointCounter) &&
+             (kart.checkPointCounter > kartthree.checkPointCounter))
+        {
+            kart.kartPosition = 2;
+            kartfour.kartPosition = 1;
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist2 > dist3)
+            {
+                karttwo.kartPosition = 4;
+                kartthree.kartPosition = 3;
+            }
+            else
+            {
+                karttwo.kartPosition = 3;
+                kartthree.kartPosition = 4;
+            }
+        }
+        //if kart 2 and 4 are on the same checkpoint
+        else if ((karttwo.checkPointCounter == kartfour.checkPointCounter) && (kart.checkPointCounter > kartthree.checkPointCounter) &&
+             (kartthree.checkPointCounter > kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 1;
+            kartthree.kartPosition = 2;
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist2 > dist4)
+            {
+                karttwo.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else
+            {
+                karttwo.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+        }
+        //if kart 2 and 4 are on the same checkpoint
+        else if ((karttwo.checkPointCounter == kartfour.checkPointCounter) && (kart.checkPointCounter < kartthree.checkPointCounter) &&
+             (kart.checkPointCounter > kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 2;
+            kartthree.kartPosition = 1;
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist2 > dist4)
+            {
+                karttwo.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else
+            {
+                karttwo.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+        }
+        //if kart 3 and 4 are on the same checkpoint
+        else if ((kartthree.checkPointCounter == kartfour.checkPointCounter) && (kart.checkPointCounter > karttwo.checkPointCounter) &&
+           (karttwo.checkPointCounter > kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 1;
+            karttwo.kartPosition = 2;
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist3 > dist4)
+            {
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else
+            {
+                karttwo.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+        }
+        //if kart 3 and 4 are on the same checkpoint
+        else if ((kartthree.checkPointCounter == kartfour.checkPointCounter) && (kart.checkPointCounter < karttwo.checkPointCounter) &&
+           (kart.checkPointCounter > kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 2;
+            karttwo.kartPosition = 1;
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist3 > dist4)
+            {
+                kartthree.kartPosition = 4;
+                kartfour.kartPosition = 3;
+            }
+            else
+            {
+                kartthree.kartPosition = 3;
+                kartfour.kartPosition = 4;
+            }
+        }
+        /// SECOND LOT HAHAHA i wanna die.
+         //if kart 1 and 2 are on the same checkpoint
+        else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (kartthree.checkPointCounter > kartfour.checkPointCounter) &&
+                (kartfour.checkPointCounter < karttwo.checkPointCounter))
+        {
+            kartthree.kartPosition = 3;
+            kartfour.kartPosition = 4;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+
+            if (dist1 > dist2)
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 1;
+            }
+            else
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 2;
+            }
+
+        }
+        //if kart 1 and 2 are on the same checkpoint.
+        else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (kartthree.checkPointCounter < kartfour.checkPointCounter) &&
+            (kartthree.checkPointCounter < karttwo.checkPointCounter))
+        {
+            kartthree.kartPosition = 4;
+            kartfour.kartPosition = 3;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+
+            if (dist1 > dist2)
+            {
+                kart.kartPosition = 2;
+                karttwo.kartPosition = 1;
+            }
+            else
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 2;
+            }
+        }
+        //if kart 1 and 3 are on the same checkpoint.
+        else if ((kart.checkPointCounter == kartthree.checkPointCounter) && (karttwo.checkPointCounter > kartfour.checkPointCounter) &&
+            (kartfour.checkPointCounter < kartthree.checkPointCounter))
+        {
+            karttwo.kartPosition = 3;
+            kartfour.kartPosition = 4;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist1 > dist3)
+            {
+                kart.kartPosition = 2;
+                kartthree.kartPosition = 1;
+            }
+            else
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 2;
+            }
+        }
+        //if kart 1 and 3 are on the same checkpoint.
+        else if ((kart.checkPointCounter == kartthree.checkPointCounter) && (karttwo.checkPointCounter < kartfour.checkPointCounter) &&
+          (karttwo.checkPointCounter < kartthree.checkPointCounter))
+        {
+            karttwo.kartPosition = 4;
+            kartfour.kartPosition = 3;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist1 > dist3)
+            {
+                kart.kartPosition = 2;
+                kartthree.kartPosition = 1;
+            }
+            else
+            {
+                kart.kartPosition = 1;
+                karttwo.kartPosition = 2;
+            }
+        }
+        //if kart 1 and 4 are on the same checkpoint
+        else if ((kart.checkPointCounter == kartfour.checkPointCounter) && (karttwo.checkPointCounter > kartthree.checkPointCounter) &&
+                 (kartthree.checkPointCounter < kartfour.checkPointCounter))
+        {
+            karttwo.kartPosition = 3;
+            kartthree.kartPosition = 4;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist1 > dist4)
+            {
+                kart.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+            else
+            {
+                kart.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+        }
+        //if kart 1 and 4 are on the same checkpoint
+        else if ((kart.checkPointCounter == kartfour.checkPointCounter) && (karttwo.checkPointCounter < kartthree.checkPointCounter) &&
+                 (karttwo.checkPointCounter < kartfour.checkPointCounter))
+        {
+            karttwo.kartPosition = 4;
+            kartthree.kartPosition = 3;
+            float dist1 = Vector3.Distance(go_kart.transform.position, kart.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist1 > dist4)
+            {
+                kart.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+            else
+            {
+                kart.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+        }
+        //if kart 2 and 3 are on the same checkpoint
+        else if ((karttwo.checkPointCounter == kartthree.checkPointCounter) && (kart.checkPointCounter > kartfour.checkPointCounter) &&
+             (kartfour.checkPointCounter < kartthree.checkPointCounter))
+        {
+            kart.kartPosition = 3;
+            kartfour.kartPosition = 4;
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist2 > dist3)
+            {
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 1;
+            }
+            else
+            {
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 2;
+            }
+        }
+        //if kart 2 and 3 are on the same checkpoint
+        else if ((karttwo.checkPointCounter == kartthree.checkPointCounter) && (kart.checkPointCounter < kartfour.checkPointCounter) &&
+             (kart.checkPointCounter < kartthree.checkPointCounter))
+        {
+            kart.kartPosition = 4;
+            kartfour.kartPosition = 3;
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+
+            if (dist2 > dist3)
+            {
+                karttwo.kartPosition = 2;
+                kartthree.kartPosition = 1;
+            }
+            else
+            {
+                karttwo.kartPosition = 1;
+                kartthree.kartPosition = 2;
+            }
+        }
+        //if kart 2 and 4 are on the same checkpoint
+        else if ((karttwo.checkPointCounter == kartfour.checkPointCounter) && (kart.checkPointCounter > kartthree.checkPointCounter) &&
+             (kartthree.checkPointCounter < kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 3;
+            kartthree.kartPosition = 4;
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist2 > dist4)
+            {
+                karttwo.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+            else
+            {
+                karttwo.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+        }
+        //if kart 2 and 4 are on the same checkpoint
+        else if ((karttwo.checkPointCounter == kartfour.checkPointCounter) && (kart.checkPointCounter < kartthree.checkPointCounter) &&
+             (kart.checkPointCounter < kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 4;
+            kartthree.kartPosition = 3;
+            float dist2 = Vector3.Distance(go_kart2.transform.position, karttwo.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist2 > dist4)
+            {
+                karttwo.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+            else
+            {
+                karttwo.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+        }
+        //if kart 3 and 4 are on the same checkpoint
+        else if ((kartthree.checkPointCounter == kartfour.checkPointCounter) && (kart.checkPointCounter > karttwo.checkPointCounter) &&
+           (karttwo.checkPointCounter < kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 3;
+            karttwo.kartPosition = 4;
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist3 > dist4)
+            {
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+            else
+            {
+                karttwo.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
+        }
+        //if kart 3 and 4 are on the same checkpoint
+        else if ((kartthree.checkPointCounter == kartfour.checkPointCounter) && (kart.checkPointCounter < karttwo.checkPointCounter) &&
+           (kart.checkPointCounter < kartfour.checkPointCounter))
+        {
+            kart.kartPosition = 4;
+            karttwo.kartPosition = 3;
+            float dist3 = Vector3.Distance(go_kart3.transform.position, kartthree.nextCheckPoint.transform.position);
+            float dist4 = Vector3.Distance(go_kart4.transform.position, kartfour.nextCheckPoint.transform.position);
+
+            if (dist3 > dist4)
+            {
+                kartthree.kartPosition = 2;
+                kartfour.kartPosition = 1;
+            }
+            else
+            {
+                kartthree.kartPosition = 1;
+                kartfour.kartPosition = 2;
+            }
         }
         //if kart4 is greater than all the other karts and checkpoints are the same.
         else if ((kart.checkPointCounter == karttwo.checkPointCounter) && (karttwo.checkPointCounter == kartthree.checkPointCounter) &&

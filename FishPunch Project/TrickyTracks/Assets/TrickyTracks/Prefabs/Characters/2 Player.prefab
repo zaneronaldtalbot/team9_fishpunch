@@ -301,8 +301,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4289431715472430}
   - component: {fileID: 54307764895509140}
-  - component: {fileID: 114780253183406204}
-  - component: {fileID: 114912868846492380}
+  - component: {fileID: 114858768050941242}
+  - component: {fileID: 114769191692169182}
+  - component: {fileID: 114261835770723748}
   m_Layer: 8
   m_Name: PlayerCharacter_002
   m_TagString: Player
@@ -702,8 +703,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4752904514056100}
   - component: {fileID: 54240976054691782}
-  - component: {fileID: 114292792426219972}
-  - component: {fileID: 114276449961260292}
+  - component: {fileID: 114555557041875896}
+  - component: {fileID: 114769529118547626}
+  - component: {fileID: 114283919511402506}
   m_Layer: 8
   m_Name: PlayerCharacter_001
   m_TagString: Player
@@ -737,9 +739,8 @@ GameObject:
   - component: {fileID: 20003125609841940}
   - component: {fileID: 124919066604093354}
   - component: {fileID: 92013203104739994}
-  - component: {fileID: 114647944597182000}
-  - component: {fileID: 114698068951490456}
   - component: {fileID: 114169582795681536}
+  - component: {fileID: 114659135985093656}
   m_Layer: 0
   m_Name: Camera1
   m_TagString: MainCamera
@@ -774,9 +775,8 @@ GameObject:
   - component: {fileID: 20065509230346314}
   - component: {fileID: 124744854039054638}
   - component: {fileID: 92198861096297002}
-  - component: {fileID: 114415626566980408}
-  - component: {fileID: 114689689984000010}
   - component: {fileID: 114468083400594976}
+  - component: {fileID: 114323025877513634}
   m_Layer: 0
   m_Name: Camera2
   m_TagString: Untagged
@@ -2261,7 +2261,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 18b42e914e6b7a74fb849a5e62853f71, type: 2}
---- !u!114 &114276449961260292
+--- !u!114 &114261835770723748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378961684821376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b15555c723c4b41a79dfebf5686a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlesOne: {fileID: 198869819371289798}
+  particlesTwo: {fileID: 198035133631818504}
+--- !u!114 &114283919511402506
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2269,69 +2282,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1889955060995418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3775d717311f88a4f82c1f09fe68f0a3, type: 3}
+  m_Script: {fileID: 11500000, guid: e2b15555c723c4b41a79dfebf5686a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastCheckPoint: {fileID: 0}
-  nextCheckPoint: {fileID: 0}
-  checkPointCounter: 0
-  kartPosition: 0
-  finalPosition: 0
-  lapNumber: 0
-  raceCountdownTimer: 3
-  assignNewTraps: 0
-  mesh: {fileID: 1136274391095114}
-  itemBoost: 0
-  itemMine: 0
-  itemRPG: 0
-  playerDisabled: 0
-  boostPlayer: 0
-  placeMine: 0
-  fireRPG: 0
-  playerNumber: 1
-  numberOfPlayers: 2
-  breakPower: 20
-  driftTraction: 0
-  driftDeceleration: 0.05
-  slickSpinOutTime: 3
-  boostPower: 150
-  boostTime: 3
-  gamepad: {fileID: 0}
-  lockSteerTime: 2
-  slickSpeedPenalty: 0.5
-  hitSlick: 0
---- !u!114 &114292792426219972
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1889955060995418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5e8b34f0e9227b4a907548dd0fb2db1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topSpeedMPH: 60
-  accelTime: 1
-  traction: 0.4
-  decelerationSpeed: 0.015
-  decelerationSpeedCopy: 0
-  breakPower: 0
-  tractionCopy: 0
-  body: {fileID: 4066608870468870}
-  wheelFL: {fileID: 4450294648062716}
-  wheelFR: {fileID: 4399576556223182}
-  wheelBL: {fileID: 4833406921332206}
-  wheelBR: {fileID: 4278829457991136}
-  wheelRadiusFront: 0.32
-  wheelRadiusBack: 0.38
-  maxSteerAngle: 30
-  steerSpeed: 0.5
-  offRoadDrag: 2
-  airDrag: 0.1
-  visualOversteerAmount: 0.2
-  physicsBody: {fileID: 0}
---- !u!114 &114415626566980408
+  particlesOne: {fileID: 198589736888818156}
+  particlesTwo: {fileID: 198087147635165594}
+--- !u!114 &114323025877513634
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2339,10 +2295,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1921697137009446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d04dc43a6269b49a4b697de779e3dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 43e124e8b0da7b34a817dcaf5f84bb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 15
+  smoothing: 6
   lookAtTarget: {fileID: 4900212599109588}
   positionTarget: {fileID: 4573501818255900}
   advancedOptions:
@@ -2361,78 +2317,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 18b42e914e6b7a74fb849a5e62853f71, type: 2}
---- !u!114 &114647944597182000
+--- !u!114 &114555557041875896
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1919327615792348}
+  m_GameObject: {fileID: 1889955060995418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d04dc43a6269b49a4b697de779e3dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 547710450ad3c1744a5626e6f6e2328c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 15
-  lookAtTarget: {fileID: 4913588517394144}
-  positionTarget: {fileID: 4182997186835524}
-  advancedOptions:
-    updateCameraInUpdate: 0
-    updateCameraInFixedUpdate: 1
-    updateCameraInLateUpdate: 0
---- !u!114 &114689689984000010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1921697137009446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114698068951490456
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1919327615792348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114780253183406204
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378961684821376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5e8b34f0e9227b4a907548dd0fb2db1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topSpeedMPH: 60
+  topSpeedMPH: 65
   accelTime: 1
   traction: 0.4
   decelerationSpeed: 0.015
   decelerationSpeedCopy: 0
   breakPower: 0
   tractionCopy: 0
-  body: {fileID: 4213844034951060}
-  wheelFL: {fileID: 4500579501099704}
-  wheelFR: {fileID: 4138144983113162}
-  wheelBL: {fileID: 4906128733445978}
-  wheelBR: {fileID: 4823338529524654}
+  body: {fileID: 4066608870468870}
+  wheelFL: {fileID: 4450294648062716}
+  wheelFR: {fileID: 4399576556223182}
+  wheelBL: {fileID: 4833406921332206}
+  wheelBR: {fileID: 4278829457991136}
   wheelRadiusFront: 0.32
   wheelRadiusBack: 0.38
   maxSteerAngle: 30
   steerSpeed: 0.5
   offRoadDrag: 2
-  airDrag: 0.1
+  airDrag: 0.5
   visualOversteerAmount: 0.2
   physicsBody: {fileID: 0}
---- !u!114 &114912868846492380
+--- !u!114 &114659135985093656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1919327615792348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e124e8b0da7b34a817dcaf5f84bb82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothing: 6
+  lookAtTarget: {fileID: 4913588517394144}
+  positionTarget: {fileID: 4182997186835524}
+  advancedOptions:
+    updateCameraInUpdate: 0
+    updateCameraInFixedUpdate: 1
+    updateCameraInLateUpdate: 0
+--- !u!114 &114769191692169182
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2440,7 +2374,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1378961684821376}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3775d717311f88a4f82c1f09fe68f0a3, type: 3}
+  m_Script: {fileID: 11500000, guid: d6bc56b65a7dc0d40b15619f7e7db2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lastCheckPoint: {fileID: 0}
@@ -2448,7 +2382,7 @@ MonoBehaviour:
   checkPointCounter: 0
   kartPosition: 0
   finalPosition: 0
-  lapNumber: 0
+  lapNumber: 1
   raceCountdownTimer: 3
   assignNewTraps: 0
   mesh: {fileID: 1012366373762142}
@@ -2471,6 +2405,76 @@ MonoBehaviour:
   lockSteerTime: 2
   slickSpeedPenalty: 0.5
   hitSlick: 0
+--- !u!114 &114769529118547626
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889955060995418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6bc56b65a7dc0d40b15619f7e7db2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastCheckPoint: {fileID: 0}
+  nextCheckPoint: {fileID: 0}
+  checkPointCounter: 0
+  kartPosition: 0
+  finalPosition: 0
+  lapNumber: 1
+  raceCountdownTimer: 3
+  assignNewTraps: 0
+  mesh: {fileID: 1136274391095114}
+  itemBoost: 0
+  itemMine: 0
+  itemRPG: 0
+  playerDisabled: 0
+  boostPlayer: 0
+  placeMine: 0
+  fireRPG: 0
+  playerNumber: 1
+  numberOfPlayers: 4
+  breakPower: 20
+  driftTraction: 0
+  driftDeceleration: 0.05
+  slickSpinOutTime: 3
+  boostPower: 150
+  boostTime: 3
+  gamepad: {fileID: 0}
+  lockSteerTime: 2
+  slickSpeedPenalty: 0.5
+  hitSlick: 0
+--- !u!114 &114858768050941242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378961684821376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547710450ad3c1744a5626e6f6e2328c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topSpeedMPH: 65
+  accelTime: 1
+  traction: 0.4
+  decelerationSpeed: 0.015
+  decelerationSpeedCopy: 0
+  breakPower: 0
+  tractionCopy: 0
+  body: {fileID: 4213844034951060}
+  wheelFL: {fileID: 4500579501099704}
+  wheelFR: {fileID: 4138144983113162}
+  wheelBL: {fileID: 4906128733445978}
+  wheelBR: {fileID: 4823338529524654}
+  wheelRadiusFront: 0.32
+  wheelRadiusBack: 0.38
+  maxSteerAngle: 30
+  steerSpeed: 0.5
+  offRoadDrag: 2
+  airDrag: 0.5
+  visualOversteerAmount: 0.2
+  physicsBody: {fileID: 0}
 --- !u!124 &124744854039054638
 Behaviour:
   m_ObjectHideFlags: 1
@@ -5806,7 +5810,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1818458431
+  randomSeed: -1030702450
   InitialModule:
     serializedVersion: 3
     enabled: 1

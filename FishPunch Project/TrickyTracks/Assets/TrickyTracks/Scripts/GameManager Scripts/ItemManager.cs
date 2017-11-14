@@ -54,13 +54,6 @@ public class ItemManager : MonoBehaviour {
         //based on the connected controller total.
         switch(psActor.playerCount)
         {
-            case 1:
-                if (go_kart1 == null)
-                {
-                    go_kart1 = GameObject.Find("PlayerCharacter_001");
-                    wc_kart1 = go_kart1.GetComponent<PlayerActor>();
-                }
-                break;
             case 2:
                 if (go_kart1 == null)
                 {

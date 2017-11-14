@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class LapsManager : MonoBehaviour
 {
 
+    bool set = false;
+
     private ItemManager iManager;
     private NewPlacementController npc;
     private PlayerSelectActor psActor;
@@ -16,6 +18,7 @@ public class LapsManager : MonoBehaviour
     public AudioSource countDown3;
     public AudioSource countDownEnd;
 
+    private Image backBoard;
 
     public GameObject newManager;
 
@@ -205,6 +208,11 @@ public class LapsManager : MonoBehaviour
         }
         if(raceCountdownTimer < -0.5f)
         {
+            if (!set)
+            {
+                GameObject.Find("Backboard").SetActive(false);
+                set = true;
+            }
             countFour.enabled = false;
             countThree.enabled = false;
             countTwo.enabled = false;
@@ -214,31 +222,7 @@ public class LapsManager : MonoBehaviour
 
         switch (psActor.playerCount)
         {
-            case 1:
-                if (lapNumber == 4)
-                {
-                    restartTime -= Time.deltaTime;
 
-                    raceOver = true;
-                    restartText.enabled = true;
-                    intTime = (int)restartTime;
-                    restartText.text = "Race Restarts in: " + intTime.ToString();
-
-
-
-                    iManager.enabled = false;
-                    npc.enabled = false;
-                    this.enabled = false;
-                    psActor.enabled = true;
-
-                    if (restartTime < 0)
-                    {
-                        SceneManager.LoadScene(1);
-                        Instantiate(newManager);
-                        GameObject.Destroy(this.gameObject);
-                    }
-                }
-                break;
             case 2:
 
                 if ((kart1.lapNumber == 4 || kart2.lapNumber == 4) && !raceOver)
@@ -579,13 +563,5 @@ public class LapsManager : MonoBehaviour
 
 
       
-    }
-
-
-    public void OnTriggerEnter(Collider coll)
-    {
-
-
-
     }
 }

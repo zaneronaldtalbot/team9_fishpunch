@@ -118,6 +118,9 @@ public class PlayerActor : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        Debug.Log("Kart " + playerNumber + ": " + checkPointCounter);
+
+
         if(lapManager == null)
         {
             lapManager = GameObject.Find("Manager").GetComponent<LapsManager>();
@@ -127,16 +130,19 @@ public class PlayerActor : MonoBehaviour {
         //If counter = 0 finish line = last checkpoint and first checkpoint = next.
         //if (checkPointCounter == 0)
         //{
-           if (lapManager != null)
-           {
-               if (lapManager.checkPoints != null)
-               {
-                   nextCheckPoint = lapManager.checkPoints[0];
-               }
-               if (lapManager.FinishLine != null)
-               {
-                   lastCheckPoint = lapManager.FinishLine;
-               }
+        if (lapManager != null)
+        {
+            if (checkPointCounter == 0)
+            {
+                if (lapManager.checkPoints != null)
+                {
+                    nextCheckPoint = lapManager.checkPoints[0];
+                }
+                if (lapManager.FinishLine != null)
+                {
+                    lastCheckPoint = lapManager.FinishLine;
+                }
+            }
            }
       
 

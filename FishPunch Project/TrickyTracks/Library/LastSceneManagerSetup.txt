@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/TrickyTracks/Scenes/Set_Pieces.unity
+  isLoaded: 1
+  isActive: 1

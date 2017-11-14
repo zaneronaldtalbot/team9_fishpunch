@@ -33,6 +33,7 @@ public class PlayerSelectActor : MonoBehaviour
     [Tooltip("Kart prefab Instances.")]
     public GameObject kartOne, kartTwo, kartThree, kartFour;
 
+    Image playB, exitB;
 
     public float timer = 60.0f;
 
@@ -45,6 +46,10 @@ public class PlayerSelectActor : MonoBehaviour
     {
         manager = GameObject.Find("Manager");
         gpManager = manager.GetComponent<GamePadManager>();
+        playB = GameObject.Find("Play").GetComponent<Image>();
+        exitB = GameObject.Find("Exit").GetComponent<Image>();
+        playB.color = Color.grey;
+        exitB.color = Color.grey;
 
     }
 
@@ -56,15 +61,15 @@ public class PlayerSelectActor : MonoBehaviour
             SceneManager.LoadScene("Peter's Map");
         }
 
+
+        if(playerCount > 1)
+        {
+            playB.color = Color.yellow;
+            play
+        }
+
         switch (gpManager.ConnectedTotal())
         {
-            case 1:
-                if (playerReady1)
-                {
-                    SceneManager.LoadScene("Peter's Map");
-                   
-                }
-                break;
             case 2:
                 if (playerReady1 && playerReady2)
                 {

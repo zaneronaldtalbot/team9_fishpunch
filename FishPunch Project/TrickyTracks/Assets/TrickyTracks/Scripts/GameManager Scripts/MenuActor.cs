@@ -9,7 +9,7 @@ public class MenuActor : MonoBehaviour {
     private GamePadManager gpManager;
     private xbox_gamepad gamepad1;
 
-    public AudioSource gearShiftOne, gearShiftTwo, beepBeep;
+    private AudioSource gearShiftOne, gearShiftTwo, beepBeep;
 
     float deadZone = 0.9f;
 
@@ -19,7 +19,10 @@ public class MenuActor : MonoBehaviour {
     public GameObject playButton, optionButton, exitButton;
 
     Image playi, optioni, exiti;
-    
+
+
+
+
     Color y = new Color(1, 0.92f, 0.016f, 1);
 
     private int buttonIndex = 1;
@@ -57,13 +60,13 @@ public class MenuActor : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        Debug.Log(buttonIndex);
         switch(buttonIndex)
         {
             case 1:
                 playi.color = y;
-                optioni.color = Color.white;
-                exiti.color = Color.white;
+                optioni.color = Color.grey ;
+                exiti.color = Color.grey;
                 coolDown -= Time.deltaTime;
                 if (gamepad1.GetStick_L().Y > deadZone && coolDown < 0)
                 {
@@ -78,6 +81,11 @@ public class MenuActor : MonoBehaviour {
                     coolDown = cdCopy;
                 }
 
+                if(gamepad1.GetButtonDown("Start"))
+                {
+                    LoadLevel(1);
+                }
+
                 if(gamepad1.GetButtonDown("A"))
                 {
                     beepBeep.Play();
@@ -88,8 +96,8 @@ public class MenuActor : MonoBehaviour {
             case 2:
                 coolDown -= Time.deltaTime;
                 optioni.color = y;
-                playi.color = Color.white;
-                exiti.color = Color.white;
+                playi.color = Color.grey;
+                exiti.color = Color.grey;
 
                 if (gamepad1.GetStick_L().Y > deadZone && coolDown < 0)
                 {
@@ -112,8 +120,8 @@ public class MenuActor : MonoBehaviour {
                 break;
             case 3:
                 exiti.color = y;
-                playi.color = Color.white;
-                optioni.color = Color.white;
+                playi.color = Color.grey;
+                optioni.color = Color.grey;
                 coolDown -= Time.deltaTime;
                 if (gamepad1.GetStick_L().Y > deadZone && coolDown < 0)
                 {
