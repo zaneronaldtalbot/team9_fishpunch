@@ -23,8 +23,13 @@ public class OptionMenuScript : MonoBehaviour {
     float coolDown = 0.3f;
     float cdCopy = 0.3f;
 
+    private Scene currentScene;
+
     // sliders
-    public GameObject MasterSlider, MusicSlider, SfxSlider, BackMenu;
+    public GameObject MasterSlider, MusicSlider, SfxSlider;
+
+    [Header("Buttons")]
+    public GameObject BackMenu;
     public GameObject AudioControlsSwitch;
 
     // controller changes
@@ -42,10 +47,18 @@ public class OptionMenuScript : MonoBehaviour {
 
     private bool isControllerMenu = false;
 
+    [Header("Sliders for Volume")]
     public Slider MasterVolume;
     public Slider MusicVolume;
     public Slider SfxVolume;
 
+    [Header("Switches")]
+    public GameObject AudioMenu;
+    public GameObject ControllerMenu;
+
+    [Header("------- Audio ------")]
+
+    [Header("Volume test Sliders")]
     [Range(0, 1)]
     public float MasterValue = 0.5f;
     [Range(0, 1)]
@@ -53,34 +66,41 @@ public class OptionMenuScript : MonoBehaviour {
     [Range(0, 1)]
     public float SFXValue = 0.5f;
 
-    public GameObject AudioMenu, ControllerMenu;
-
-    public AudioSource[] sounds;
-    [HideInInspector]
+    [Header("Music")]
+    public GameObject MusicGameObject;
     public AudioSource music;
+
+    [Header("SFX")]
+    public GameObject[] AudioSFX;
+    public AudioSource[] sounds;
     
-    public AudioSource[] SFX;
+    
     [HideInInspector]
     public AudioSource SFX1;
+    [HideInInspector]
+    public AudioSource SFX2;
+    [HideInInspector]
+    public AudioSource SFX3;
 
     public void SetMasterVolume(float value)
     {
-        AudioListener.volume = MasterVolume.value;
+        AudioListener.volume = MasterValue;
 
         Debug.Log(MasterVolume.value);
     }
     public void setMusicVolume(float value)
     {
         
-        music.volume = MusicVolume.value;
-
+        music.volume = MusicValue;
         Debug.Log(MusicVolume.value);
     }
 
     public void setSfxVolume(float value)
     {
-        
-        SFX1.volume = SfxVolume.value;
+        for (int i = 0; i < sounds.Length; ++i)
+        {
+            sounds[i].volume = SFXValue;
+        }
 
         Debug.Log(SfxVolume.value);
     }
@@ -133,11 +153,23 @@ public class OptionMenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        currentScene = SceneManager.GetActiveScene();
+
+        if (currentScene.buildIndex == 3)
+        {
+            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("OptionsManager"));
+        }
+
         gpManager = this.gameObject.GetComponent<GamePadManager>();
         gamepad1 = GamePadManager.Instance.GetGamePad(1);
         gamepad2 = GamePadManager.Instance.GetGamePad(2);
         gamepad3 = GamePadManager.Instance.GetGamePad(3);
         gamepad4 = GamePadManager.Instance.GetGamePad(4);
+
+        AudioSFX = GameObject.FindGameObjectsWithTag("SFX");
+
+        sounds = new AudioSource[AudioSFX.Length];
 
         //masteri = MasterSlider.GetComponent<Image>();
         //musici = MusicSlider.GetComponent<Image>();
@@ -146,13 +178,19 @@ public class OptionMenuScript : MonoBehaviour {
         //controli = AudioControlsSwitch.GetComponent<Image>();
         //backi = BackMenu.GetComponent<Image>();
         controlChoice = 1;
+        if (sounds != null)
+        {
+            for (int i = 0; i < AudioSFX.Length; ++i)
+            {
+                sounds[i] = AudioSFX[i].GetComponent<AudioSource>();
+            }
+        }
 
 
 
-        sounds = GetComponents<AudioSource>();
-        music = sounds[0];
-        SFX1 = sounds[1];
-        SFX[0] = SFX1;
+        MusicGameObject = GameObject.FindGameObjectWithTag("Music");
+
+        music = MusicGameObject.GetComponent<AudioSource>();
 
         controlChange.text = "test";
 
@@ -163,10 +201,13 @@ public class OptionMenuScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        
+        
 
         MasterValue = MasterVolume.value;
         MusicValue = MusicVolume.value;
         SFXValue = SfxVolume.value;
+
 
         SetMasterVolume(MasterValue);
         setMusicVolume(MusicValue);
@@ -213,11 +254,13 @@ public class OptionMenuScript : MonoBehaviour {
                 if (state.ThumbSticks.Left.X > deadZone) // changing the mastervolume slider in the scene
                 {
                     MasterVolume.value += 0.01f;
+                    SetMasterVolume(MasterValue);
                 }
 
                 if (state.ThumbSticks.Left.X < -deadZone)
                 {
                     MasterVolume.value -= 0.01f;
+                    SetMasterVolume(MasterValue);
                 }
 
                 break;
@@ -245,11 +288,13 @@ public class OptionMenuScript : MonoBehaviour {
                 if (state.ThumbSticks.Left.X > deadZone) // changing the musicvolume slider in the scene
                 {
                     MusicVolume.value += 0.01f;
+                    setMusicVolume(MusicValue);
                 }
 
                 if (state.ThumbSticks.Left.X < -deadZone)
                 {
                     MusicVolume.value -= 0.01f;
+                    setMusicVolume(MusicValue);
                 }
                 break;
 
@@ -275,11 +320,13 @@ public class OptionMenuScript : MonoBehaviour {
                 if (state.ThumbSticks.Left.X > deadZone) //changing the sound effects volume slider in the scene
                 {
                     SfxVolume.value += 0.01f;
+                    setSfxVolume(SFXValue);
                 }
 
                 if (state.ThumbSticks.Left.X < -deadZone)
                 {
                     SfxVolume.value -= 0.01f;
+                    setSfxVolume(SFXValue);
                 }
                 break;
 
@@ -378,5 +425,6 @@ public class OptionMenuScript : MonoBehaviour {
                 break;
         }
 
+        
     }
 }
