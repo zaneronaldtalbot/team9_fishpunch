@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+//Written by Angus Secomb
+//Last edited on 17/11/17
 public class MenuActor : MonoBehaviour {
 
     private GamePadManager gpManager;
