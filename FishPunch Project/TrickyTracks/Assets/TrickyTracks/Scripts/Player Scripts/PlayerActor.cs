@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Written by Angus Secomb
 //Last edited 19/11/17
@@ -12,6 +13,10 @@ public class PlayerActor : MonoBehaviour {
     private LapsManager lapManager;
 
     private NewPlacementController npcManager;
+
+    public ParticleSystem deathParticles;
+
+    public ParticleSystem respawnParticles;
 
     //Public lap related varaibles.
     [HideInInspector]
@@ -91,8 +96,12 @@ public class PlayerActor : MonoBehaviour {
     private bool lockSteer = false;
     private float steerAngleCopy;
 
+    private Image play, playerSelect, menu;
+
     [HideInInspector]
     public bool hitSlick = false;
+
+    private bool isPaused = false;
 
     //Layer mask used to stop raycast interacting and hitting kart.
     int layerMask;
@@ -143,12 +152,10 @@ public class PlayerActor : MonoBehaviour {
     void Update() {
 
 
-
-
         Debug.Log("Kart " + playerNumber + ": " + checkPointCounter);
 
 
-        if(lapManager == null)
+        if (lapManager == null)
         {
             lapManager = GameObject.Find("Manager").GetComponent<LapsManager>();
         }
@@ -170,8 +177,28 @@ public class PlayerActor : MonoBehaviour {
                     lastCheckPoint = lapManager.FinishLine;
                 }
             }
-           }
-      
+        }
+
+
+        if (gamepad.GetButtonDown("Start") && !isPaused)
+        {
+            isPaused = true;
+            Time.timeScale = 0;
+        }
+        else if (gamepad.GetButtonDown("Start") && isPaused)
+        {
+            isPaused = false;
+            Time.timeScale = 1;
+        }
+
+        if(isPaused)
+        {
+
+        }
+        else if(!isPaused)
+        {
+
+        }
 
         //if (lapManager.endTime < 0 && lapNumber < 3)
         //{
@@ -219,6 +246,9 @@ public class PlayerActor : MonoBehaviour {
            //If the player is disabled.
         if(playerDisabled)
         {
+            Vector3 tempVector;
+            deathParticles.Play();
+            tempVector = deathParticles.transform.position;
             //Freeze rigidbody, disable mesh, reset velocity, move kart slightly back and up.
             immuneToDamage = true;
             disabledTimer += Time.deltaTime;
@@ -234,10 +264,15 @@ public class PlayerActor : MonoBehaviour {
                 setOnce = false;
             }
 
+            deathParticles.transform.position = tempVector;
+
             //If disable timer is greater than 0 take constraints off car
             //turn mesh on and turn off/on relevant bools.
             if(disabledTimer > 2.0f)
             {
+                deathParticles.transform.position = kart.transform.position;
+                deathParticles.Stop();
+                respawnParticles.Play();
                 kartBody.constraints = RigidbodyConstraints.None;
                 disabledTimer = 0.0f;
                 playerDisabled = false;

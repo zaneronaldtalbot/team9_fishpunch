@@ -8,6 +8,8 @@ public class ParticleActor : MonoBehaviour {
 
     public ParticleSystem particlesOne;
     public ParticleSystem particlesTwo;
+    public ParticleSystem sparksOne;
+    public ParticleSystem sparksTwo;
 
     private ParticleSystem p3;
 
@@ -36,9 +38,16 @@ public class ParticleActor : MonoBehaviour {
             if (kart.gamepad.GetButtonDown("B"))
             {               
                     particlesOne.time = playTime;
+                sparksOne.time = playTime;
+
+                sparksOne.Play();
 
                     particlesOne.Play();
-                     
+
+
+                sparksTwo.time = playTime;
+
+                sparksTwo.Play();
                     particlesTwo.Play();
                     particlesTwo.time = playTime;
             }
@@ -52,6 +61,14 @@ public class ParticleActor : MonoBehaviour {
                 {
                     particlesTwo.Stop();
 
+                }
+                if(sparksOne.isPlaying)
+                {
+                    sparksOne.Stop();
+                }
+                if(sparksTwo.isPlaying)
+                {
+                    sparksTwo.Stop();
                 }
 
             }
