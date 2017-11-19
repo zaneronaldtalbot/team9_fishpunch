@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written By Angus Secomb
+//Last editede 19/11/2017
 public class ItemManager : MonoBehaviour {
 
     //Kart Script
@@ -11,8 +13,6 @@ public class ItemManager : MonoBehaviour {
 
     //rocketactor.
     private RocketActor rocketActor;
-
-    
 
     //Gameobjects.
     private GameObject go_kart1;
@@ -126,9 +126,6 @@ public class ItemManager : MonoBehaviour {
         {
             kartItemChecks(wc_kart4, go_kart4);
         }
-
-
-
     }
 
     void kartItemChecks(PlayerActor wc_kart, GameObject go_kart)
@@ -138,11 +135,9 @@ public class ItemManager : MonoBehaviour {
             // "X" boost the player and set get rid of the boost item.
             if (wc_kart.itemBoost)
             {
-                if (wc_kart.gamepad.GetButtonDown("X"))
-                {
+
                     wc_kart.boostPlayer = true;
                     wc_kart.itemBoost = false;
-                }
             }
         }
 
@@ -151,23 +146,17 @@ public class ItemManager : MonoBehaviour {
         //and set itemmine to false.
         if (wc_kart.itemMine)
         {
-            if (wc_kart.gamepad.GetButtonDown("X"))
-            {
                 Instantiate(Mine, go_kart.transform.position + (-go_kart.transform.forward * 3), go_kart.transform.rotation);
                 wc_kart.itemMine = false;
-            }
         }
 
         //If kart grabs item rpg and presses X
         //fire rocket and set item RPG to false.
         if (wc_kart.itemRPG)
         {
-            if (wc_kart.gamepad.GetButtonDown("X"))
-            {
                 rocketFired = true;
                 tempRocket = Instantiate(Rocket, go_kart.transform.position + (go_kart.transform.forward * 5), (go_kart.transform.rotation)) as GameObject;
                 wc_kart.itemRPG = false;
-            }
         }
 
         //Fire temprocket.

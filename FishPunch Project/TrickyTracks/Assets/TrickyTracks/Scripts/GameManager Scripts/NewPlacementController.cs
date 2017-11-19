@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Written by Angus Secomb
+//Last edited 19/11/2017.
 public class NewPlacementController : MonoBehaviour
 {
     private GameObject[] items;
-    private GameObject[] mines;
-    private GameObject[] boosts;
-    private GameObject[] slicks;
 
     public Color disabledColor;
 
@@ -22,9 +21,6 @@ public class NewPlacementController : MonoBehaviour
     private PlayerSelectActor psActor;
 
     private LapsManager lapManager;
-
-    //Copy of item lists.
-    private GameObject itemListcopy1, itemListCopy2, itemListCopy3, itemListCopy4;
 
     public float prefabRotationSpeed = 2.0f;
 
@@ -73,8 +69,6 @@ public class NewPlacementController : MonoBehaviour
     public Sprite playerSprite2;
     public Sprite playerSprite3;
     public Sprite playerSprite4;
-
-    public Material redItem, transparentItem;
 
     //Object that the raycast shoots down from.
     private GameObject raycastObject1, raycastObject2, raycastObject3, raycastObject4;
@@ -139,8 +133,6 @@ public class NewPlacementController : MonoBehaviour
 
         //I know how bad gameobject.Find is dont worry just used it as i had to write 99%
         //of the game myself so had no time to plan out a proper system :)
-
-
         itemCount1Num1 = GameObject.Find("ItemCount1Num1").GetComponent<Image>();
         itemCount1Num2 = GameObject.Find("ItemCount1Num2").GetComponent<Image>();
         itemCount2Num1 = GameObject.Find("ItemCount2Num1").GetComponent<Image>();
@@ -161,42 +153,9 @@ public class NewPlacementController : MonoBehaviour
         currentItem3 = GameObject.Find("CurrentItem3").GetComponent<Image>();
         currentItem4 = GameObject.Find("CurrentItem4").GetComponent<Image>();
 
-        powerup1 = GameObject.Find("Powerup1").GetComponent<Image>();
-        powerup2 = GameObject.Find("Powerup2").GetComponent<Image>();
-        powerup3 = GameObject.Find("Powerup3").GetComponent<Image>();
-        powerup4 = GameObject.Find("Powerup4").GetComponent<Image>();
-
-        powerup1_2P = GameObject.Find("Powerup1_2P").GetComponent<Image>();
-        powerup2_2P = GameObject.Find("Powerup2_2P").GetComponent<Image>();
-
-        powerupIcon1 = GameObject.Find("PowerupIcon1").GetComponent<Image>();
-        powerupIcon2 = GameObject.Find("PowerupIcon2").GetComponent<Image>();
-        powerupIcon3 = GameObject.Find("PowerupIcon3").GetComponent<Image>();
-        powerupIcon4 = GameObject.Find("PowerupIcon4").GetComponent<Image>();
-
-        powerupIcon1_2P = GameObject.Find("PowerupIcon1_2P").GetComponent<Image>();
-        powerupIcon2_2P = GameObject.Find("PowerupIcon2_2P").GetComponent<Image>();
-
         //depending on playercount.
         switch (psActor.playerCount)
         {
-            case 1:
-                //Randomise items and assign gamepad.
-                randomiseItems(randTempNum1, randNumP1);
-                allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
-                placeableObject1 = itemsP1[0];
-                gamepad1 = GamePadManager.Instance.GetGamePad(1);
-
-                //Find raycast object and kart
-                raycastObject1 = GameObject.Find("RayCast1");
-                kart1 = GameObject.Find("PlayerCharacter_001");
-
-                //All UI except first player disabled.
-                currentItem2.enabled = false;
-                currentItem3.enabled = false;
-                currentItem4.enabled = false;
-
-                break;
             case 2:
                 //Randomise items.
                 randomiseItems(randTempNum1, randNumP1);
@@ -223,15 +182,6 @@ public class NewPlacementController : MonoBehaviour
                 currentItemBack4.enabled = false;
                 currentItemBack3.sprite = playerSprite2;
 
-                powerup1.enabled = false;
-                powerup2.enabled = false;
-                powerup3.enabled = false;
-                powerup4.enabled = false;
-                powerupIcon1.enabled = false;
-                powerupIcon2.enabled = false;
-                powerupIcon3.enabled = false;
-                powerupIcon4.enabled = false;
-
                 GameObject.Find("ItemCount3").SetActive(false);
                 itemCount3Num1.enabled = false;
                 itemCount3Num2.enabled = false;
@@ -242,13 +192,6 @@ public class NewPlacementController : MonoBehaviour
 
                 break;
             case 3:
-
-                powerup1_2P.enabled = false;
-                powerup2_2P.enabled = false;
-                powerupIcon1_2P.enabled = false;
-                powerupIcon2_2P.enabled = false;
-                powerup4.enabled = false;
-                powerupIcon4.enabled = false;
                 //Randomise items.
                 randomiseItems(randTempNum1, randNumP1);
                 allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
@@ -282,11 +225,6 @@ public class NewPlacementController : MonoBehaviour
               
                 break;
             case 4:
-
-                powerup1_2P.enabled = false;
-                powerup2_2P.enabled = false;
-                powerupIcon1_2P.enabled = false;
-                powerupIcon2_2P.enabled = false;
 
                 randomiseItems(randTempNum1, randNumP1);
                 allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
@@ -333,12 +271,7 @@ public class NewPlacementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("items count: " + itemsP1.Count);
-        Debug.Log("index: " + prefabIndex1);
         items = GameObject.FindGameObjectsWithTag("Item");
-        //    boosts = GameObject.FindGameObjectsWithTag("Boost");
-        //      slicks = GameObject.FindGameObjectsWithTag("OilSlick");
-        //      mines = GameObject.FindGameObjectsWithTag("ItemMine");
 
         foreach (GameObject obj in items)
         {
@@ -349,6 +282,7 @@ public class NewPlacementController : MonoBehaviour
                     Renderer rend;
                     rend = currentPlaceableObject1.GetComponentInChildren<Renderer>();
                     rend.material.color = Color.red;
+                
 
                     cannotPlace1 = true;
                 }
@@ -377,6 +311,7 @@ public class NewPlacementController : MonoBehaviour
                     cannotPlace2 = false;
                     Renderer rend;
                     rend = currentPlaceableObject2.GetComponentInChildren<Renderer>();
+                  
                     rend.material.color = Color.white;
                     rend.material.color = new Color(0, 0, 0, 0);
                 }
@@ -396,8 +331,10 @@ public class NewPlacementController : MonoBehaviour
                     cannotPlace3 = false;
                     Renderer rend;
                     rend = currentPlaceableObject3.GetComponentInChildren<Renderer>();
+
                     rend.material.color = Color.white;
                     rend.material.color = new Color(0, 0, 0, 0);
+
                 }
             }
 
@@ -415,8 +352,10 @@ public class NewPlacementController : MonoBehaviour
                     cannotPlace4 = false;
                     Renderer rend;
                     rend = currentPlaceableObject4.GetComponentInChildren<Renderer>();
+
                     rend.material.color = Color.white;
                     rend.material.color = new Color(0, 0, 0, 0);
+
                 }
             }
         }
@@ -424,31 +363,11 @@ public class NewPlacementController : MonoBehaviour
         {
             objectGeneration();
             releasePrefab();
-         //   rotatePrefab();
             changePrefab();
         }
 
         switch (psActor.playerCount)
         {
-            case 1:
-
-                if (kart1.GetComponent<PlayerActor>().assignNewTraps)
-                {
-                    randNumP1.Clear();
-                    randomiseItems(randTempNum1, randNumP1);
-                    allocateRandItems(randNumP1, itemPrefabs, trapPrefabs, itemsP1);
-                    kart1.GetComponent<PlayerActor>().assignNewTraps = false;
-                    placeableObject1 = itemsP1[0];
-                }
-
-                if (currentPlaceableObject1 != null)
-                {
-                    fitPrefabToTrack(raycastObject1, currentPlaceableObject1, gamepad1);
-                }
-
-                switchItemIcons(prefabIndex1, currentItem1, itemsP1);
-
-                break;
             case 2:
          
                 switchItemIcons(prefabIndex1, currentItem1, itemsP1);
@@ -470,10 +389,6 @@ public class NewPlacementController : MonoBehaviour
                     kart2.GetComponent<PlayerActor>().assignNewTraps = false;
                     placeableObject2 = itemsP2[0];
                 }
-
-
-                       switchPowerupIcons(powerupIcon1_2P, kart1);
-                switchPowerupIcons(powerupIcon2_2P, kart2);
 
                 if (currentPlaceableObject1 != null)
                 {
@@ -498,10 +413,6 @@ public class NewPlacementController : MonoBehaviour
                 switchItemIcons(prefabIndex1, currentItem1, itemsP1);
                 switchItemIcons(prefabIndex2, currentItem2, itemsP2);
                 switchItemIcons(prefabIndex3, currentItem3, itemsP3);
-
-                switchPowerupIcons(powerupIcon1, kart1);
-                switchPowerupIcons(powerupIcon2, kart2);
-                switchPowerupIcons(powerupIcon3, kart3);
 
                 if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
@@ -595,18 +506,10 @@ public class NewPlacementController : MonoBehaviour
                 placeableObject3 = itemsP3[0];
                 placeableObject4 = itemsP4[0];
 
-
                 switchItemIcons(prefabIndex1, currentItem1, itemsP1);
                 switchItemIcons(prefabIndex2, currentItem2, itemsP2);
                 switchItemIcons(prefabIndex3, currentItem3, itemsP3);
                 switchItemIcons(prefabIndex4, currentItem4, itemsP4);
-
-
-                switchPowerupIcons(powerupIcon1, kart1);
-                switchPowerupIcons(powerupIcon2, kart2);
-                switchPowerupIcons(powerupIcon3, kart3);
-                switchPowerupIcons(powerupIcon4, kart4);
-
 
                 playerItemCountUi(itemsP1, itemCount1Num1, itemCount1Num2);
                 playerItemCountUi(itemsP2, itemCount3Num1, itemCount3Num2);
@@ -625,19 +528,6 @@ public class NewPlacementController : MonoBehaviour
     {
         switch (psActor.playerCount)
         {
-            case 1:
-                if (gamepad1.GetButtonDown("A"))
-                {
-                    if (currentPlaceableObject1 == null)
-                    {
-                        if (itemsP1.Count > 0)
-                        {
-                            currentPlaceableObject1 = Instantiate(placeableObject1);
-                            currentPlaceableObject1.tag = "PlaceableObject";
-                        }
-                    }
-                }
-                break;
             case 2:
                 if (gamepad1.GetButtonDown("A"))
                 {
@@ -645,8 +535,23 @@ public class NewPlacementController : MonoBehaviour
                     {
                         if (itemsP1.Count > 0)
                         {
-                            currentPlaceableObject1 = Instantiate(placeableObject1);
-                            currentPlaceableObject1.tag = "PlaceableObject";
+                            if (placeableObject1 == rpg)
+                            {
+                                kart1.GetComponent<PlayerActor>().itemRPG = true;
+                            }
+                            else if (placeableObject1 == mine)
+                            {
+                                kart1.GetComponent<PlayerActor>().itemMine = true;
+                            }
+                            else if (placeableObject1 == boost)
+                            {
+                                kart1.GetComponent<PlayerActor>().itemBoost = true;
+                            }
+                            else
+                            {
+                                currentPlaceableObject1 = Instantiate(placeableObject1);
+                                currentPlaceableObject1.tag = "PlaceableObject";
+                            }
                         }
                     }
                 }
@@ -656,8 +561,23 @@ public class NewPlacementController : MonoBehaviour
                     {
                         if (itemsP2.Count > 0)
                         {
-                            currentPlaceableObject2 = Instantiate(placeableObject2);
-                            currentPlaceableObject2.tag = "PlaceableObject";
+                            if (placeableObject2 == rpg)
+                            {
+                                kart2.GetComponent<PlayerActor>().itemRPG = true;
+                            }
+                            else if (placeableObject2 == mine)
+                            {
+                                kart2.GetComponent<PlayerActor>().itemMine = true;
+                            }
+                            else if (placeableObject2 == boost)
+                            {
+                                kart2.GetComponent<PlayerActor>().itemBoost = true;
+                            }
+                            else
+                            {
+                                currentPlaceableObject2 = Instantiate(placeableObject2);
+                                currentPlaceableObject2.tag = "PlaceableObject";
+                            }
                         }
                     }
                 }
@@ -765,198 +685,12 @@ public class NewPlacementController : MonoBehaviour
         }
     }
 
-    //Rotates prefab when a is held and they press RB or LB
-    void rotatePrefab()
-    {
-        if (psActor.playerCount == 1)
-        {
-            if (gamepad1.GetButton("A"))
-            {
-                if (gamepad1.GetButton("RB"))
-                {
-                    gamepad1.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad1.GetButton("LB"))
-                {
-                    gamepad1.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-        }
-
-        if (psActor.playerCount == 2)
-        {
-            if (gamepad1.GetButton("A"))
-            {
-                if (gamepad1.GetButton("RB"))
-                {
-                    gamepad1.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad1.GetButton("LB"))
-                {
-                    gamepad1.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-            if (gamepad2.GetButton("A"))
-            {
-                if (gamepad2.GetButton("RB"))
-                {
-                    gamepad2.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad2.GetButton("LB"))
-                {
-                    gamepad2.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-        }
-
-        if (psActor.playerCount == 3)
-        {
-            if (gamepad1.GetButton("A"))
-            {
-                if (gamepad1.GetButton("RB"))
-                {
-                    gamepad1.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad1.GetButton("LB"))
-                {
-                    gamepad1.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-            if (gamepad2.GetButton("A"))
-            {
-                if (gamepad2.GetButton("RB"))
-                {
-                    gamepad2.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad2.GetButton("LB"))
-                {
-                    gamepad2.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-            if (gamepad3.GetButton("A"))
-            {
-                if (gamepad3.GetButton("RB"))
-                {
-                    gamepad3.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad3.GetButton("LB"))
-                {
-                    gamepad3.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-
-        }
-
-        if (psActor.playerCount == 4)
-        {
-            if (gamepad1.GetButton("A"))
-            {
-                if (gamepad1.GetButton("RB"))
-                {
-                    gamepad1.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad1.GetButton("LB"))
-                {
-                    gamepad1.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-            if (gamepad2.GetButton("A"))
-            {
-                if (gamepad2.GetButton("RB"))
-                {
-                    gamepad2.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad2.GetButton("LB"))
-                {
-                    gamepad2.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-            if (gamepad3.GetButton("A"))
-            {
-                if (gamepad3.GetButton("RB"))
-                {
-                    gamepad3.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad3.GetButton("LB"))
-                {
-                    gamepad3.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-            if (gamepad4.GetButton("A"))
-            {
-                if (gamepad4.GetButton("RB"))
-                {
-                    gamepad4.triggerRotation += prefabRotationSpeed;
-                }
-                if (gamepad4.GetButton("LB"))
-                {
-                    gamepad4.triggerRotation -= prefabRotationSpeed;
-                }
-            }
-
-        }
-
-    }
-
     //When A is not pressed down and there count is above 0
     //rb or lb switches between item prefabs
     void changePrefab()
     {
         switch (psActor.playerCount)
         {
-            case 1:
-                //if count above 0
-                if (itemsP1.Count > 0)
-                {
-                    if (!gamepad1.GetButton("A"))
-                    {
-                        if (gamepad1.GetButtonDown("RB"))
-                        {
-                            //destroy object instance and add +1 to index
-                            Destroy(currentPlaceableObject1);
-                            if (prefabIndex1 < itemsP1.Count - 1)
-                            {
-                                prefabIndex1++;
-                            }
-                            else
-                            {
-                                //= 0 if index reaches end of the list.
-                                prefabIndex1 = 0;
-                            }
-                            //Reassign object based on index
-                            placeableObject1 = itemsP1[prefabIndex1];
-                        }
-                        if (gamepad1.GetButtonDown("LB"))
-                        {
-                            //destroy object instance
-                            Destroy(currentPlaceableObject1);
-                            //If index is above 0 -1 from index
-                            if (prefabIndex1 > 0)
-                            {
-                                prefabIndex1--;
-                            }
-                            else
-                            {
-                                //if item count = 0
-                                if(itemsP1.Count == 0)
-                                {
-                                    prefabIndex1 = itemsP1.Count;
-                                }
-                                //count is greater than 0
-                                if (itemsP1.Count > 0)
-                                {
-                                    //Index = count - 1
-                                    prefabIndex1 = itemsP1.Count - 1;
-                                }
-
-                            }
-                            //reassign object based on index.
-                            placeableObject1 = itemsP1[prefabIndex1];
-                        }
-                        
-                    }
-                }
-                break;
             case 2:
                 if (itemsP1.Count > 0)
                 {
@@ -1346,82 +1080,61 @@ public class NewPlacementController : MonoBehaviour
     {
         switch (psActor.playerCount)
         {
-            case 1:
-                //On button release
-                if (gamepad1.GetButtonUp("A") && !cannotPlace1)
-                {
-                    if (itemsP1.Count > 0)
-                    {
-                        currentPlaceableObject1.tag = "Item";
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject1 = null;
-                        itemsP1.RemoveAt(prefabIndex1);
-                        if (prefabIndex1 == (itemsP1.Count))
-                        {
-                            if (prefabIndex1 != 0)
-                            {
-                                prefabIndex1--;
-                            }
-                        }
-                        if (itemsP1.Count > 1)
-                        {
-
-                            placeableObject1 = itemsP1[prefabIndex1];
-                        }
-                    }
-                    if (itemsP1.Count == 0)
-                    {
-                        placeableObject1 = null;
-                    }
-                }
-                else if (gamepad1.GetButtonUp("A") && cannotPlace1)
-                {
-                    Destroy(currentPlaceableObject1);
-                }
-
-                break;
             case 2:
-                //if (gamepad1.GetButtonUp("A"))
-                //{
-                //    if (itemsP1.Count > 0)
-                //    {
-                //        currentPlaceableObject1 = null;
-                //        itemsP1.RemoveAt(0);
-                //        placeableObject1 = itemsP1[0];
-                //    }
-                //    if (itemsP1.Count == 0)
-                //    {
-                //        placeableObject1 = null;
-                //    }
-                //}
                 if (gamepad1.GetButtonUp("A") && !cannotPlace1)
                 {
                     if (itemsP1.Count > 0)
                     {
-                        currentPlaceableObject1.tag = "Item";
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject1 = null;
-                        itemsP1.RemoveAt(prefabIndex1);
-                        if (prefabIndex1 <= (itemsP1.Count))
-                        {
-                            if (prefabIndex1 != 0)
-                            {
-                                prefabIndex1--;
-                            }
-                        }
-                        if (itemsP1.Count > 1)
+                        if ((placeableObject1 == rpg) || (placeableObject1 == mine) || (placeableObject1 == boost))
                         {
 
-                            placeableObject1 = itemsP1[prefabIndex1];
+                            itemsP1.RemoveAt(prefabIndex1);
+                            if (prefabIndex1 <= (itemsP1.Count))
+                            {
+                                if (prefabIndex1 != 0)
+                                {
+                                    prefabIndex1--;
+                                }
+                            }
+                            if (itemsP1.Count >= 1)
+                            {
+
+                                placeableObject1 = itemsP1[prefabIndex1];
+
+                            }
+                        
+                        if (itemsP1.Count == 0)
+                        {
+                            placeableObject1 = null;
 
                         }
                     }
-                    if (itemsP1.Count == 0)
-                    {
-                        placeableObject1 = null;
+                        else
+                        {
+                            currentPlaceableObject1.tag = "Item";
+                            //make current object copy null
+                            //remove item at the index
+                            currentPlaceableObject1 = null;
+                            itemsP1.RemoveAt(prefabIndex1);
+                            if (prefabIndex1 <= (itemsP1.Count))
+                            {
+                                if (prefabIndex1 != 0)
+                                {
+                                    prefabIndex1--;
+                                }
+                            }
+                            if (itemsP1.Count > 1)
+                            {
 
+                                placeableObject1 = itemsP1[prefabIndex1];
+
+                            }
+                        }
+                        if (itemsP1.Count == 0)
+                        {
+                            placeableObject1 = null;
+
+                        }
                     }
                 }
                 else if (gamepad1.GetButtonUp("A") && cannotPlace1)
@@ -1433,27 +1146,54 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP2.Count > 0)
                     {
-                        currentPlaceableObject2.tag = "Item";
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject2 = null;
-                        itemsP2.RemoveAt(prefabIndex2);
-                        if (prefabIndex2 == (itemsP2.Count))
-                        {
-                            if (prefabIndex2 != 0)
-                            {
-                                prefabIndex2--;
-                            }
-                        }
-                        if (itemsP2.Count >= 1)
+                        if ((placeableObject2 == rpg) || (placeableObject2 == mine) || (placeableObject2 == boost))
                         {
 
-                            placeableObject2 = itemsP2[prefabIndex2];
+                            itemsP2.RemoveAt(prefabIndex2);
+                            if (prefabIndex2 <= (itemsP2.Count))
+                            {
+                                if (prefabIndex2 != 0)
+                                {
+                                    prefabIndex2--;
+                                }
+                            }
+                            if (itemsP2.Count >= 1)
+                            {
+
+                                placeableObject2 = itemsP2[prefabIndex2];
+
+                            }
+
+                            if (itemsP2.Count == 0)
+                            {
+                                placeableObject2 = null;
+
+                            }
                         }
-                    }
-                    if (itemsP2.Count == 0)
-                    {
-                        placeableObject2 = null;
+                        else
+                        {
+                            currentPlaceableObject2.tag = "Item";
+                            //make current object copy null
+                            //remove item at the index
+                            currentPlaceableObject2 = null;
+                            itemsP2.RemoveAt(prefabIndex2);
+                            if (prefabIndex2 == (itemsP2.Count))
+                            {
+                                if (prefabIndex2 != 0)
+                                {
+                                    prefabIndex2--;
+                                }
+                            }
+                            if (itemsP2.Count >= 1)
+                            {
+
+                                placeableObject2 = itemsP2[prefabIndex2];
+                            }
+                        }
+                        if (itemsP2.Count == 0)
+                        {
+                            placeableObject2 = null;
+                        }
                     }
                 }
                 else if (gamepad2.GetButtonUp("A") && cannotPlace2)
@@ -1466,58 +1206,115 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP1.Count > 0)
                     {
-                        currentPlaceableObject1.tag = "Item";
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject1 = null;
-                        itemsP1.RemoveAt(prefabIndex1);
-                        if (prefabIndex1 == (itemsP1.Count))
-                        {
-                            if (prefabIndex1 != 0)
-                            {
-                                prefabIndex1--;
-                            }
-                        }
-                        if (itemsP1.Count >= 1)
+                        if ((placeableObject1 == rpg) || (placeableObject1 == mine) || (placeableObject1 == boost))
                         {
 
-                            placeableObject1 = itemsP1[prefabIndex1];
+                            itemsP1.RemoveAt(prefabIndex1);
+                            if (prefabIndex1 <= (itemsP1.Count))
+                            {
+                                if (prefabIndex1 != 0)
+                                {
+                                    prefabIndex1--;
+                                }
+                            }
+                            if (itemsP1.Count >= 1)
+                            {
+
+                                placeableObject1 = itemsP1[prefabIndex1];
+
+                            }
+
+                            if (itemsP1.Count == 0)
+                            {
+                                placeableObject1 = null;
+
+                            }
                         }
-                    }
-                    if (itemsP1.Count == 0)
-                    {
-                        placeableObject1 = null;
+                        else
+                        {
+                            currentPlaceableObject1.tag = "Item";
+                            //make current object copy null
+                            //remove item at the index
+                            currentPlaceableObject1 = null;
+                            itemsP1.RemoveAt(prefabIndex1);
+                            if (prefabIndex1 <= (itemsP1.Count))
+                            {
+                                if (prefabIndex1 != 0)
+                                {
+                                    prefabIndex1--;
+                                }
+                            }
+                            if (itemsP1.Count > 1)
+                            {
+
+                                placeableObject1 = itemsP1[prefabIndex1];
+
+                            }
+                        }
+                        if (itemsP1.Count == 0)
+                        {
+                            placeableObject1 = null;
+
+                        }
                     }
                 }
                 else if (gamepad1.GetButtonUp("A") && cannotPlace1)
                 {
                     Destroy(currentPlaceableObject1);
                 }
+
                 if (gamepad2.GetButtonUp("A") && !cannotPlace2)
                 {
                     if (itemsP2.Count > 0)
                     {
-                        currentPlaceableObject2.tag = "Item";
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject2 = null;
-                        itemsP2.RemoveAt(prefabIndex2);
-                        if (prefabIndex2 == (itemsP2.Count))
-                        {
-                            if (prefabIndex2 != 0)
-                            {
-                                prefabIndex2--;
-                            }
-                        }
-                        if (itemsP2.Count >= 1)
+                        if ((placeableObject2 == rpg) || (placeableObject2 == mine) || (placeableObject2 == boost))
                         {
 
-                            placeableObject2 = itemsP2[prefabIndex2];
+                            itemsP2.RemoveAt(prefabIndex2);
+                            if (prefabIndex2 <= (itemsP2.Count))
+                            {
+                                if (prefabIndex2 != 0)
+                                {
+                                    prefabIndex2--;
+                                }
+                            }
+                            if (itemsP2.Count >= 1)
+                            {
+
+                                placeableObject2 = itemsP2[prefabIndex2];
+
+                            }
+
+                            if (itemsP2.Count == 0)
+                            {
+                                placeableObject2 = null;
+
+                            }
                         }
-                    }
-                    if (itemsP2.Count == 0)
-                    {
-                        placeableObject2 = null;
+                        else
+                        {
+                            currentPlaceableObject2.tag = "Item";
+                            //make current object copy null
+                            //remove item at the index
+                            currentPlaceableObject2 = null;
+                            itemsP2.RemoveAt(prefabIndex2);
+                            if (prefabIndex2 == (itemsP2.Count))
+                            {
+                                if (prefabIndex2 != 0)
+                                {
+                                    prefabIndex2--;
+                                }
+                            }
+                            if (itemsP2.Count >= 1)
+                            {
+
+                                placeableObject2 = itemsP2[prefabIndex2];
+                            }
+                        }
+                        if (itemsP2.Count == 0)
+                        {
+                            placeableObject2 = null;
+                        }
                     }
                 }
                 else if (gamepad2.GetButtonUp("A") && cannotPlace2)
@@ -1528,27 +1325,54 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP3.Count > 0)
                     {
-                        currentPlaceableObject3.tag = "Item";
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject3 = null;
-                        itemsP3.RemoveAt(prefabIndex3);
-                        if (prefabIndex3 == (itemsP3.Count))
-                        {
-                            if (prefabIndex3 != 0)
-                            {
-                                prefabIndex3--;
-                            }
-                        }
-                        if (itemsP3.Count >= 1)
+                        if ((placeableObject3 == rpg) || (placeableObject3 == mine) || (placeableObject3 == boost))
                         {
 
-                            placeableObject3 = itemsP3[prefabIndex3];
+                            itemsP3.RemoveAt(prefabIndex3);
+                            if (prefabIndex3 <= (itemsP3.Count))
+                            {
+                                if (prefabIndex3 != 0)
+                                {
+                                    prefabIndex3--;
+                                }
+                            }
+                            if (itemsP3.Count >= 1)
+                            {
+
+                                placeableObject3 = itemsP3[prefabIndex3];
+
+                            }
+
+                            if (itemsP3.Count == 0)
+                            {
+                                placeableObject3 = null;
+
+                            }
                         }
-                    }
-                    if (itemsP3.Count == 0)
-                    {
-                        placeableObject3 = null;
+                        else
+                        {
+                            currentPlaceableObject3.tag = "Item";
+                            //make current object copy null
+                            //remove item at the index
+                            currentPlaceableObject3 = null;
+                            itemsP3.RemoveAt(prefabIndex3);
+                            if (prefabIndex3 == (itemsP3.Count))
+                            {
+                                if (prefabIndex3 != 0)
+                                {
+                                    prefabIndex3--;
+                                }
+                            }
+                            if (itemsP3.Count >= 1)
+                            {
+
+                                placeableObject3 = itemsP3[prefabIndex3];
+                            }
+                        }
+                        if (itemsP3.Count == 0)
+                        {
+                            placeableObject3 = null;
+                        }
                     }
                 }
                 else if (gamepad3.GetButtonUp("A") && cannotPlace3)
@@ -1561,60 +1385,118 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP1.Count > 0)
                     {
-                        currentPlaceableObject1.tag = "Item";
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject1 = null;
-                        itemsP1.RemoveAt(prefabIndex1);
-                        if (prefabIndex1 == (itemsP1.Count))
-                        {
-                            if (prefabIndex1 != 0)
-                            {
-                                prefabIndex1--;
-                            }
-                        }
-                        if (itemsP1.Count >= 1)
+                        if ((placeableObject1 == rpg) || (placeableObject1 == mine) || (placeableObject1 == boost))
                         {
 
-                            placeableObject1 = itemsP1[prefabIndex1];
+                            itemsP1.RemoveAt(prefabIndex1);
+                            if (prefabIndex1 <= (itemsP1.Count))
+                            {
+                                if (prefabIndex1 != 0)
+                                {
+                                    prefabIndex1--;
+                                }
+                            }
+                            if (itemsP1.Count >= 1)
+                            {
+
+                                placeableObject1 = itemsP1[prefabIndex1];
+
+                            }
+
+                            if (itemsP1.Count == 0)
+                            {
+                                placeableObject1 = null;
+
+                            }
                         }
-                    }
-                    if (itemsP1.Count == 0)
-                    {
-                        placeableObject1 = null;
+                        else
+                        {
+                            currentPlaceableObject1.tag = "Item";
+                            //make current object copy null
+                            //remove item at the index
+                            currentPlaceableObject1 = null;
+                            itemsP1.RemoveAt(prefabIndex1);
+                            if (prefabIndex1 <= (itemsP1.Count))
+                            {
+                                if (prefabIndex1 != 0)
+                                {
+                                    prefabIndex1--;
+                                }
+                            }
+                            if (itemsP1.Count > 1)
+                            {
+
+                                placeableObject1 = itemsP1[prefabIndex1];
+
+                            }
+                        }
+                        if (itemsP1.Count == 0)
+                        {
+                            placeableObject1 = null;
+
+                        }
                     }
                 }
                 else if (gamepad1.GetButtonUp("A") && cannotPlace1)
                 {
                     Destroy(currentPlaceableObject1);
                 }
-                if (gamepad2.GetButtonUp("A") && !cannotPlace1)
+
+                if (gamepad2.GetButtonUp("A") && !cannotPlace2)
                 {
                     if (itemsP2.Count > 0)
                     {
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject2 = null;
-                        itemsP2.RemoveAt(prefabIndex2);
-                        if (prefabIndex2 == (itemsP2.Count))
-                        {
-                            if (prefabIndex2 != 0)
-                            {
-                                prefabIndex2--;
-                            }
-                        }
-                        if (itemsP2.Count >= 1)
+                        if ((placeableObject2 == rpg) || (placeableObject2 == mine) || (placeableObject2 == boost))
                         {
 
-                            placeableObject2 = itemsP2[prefabIndex2];
+                            itemsP2.RemoveAt(prefabIndex2);
+                            if (prefabIndex2 <= (itemsP2.Count))
+                            {
+                                if (prefabIndex2 != 0)
+                                {
+                                    prefabIndex2--;
+                                }
+                            }
+                            if (itemsP2.Count >= 1)
+                            {
+
+                                placeableObject2 = itemsP2[prefabIndex2];
+
+                            }
+
+                            if (itemsP2.Count == 0)
+                            {
+                                placeableObject2 = null;
+
+                            }
+                        }
+                        else
+                        {
+                            currentPlaceableObject2.tag = "Item";
+                            //make current object copy null
+                            //remove item at the index
+                            currentPlaceableObject2 = null;
+                            itemsP2.RemoveAt(prefabIndex2);
+                            if (prefabIndex2 == (itemsP2.Count))
+                            {
+                                if (prefabIndex2 != 0)
+                                {
+                                    prefabIndex2--;
+                                }
+                            }
+                            if (itemsP2.Count >= 1)
+                            {
+
+                                placeableObject2 = itemsP2[prefabIndex2];
+                            }
+                        }
+                        if (itemsP2.Count == 0)
+                        {
+                            placeableObject2 = null;
                         }
                     }
-                    if (itemsP2.Count == 0)
-                    {
-                        placeableObject2 = null;
-                    }
                 }
-                else if (gamepad2.GetButtonUp("A") && cannotPlace1)
+                else if (gamepad2.GetButtonUp("A") && cannotPlace2)
                 {
                     Destroy(currentPlaceableObject2);
                 }
@@ -1622,27 +1504,54 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP3.Count > 0)
                     {
-                        currentPlaceableObject3.tag = "Item";
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject3 = null;
-                        itemsP3.RemoveAt(prefabIndex3);
-                        if (prefabIndex3 == (itemsP3.Count))
-                        {
-                            if (prefabIndex3 != 0)
-                            {
-                                prefabIndex3--;
-                            }
-                        }
-                        if (itemsP3.Count >= 1)
+                        if ((placeableObject3 == rpg) || (placeableObject3 == mine) || (placeableObject3 == boost))
                         {
 
-                            placeableObject3 = itemsP3[prefabIndex3];
+                            itemsP3.RemoveAt(prefabIndex3);
+                            if (prefabIndex3 <= (itemsP3.Count))
+                            {
+                                if (prefabIndex3 != 0)
+                                {
+                                    prefabIndex3--;
+                                }
+                            }
+                            if (itemsP3.Count >= 1)
+                            {
+
+                                placeableObject3 = itemsP3[prefabIndex3];
+
+                            }
+
+                            if (itemsP3.Count == 0)
+                            {
+                                placeableObject3 = null;
+
+                            }
                         }
-                    }
-                    if (itemsP3.Count == 0)
-                    {
-                        placeableObject3 = null;
+                        else
+                        {
+                            currentPlaceableObject3.tag = "Item";
+                            //make current object copy null
+                            //remove item at the index
+                            currentPlaceableObject3 = null;
+                            itemsP3.RemoveAt(prefabIndex3);
+                            if (prefabIndex3 == (itemsP3.Count))
+                            {
+                                if (prefabIndex3 != 0)
+                                {
+                                    prefabIndex3--;
+                                }
+                            }
+                            if (itemsP3.Count >= 1)
+                            {
+
+                                placeableObject3 = itemsP3[prefabIndex3];
+                            }
+                        }
+                        if (itemsP3.Count == 0)
+                        {
+                            placeableObject3 = null;
+                        }
                     }
                 }
                 else if (gamepad3.GetButtonUp("A") && cannotPlace3)
@@ -1653,30 +1562,57 @@ public class NewPlacementController : MonoBehaviour
                 {
                     if (itemsP4.Count > 0)
                     {
-                        currentPlaceableObject4.tag = "Item";
-                        //make current object copy null
-                        //remove item at the index
-                        currentPlaceableObject4 = null;
-                        itemsP4.RemoveAt(prefabIndex4);
-                        if (prefabIndex4 == (itemsP4.Count))
-                        {
-                            if (prefabIndex4 != 0)
-                            {
-                                prefabIndex4--;
-                            }
-                        }
-                        if (itemsP4.Count >= 1)
+                        if ((placeableObject4 == rpg) || (placeableObject4 == mine) || (placeableObject4 == boost))
                         {
 
-                            placeableObject4 = itemsP4[prefabIndex4];
+                            itemsP4.RemoveAt(prefabIndex4);
+                            if (prefabIndex4 <= (itemsP4.Count))
+                            {
+                                if (prefabIndex4 != 0)
+                                {
+                                    prefabIndex4--;
+                                }
+                            }
+                            if (itemsP4.Count >= 1)
+                            {
+
+                                placeableObject4 = itemsP4[prefabIndex4];
+
+                            }
+
+                            if (itemsP4.Count == 0)
+                            {
+                                placeableObject4 = null;
+
+                            }
+                        }
+                        else
+                        {
+                            currentPlaceableObject4.tag = "Item";
+                            //make current object copy null
+                            //remove item at the index
+                            currentPlaceableObject4 = null;
+                            itemsP4.RemoveAt(prefabIndex4);
+                            if (prefabIndex4 == (itemsP4.Count))
+                            {
+                                if (prefabIndex4 != 0)
+                                {
+                                    prefabIndex4--;
+                                }
+                            }
+                            if (itemsP4.Count >= 1)
+                            {
+
+                                placeableObject4 = itemsP4[prefabIndex4];
+                            }
+                        }
+                        if (itemsP4.Count == 0)
+                        {
+                            placeableObject4 = null;
                         }
                     }
-                    if (itemsP4.Count == 0)
-                    {
-                        placeableObject4 = null;
-                    }
                 }
-                else if(gamepad4.GetButtonUp("A") && cannotPlace4)
+                else if (gamepad4.GetButtonUp("A") && cannotPlace4)
                 {
                     Destroy(currentPlaceableObject4);
                 }
@@ -1771,30 +1707,6 @@ public class NewPlacementController : MonoBehaviour
 
     }
 
-    private void switchPowerupIcons(Image powerupIcon, GameObject kart)
-    {
-        if(kart.GetComponent<PlayerActor>().itemRPG)
-        {
-            powerupIcon.sprite = rpgIcon;
-        }
-
-        if(kart.GetComponent<PlayerActor>().itemBoost)
-        {
-            powerupIcon.sprite = boostIcon;
-        }
-
-        if (kart.GetComponent<PlayerActor>().itemMine)
-        {
-            powerupIcon.sprite = mineIcon;
-        }
-
-        if (!kart.GetComponent<PlayerActor>().itemRPG && !kart.GetComponent<PlayerActor>().itemBoost && !kart.GetComponent<PlayerActor>().itemMine)
-        {
-            powerupIcon.sprite = blankPowerupIcon;
-        }
-
-    }
-
     void playerItemCountUi(List<GameObject> playerItems, Image playerSprites, Image playerSprites2)
     {
                 switch(playerItems.Count)
@@ -1858,9 +1770,6 @@ public class NewPlacementController : MonoBehaviour
                         break;
                         
                 }
-    
-
         }   
-
 
 }

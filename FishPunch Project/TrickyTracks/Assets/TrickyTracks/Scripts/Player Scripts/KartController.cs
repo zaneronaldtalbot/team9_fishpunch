@@ -4,7 +4,8 @@ using System.Collections.Generic;
 /// <summary>
 /// The Kart Controller. Handles all the dynamics for the kart and also implements some helper functions for 
 /// things like speed boosts/penalties, and making the kart spin/wiggle/jump.
-/// Kart Controller base made by deercat, edited By Angus Secomb for use in project.
+/// Edited By Angus Secomb
+/// Last edited 18/11/17
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class KartController : MonoBehaviour

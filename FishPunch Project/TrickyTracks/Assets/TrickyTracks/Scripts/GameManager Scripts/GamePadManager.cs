@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Written by Angus Secomb
+//Last edited 14/11/17
 public class GamePadManager : MonoBehaviour {
     
     //How many gamepads

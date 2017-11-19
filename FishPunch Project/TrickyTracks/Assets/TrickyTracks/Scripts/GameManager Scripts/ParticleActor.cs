@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written by Angus Secomb
+//Last edited 18/11/2017
 public class ParticleActor : MonoBehaviour {
 
     public ParticleSystem particlesOne;
@@ -11,7 +13,7 @@ public class ParticleActor : MonoBehaviour {
 
     private PlayerActor kart;
 
-
+    public float playTime = 2.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -32,15 +34,13 @@ public class ParticleActor : MonoBehaviour {
         if (kart != null)
         {
             if (kart.gamepad.GetButtonDown("B"))
-            {
+            {               
+                    particlesOne.time = playTime;
 
-                particlesOne.time = 0.1f;
-                particlesOne.Play();
-
-
-                particlesTwo.Play();
-                particlesTwo.time = 0.1f;
-
+                    particlesOne.Play();
+                     
+                    particlesTwo.Play();
+                    particlesTwo.time = playTime;
             }
             else if (kart.gamepad.GetButtonUp("B"))
             {

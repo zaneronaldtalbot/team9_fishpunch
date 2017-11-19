@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written by Angus Secomb
+//Last edited 10/11/17
 public class BoostScript : MonoBehaviour
 {
 

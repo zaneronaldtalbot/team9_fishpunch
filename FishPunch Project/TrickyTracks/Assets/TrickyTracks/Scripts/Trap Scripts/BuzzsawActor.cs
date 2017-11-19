@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written by Angus Secomb
+//Last edited 5/11/17
 public class BuzzsawActor : MonoBehaviour {
 
     private GameObject sawBlade;

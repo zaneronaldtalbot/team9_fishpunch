@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written By Angus Secomb
+//Last edited 5/11/17
 public class PrefabDisabledActor : MonoBehaviour
 {
     private NewPlacementController npController;

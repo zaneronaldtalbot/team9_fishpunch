@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
+//Written by Angus Secomb
+//Last edited 25/11/17
 public class KartCamera : MonoBehaviour
 {
     [Serializable]

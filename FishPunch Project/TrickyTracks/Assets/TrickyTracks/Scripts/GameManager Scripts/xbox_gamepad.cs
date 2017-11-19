@@ -4,6 +4,9 @@ using UnityEngine;
 using XInputDotNetPure;
 using XboxCtrlrInput;
 
+//Written by Angus Secomb
+//Last edited 27/10/17
+
 //Stores state of a single gamepad button.
 public struct xButton
 {

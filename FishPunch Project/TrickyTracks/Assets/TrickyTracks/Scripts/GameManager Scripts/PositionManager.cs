@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Written by Angus Secomb
+//Last edit made 14/11/17.
 public class PositionManager : MonoBehaviour {
 
     private PlayerSelectActor psActor;

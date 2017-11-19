@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Actor uses altered kart controller
-//by deercat from the asset store.
-
+//Written by Angus Secomb
+//Last edited 19/11/17
 [RequireComponent(typeof(KartController))]
 public class PlayerActor : MonoBehaviour {
 
@@ -111,12 +110,40 @@ public class PlayerActor : MonoBehaviour {
         //Layer mask to ignore the kart.
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
+        //Acquire gamepad based on player number
+        switch (playerNumber)
+        {
+            case 1:
+                gamepad = GamePadManager.Instance.GetGamePad(1);
+                break;
+            case 2:
+                gamepad = GamePadManager.Instance.GetGamePad(2);
+                break;
+            case 3:
+                gamepad = GamePadManager.Instance.GetGamePad(3);
+                break;
+            case 4:
+                gamepad = GamePadManager.Instance.GetGamePad(4);
+                break;
+            default:
+                break;
 
-   
+        }
+
+    }
+
+    void FixedUpdate()
+    {
+
+     
+
     }
 
     // Update is called once per frame
     void Update() {
+
+
+
 
         Debug.Log("Kart " + playerNumber + ": " + checkPointCounter);
 
@@ -222,26 +249,6 @@ public class PlayerActor : MonoBehaviour {
         }
 
       
-
-        //Acquire gamepad based on player number
-        switch (playerNumber)
-        {
-            case 1:
-                gamepad = GamePadManager.Instance.GetGamePad(1);
-                break;
-            case 2:
-                gamepad = GamePadManager.Instance.GetGamePad(2);
-                break;
-            case 3:
-                gamepad = GamePadManager.Instance.GetGamePad(3);
-                break;
-            case 4:
-                gamepad = GamePadManager.Instance.GetGamePad(4);
-                break;
-            default:
-                break;
-
-        }
 
         //If trigger down go forward else if left trigger is down
         //bring thrust back to 0.
@@ -557,13 +564,13 @@ public class PlayerActor : MonoBehaviour {
         //set itemRPG to true.
 
         //If they fall off the map and hit the killbox reset their position to the last checkpoint.
-        if (coll.gameObject.tag == "Respawn")
-        {
-            this.transform.forward = lastCheckPoint.transform.forward;
-            this.transform.position = lastCheckPoint.transform.position;
-            playerDisabled = true;
+        //if (coll.gameObject.tag == "Respawn")
+        //{
+        //    this.transform.forward = lastCheckPoint.transform.forward;
+        //    this.transform.position = lastCheckPoint.transform.position;
+        //    playerDisabled = true;
 
-        }
+        //}
     }
 
     void OnCollisionEnter(Collision coll)
@@ -579,6 +586,25 @@ public class PlayerActor : MonoBehaviour {
             }
         }
 
+        if (coll.gameObject.tag == "Respawn")
+        {
+            this.transform.forward = lastCheckPoint.transform.forward;
+            this.transform.position = lastCheckPoint.transform.position;
+            playerDisabled = true;
+
+        }
+
     }
 
+
+    void OnCollisionStay(Collision coll)
+    {
+        if (coll.gameObject.tag == "Respawn")
+        {
+            this.transform.forward = lastCheckPoint.transform.forward;
+            this.transform.position = lastCheckPoint.transform.position;
+            playerDisabled = true;
+
+        }
+    }
 }

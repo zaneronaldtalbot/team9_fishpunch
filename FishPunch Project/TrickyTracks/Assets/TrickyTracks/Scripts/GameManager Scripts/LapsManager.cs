@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//Written by Angus Secomb
+//Last edited 15/11/17
 public class LapsManager : MonoBehaviour
 {
 

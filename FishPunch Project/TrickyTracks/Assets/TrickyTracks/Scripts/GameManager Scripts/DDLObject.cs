@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written by Angus Secomb
 public class DDLObject : MonoBehaviour {
 
 	// Use this for initialization

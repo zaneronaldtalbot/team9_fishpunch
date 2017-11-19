@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written By Angus Secomb
+//Last edited 24/10/17
 public class MineActor : MonoBehaviour {
 
     private PlayerActor kart;

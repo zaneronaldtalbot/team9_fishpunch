@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written By Angus Secomb
+//Last edited 20/10/17
 public class ItemRocket : MonoBehaviour {
 
     public float rotationSpeed = 50.0f;

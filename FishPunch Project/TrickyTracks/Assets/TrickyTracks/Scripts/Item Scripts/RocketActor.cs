@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written By Angus Secomb
+//Last edited 25/10/17
 public class RocketActor : MonoBehaviour
 {
-
     //Gameobject
 
     public GameObject rocket;
-
-
-
     private ItemManager itemManager;
     private GameObject manager;
     public float rocketLife = 5.0f;

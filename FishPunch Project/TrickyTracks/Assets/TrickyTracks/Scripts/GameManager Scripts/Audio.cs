@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written By Angus Secomb
+//Last edited 10/11/17
 public class Audio : MonoBehaviour {
 
     public AudioSource beeping, crash;

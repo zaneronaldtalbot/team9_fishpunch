@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
+//Written by Angus Secomb
+//Last edited 18/11/17
 public class PlayerSelectActor : MonoBehaviour
 {
     private GamePadManager gpManager;
@@ -64,7 +65,7 @@ public class PlayerSelectActor : MonoBehaviour
         exitB.color = Color.grey;
         gamepads = new List<xbox_gamepad>();
 
-        for (int i = 1; i < 5; ++i)
+        for (int i = 1; i <= GamePadManager.Instance.GamePadCount; ++i)
         {
             gamepads.Add(GamePadManager.Instance.GetGamePad(i));
         }
@@ -121,7 +122,7 @@ public class PlayerSelectActor : MonoBehaviour
 
 
 
-            for(int i = 0; i < 4; ++i)
+            for(int i = 0; i < playerCount; ++i)
         {
             switch (playerCount)
             {

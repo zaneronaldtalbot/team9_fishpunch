@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Written By Angus Secomb
+//Last edited 19/10/17
 public class ItemMine : MonoBehaviour
 {
 
