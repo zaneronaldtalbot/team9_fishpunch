@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 //Written by Angus Secomb
-//Last edited 18/11/17
+//Last edited 20/11/17
 public class PlayerSelectActor : MonoBehaviour
 {
     private GamePadManager gpManager;
@@ -16,6 +16,10 @@ public class PlayerSelectActor : MonoBehaviour
 
     public GameObject player1Ready, player2Ready, player3Ready, player4Ready;
     public GameObject player1Ready2, player2Ready2, player3Ready2, player4Ready2;
+
+    public GameObject platformP1, platformP2, platformP3, platformP4;
+
+    public GameObject kartOne, kartTwo, kartThree, kartFour;
 
     public AudioSource beepBeep;
 
@@ -30,9 +34,6 @@ public class PlayerSelectActor : MonoBehaviour
     public bool playerReady4 = false;
 
     private int playerOneIndex = 0, playerTwoIndex = 0, playerThreeIndex = 0, playerFourIndex = 0;
-
-    [Tooltip("Kart prefab Instances.")]
-    public GameObject kartOne, kartTwo, kartThree, kartFour;
 
     Image playB, exitB;
 
@@ -77,27 +78,29 @@ public class PlayerSelectActor : MonoBehaviour
     void Update()
     {
 
-
+       
         switch(playerCount)
         {
             case 1:
-                player1.sprite = red;
+
+                platformP1.SetActive(true);
+                kartOne.SetActive(true);
+
                 break;
             case 2:
-                player1.sprite = red;
-                player2.sprite = blue;
+
+                platformP2.SetActive(true);
+                kartTwo.SetActive(true);
 
                 break;
             case 3:
-                player2.sprite = blue;
-                player3.sprite = green;
-                player4.sprite = yellow;
+                platformP3.SetActive(true);
+                kartThree.SetActive(true);
+        
                 break;
             case 4:
-                player1.sprite = red;
-                player2.sprite = blue;
-                player3.sprite = green;
-                player4.sprite = yellow;
+                platformP4.SetActive(true);
+                kartFour.SetActive(true);
                 break;
 
         }

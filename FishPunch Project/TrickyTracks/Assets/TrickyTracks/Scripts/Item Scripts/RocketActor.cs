@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Written By Angus Secomb
-//Last edited 25/10/17
+//Last edited 20/11/17
 public class RocketActor : MonoBehaviour
 {
     //Gameobject
@@ -51,6 +51,10 @@ public class RocketActor : MonoBehaviour
 
     void OnCollisionEnter(Collision coll)
     {
+        if (coll.gameObject.tag == "Terrain")
+        {
+            Destroy(this.gameObject.transform.parent.gameObject);
+        }
         if (coll.gameObject.tag == "Item")
         {
             Debug.Log("it's doing that thing i want");

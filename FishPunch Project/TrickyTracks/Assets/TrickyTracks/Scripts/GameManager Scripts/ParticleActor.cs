@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Written by Angus Secomb
-//Last edited 18/11/2017
+//Last edited 20/11/2017
 public class ParticleActor : MonoBehaviour {
 
     public ParticleSystem particlesOne;
@@ -35,7 +35,7 @@ public class ParticleActor : MonoBehaviour {
 
         if (kart != null)
         {
-            if (kart.gamepad.GetButtonDown("B"))
+            if (kart.gamepad.GetButtonDown("B") && kart.kart.IsGrounded)
             {               
                     particlesOne.time = playTime;
                 sparksOne.time = playTime;
@@ -51,7 +51,7 @@ public class ParticleActor : MonoBehaviour {
                     particlesTwo.Play();
                     particlesTwo.time = playTime;
             }
-            else if (kart.gamepad.GetButtonUp("B"))
+            else if (kart.gamepad.GetButtonUp("B") && kart.kart.IsGrounded)
             {
                 if (particlesOne.isPlaying)
                 {

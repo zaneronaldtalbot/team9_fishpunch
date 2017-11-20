@@ -63,7 +63,8 @@ public class PlayerActor : MonoBehaviour {
 
     bool setOnce = true;
 
-    KartController kart;
+    [HideInInspector]
+    public KartController kart;
 
     public int playerNumber = 1;
     public int numberOfPlayers = 4;
@@ -151,7 +152,7 @@ public class PlayerActor : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-
+        Debug.Log(kart.physicsBody.velocity.sqrMagnitude);
         Debug.Log("Kart " + playerNumber + ": " + checkPointCounter);
 
 
@@ -315,15 +316,19 @@ public class PlayerActor : MonoBehaviour {
         // = set values else reset to defaults.
         if (gamepad.GetButton("B"))
         {
-            if (kart.Steering != 0 && kart.physicsBody.velocity.sqrMagnitude > 50.0f)
+            if (kart.physicsBody.velocity.sqrMagnitude > 50.0f && kart.IsGrounded)
             {
-                kart.traction = driftTraction;
-              
+
+
                 kart.decelerationSpeed = driftDeceleration;
                 kart.breakPower = breakPower;
-                if (kart.Thrust > 10)
+                if (kart.physicsBody.velocity.sqrMagnitude < 200)
                 {
-                    kart.Thrust -= breakPower;
+                    kart.traction = 0.4f;
+                }
+                else if (kart.physicsBody.velocity.sqrMagnitude > 200)
+                {
+                    kart.traction = driftTraction;
                 }
             }
             
