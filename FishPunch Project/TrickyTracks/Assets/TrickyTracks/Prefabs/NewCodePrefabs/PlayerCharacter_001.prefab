@@ -159,8 +159,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4366806772694998}
   - component: {fileID: 54494208890196966}
-  - component: {fileID: 82284895300835560}
-  - component: {fileID: 114149338049377766}
   m_Layer: 8
   m_Name: PlayerCharacter_001
   m_TagString: Player
@@ -213,23 +211,6 @@ GameObject:
   m_Layer: 0
   m_Name: Vehicle_001_Hotrod_001_Base
   m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1694493301943620
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4212152935652004}
-  - component: {fileID: 33450238128734354}
-  - component: {fileID: 65736078658588982}
-  m_Layer: 8
-  m_Name: StableCamera
-  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,19 +349,6 @@ Transform:
   m_Father: {fileID: 4906835002504716}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!4 &4212152935652004
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1694493301943620}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4366806772694998}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4259568263507306
 Transform:
   m_ObjectHideFlags: 1
@@ -413,17 +381,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1435533487842864}
-  m_LocalRotation: {x: -0, y: -0.8514565, z: -0, w: -0.52442527}
-  m_LocalPosition: {x: -5253.43, y: 94.28, z: -390.5}
+  m_LocalRotation: {x: 0.063010596, y: -0.77315754, z: -0.051261313, w: -0.62899077}
+  m_LocalPosition: {x: 1026.9675, y: -25.48, z: -119.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4212152935652004}
   - {fileID: 4906835002504716}
   - {fileID: 4734047287255974}
   - {fileID: 4915207935784250}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -243.259, z: 0}
+  m_LocalEulerAnglesHint: {x: -9.122001, y: -258.107, z: -1.9120001}
 --- !u!4 &4415824017125788
 Transform:
   m_ObjectHideFlags: 1
@@ -478,7 +445,7 @@ Transform:
   - {fileID: 4892605000109402}
   - {fileID: 4164331094818532}
   m_Father: {fileID: 4366806772694998}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4762357725668614
 Transform:
@@ -548,7 +515,7 @@ Transform:
   - {fileID: 4415824017125788}
   - {fileID: 4169939003210646}
   m_Father: {fileID: 4366806772694998}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4915207935784250
 Transform:
@@ -566,7 +533,7 @@ Transform:
   - {fileID: 4355418729809178}
   - {fileID: 4774454002877686}
   m_Father: {fileID: 4366806772694998}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4995294396001562
 Transform:
@@ -768,14 +735,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1638966543756460}
-  m_Mesh: {fileID: 4300006, guid: 04015127dc8141c4089a2630fd6fcba3, type: 3}
---- !u!33 &33450238128734354
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1694493301943620}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300104, guid: 04015127dc8141c4089a2630fd6fcba3, type: 3}
 --- !u!33 &33576748996574990
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -868,155 +828,3 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 9947a9e340cd6fb4d9a5375cd982398d, type: 3}
---- !u!65 &65736078658588982
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1694493301943620}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!82 &82284895300835560
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1435533487842864}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 0.025457412
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &114149338049377766
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1435533487842864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d01efa4381abe194aba04688751eaf51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastCheckPoint: {fileID: 0}
-  nextCheckPoint: {fileID: 0}
-  checkPointCounter: 0
-  kartPosition: 0
-  finalPosition: 0
-  lapNumber: 0
-  assignNewTraps: 0
-  gamepad: {fileID: 0}
-  mesh: {fileID: 1145573736533748}
-  groundedDrag: 3
-  maxVelocity: 30
-  hoverForce: 1000
-  gravityForce: 1000
-  hoverHeight: 0.65
-  forwardAcceleration: 8000
-  reverseAcceleration: 4000
-  turnStrength: 400
-  breakSharpness: 20
-  driftBreakSharpness: 30
-  driftDrag: 0.6
-  driftJumpValue: 30
-  driftTurnTime: 0.5
-  driftTurnValue: 0.8
-  speedDropOff: 20
-  airbornDrag: 0.5
-  airbornGravityForce: 850
-  airbornThrust: 2
-  airbornTurnValue: 1
-  respawnTime: 3
-  boostValue: 10
-  boostLength: 3
-  tempTurnStrength: 350
-  wheelPoints:
-  - {fileID: 1361418356034416}
-  - {fileID: 1171966030582070}
-  - {fileID: 1524365303117114}
-  - {fileID: 1406047329621634}
-  thrust: 0
-  turnValue: 0
-  itemBoost: 0
-  itemMine: 0
-  itemRPG: 0
-  playerDisabled: 0
-  boostPlayer: 0
-  placeMine: 0
-  fireRPG: 0
-  playerNumber: 1
-  numberOfPlayers: 4
-  playerCamera: {fileID: 0}
