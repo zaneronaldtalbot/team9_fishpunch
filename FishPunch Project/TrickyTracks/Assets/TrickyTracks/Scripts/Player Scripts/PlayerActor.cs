@@ -120,25 +120,48 @@ public class PlayerActor : MonoBehaviour {
         //Layer mask to ignore the kart.
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
-        //Acquire gamepad based on player number
-        switch (playerNumber)
-        {
-            case 1:
-                gamepad = GamePadManager.Instance.GetGamePad(1);
-                break;
-            case 2:
-                gamepad = GamePadManager.Instance.GetGamePad(2);
-                break;
-            case 3:
-                gamepad = GamePadManager.Instance.GetGamePad(3);
-                break;
-            case 4:
-                gamepad = GamePadManager.Instance.GetGamePad(4);
-                break;
-            default:
-                break;
 
+        //Acquire gamepad based on player number
+
+
+        for(int i = 1; i <= GamePadManager.Instance.ConnectedTotal(); ++ i)
+        {
+            xbox_gamepad temppad = GamePadManager.Instance.GetGamePad(i);
+            switch (playerNumber)
+            {
+                case 1:
+                    if (temppad.newControllerIndex == 1)
+                    {
+                        gamepad = temppad;
+                    }
+                  
+                    break;
+                case 2:
+                    if (temppad.newControllerIndex == 2)
+                    {
+                        gamepad = temppad;
+                    }
+                    
+                    break;
+                case 3:
+                    if(temppad.newControllerIndex == 3)
+                    {
+                        gamepad = temppad;
+                    }
+                    
+                    break;
+                case 4:
+                    if(temppad.newControllerIndex == 4)
+                    {
+                        gamepad = temppad;
+                    }
+                    break;
+                default:
+                    break;
+
+            }
         }
+    
 
     }
 

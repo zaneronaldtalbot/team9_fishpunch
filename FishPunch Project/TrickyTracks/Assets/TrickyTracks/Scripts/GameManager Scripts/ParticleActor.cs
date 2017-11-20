@@ -51,7 +51,7 @@ public class ParticleActor : MonoBehaviour {
                     particlesTwo.Play();
                     particlesTwo.time = playTime;
             }
-            else if (kart.gamepad.GetButtonUp("B") && kart.kart.IsGrounded)
+            else if (kart.gamepad.GetButtonUp("B"))
             {
                 if (particlesOne.isPlaying)
                 {

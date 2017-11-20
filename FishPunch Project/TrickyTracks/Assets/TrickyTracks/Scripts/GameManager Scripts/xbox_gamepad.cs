@@ -59,6 +59,11 @@ public class xbox_gamepad : MonoBehaviour {
     [HideInInspector]
     public float triggerRotation = 1;
 
+    public int newControllerIndex = 1;
+
+    [HideInInspector]
+    public bool isAssigned = false;
+
     //Constructor
     public xbox_gamepad(int index)
     {

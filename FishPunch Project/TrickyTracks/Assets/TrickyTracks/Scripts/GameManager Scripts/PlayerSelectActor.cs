@@ -24,16 +24,6 @@ public class PlayerSelectActor : MonoBehaviour
     public AudioSource beepBeep;
 
     public GameObject go_timer;
-    [HideInInspector]
-   public bool playerReady1 = false;
-    [HideInInspector]
-    public bool playerReady2 = false;
-    [HideInInspector]
-   public bool playerReady3 = false;
-    [HideInInspector]
-    public bool playerReady4 = false;
-
-    private int playerOneIndex = 0, playerTwoIndex = 0, playerThreeIndex = 0, playerFourIndex = 0;
 
     Image playB, exitB;
 
@@ -57,15 +47,17 @@ public class PlayerSelectActor : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        //Assign instances of manager components
         manager = GameObject.Find("Manager");
         gpManager = manager.GetComponent<GamePadManager>();
         playB = GameObject.Find("Play").GetComponent<Image>();
         exitB = GameObject.Find("Exit").GetComponent<Image>();
+        //grey out selectable buttons.
         playB.color = Color.grey;
         exitB.color = Color.grey;
         gamepads = new List<xbox_gamepad>();
 
+        //Assign gamepads.
         for (int i = 1; i <= GamePadManager.Instance.GamePadCount; ++i)
         {
             gamepads.Add(GamePadManager.Instance.GetGamePad(i));
@@ -78,8 +70,8 @@ public class PlayerSelectActor : MonoBehaviour
     void Update()
     {
 
-       
-        switch(playerCount)
+        //Activate kart on platform based on playercount.
+        switch (playerCount)
         {
             case 1:
 
@@ -96,7 +88,7 @@ public class PlayerSelectActor : MonoBehaviour
             case 3:
                 platformP3.SetActive(true);
                 kartThree.SetActive(true);
-        
+
                 break;
             case 4:
                 platformP4.SetActive(true);
@@ -105,189 +97,124 @@ public class PlayerSelectActor : MonoBehaviour
 
         }
 
-        if(playerCount > 1)
+        //Changes colours of buttons based on buttonindex.
+        if (playerCount > 1)
         {
-          
-            if(buttonIndex == 1)
+
+            if (buttonIndex == 1)
             {
                 playB.color = Color.yellow;
                 exitB.color = Color.grey;
             }
-            if(buttonIndex == 2)
+            if (buttonIndex == 2)
             {
                 exitB.color = Color.yellow;
                 playB.color = Color.grey;
             }
-            
+
         }
 
+        //cooldown for switching between buttons.
         coolDown -= Time.deltaTime;
 
-
-
-            for(int i = 0; i < playerCount; ++i)
+        //Checks all gamepads for button press then loads approriate map
+        //based on buttonIndex.
+        for (int i = 0; i < playerCount; ++i)
         {
-            switch (playerCount)
+            if (gamepads[i].GetButtonDown("A") && buttonIndex == 1)
             {
-
-                case 2:
-                    if ((playerReady1 && playerReady2) || (playerReady1 && playerReady3) || (playerReady1 && playerReady4) || (playerReady2 && playerReady3) ||
-                  (playerReady2 && playerReady4) || (playerReady3 && playerReady4))
-                    {
-
-                        if (gamepads[i].GetButtonDown("A") && buttonIndex == 1)
-                        {
-                            SceneManager.LoadScene("Peter's Map");
-                        }
-                        else if (gamepads[i].GetButtonDown("A") && buttonIndex == 2)
-                        {
-                            GameObject.Destroy(manager);
-                            GameObject.Destroy(GameObject.Find("Music"));
-                            SceneManager.LoadScene("Set_Pieces");
-                        }
-
-                    }
-
-
-                    break;
-                case 3:
-                    if ((playerReady1 && playerReady2) || (playerReady1 && playerReady3) || (playerReady1 && playerReady4) || (playerReady2 && playerReady3) ||
-                   (playerReady2 && playerReady4) || (playerReady3 && playerReady4))
-                    {
-                        if (gamepads[i].GetButtonDown("A") && buttonIndex == 1)
-                        {
-                            SceneManager.LoadScene("Peter's Map");
-                        }
-                        else if (gamepads[i].GetButtonDown("A") && buttonIndex == 2)
-                        {
-                            GameObject.Destroy(manager);
-                            GameObject.Destroy(GameObject.Find("Music"));
-                            SceneManager.LoadScene("Set_Pieces");
-                        }
-
-                    }
-                    break;
-                case 4:
-                    {
-                        if ((playerReady1 && playerReady2) || (playerReady1 && playerReady3) || (playerReady1 && playerReady4) || (playerReady2 && playerReady3) ||
-                                          (playerReady2 && playerReady4) || (playerReady3 && playerReady4))
-                        {
-
-                            if (gamepads[i].GetButtonDown("A") && buttonIndex == 1)
-                            {
-                                SceneManager.LoadScene("Peter's Map");
-                            }
-                            else if (gamepads[i].GetButtonDown("A") && buttonIndex == 2)
-                            {
-                                GameObject.Destroy(manager);
-                                GameObject.Destroy(GameObject.Find("Music"));
-                                SceneManager.LoadScene("Set_Pieces");
-                            }
-
-                        }
-                        break;
-                    }
+                SceneManager.LoadScene("Peter's Map");
             }
-
+            else if (gamepads[i].GetButtonDown("A") && buttonIndex == 2)
+            {
+                GameObject.Destroy(manager);
+                GameObject.Destroy(GameObject.Find("Music"));
+                SceneManager.LoadScene("Set_Pieces");
+            }
+        }
+     
+        //if player one moves up and down change the button index
         if (gamepads[0].GetStick_L().Y > deadZone && (coolDown < 0) && buttonIndex == 2)
         {
             coolDown = cdCopy;
             buttonIndex = 1;
-            
         }
-
 
         if (gamepads[0].GetStick_L().Y < -deadZone && (coolDown < 0) && buttonIndex == 1)
         {
             coolDown = cdCopy;
             buttonIndex = 2;
         }
-      }
 
-
+        //Assign controllers to karts.
         int n = GamePadManager.Instance.ConnectedTotal();
-        for (int i = 1; i <= n; ++i)
+        if (n < 5)
         {
-               
-               startPressed(i);
-        }
+            for (int i = 1; i <= n; ++i)
+            {
 
+                assignControllerToKart(i);
+            }
+        }
      
       
     }
 
-    void selectKart(int playerIndex)
+    void assignControllerToKart(int index)
     {
-
-
-
-
-    }
-
-
-    void startPressed(int index)
-    {
-    
+        //Create gamepad instance.
         gamepad = GamePadManager.Instance.GetGamePad(index);
 
 
-            if (gamepad.GetButtonDown("Start"))
+        //If start is pressed
+        if (gamepad.GetButtonDown("Start"))
+        {
+            //and gamepad has not been assigned
+            if (!gamepad.isAssigned)
             {
+                //Add +1 to player count
+                playerCount++;
+                gamepad.isAssigned = true;
 
-
-            switch (index)
-            {
-                case 0:
-                    break;
-                case 1:
-                    if (!playerReady1)
-                    {
+                //Assign controller index based on playercount
+                //and activate/deactivate the appropriate UI.
+                switch (playerCount)
+                {
+                    case 1:
+                 //       gamepad = GamePadManager.Instance.GetGamePad(1);
                         GameObject.Find("Player1JoinText").SetActive(false);
                         player1Ready.SetActive(true);
                         player1Ready2.SetActive(true);
-                        playerCount++;
-                        playerReady1 = true;
+                        gamepad.newControllerIndex = 1;
                         beepBeep.Play();
-                    }
-                    break;
-                case 2:
-                    if (!playerReady2)
-                    {
+                        break;
+                    case 2:
+                  //      gamepad = GamePadManager.Instance.GetGamePad(2);
                         GameObject.Find("Player2JoinText").SetActive(false);
                         player2Ready.SetActive(true);
                         player2Ready2.SetActive(true);
-                        playerCount++;
-                        playerReady2 = true;
+                        gamepad.newControllerIndex = 2;
                         beepBeep.Play();
-                    }
-
-                    break;
-                case 3:
-                    if (!playerReady3)
-                    {
+                        break;
+                    case 3:
+                    //    gamepad = GamePadManager.Instance.GetGamePad(3);
                         GameObject.Find("Player3JoinText").SetActive(false);
                         player3Ready.SetActive(true);
                         player3Ready2.SetActive(true);
-                        playerCount++;
-                        playerReady3 = true;
+                        gamepad.newControllerIndex = 3;
                         beepBeep.Play();
-                    }
-
-                    break;
-                case 4:
-                    if (!playerReady4)
-                    {
+                        break;
+                    case 4:
+                   //     gamepad = GamePadManager.Instance.GetGamePad(4);
                         GameObject.Find("Player4JoinText").SetActive(false);
                         player4Ready.SetActive(true);
                         player4Ready2.SetActive(true);
-                        playerCount++;
-                        playerReady4 = true;
+                        gamepad.newControllerIndex = 4;
                         beepBeep.Play();
-                    }
-
-                    break;
+                        break;
                     default:
-                        break;     
+                        break;
+                }
             }
         }
     }
