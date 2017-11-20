@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //Written by Angus Secomb
-//Last edited 19/11/17
+//Last edited 20/11/17
 [RequireComponent(typeof(KartController))]
 public class PlayerActor : MonoBehaviour {
 
@@ -348,6 +348,14 @@ public class PlayerActor : MonoBehaviour {
 
     void OnTriggerEnter(Collider coll)
     {
+        //If they fall off the map and hit the killbox reset their position to the last checkpoint.
+        if (coll.gameObject.tag == "Respawn")
+        {
+            this.transform.forward = lastCheckPoint.transform.forward;
+            this.transform.position = lastCheckPoint.transform.position;
+            playerDisabled = true;
+
+        }
         //Checks for collisions with checkpoints sets a bool to true for each checkpoint passed
         //if they havent passed a certain checkpoint they will not be able to go to the next lap.
         if (coll.gameObject.tag == "Checkpoint")
@@ -598,14 +606,7 @@ public class PlayerActor : MonoBehaviour {
         //If item rpg is hit destroy the powerup and if they do not have a mine or boost
         //set itemRPG to true.
 
-        //If they fall off the map and hit the killbox reset their position to the last checkpoint.
-        //if (coll.gameObject.tag == "Respawn")
-        //{
-        //    this.transform.forward = lastCheckPoint.transform.forward;
-        //    this.transform.position = lastCheckPoint.transform.position;
-        //    playerDisabled = true;
-
-        //}
+        
     }
 
     void OnCollisionEnter(Collision coll)
