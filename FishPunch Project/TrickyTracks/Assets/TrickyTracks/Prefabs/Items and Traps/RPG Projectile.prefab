@@ -52,7 +52,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4609946296727116}
   - component: {fileID: 64576242213894940}
-  - component: {fileID: 114569598210518314}
+  - component: {fileID: 114881579289215786}
+  - component: {fileID: 65660271969118076}
   m_Layer: 9
   m_Name: Collider
   m_TagString: RPG
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1357176560903178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 17.6}
+  m_LocalPosition: {x: 14.221711, y: -5.159562, z: 0.3078518}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4609946296727116}
@@ -208,13 +209,33 @@ MeshCollider:
   m_GameObject: {fileID: 1331281585736520}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Convex: 0
   m_InflateMesh: 0
   m_SkinWidth: 0.01
+<<<<<<< .mine
+  m_Mesh: {fileID: 4300000, guid: aa42a720923f3ae42beaa8d853bd47b5, type: 3}
+--- !u!65 &65660271969118076
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1331281585736520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 6, z: 3}
+  m_Center: {x: 0, y: 3, z: 0}
+--- !u!114 &114881579289215786
+||||||| .r204
+  m_Mesh: {fileID: 4300004, guid: 3fb693f6321227047b647c3bce4c4b5d, type: 3}
+--- !u!114 &114569598210518314
+=======
   m_Mesh: {fileID: 4300000, guid: 3454da08df32ffb408ff7b6b11688cef, type: 3}
 --- !u!114 &114569598210518314
+>>>>>>> .r239
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -222,12 +243,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1331281585736520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd35d2cde233aa94fb9b7976fcec62d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0714515ba348b5b4aa49c87557286ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rocket: {fileID: 1357176560903178}
   rocketLife: 5
-  rocketSpeed: 80
+  rocketSpeed: 60
   rocketLifeOver: 0
 --- !u!198 &198715981904447946
 ParticleSystem:
@@ -288,7 +309,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 565378513
+  randomSeed: 1537785529
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -684,7 +705,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 5000
+    maxNumParticles: 3000
     size3D: 0
     rotation3D: 0
     gravityModifier:
