@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4333911378260422}
-  - component: {fileID: 114267017543698688}
+  - component: {fileID: 114786106508092496}
   m_Layer: 9
   m_Name: Boost
   m_TagString: Item
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4695369849245250}
   m_Layer: 9
   m_Name: Mesh
-  m_TagString: Boost
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,10 +68,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4036349819588090}
   - component: {fileID: 64028555592598524}
-  - component: {fileID: 114215769586331434}
+  - component: {fileID: 114257265042784866}
   m_Layer: 9
   m_Name: Collider
-  m_TagString: Boost
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +184,7 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 75cddb85ae0af2049ae2aa437ec8e9cd, type: 3}
---- !u!114 &114215769586331434
+--- !u!114 &114257265042784866
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -192,11 +192,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1516146096227810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc05a71efda4ba4db1d6f7ac613c07a, type: 3}
+  m_Script: {fileID: 11500000, guid: d2680241ecd718c49aa6df6162ed7ce1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 30
---- !u!114 &114267017543698688
+  rotationSpeed: 50
+--- !u!114 &114786106508092496
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -204,9 +204,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1009864689174384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db79bd9e455d434b8ac853af3d147fe, type: 3}
+  m_Script: {fileID: 11500000, guid: eba17d90c85fa9047a7714301dae887a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 0}
   timer: 5
   prefabSet: 0
-  transparentItem: {fileID: 2100000, guid: d214fe9c36c12ed4d9947edafcadcbd1, type: 2}
+  transparentItem: {fileID: 0}

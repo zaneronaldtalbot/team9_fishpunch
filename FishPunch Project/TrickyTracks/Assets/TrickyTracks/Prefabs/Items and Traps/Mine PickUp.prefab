@@ -35,10 +35,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4068547372327204}
   - component: {fileID: 64314658811039148}
-  - component: {fileID: 114469537189960982}
+  - component: {fileID: 114458697120477310}
   m_Layer: 9
   m_Name: Collider
-  m_TagString: Item
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4496128401870988}
-  - component: {fileID: 114380108477480368}
+  - component: {fileID: 114328130525430552}
   m_Layer: 9
   m_Name: Mine PickUp
   m_TagString: Item
@@ -202,7 +202,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114380108477480368
+--- !u!114 &114328130525430552
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -210,13 +210,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1758811178503366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db79bd9e455d434b8ac853af3d147fe, type: 3}
+  m_Script: {fileID: 11500000, guid: eba17d90c85fa9047a7714301dae887a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 0}
   timer: 5
   prefabSet: 0
   transparentItem: {fileID: 0}
---- !u!114 &114469537189960982
+--- !u!114 &114458697120477310
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1596474221449972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a4b2d644cc537c41ab0bcb63ff6d4da, type: 3}
+  m_Script: {fileID: 11500000, guid: ad4dcefd8a5cc0b488103e5360ed38d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50

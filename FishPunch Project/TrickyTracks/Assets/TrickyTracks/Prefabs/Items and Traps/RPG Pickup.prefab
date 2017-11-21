@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4578055104857686}
   - component: {fileID: 64249114146154394}
-  - component: {fileID: 114629289775737006}
+  - component: {fileID: 114251330004164752}
   m_Layer: 9
   m_Name: Collider
-  m_TagString: ItemRPG
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,8 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4637177351932580}
-  - component: {fileID: 114535164899896620}
-  - component: {fileID: 114497482620277946}
+  - component: {fileID: 114428563285047212}
   m_Layer: 9
   m_Name: RPG Pickup
   m_TagString: Item
@@ -72,7 +71,7 @@ GameObject:
   - component: {fileID: 4249511107276796}
   m_Layer: 9
   m_Name: Mesh
-  m_TagString: ItemRPG
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,34 +184,7 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: aa42a720923f3ae42beaa8d853bd47b5, type: 3}
---- !u!114 &114497482620277946
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222910457246154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db79bd9e455d434b8ac853af3d147fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: 5
-  prefabSet: 0
-  transparentItem: {fileID: 0}
---- !u!114 &114535164899896620
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1222910457246154}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92025efe2ff5a9e4faf2e13401913712, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  kart: {fileID: 0}
---- !u!114 &114629289775737006
+--- !u!114 &114251330004164752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -220,8 +192,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1102167696951394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92025efe2ff5a9e4faf2e13401913712, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ee054d02faa0544c87f6db7f882f6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
   kart: {fileID: 0}
+--- !u!114 &114428563285047212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1222910457246154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba17d90c85fa9047a7714301dae887a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 0}
+  timer: 5
+  prefabSet: 0
+  transparentItem: {fileID: 0}

@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4511315863774122}
   - component: {fileID: 64831967653000186}
-  - component: {fileID: 114059057491345014}
+  - component: {fileID: 114682731722291164}
   m_Layer: 9
   m_Name: Collider
-  m_TagString: ItemMine
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,7 +201,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114059057491345014
+--- !u!114 &114682731722291164
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -209,6 +209,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1137131496209770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 391ab5d66d26ee644960bc6cc42f14ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aa6b34bebea0ae49a39c489dda1f861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

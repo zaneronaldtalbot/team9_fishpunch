@@ -67,7 +67,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4529742703437552}
-  - component: {fileID: 114282672273919682}
+  - component: {fileID: 114519398628667406}
   m_Layer: 9
   m_Name: Ramp 002
   m_TagString: Item
@@ -95,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722413512801098}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -19.231417, y: 0.0021639967, z: 0.47387585}
+  m_LocalPosition: {x: 62.99488, y: 166.43127, z: -208.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4770947252850198}
@@ -168,7 +168,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1107299824497858}
-  m_Mesh: {fileID: 4300000, guid: bc6103fef8b2d134aa89a56ca70b8ad9, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 8cab03fd9fef3a14c985c0d6983d50b9, type: 3}
 --- !u!64 &64058757564323090
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -183,7 +183,7 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bc6103fef8b2d134aa89a56ca70b8ad9, type: 3}
---- !u!114 &114282672273919682
+--- !u!114 &114519398628667406
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -191,9 +191,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1722413512801098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db79bd9e455d434b8ac853af3d147fe, type: 3}
+  m_Script: {fileID: 11500000, guid: eba17d90c85fa9047a7714301dae887a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 0}
   timer: 5
   prefabSet: 0
   transparentItem: {fileID: 0}
