@@ -5,9 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 //Written by Angus Secomb
-//Last edited 15/11/17
+//Last edited 22/11/17
 public class LapsManager : MonoBehaviour
 {
+    private WinActor winActor;
 
     bool set = false;
 
@@ -30,7 +31,6 @@ public class LapsManager : MonoBehaviour
     private GameObject raceRestart;
     private Text restartText;
     private Text first, second, third, fourth;
-    private Text raceEnd;
     private Text raceCountdown;
 
     public Sprite firstP, secondP, thirdP, fourthP;
@@ -40,6 +40,10 @@ public class LapsManager : MonoBehaviour
     public Sprite redLight;
 
     private Image countOne, countTwo, countThree, countFour;
+
+    private Image raceEndsIn;
+    private Image endCount;
+    public Sprite[] numbers;
 
     [HideInInspector]
     public float raceCountdownTimer = 3.0f;
@@ -63,7 +67,8 @@ public class LapsManager : MonoBehaviour
     [HideInInspector]
     public bool check4 = false;
 
-    private PlayerActor kart1, kart2, kart3, kart4;
+    [HideInInspector]
+    public PlayerActor kart1, kart2, kart3, kart4;
 
     private Image firstPlace, secondPlace, thirdPlace, fourthPlace;
 
@@ -75,6 +80,8 @@ public class LapsManager : MonoBehaviour
     public int lapNumber = 0;
     void Start()
     {
+        winActor = this.gameObject.GetComponent<WinActor>();
+        endCount = GameObject.Find("EndCount").GetComponent<Image>();
         npc = this.gameObject.GetComponent<NewPlacementController>();
         iManager = this.gameObject.GetComponent<ItemManager>();
         psActor = this.gameObject.GetComponent<PlayerSelectActor>();
@@ -129,7 +136,7 @@ public class LapsManager : MonoBehaviour
         posTwo = GameObject.Find("secondPlayer").GetComponent<Image>();
         posThree = GameObject.Find("thirdPlayer").GetComponent<Image>();
         posFour = GameObject.Find("fourthPlayer").GetComponent<Image>();
-        raceEnd = GameObject.Find("RaceEnd").GetComponent<Text>();
+        raceEndsIn = GameObject.Find("RaceEnd").GetComponent<Image>();
         thirdPlace = GameObject.Find("thirdPlace").GetComponent<Image>();
         fourthPlace = GameObject.Find("fourthPlace").GetComponent<Image>();
         firstPlace = GameObject.Find("firstPlace").GetComponent<Image>();
@@ -231,14 +238,17 @@ public class LapsManager : MonoBehaviour
                 {
                     endRaceTime -= Time.deltaTime;
                     endTime = (int)endRaceTime;
-                    raceEnd.enabled = true;
-                    raceEnd.text = "Race ends in: " + endTime.ToString();
+                    raceEndsIn.enabled = true;
+                    endCount.enabled = true;
+                    raceCountDown();
                 }
                 if (endTime < 0)
                 {
+                    winActor.raceOver = true;
                     restartTime -= Time.deltaTime;
                     raceOver = true;
-                    raceEnd.enabled = false;
+                    raceEndsIn.enabled = false;
+                    endCount.enabled = false;
                     restartText.enabled = true;
                     intTime = (int)restartTime;
                     restartText.text = "Race Restarts in: " + intTime.ToString();
@@ -247,12 +257,12 @@ public class LapsManager : MonoBehaviour
                     posTwo.enabled = true;
                     firstPlace.enabled = true;
                     secondPlace.enabled = true;
-                    if (kart1.kartPosition == 1 && kart2.kartPosition == 2)
+                    if (kart1.finalPosition == 1 && kart2.finalPosition == 2)
                     {
                         posOne.sprite = firstP;
                         posTwo.sprite = secondP;
                     }
-                    else if (kart1.kartPosition == 2 && kart2.kartPosition == 1)
+                    else if (kart1.finalPosition == 2 && kart2.finalPosition == 1)
                     {
                         posOne.sprite = secondP;
                         posTwo.sprite = firstP;
@@ -280,14 +290,16 @@ public class LapsManager : MonoBehaviour
                 {
                     endRaceTime -= Time.deltaTime;
                     endTime = (int)endRaceTime;
-                    raceEnd.enabled = true;
-                    raceEnd.text = "Race ends in: " + endTime.ToString();
+                    raceEndsIn.enabled = true;
+                    endCount.enabled = true;
+                    raceCountDown();
                 }
                 if (endTime < 0)
                 {
                     restartTime -= Time.deltaTime;
                     raceOver = true;
-                    raceEnd.enabled = false;
+                    raceEndsIn.enabled = false;
+                    endCount.enabled = false;
                     restartText.enabled = true;
                     intTime = (int)restartTime;
                     restartText.text = "Race Restarts in: " + intTime.ToString();
@@ -298,37 +310,37 @@ public class LapsManager : MonoBehaviour
                     firstPlace.enabled = true;
                     secondPlace.enabled = true;
                     thirdPlace.enabled = true;
-                    if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 3)
+                    if (kart1.finalPosition == 1 && kart2.finalPosition == 2 && kart3.finalPosition == 3)
                     {
                         posOne.sprite = firstP;
                         posTwo.sprite = secondP;
                         posThree.sprite = thirdP;
                     }
-                    else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 2)
+                    else if (kart1.finalPosition == 1 && kart2.finalPosition == 3 && kart3.finalPosition == 2)
                     {
                         posOne.sprite = firstP;
                         posTwo.sprite = thirdP;
                         posThree.sprite = secondP;
                     }
-                    else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 3)
+                    else if (kart1.finalPosition == 2 && kart2.finalPosition == 1 && kart3.finalPosition == 3)
                     {
                         posOne.sprite = secondP;
                         posTwo.sprite = firstP;
                         posThree.sprite = thirdP;
                     }
-                    else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 1)
+                    else if (kart1.finalPosition == 2 && kart2.finalPosition == 3 && kart3.finalPosition == 1)
                     {
                         posOne.sprite = secondP;
                         posTwo.sprite = thirdP;
                         posThree.sprite = firstP;
                     }
-                    else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 1)
+                    else if (kart1.finalPosition == 3 && kart2.finalPosition == 2 && kart3.finalPosition == 1)
                     {
                         posOne.sprite = thirdP;
                         posTwo.sprite = secondP;
                         posThree.sprite = firstP;
                     }
-                    else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 2)
+                    else if (kart1.finalPosition == 3 && kart2.finalPosition == 1 && kart3.finalPosition == 2)
                     {
                         posOne.sprite = thirdP;
                         posTwo.sprite = firstP;
@@ -354,14 +366,16 @@ public class LapsManager : MonoBehaviour
                 {
                     endRaceTime -= Time.deltaTime;
                     endTime = (int)endRaceTime;
-                    raceEnd.enabled = true;
-                    raceEnd.text = "Race ends in: " + endTime.ToString();
+                    raceEndsIn.enabled = true;
+                    endCount.enabled = true;
+                    raceCountDown();
                 }
                 if (endTime < 0)
                 {
                     restartTime -= Time.deltaTime;
                     raceOver = true;
-                    raceEnd.enabled = false;
+                    raceEndsIn.enabled = false;
+                    endCount.enabled = false;
                     restartText.enabled = true;
                     intTime = (int)restartTime;
                     restartText.text = "Race Restarts in: " + intTime.ToString();
@@ -375,42 +389,42 @@ public class LapsManager : MonoBehaviour
                     thirdPlace.enabled = true;
                     fourthPlace.enabled = true;
                     //Kart 1
-                    if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 3 && kart4.kartPosition == 4)
+                    if (kart1.finalPosition == 1 && kart2.finalPosition == 2 && kart3.finalPosition == 3 && kart4.finalPosition == 4)
                     {
                         posOne.sprite = firstP;
                         posTwo.sprite = secondP;
                         posThree.sprite = thirdP;
                         posFour.sprite = fourthP;
                     }
-                    else if (kart1.kartPosition == 1 && kart2.kartPosition == 2 && kart3.kartPosition == 4 && kart4.kartPosition == 3)
+                    else if (kart1.finalPosition == 1 && kart2.finalPosition == 2 && kart3.finalPosition == 4 && kart4.finalPosition == 3)
                     {
                         posOne.sprite = firstP;
                         posTwo.sprite = secondP;
                         posThree.sprite = fourthP;
                         posFour.sprite = thirdP;
                     }
-                    else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 2 && kart4.kartPosition == 4)
+                    else if (kart1.finalPosition == 1 && kart2.finalPosition == 3 && kart3.finalPosition == 2 && kart4.finalPosition == 4)
                     {
                         posOne.sprite = firstP;
                         posTwo.sprite = thirdP;
                         posThree.sprite = secondP;
                         posFour.sprite = fourthP;
                     }
-                    else if (kart1.kartPosition == 1 && kart2.kartPosition == 3 && kart3.kartPosition == 4 && kart4.kartPosition == 2)
+                    else if (kart1.finalPosition == 1 && kart2.finalPosition == 3 && kart3.finalPosition == 4 && kart4.finalPosition == 2)
                     {
                         posOne.sprite = firstP;
                         posTwo.sprite = thirdP;
                         posThree.sprite = fourthP;
                         posFour.sprite = secondP;
                     }
-                    else if (kart1.kartPosition == 1 && kart2.kartPosition == 4 && kart3.kartPosition == 2 && kart4.kartPosition == 3)
+                    else if (kart1.finalPosition == 1 && kart2.finalPosition == 4 && kart3.finalPosition == 2 && kart4.finalPosition == 3)
                     {
                         posOne.sprite = firstP;
                         posTwo.sprite = fourthP;
                         posThree.sprite = secondP;
                         posFour.sprite = thirdP;
                     }
-                    else if (kart1.kartPosition == 1 && kart2.kartPosition == 4 && kart3.kartPosition == 3 && kart4.kartPosition == 2)
+                    else if (kart1.finalPosition == 1 && kart2.finalPosition == 4 && kart3.finalPosition == 3 && kart4.finalPosition == 2)
                     {
                         posOne.sprite = firstP;
                         posTwo.sprite = fourthP;
@@ -418,42 +432,42 @@ public class LapsManager : MonoBehaviour
                         posFour.sprite = secondP;
                     }
                     //Kart 2
-                    else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 3 && kart4.kartPosition == 4)
+                    else if (kart1.finalPosition == 2 && kart2.finalPosition == 1 && kart3.finalPosition == 3 && kart4.finalPosition == 4)
                     {
                         posOne.sprite = secondP;
                         posTwo.sprite = firstP;
                         posThree.sprite = thirdP;
                         posFour.sprite = fourthP;
                     }
-                    else if (kart1.kartPosition == 2 && kart2.kartPosition == 1 && kart3.kartPosition == 4 && kart4.kartPosition == 3)
+                    else if (kart1.finalPosition == 2 && kart2.finalPosition == 1 && kart3.finalPosition == 4 && kart4.finalPosition == 3)
                     {
                         posOne.sprite = secondP;
                         posTwo.sprite = firstP;
                         posThree.sprite = fourthP;
                         posFour.sprite = thirdP;
                     }
-                    else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 1 && kart4.kartPosition == 4)
+                    else if (kart1.finalPosition == 2 && kart2.finalPosition == 3 && kart3.finalPosition == 1 && kart4.finalPosition == 4)
                     {
                         posOne.sprite = secondP;
                         posTwo.sprite = thirdP;
                         posThree.sprite = firstP;
                         posFour.sprite = fourthP;
                     }
-                    else if (kart1.kartPosition == 2 && kart2.kartPosition == 3 && kart3.kartPosition == 4 && kart4.kartPosition == 1)
+                    else if (kart1.finalPosition == 2 && kart2.finalPosition == 3 && kart3.finalPosition == 4 && kart4.finalPosition == 1)
                     {
                         posOne.sprite = secondP;
                         posTwo.sprite = thirdP;
                         posThree.sprite = fourthP;
                         posFour.sprite = firstP;
                     }
-                    else if (kart1.kartPosition == 2 && kart2.kartPosition == 4 && kart3.kartPosition == 1 && kart4.kartPosition == 3)
+                    else if (kart1.finalPosition == 2 && kart2.finalPosition == 4 && kart3.finalPosition == 1 && kart4.finalPosition == 3)
                     {
                         posOne.sprite = secondP;
                         posTwo.sprite = fourthP;
                         posThree.sprite = firstP;
                         posFour.sprite = thirdP;
                     }
-                    else if (kart1.kartPosition == 2 && kart2.kartPosition == 4 && kart3.kartPosition == 3 && kart4.kartPosition == 1)
+                    else if (kart1.finalPosition == 2 && kart2.finalPosition == 4 && kart3.finalPosition == 3 && kart4.finalPosition == 1)
                     {
                         posOne.sprite = secondP;
                         posTwo.sprite = fourthP;
@@ -461,42 +475,42 @@ public class LapsManager : MonoBehaviour
                         posFour.sprite = firstP;
                     }
                     //kart 3
-                    else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 2 && kart4.kartPosition == 4)
+                    else if (kart1.finalPosition == 3 && kart2.finalPosition == 1 && kart3.finalPosition == 2 && kart4.finalPosition == 4)
                     {
                         posOne.sprite = thirdP;
                         posTwo.sprite = firstP;
                         posThree.sprite = secondP;
                         posFour.sprite = fourthP;
                     }
-                    else if (kart1.kartPosition == 3 && kart2.kartPosition == 1 && kart3.kartPosition == 4 && kart4.kartPosition == 2)
+                    else if (kart1.finalPosition == 3 && kart2.finalPosition == 1 && kart3.finalPosition == 4 && kart4.finalPosition == 2)
                     {
                         posOne.sprite = thirdP;
                         posTwo.sprite = firstP;
                         posThree.sprite = fourthP;
                         posFour.sprite = secondP;
                     }
-                    else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 1 && kart4.kartPosition == 4)
+                    else if (kart1.finalPosition == 3 && kart2.finalPosition == 2 && kart3.finalPosition == 1 && kart4.finalPosition == 4)
                     {
                         posOne.sprite = thirdP;
                         posTwo.sprite = secondP;
                         posThree.sprite = firstP;
                         posFour.sprite = fourthP;
                     }
-                    else if (kart1.kartPosition == 3 && kart2.kartPosition == 2 && kart3.kartPosition == 4 && kart4.kartPosition == 1)
+                    else if (kart1.finalPosition == 3 && kart2.finalPosition == 2 && kart3.finalPosition == 4 && kart4.finalPosition == 1)
                     {
                         posOne.sprite = thirdP;
                         posTwo.sprite = secondP;
                         posThree.sprite = fourthP;
                         posFour.sprite = firstP;
                     }
-                    else if (kart1.kartPosition == 3 && kart2.kartPosition == 4 && kart3.kartPosition == 1 && kart4.kartPosition == 2)
+                    else if (kart1.finalPosition == 3 && kart2.finalPosition == 4 && kart3.finalPosition == 1 && kart4.finalPosition == 2)
                     {
                         posOne.sprite = thirdP;
                         posTwo.sprite = fourthP;
                         posThree.sprite = firstP;
                         posFour.sprite = secondP;
                     }
-                    else if (kart1.kartPosition == 3 && kart2.kartPosition == 4 && kart3.kartPosition == 2 && kart4.kartPosition == 1)
+                    else if (kart1.finalPosition == 3 && kart2.finalPosition == 4 && kart3.finalPosition == 2 && kart4.finalPosition == 1)
                     {
                         posOne.sprite = thirdP;
                         posTwo.sprite = fourthP;
@@ -504,42 +518,42 @@ public class LapsManager : MonoBehaviour
                         posFour.sprite = firstP;
                     }
                     //kart 4
-                    else if (kart1.kartPosition == 4 && kart2.kartPosition == 1 && kart3.kartPosition == 2 && kart4.kartPosition == 3)
+                    else if (kart1.finalPosition == 4 && kart2.finalPosition == 1 && kart3.finalPosition == 2 && kart4.finalPosition == 3)
                     {
                         posOne.sprite = fourthP;
                         posTwo.sprite = firstP;
                         posThree.sprite = secondP;
                         posFour.sprite = thirdP;
                     }
-                    else if (kart1.kartPosition == 4 && kart2.kartPosition == 1 && kart3.kartPosition == 3 && kart4.kartPosition == 2)
+                    else if (kart1.finalPosition == 4 && kart2.finalPosition == 1 && kart3.finalPosition == 3 && kart4.finalPosition == 2)
                     {
                         posOne.sprite = fourthP;
                         posTwo.sprite = firstP;
                         posThree.sprite = thirdP;
                         posFour.sprite = secondP;
                     }
-                    else if (kart1.kartPosition == 4 && kart2.kartPosition == 2 && kart3.kartPosition == 1 && kart4.kartPosition == 3)
+                    else if (kart1.finalPosition == 4 && kart2.finalPosition == 2 && kart3.finalPosition == 1 && kart4.finalPosition == 3)
                     {
                         posOne.sprite = fourthP;
                         posTwo.sprite = secondP;
                         posThree.sprite = firstP;
                         posFour.sprite = thirdP;
                     }
-                    else if (kart1.kartPosition == 4 && kart2.kartPosition == 2 && kart3.kartPosition == 3 && kart4.kartPosition == 1)
+                    else if (kart1.finalPosition == 4 && kart2.finalPosition == 2 && kart3.finalPosition == 3 && kart4.finalPosition == 1)
                     {
                         posOne.sprite = fourthP;
                         posTwo.sprite = secondP;
                         posThree.sprite = thirdP;
                         posFour.sprite = firstP;
                     }
-                    else if (kart1.kartPosition == 4 && kart2.kartPosition == 3 && kart3.kartPosition == 1 && kart4.kartPosition == 2)
+                    else if (kart1.finalPosition == 4 && kart2.finalPosition == 3 && kart3.finalPosition == 1 && kart4.finalPosition == 2)
                     {
                         posOne.sprite = fourthP;
                         posTwo.sprite = thirdP;
                         posThree.sprite = firstP;
                         posFour.sprite = secondP;
                     }
-                    else if (kart1.kartPosition == 4 && kart2.kartPosition == 3 && kart3.kartPosition == 2 && kart4.kartPosition == 1)
+                    else if (kart1.finalPosition == 4 && kart2.finalPosition == 3 && kart3.finalPosition == 2 && kart4.finalPosition == 1)
                     {
                         posOne.sprite = fourthP;
                         posTwo.sprite = thirdP;
@@ -565,5 +579,42 @@ public class LapsManager : MonoBehaviour
 
 
       
+    }
+
+    void raceCountDown()
+    {
+        switch(endTime)
+        {
+            case 9:
+                endCount.sprite = numbers[9];
+                break;
+            case 8:
+                endCount.sprite = numbers[8];
+                break;
+            case 7:
+                endCount.sprite = numbers[7];
+                break;
+            case 6:
+                endCount.sprite = numbers[6];
+                break;
+            case 5:
+                endCount.sprite = numbers[5];
+                break;
+            case 4:
+                endCount.sprite = numbers[4];
+                break;
+            case 3:
+                endCount.sprite = numbers[3];
+                break;
+            case 2:
+                endCount.sprite = numbers[2];
+                break;
+            case 1:
+                endCount.sprite = numbers[1];
+                break;
+            case 0:
+                endCount.sprite = numbers[0];
+                break;
+        }
     }
 }

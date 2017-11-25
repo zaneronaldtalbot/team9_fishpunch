@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //Written by Angus Secomb
-//Last edited 20/11/17
+//Last edited 22/11/17
 [RequireComponent(typeof(KartController))]
 public class PlayerActor : MonoBehaviour {
 
@@ -17,6 +18,23 @@ public class PlayerActor : MonoBehaviour {
     public ParticleSystem deathParticles;
 
     public ParticleSystem respawnParticles;
+
+    public Material transparent;
+    private Material matCopy;
+
+    public Renderer wheel1, wheel2, wheel3, wheel4;
+
+    private Material wheelCopy;
+
+    public float immuneTimer = 4.0f;
+
+    private float flashingTimer = 0.1f;
+    private float ftCopy;
+
+    private bool flashClear = false;
+    private bool flashFull = false;
+
+    public Renderer kartMat;
 
     //Public lap related varaibles.
     [HideInInspector]
@@ -36,12 +54,15 @@ public class PlayerActor : MonoBehaviour {
     bool check1 = false, check2 = false, check3 = false, check4 = false, check5 = false, check6 = false,
          check7 = false, check8 = false, check9 = false, check10 = false, check11 = false, check12 = false;
 
+    private float overTurnCounter = 3;
+
 
     private List<bool> checks = new List<bool>();
     
     [HideInInspector]
     public float raceCountdownTimer = 3.0f;
 
+    private Image greyBackDrop, pauseUI, pauseContinue, pauseMenu;
 
     //Bool to assign new traps on lap pass.
     [HideInInspector]
@@ -62,6 +83,12 @@ public class PlayerActor : MonoBehaviour {
     public bool playerDisabled, boostPlayer, placeMine, fireRPG = false;
 
     bool setOnce = true;
+
+    float deadZone = 0.9f;
+
+    float coolDown = 0.3f;
+    float cdCopy = 0.3f;
+
 
     [HideInInspector]
     public KartController kart;
@@ -88,7 +115,8 @@ public class PlayerActor : MonoBehaviour {
 
     private float disabledTimer = 0.0f;
 
-    private bool immuneToDamage = false;
+    [HideInInspector]
+    public bool immuneToDamage = false;
 
     [Tooltip("How long the karts steering locks for when it hits an oil slick")]
     public float lockSteerTime = 2.0f;
@@ -99,10 +127,14 @@ public class PlayerActor : MonoBehaviour {
 
     private Image play, playerSelect, menu;
 
+    private float steerSpeedCopy;
+
     [HideInInspector]
     public bool hitSlick = false;
 
     private bool isPaused = false;
+
+    private int buttonIndex = 1;
 
     //Layer mask used to stop raycast interacting and hitting kart.
     int layerMask;
@@ -110,7 +142,8 @@ public class PlayerActor : MonoBehaviour {
     // Use this for initialization
     void Start () {
         kart = GetComponent<KartController>();
-      
+        steerSpeedCopy = kart.steerSpeed;
+        ftCopy = flashingTimer;
         lapManager = GameObject.Find("Manager").GetComponent<LapsManager>();
         npcManager = GameObject.Find("Manager").GetComponent<NewPlacementController>();
     //    checkPointPosition = GameObject.Find("RespawnPoint");
@@ -120,11 +153,17 @@ public class PlayerActor : MonoBehaviour {
         //Layer mask to ignore the kart.
         layerMask = 1 << LayerMask.NameToLayer("Vehicle");
         layerMask = ~layerMask;
-
+        matCopy = kartMat.material;
+        wheelCopy = wheel1.material;
         //Acquire gamepad based on player number
+        flashFull = true;
 
+        greyBackDrop = GameObject.Find("GreyBackDrop").GetComponent<Image>();
+        pauseUI = GameObject.Find("PauseUIPaused").GetComponent<Image>();
+        pauseContinue = GameObject.Find("PauseUIContinue").GetComponent<Image>();
+        pauseMenu = GameObject.Find("PauseUIMainMenu").GetComponent<Image>();
 
-        for(int i = 1; i <= GamePadManager.Instance.ConnectedTotal(); ++ i)
+        for (int i = 1; i <= GamePadManager.Instance.ConnectedTotal(); ++ i)
         {
             xbox_gamepad temppad = GamePadManager.Instance.GetGamePad(i);
             switch (playerNumber)
@@ -161,7 +200,7 @@ public class PlayerActor : MonoBehaviour {
 
             }
         }
-    
+
 
     }
 
@@ -178,6 +217,10 @@ public class PlayerActor : MonoBehaviour {
         Debug.Log(kart.physicsBody.velocity.sqrMagnitude);
         Debug.Log("Kart " + playerNumber + ": " + checkPointCounter);
 
+        if(gamepad.GetButtonDown("Y"))
+        {
+            lapNumber++;
+        }
 
         if (lapManager == null)
         {
@@ -204,24 +247,80 @@ public class PlayerActor : MonoBehaviour {
         }
 
 
-        if (gamepad.GetButtonDown("Start") && !isPaused)
+        if (raceCountdownTimer < 0)
         {
-            isPaused = true;
-            Time.timeScale = 0;
+            if (gamepad.GetButtonDown("Start") && !isPaused && !npcManager.isPaused)
+            {
+                npcManager.isPaused = true;
+                isPaused = true;
+                Time.timeScale = 0;
+            }
+            else if (gamepad.GetButtonDown("Start") && isPaused)
+            {
+                isPaused = false;
+                npcManager.isPaused = false;
+                Time.timeScale = 1;
+            }
         }
-        else if (gamepad.GetButtonDown("Start") && isPaused)
+        if (isPaused)
         {
-            isPaused = false;
-            Time.timeScale = 1;
+            coolDown -= Time.unscaledDeltaTime;
+            if (buttonIndex == 1)
+            {
+                if (gamepad.GetStick_L().Y < -deadZone && coolDown < 0)
+                {
+                    coolDown = cdCopy;
+                    buttonIndex = 2;
+                }
+                if(gamepad.GetButtonDown("A"))
+                {
+                    isPaused = false;
+                    npcManager.isPaused = false;
+                    Time.timeScale = 1;
+                    npcManager.enabled = false;
+                }
+                if (gamepad.GetButtonUp("A"))
+                {
+                    npcManager.enabled = false;
+                }
+            }
+            if(buttonIndex == 2)
+            {
+                if (gamepad.GetStick_L().Y > deadZone && coolDown < 0)
+                {
+                    coolDown = cdCopy;
+                    buttonIndex = 1;
+                }
+                if (gamepad.GetButtonDown("A"))
+                {
+                    Time.timeScale = 1;
+                    Destroy(GameObject.Find("Manager"));
+                    SceneManager.LoadScene(0);
+                }
+            }
+            greyBackDrop.enabled = true;
+            pauseContinue.enabled = true;
+            pauseMenu.enabled = true;
+            pauseUI.enabled = true;
+
+        }
+        else if (!isPaused)
+        {
+            greyBackDrop.enabled = false;
+            pauseContinue.enabled = false;
+            pauseMenu.enabled = false;
+            pauseUI.enabled = false;
         }
 
-        if(isPaused)
+        if(buttonIndex == 1)
         {
-
+            pauseContinue.color = Color.yellow;
+            pauseMenu.color = Color.grey;
         }
-        else if(!isPaused)
+        if (buttonIndex == 2)
         {
-
+            pauseContinue.color = Color.grey;
+            pauseMenu.color = Color.yellow;
         }
 
         //if (lapManager.endTime < 0 && lapNumber < 3)
@@ -274,16 +373,17 @@ public class PlayerActor : MonoBehaviour {
             deathParticles.Play();
             tempVector = deathParticles.transform.position;
             //Freeze rigidbody, disable mesh, reset velocity, move kart slightly back and up.
-            immuneToDamage = true;
+           
+
             disabledTimer += Time.deltaTime;
             kartBody.velocity = new Vector3();
-
+            kartMat.material = transparent;
             kartBody.constraints = RigidbodyConstraints.FreezeAll;
             mesh.SetActive(false);
 
             if(setOnce)
             {
-                this.gameObject.transform.position = gameObject.transform.position + (transform.forward * -10);
+                this.gameObject.transform.position = gameObject.transform.position + (transform.forward * 12);
                 gameObject.transform.position = gameObject.transform.position + (transform.up * 2);
                 setOnce = false;
             }
@@ -294,20 +394,77 @@ public class PlayerActor : MonoBehaviour {
             //turn mesh on and turn off/on relevant bools.
             if(disabledTimer > 2.0f)
             {
+                immuneToDamage = true;
                 deathParticles.transform.position = kart.transform.position;
                 deathParticles.Stop();
                 respawnParticles.Play();
                 kartBody.constraints = RigidbodyConstraints.None;
                 disabledTimer = 0.0f;
                 playerDisabled = false;
-                immuneToDamage = false;
+                
                 mesh.SetActive(true);
                 setOnce = true;
             }
 
+           
+
         }
 
+        if(immuneToDamage)
+        {
+            immuneTimer -= Time.deltaTime;
+            flashingTimer -= Time.deltaTime;
+
+
+            if(flashingTimer < 0)
+            {
+                flashingTimer = ftCopy;
+
+                if(flashFull)
+                {
+
+                    kartMat.material = matCopy;
+                    wheel1.material = wheelCopy;
+                    wheel2.material = wheelCopy;
+                    wheel3.material = wheelCopy;
+                    wheel4.material = wheelCopy;
+                    flashClear = true;
+                    flashFull = false;
+                }
+                else if(flashClear)
+                {
+                    kartMat.material = transparent;
+                    kartMat.material.color = Color.cyan;
+                    wheel1.material = transparent;
+                    wheel1.material.color = Color.cyan;
+                    wheel2.material = transparent;
+                    wheel2.material.color = Color.cyan;
+                    wheel3.material = transparent;
+                    wheel3.material.color = Color.cyan;
+                    wheel4.material = transparent;
+                    wheel4.material.color = Color.cyan;
+                    flashClear = false;
+                    flashFull = true;
+                }
+                
+            }
+          
+
+            if (immuneTimer < 0)
+            {
+                respawnParticles.Stop();
+                immuneToDamage = false;
+                immuneTimer = 5.0f;
+                kartMat.material = matCopy;
+                wheel1.material = wheelCopy;
+                wheel2.material = wheelCopy;
+                wheel3.material = wheelCopy;
+                wheel4.material = wheelCopy;
+            }
+
+        }
       
+
 
         //If trigger down go forward else if left trigger is down
         //bring thrust back to 0.
@@ -335,13 +492,26 @@ public class PlayerActor : MonoBehaviour {
         kart.Steering = gamepad.GetStick_L().X;
 
 
+        if(kart.IsOverturned)
+        {
+            overTurnCounter -= Time.deltaTime;
+
+            if (overTurnCounter < 0)
+            {
+                this.transform.forward = lastCheckPoint.transform.forward;
+                this.transform.position = lastCheckPoint.transform.position;
+                playerDisabled = true;
+                overTurnCounter = 3;
+            }
+        }
+
         //If b button traction, deceleration and breakpower
         // = set values else reset to defaults.
         if (gamepad.GetButton("B"))
         {
             if (kart.physicsBody.velocity.sqrMagnitude > 50.0f && kart.IsGrounded)
             {
-
+                kart.steerSpeed = 0.4f;
 
                 kart.decelerationSpeed = driftDeceleration;
                 kart.breakPower = breakPower;
@@ -361,6 +531,7 @@ public class PlayerActor : MonoBehaviour {
             kart.decelerationSpeed = kart.decelerationSpeedCopy;
             kart.breakPower = 0.0f;
             kart.traction = 0.4f;
+            kart.steerSpeed = steerSpeedCopy;
         }
 
         if(gamepad.GetButton("Back"))
@@ -580,6 +751,11 @@ public class PlayerActor : MonoBehaviour {
                 nextCheckPoint = lapManager.checkPoints[0];
                 lapNumber++;
 
+                if (lapNumber == 4)
+                {
+                    finalPosition = kartPosition;
+                }
+
                 switch(playerNumber)
                 {
                     case 1:
@@ -643,9 +819,10 @@ public class PlayerActor : MonoBehaviour {
         //Destroy the rpg and disable the player.
         if (coll.gameObject.tag == "RPG")
         {
+            GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
             if (!immuneToDamage)
             {
-                GameObject.Destroy(coll.gameObject.transform.parent.gameObject);
+                
                 playerDisabled = true;
             }
         }

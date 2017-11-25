@@ -9,36 +9,61 @@ public class BuzzsawActor : MonoBehaviour {
     private GameObject sawBlade;
     private MeshRenderer bladeRender;
     private MeshCollider bladeCollider;
-    
+    private PrefabDisabledActor disableActor;
+
+    private int counter = 3;
     public float sawSpeed = 3.0f;
     public float bladeSpinSpeed = 500.0f;
     private bool goLeft = true;
     private bool goRight = false;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         sawBlade = this.gameObject;
         bladeRender = sawBlade.GetComponentInChildren<MeshRenderer>();
         bladeCollider = sawBlade.GetComponentInChildren<MeshCollider>();
-	}
+        disableActor = sawBlade.GetComponentInParent<PrefabDisabledActor>();
+    }
 
     // Update is called once per frame
     void Update() {
 
-      //  sawBlade.transform.Rotate(5 * Time.deltaTime, 0, 0);
+        //  sawBlade.transform.Rotate(5 * Time.deltaTime, 0, 0);
+        if(counter < 1)
+        {
+            Destroy(this.gameObject.transform.parent.gameObject);
+        }
+        if (disableActor.timer < 0)
+        {
+            if (goLeft)
+            {
+                sawBlade.transform.Translate(0, 0, -sawSpeed * Time.deltaTime);
+                bladeRender.transform.Rotate(-bladeSpinSpeed * Time.deltaTime, 0, 0);
+                bladeCollider.transform.Rotate(-bladeSpinSpeed * Time.deltaTime, 0, 0);
+            }
+            if (goRight)
+            {
+                sawBlade.transform.Translate(0, 0, sawSpeed * Time.deltaTime);
+                bladeRender.transform.Rotate(bladeSpinSpeed * Time.deltaTime, 0, 0);
+                bladeCollider.transform.Rotate(bladeSpinSpeed * Time.deltaTime, 0, 0);
+            }
+        }
+    }
 
-        if (goLeft)
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.gameObject.tag == "Player")
         {
-            sawBlade.transform.Translate(0, 0, -sawSpeed * Time.deltaTime);
-            bladeRender.transform.Rotate(-bladeSpinSpeed * Time.deltaTime, 0, 0);
-            bladeCollider.transform.Rotate(-bladeSpinSpeed * Time.deltaTime, 0, 0);
+            
+            PlayerActor kart;
+            kart = coll.gameObject.GetComponentInParent<PlayerActor>();
+
+            if (!kart.immuneToDamage)
+            {
+                counter--;
+                kart.playerDisabled = true;
+            }
         }
-        if (goRight)
-        {
-            sawBlade.transform.Translate(0, 0, sawSpeed * Time.deltaTime);
-            bladeRender.transform.Rotate(bladeSpinSpeed * Time.deltaTime, 0, 0);
-            bladeCollider.transform.Rotate(bladeSpinSpeed * Time.deltaTime, 0, 0);
-        }
-	}
+    }
 
     void OnTriggerEnter(Collider coll)
     {
@@ -54,19 +79,18 @@ public class BuzzsawActor : MonoBehaviour {
             goLeft = true;
         }
 
-     
+        //if (coll.gameObject.tag == "Player")
+        //{
 
-    }
+        //        PlayerActor kart;
+        //        kart = coll.gameObject.GetComponentInParent<PlayerActor>();
 
-    void OnCollisionEnter(Collision coll)
-    {
-        if (coll.gameObject.tag == "Player")
-        {
-            PlayerActor kart;
-            kart = coll.gameObject.GetComponentInParent<PlayerActor>();
-            kart.playerDisabled = true;
+        //        if (!kart.immuneToDamage)
+        //        {
+        //            kart.playerDisabled = true;
+        //        }
+        //}
 
-        }
     }
 
     void OnTriggerStay(Collider coll)

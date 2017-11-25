@@ -18,6 +18,7 @@ public class PrefabDisabledActor : MonoBehaviour
     public Material transparentItem;
     private Material noo;
 
+    public Renderer rendblade;
     private Renderer rend;
     // Use this for initialization
     void Start()
@@ -26,10 +27,14 @@ public class PrefabDisabledActor : MonoBehaviour
 
         rend = GetComponentInChildren<Renderer>();
          rend.material.color = new Color(0, 0, 0, 0);
+        if (rendblade != null)
+        {
+            rendblade.material.color = new Color(0, 0, 0, 0);
+        }
         npController = GameObject.Find("Manager").GetComponent<NewPlacementController>();
         if (this.gameObject.name == "Buzzsaw(Clone)")
         {
-            colliderObject = this.gameObject.transform.Find("SawBlade_001").gameObject;
+            colliderObject = this.gameObject.transform.Find("SawBlade_001").gameObject.transform.Find("Collider").gameObject;
 
 
         }
@@ -55,6 +60,10 @@ public class PrefabDisabledActor : MonoBehaviour
         {
             colliderObject.SetActive(true);
             rend.material.color = new Color(1, 1, 1, 1);
+            if (rendblade != null)
+            {
+                rendblade.material.color = new Color(1, 1, 1, 1);
+            }
         }
 
         lastPos = this.gameObject.transform.position;

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MenuActor : MonoBehaviour {
 
     private GamePadManager gpManager;
-    private xbox_gamepad gamepad1;
+    private xbox_gamepad gamepad1, gamepad2;
 
     private AudioSource gearShiftOne, gearShiftTwo, beepBeep;
 
@@ -48,6 +48,7 @@ public class MenuActor : MonoBehaviour {
 	void Start () {
         gpManager = this.gameObject.GetComponent<GamePadManager>();
         gamepad1 = GamePadManager.Instance.GetGamePad(1);
+        gamepad2 = GamePadManager.Instance.GetGamePad(2);
         gearShiftOne = GameObject.Find("GearShiftOne").GetComponent<AudioSource>();
         gearShiftTwo = GameObject.Find("GearShiftTwo").GetComponent<AudioSource>();
         beepBeep = GameObject.Find("BeepBeep").GetComponent<AudioSource>();

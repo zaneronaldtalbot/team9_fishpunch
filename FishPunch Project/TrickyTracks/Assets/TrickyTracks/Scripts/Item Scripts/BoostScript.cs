@@ -12,6 +12,9 @@ public class BoostScript : MonoBehaviour
     public float rotationSpeed = 50.0f;
     private GameObject boostPrefab;
 
+    public float boostValue = 80.0f;
+    public float boostTime = 2.0f;
+
     // Use this for initialization
     void Start()
     {
@@ -43,10 +46,7 @@ public class BoostScript : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             kart = coll.gameObject.GetComponentInParent<PlayerActor>();
-            if (!kart.itemMine && !kart.itemRPG)
-            {
-                kart.itemBoost = true;
-            }
+            kart.kart.SpeedBoost(boostValue, 2, boostTime, 1);
         }
 
     }

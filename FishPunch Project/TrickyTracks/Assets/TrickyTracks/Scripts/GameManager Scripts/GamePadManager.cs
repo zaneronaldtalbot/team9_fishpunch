@@ -27,9 +27,14 @@ public class GamePadManager : MonoBehaviour {
     private GameObject player3;
     private GameObject player4;
 
+    private WinActor winActor;
+
 
     private ItemManager itemManager;
     private NewPlacementController newPlacementController;
+
+    [HideInInspector]
+    public bool isPaused = false;
 
     private Scene currentScene;
 
@@ -60,6 +65,7 @@ public class GamePadManager : MonoBehaviour {
             posManager = GetComponent<PositionManager>();
             newPlacementController = GetComponent<NewPlacementController>();
             psActor = GetComponent<PlayerSelectActor>();
+            winActor = GetComponent<WinActor>();
 
             //Lock gamepadcount based on range
             GamePadCount = Mathf.Clamp(GamePadCount, 1, 4);
@@ -90,8 +96,9 @@ public class GamePadManager : MonoBehaviour {
             lpManager.enabled = true;
             itemManager.enabled = true;
             posManager.enabled = true;
+            winActor.enabled = true;
       
-            audioActor.enabled = true;
+           // audioActor.enabled = true;
 
             GamePadCount = psActor.playerCount;
 

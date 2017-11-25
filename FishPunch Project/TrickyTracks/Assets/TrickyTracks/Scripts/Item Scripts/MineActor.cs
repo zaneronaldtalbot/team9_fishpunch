@@ -23,8 +23,11 @@ public class MineActor : MonoBehaviour {
         if (coll.gameObject.tag == "Player")
         {
             kart = coll.gameObject.GetComponentInParent<PlayerActor>();
-            kart.playerDisabled = true;
-            GameObject.Destroy(this.gameObject.transform.parent.gameObject);
+            if (!kart.immuneToDamage)
+            {
+                kart.playerDisabled = true;
+            }
+                GameObject.Destroy(this.gameObject.transform.parent.gameObject);
         }
         if(coll.gameObject.tag == "RPG")
         { 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //Written by Angus Secomb
-//Last edited 19/11/2017.
+//Last edited 22/11/2017.
 public class NewPlacementController : MonoBehaviour
 {
     private GameObject[] items;
@@ -14,6 +14,9 @@ public class NewPlacementController : MonoBehaviour
     public AudioSource scrollItems1, scrollItems2, placeItem;
 
     public float exclusionDistance = 10.0f;
+
+    [HideInInspector]
+    public bool isPaused = false;
 
     //Manager variables to access other scripts on the manager.
     private GameObject manager;
@@ -39,7 +42,11 @@ public class NewPlacementController : MonoBehaviour
                   itemCount4Num1, itemCount4Num2;
 
     public Sprite[] nums;
-    
+
+    private Image triggerR1, triggerL1, triggerR2, triggerL2, triggerR3, triggerL3, triggerR4, triggerL4;
+
+    private Image button1, button2, button3, button4;
+
     //Traps gameobject prefabs
     [Header("Traps")]
     public GameObject buzzsaw;
@@ -72,7 +79,7 @@ public class NewPlacementController : MonoBehaviour
 
     //Object that the raycast shoots down from.
     private GameObject raycastObject1, raycastObject2, raycastObject3, raycastObject4;
-    
+
     //The object currently about to be placed
     private GameObject currentPlaceableObject1, currentPlaceableObject2,
                        currentPlaceableObject3, currentPlaceableObject4;
@@ -119,7 +126,21 @@ public class NewPlacementController : MonoBehaviour
         gpManager = GetComponent<GamePadManager>();
         psActor = manager.GetComponent<PlayerSelectActor>();
         lapManager = manager.GetComponent<LapsManager>();
-        
+
+
+        button1 = GameObject.Find("Button1").GetComponent<Image>();
+        button2 = GameObject.Find("Button2").GetComponent<Image>();
+        button3 = GameObject.Find("Button3").GetComponent<Image>();
+        button4 = GameObject.Find("Button4").GetComponent<Image>();
+
+        triggerL1 = GameObject.Find("TriggerL1").GetComponent<Image>();
+        triggerR1 = GameObject.Find("TriggerR1").GetComponent<Image>();
+        triggerL2 = GameObject.Find("TriggerL2").GetComponent<Image>();
+        triggerR2 = GameObject.Find("TriggerR2").GetComponent<Image>();
+        triggerL3 = GameObject.Find("TriggerL3").GetComponent<Image>();
+        triggerR3 = GameObject.Find("TriggerR3").GetComponent<Image>();
+        triggerL4 = GameObject.Find("TriggerL4").GetComponent<Image>();
+        triggerR4 = GameObject.Find("TriggerR4").GetComponent<Image>();
 
         //add traps to trap list.
         trapPrefabs.Add(buzzsaw);
@@ -142,7 +163,7 @@ public class NewPlacementController : MonoBehaviour
         itemCount4Num1 = GameObject.Find("ItemCount4Num1").GetComponent<Image>();
         itemCount4Num2 = GameObject.Find("ItemCount4Num2").GetComponent<Image>();
 
-        
+
         currentItemBack1 = GameObject.Find("CurrentItemBack1").GetComponent<Image>();
         currentItemBack2 = GameObject.Find("CurrentItemBack2").GetComponent<Image>();
         currentItemBack3 = GameObject.Find("CurrentItemBack3").GetComponent<Image>();
@@ -166,8 +187,22 @@ public class NewPlacementController : MonoBehaviour
                 placeableObject2 = itemsP2[0];
 
                 //Assign gamepads.
-                gamepad1 = GamePadManager.Instance.GetGamePad(1);
-                gamepad2 = GamePadManager.Instance.GetGamePad(2);
+                for (int i = 1; i <= GamePadManager.Instance.ConnectedTotal(); ++i)
+                {
+                    xbox_gamepad temppad = GamePadManager.Instance.GetGamePad(i);
+
+                    if (temppad.newControllerIndex == 1)
+                    {
+                        gamepad1 = temppad;
+                    }
+
+                    if (temppad.newControllerIndex == 2)
+                    {
+                        gamepad2 = temppad;
+                    }
+                }
+                //     gamepad1 = GamePadManager.Instance.GetGamePad(1);
+                //   gamepad2 = GamePadManager.Instance.GetGamePad(2);
 
                 //Assign raycast object and karts
                 raycastObject1 = GameObject.Find("RayCast1");
@@ -190,6 +225,14 @@ public class NewPlacementController : MonoBehaviour
                 itemCount4Num1.enabled = false;
                 itemCount4Num2.enabled = false;
 
+                button2.enabled = false;
+                button4.enabled = false;
+
+                triggerR2.enabled = false;
+                triggerL2.enabled = false;
+                triggerR4.enabled = false;
+                triggerL4.enabled = false;
+
                 break;
             case 3:
                 //Randomise items.
@@ -202,6 +245,8 @@ public class NewPlacementController : MonoBehaviour
                 placeableObject1 = itemsP1[0];
                 placeableObject2 = itemsP2[0];
                 placeableObject3 = itemsP3[0];
+
+                button4.enabled = false;
 
                 //Assign gamepads.
                 gamepad1 = GamePadManager.Instance.GetGamePad(1);
@@ -222,7 +267,9 @@ public class NewPlacementController : MonoBehaviour
                 itemCount4Num1.enabled = false;
                 itemCount4Num2.enabled = false;
 
-              
+                triggerR4.enabled = false;
+                triggerL4.enabled = false;
+
                 break;
             case 4:
 
@@ -240,10 +287,38 @@ public class NewPlacementController : MonoBehaviour
                 placeableObject3 = itemsP3[0];
                 placeableObject4 = itemsP4[0];
 
-                gamepad1 = GamePadManager.Instance.GetGamePad(1);
-                gamepad2 = GamePadManager.Instance.GetGamePad(2);
-                gamepad3 = GamePadManager.Instance.GetGamePad(3);
-                gamepad4 = GamePadManager.Instance.GetGamePad(4);
+
+                for (int i = 1; i <= GamePadManager.Instance.ConnectedTotal(); ++i)
+                {
+                    xbox_gamepad temppad = GamePadManager.Instance.GetGamePad(i);
+
+                    if (temppad.newControllerIndex == 1)
+                    {
+                        gamepad1 = temppad;
+                    }
+
+                    if (temppad.newControllerIndex == 2)
+                    {
+                        gamepad2 = temppad;
+                    }
+
+                    if (temppad.newControllerIndex == 3)
+                    {
+                        gamepad3 = temppad;
+                    }
+                    if (temppad.newControllerIndex == 4)
+                    {
+                        gamepad4 = temppad;
+                    }
+                }
+
+
+
+
+                //gamepad1 = GamePadManager.Instance.GetGamePad(1);
+                //gamepad2 = GamePadManager.Instance.GetGamePad(2);
+                //gamepad3 = GamePadManager.Instance.GetGamePad(3);
+                //gamepad4 = GamePadManager.Instance.GetGamePad(4);
 
                 raycastObject1 = GameObject.Find("RayCast1");
                 raycastObject2 = GameObject.Find("RayCast2");
@@ -254,9 +329,6 @@ public class NewPlacementController : MonoBehaviour
                 kart2 = GameObject.Find("PlayerCharacter_002");
                 kart3 = GameObject.Find("PlayerCharacter_003");
                 kart4 = GameObject.Find("PlayerCharacter_004");
-
-                powerup1_2P.enabled = false;
-                powerup2_2P.enabled = false;
 
                 break;
             default:
@@ -271,18 +343,21 @@ public class NewPlacementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
+
         items = GameObject.FindGameObjectsWithTag("Item");
 
         foreach (GameObject obj in items)
         {
             if (currentPlaceableObject1 != null)
-            { 
+            {
                 if ((Vector3.Distance(obj.transform.position, currentPlaceableObject1.transform.position) < exclusionDistance))
                 {
                     Renderer rend;
                     rend = currentPlaceableObject1.GetComponentInChildren<Renderer>();
                     rend.material.color = Color.red;
-                
+
 
                     cannotPlace1 = true;
                 }
@@ -292,8 +367,8 @@ public class NewPlacementController : MonoBehaviour
                     Renderer rend;
                     rend = currentPlaceableObject1.GetComponentInChildren<Renderer>();
                     rend.material.color = Color.white;
-                    rend.material.color = new Color(0,0,0,0);
-                    
+                    rend.material.color = new Color(0, 0, 0, 0);
+
                 }
             }
 
@@ -311,7 +386,7 @@ public class NewPlacementController : MonoBehaviour
                     cannotPlace2 = false;
                     Renderer rend;
                     rend = currentPlaceableObject2.GetComponentInChildren<Renderer>();
-                  
+
                     rend.material.color = Color.white;
                     rend.material.color = new Color(0, 0, 0, 0);
                 }
@@ -369,9 +444,15 @@ public class NewPlacementController : MonoBehaviour
         switch (psActor.playerCount)
         {
             case 2:
-         
+
                 switchItemIcons(prefabIndex1, currentItem1, itemsP1);
                 switchItemIcons(prefabIndex2, currentItem3, itemsP2);
+
+                if (lapManager.raceCountdownTimer < 0)
+                {
+                    buttonPress(gamepad1, triggerL1, triggerR1, button1);
+                    buttonPress(gamepad2, triggerL3, triggerR3, button3);
+                }
 
                 if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
@@ -406,9 +487,12 @@ public class NewPlacementController : MonoBehaviour
                 break;
             case 3:
 
-                powerup1_2P.enabled = false;
-                powerup2_2P.enabled = false;
-                powerup4.enabled = false;
+                if (lapManager.raceCountdownTimer < 0)
+                {
+                    buttonPress(gamepad1, triggerL1, triggerR1, button1);
+                    buttonPress(gamepad2, triggerL2, triggerR2, button2);
+                    buttonPress(gamepad3, triggerL3, triggerR3, button3);
+                }
 
                 switchItemIcons(prefabIndex1, currentItem1, itemsP1);
                 switchItemIcons(prefabIndex2, currentItem2, itemsP2);
@@ -455,8 +539,19 @@ public class NewPlacementController : MonoBehaviour
                 playerItemCountUi(itemsP2, itemCount3Num1, itemCount3Num2);
                 playerItemCountUi(itemsP3, itemCount2Num1, itemCount2Num2);
 
+                
+
                 break;
             case 4:
+
+                if (lapManager.raceCountdownTimer < 0)
+                {
+                    buttonPress(gamepad1, triggerL1, triggerR1, button1);
+                    buttonPress(gamepad2, triggerL2, triggerR2, button2);
+                    buttonPress(gamepad3, triggerL3, triggerR3, button3);
+                    buttonPress(gamepad4, triggerL4, triggerR4, button4);
+                }
+
                 if (kart1.GetComponent<PlayerActor>().assignNewTraps)
                 {
                     randNumP1.Clear();
@@ -516,10 +611,13 @@ public class NewPlacementController : MonoBehaviour
                 playerItemCountUi(itemsP3, itemCount2Num1, itemCount2Num2);
                 playerItemCountUi(itemsP4, itemCount4Num1, itemCount4Num2);
 
+            
                 break;
             default:
                 break;
         }
+
+      
 
     }
 
@@ -1102,13 +1200,13 @@ public class NewPlacementController : MonoBehaviour
                                 placeableObject1 = itemsP1[prefabIndex1];
 
                             }
-                        
-                        if (itemsP1.Count == 0)
-                        {
-                            placeableObject1 = null;
 
+                            if (itemsP1.Count == 0)
+                            {
+                                placeableObject1 = null;
+
+                            }
                         }
-                    }
                         else
                         {
                             currentPlaceableObject1.tag = "Item";
@@ -1647,7 +1745,7 @@ public class NewPlacementController : MonoBehaviour
                 playerItemList.Add(trapList[numberList[i]]);
 
             }
-         }
+        }
 
         //Item allocation.
         for (int i = 3; i < 6; ++i)
@@ -1663,7 +1761,7 @@ public class NewPlacementController : MonoBehaviour
     //if itemlist index = certain trap or item assign icon.
     void switchItemIcons(int prefabIndex, Image currentItem, List<GameObject> playerItems)
     {
-            if(playerItems.Count > 0)
+        if (playerItems.Count > 0)
             if (playerItems[prefabIndex] == buzzsaw)
             {
                 currentItem.sprite = buzzsawIcon;
@@ -1700,76 +1798,107 @@ public class NewPlacementController : MonoBehaviour
                 currentItem.color = new Color(1, 1, 1, 1);
             }
         if (playerItems.Count == 0)
-        { 
-                currentItem.sprite = blankIcon;
-            currentItem.color = new Color(0,0,0,0);
-        } 
+        {
+            currentItem.sprite = blankIcon;
+            currentItem.color = new Color(0, 0, 0, 0);
+        }
 
     }
 
     void playerItemCountUi(List<GameObject> playerItems, Image playerSprites, Image playerSprites2)
     {
-                switch(playerItems.Count)
-                {
-                    case 0:
-                        playerSprites.sprite = nums[0];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 1:
-                        playerSprites.sprite = nums[1];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 2:
-                        playerSprites.sprite = nums[2];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 3:
-                        playerSprites.sprite = nums[3];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 4:
-                        playerSprites.sprite = nums[4];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 5:
-                        playerSprites.sprite = nums[5];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 6:
-                        playerSprites.sprite = nums[6];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 7:
-                        playerSprites.sprite = nums[7];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 8:
-                        playerSprites.sprite = nums[8];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 9:
-                        playerSprites.sprite = nums[9];
-                        playerSprites2.enabled = false;
-                        break;
-                    case 10:
-                        playerSprites2.enabled = true;
-                        playerSprites.sprite = nums[1];
-                        playerSprites2.sprite = nums[0];
-                        break;
-                    case 11:
-                        playerSprites2.enabled = true;
-                        playerSprites.sprite = nums[1];
-                        playerSprites2.sprite = nums[1];
-                        break;
-                    case 12:
-                        playerSprites2.enabled = true;
-                        playerSprites.sprite = nums[1];
-                        playerSprites2.sprite = nums[2];
-                        break;
-                    default:
-                        break;
-                        
-                }
-        }   
+        switch (playerItems.Count)
+        {
+            case 0:
+                playerSprites.sprite = nums[0];
+                playerSprites2.enabled = false;
+                break;
+            case 1:
+                playerSprites.sprite = nums[1];
+                playerSprites2.enabled = false;
+                break;
+            case 2:
+                playerSprites.sprite = nums[2];
+                playerSprites2.enabled = false;
+                break;
+            case 3:
+                playerSprites.sprite = nums[3];
+                playerSprites2.enabled = false;
+                break;
+            case 4:
+                playerSprites.sprite = nums[4];
+                playerSprites2.enabled = false;
+                break;
+            case 5:
+                playerSprites.sprite = nums[5];
+                playerSprites2.enabled = false;
+                break;
+            case 6:
+                playerSprites.sprite = nums[6];
+                playerSprites2.enabled = false;
+                break;
+            case 7:
+                playerSprites.sprite = nums[7];
+                playerSprites2.enabled = false;
+                break;
+            case 8:
+                playerSprites.sprite = nums[8];
+                playerSprites2.enabled = false;
+                break;
+            case 9:
+                playerSprites.sprite = nums[9];
+                playerSprites2.enabled = false;
+                break;
+            case 10:
+                playerSprites2.enabled = true;
+                playerSprites.sprite = nums[1];
+                playerSprites2.sprite = nums[0];
+                break;
+            case 11:
+                playerSprites2.enabled = true;
+                playerSprites.sprite = nums[1];
+                playerSprites2.sprite = nums[1];
+                break;
+            case 12:
+                playerSprites2.enabled = true;
+                playerSprites.sprite = nums[1];
+                playerSprites2.sprite = nums[2];
+                break;
+            default:
+                break;
+
+        }
+    }
+
+
+    void buttonPress(xbox_gamepad gamepad, Image sprite, Image sprite2, Image abutton)
+    {
+        if(gamepad.GetButton("RB"))
+        {
+            sprite2.color = Color.grey;
+        }
+        else
+        {
+            sprite2.color = Color.white;
+        }
+        if(gamepad.GetButton("LB"))
+        {
+            sprite.color = Color.grey;
+            
+        }
+        else
+        {
+            sprite.color = Color.white;
+        }
+        if(gamepad.GetButton("A"))
+        {
+            abutton.color = Color.grey;
+        }
+        else
+        {
+            abutton.color = Color.white;
+        }
+
+    }
 
 }
